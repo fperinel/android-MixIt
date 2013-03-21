@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mix-It 2013</string>
+    
+    <string name="loading_message">Chargement</string>
+    <string name="loading_message_talks">Recherche les talks du Mix-IT 2013</string>
+    
+    <string name="loading_message_talk">Chargement du talk</string>
+    
+    
+    <string name="tab_talks">Talks</string>
+    <string name="tab_ltalks">Lightning Talks</string>
+    <string name="tab_staff">Staff Mix-IT</string>
+    <string name="tab_speakers">Speakers</string>
+    <string name="tab_sponsors">Sponsors</string>
+    
+    
+</resources>

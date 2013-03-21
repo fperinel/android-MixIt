@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+            
+    <style name="Layout">
+	</style>
+	   
+    <style name="Layout.Container">
+		<item name="android:layout_margin">2dip</item>
+	</style>
+    
+    <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">
+		<item name="android:layout_marginBottom">5dip</item>
+	</style>
+    
+    <style name="TextAppearance.Medium.Content" parent="@android:style/TextAppearance.Medium">
+		<item name="android:layout_marginBottom">5dip</item>
+	</style>   
+	 
+    <style name="TextAppearance.Small.Legend" parent="@android:style/TextAppearance.Small">
+		<item name="android:layout_marginTop">5dip</item>
+		<item name="android:layout_gravity">center_horizontal|right</item>
+		<item name="android:textStyle">italic</item>
+		<item name="android:textColor">@android:color/darker_gray</item>
+		<item name="android:textSize">12sp</item>
+	</style>
+	
+</resources>

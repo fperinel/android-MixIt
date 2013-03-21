@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mocked">true</string>
+    <string name="updateFrequency">5</string>
+    <string name="host">http://www.mix-it.fr/api</string>
+    <string name="connectionTimeout">3000</string>
+    <string name="socketTimeout">5000</string>    
+</resources>

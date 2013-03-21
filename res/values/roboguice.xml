@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="roboguice_modules">
+        <!-- <item>com.level42.mixtit.configuration.MockedModule</item> -->
+        <item>com.level42.mixtit.configuration.MainModule</item>
+    </string-array>
+
+</resources>
