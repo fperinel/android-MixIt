@@ -2,10 +2,14 @@ package com.level42.mixtit.configuration;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
+import com.level42.mixtit.dao.IPlanningDAO;
+import com.level42.mixtit.dao.impl.PlanningJsonDAO;
 import com.level42.mixtit.services.ILightningTalkService;
+import com.level42.mixtit.services.IPlanningService;
 import com.level42.mixtit.services.ITalkService;
-import com.level42.mixtit.services.remote.LightningTalkService;
-import com.level42.mixtit.services.remote.TalkService;
+import com.level42.mixtit.services.impl.LightningTalkService;
+import com.level42.mixtit.services.impl.PlanningService;
+import com.level42.mixtit.services.impl.TalkService;
 import com.level42.mixtit.webservices.IWebServices;
 import com.level42.mixtit.webservices.impl.WebServices;
 
@@ -19,7 +23,11 @@ public class MainModule extends AbstractModule {
 	protected void configure() {
 		bind(ITalkService.class).to(TalkService.class).in(Singleton.class);
 		bind(ILightningTalkService.class).to(LightningTalkService.class).in(Singleton.class);
+		bind(IPlanningService.class).to(PlanningService.class).in(Singleton.class);
+		
 		bind(IWebServices.class).to(WebServices.class).in(Singleton.class);
+		
+		bind(IPlanningDAO.class).to(PlanningJsonDAO.class).in(Singleton.class);
 	}
 
 }

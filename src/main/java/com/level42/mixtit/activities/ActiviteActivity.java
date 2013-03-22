@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
+import com.google.inject.Inject;
 import com.level42.mixtit.R;
+import com.level42.mixtit.models.Session;
+import com.level42.mixtit.services.IPlanningService;
 
 
 /**
@@ -16,9 +19,14 @@ import com.level42.mixtit.R;
 @ContentView(R.layout.activity_activite)
 public class ActiviteActivity extends RoboTabActivity {
 	
+	@Inject
+	private IPlanningService service;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Session session = service.getPlanningSession(127);
 		
 		TabHost tabHost = getTabHost();
 		
@@ -36,6 +44,7 @@ public class ActiviteActivity extends RoboTabActivity {
 				).setContent(lTalkList);
 		tabHost.addTab(tabSpec2);
 		
+	
 		/*tabSpec = tabHost.newTabSpec("tab_staff").setIndicator(
 					this.getText(R.string.tab_staff), 
 					getResources().getDrawable(R.drawable.ic_launcher)
