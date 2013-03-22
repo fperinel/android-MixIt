@@ -2,8 +2,8 @@ package com.level42.mixtit.tasks;
 
 import android.os.AsyncTask;
 
-import com.level42.mixtit.exceptions.CommunicationException;
-import com.level42.mixtit.exceptions.NotFoundException;
+import com.level42.mixtit.exceptions.FunctionnalException;
+import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixtit.models.LightningTalk;
 import com.level42.mixtit.services.ILightningTalkService;
@@ -31,9 +31,9 @@ public class GetLightningTalkAsyncTask extends AsyncTask<Object, Integer, Lightn
 			ILightningTalkService service = (ILightningTalkService) params[0];
 			Integer talkId = (Integer) params[1];
 			return service.getLightningTalk(talkId);
-		} catch (CommunicationException e) {
+		} catch (FunctionnalException e) {
 			e.printStackTrace();
-		} catch (NotFoundException e) {
+		} catch (TechnicalException e) {
 			e.printStackTrace();
 		}
 		return null;

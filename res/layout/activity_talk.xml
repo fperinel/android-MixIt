@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+	
 	<LinearLayout 
 	    style="@style/Layout.Container"
 	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
+	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 	
 	    <TextView
@@ -13,7 +15,37 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        style="@style/TextAppearance.Large.Title" />
-	
+			    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	        android:orientation="horizontal" >
+	        	        
+		    <TextView
+		        android:id="@+id/talk_textDate"
+		        style="@style/TextAppearance.Small.Legend"
+		        android:text="Le 25 avril 9h30"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" />
+	        
+		    <TextView
+		        android:id="@+id/talk_textSalle"
+		        style="@style/TextAppearance.Small.Legend"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:text="Salle 100p" />
+		
+		</LinearLayout>	 
+
+	    <TextView
+	        android:id="@+id/talk_textFavoris"
+	        style="@style/TextAppearance.Small.Legend"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="XXX favoris" /> 
+		
 	    <LinearLayout
 	        android:id="@+id/talk_speakers"
 	        android:layout_width="match_parent"
@@ -28,18 +60,13 @@
 	        </LinearLayout>
 	
 	    </LinearLayout>
-	
+		        
 	    <TextView
 	        android:id="@+id/talk_textContenu"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        style="@style/TextAppearance.Medium.Content" />
-	
-	    <TextView
-	        android:id="@+id/talk_textFavoris"
-	        style="@style/TextAppearance.Small.Legend"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
+	        style="@style/TextAppearance.Medium.Content" />  
 	    
 	</LinearLayout>
+	
 </ScrollView>

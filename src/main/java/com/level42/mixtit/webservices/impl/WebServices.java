@@ -19,6 +19,8 @@ import android.util.Log;
 
 import com.level42.mixtit.R;
 import com.level42.mixtit.exceptions.CommunicationException;
+import com.level42.mixtit.exceptions.NotFoundException;
+import com.level42.mixtit.models.Interest;
 import com.level42.mixtit.models.LightningTalk;
 import com.level42.mixtit.models.Member;
 import com.level42.mixtit.models.Speaker;
@@ -77,7 +79,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		}
 	}
 
-	public Talk getTalk(Integer id) throws CommunicationException {
+	public Talk getTalk(Integer id) throws CommunicationException, NotFoundException {
 
 		try {
 			HttpGet request = this.getRequestGET("talks/" + id.toString());
@@ -86,6 +88,10 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	        Log.d(Utils.LOGTAG, result);
 			Talk talk = mapper.readValue(result, Talk.class);
 
+	        if (talk == null) {
+	        	throw new NotFoundException("getTalk with id " + id.toString());
+	        }
+	        
 			return talk;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
@@ -114,7 +120,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		}
 	}
 
-	public LightningTalk getLightningTalk(Integer id) throws CommunicationException {
+	public LightningTalk getLightningTalk(Integer id) throws CommunicationException, NotFoundException {
 
 		try {
 			HttpGet request = this.getRequestGET("lightningtalks/" + id.toString());
@@ -123,6 +129,10 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	        Log.d(Utils.LOGTAG, result);
 	        LightningTalk talk = mapper.readValue(result, LightningTalk.class);
 
+	        if (talk == null) {
+	        	throw new NotFoundException("getLightningTalk with id " + id.toString());
+	        }
+	        
 			return talk;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
@@ -151,7 +161,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		}
 	}
 
-	public List<Staff> getStaff() throws CommunicationException {
+	public List<Staff> getStaffs() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("members/staff");
 			String result = this.execute(request, handler);
@@ -205,15 +215,52 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		}
 	}
 
-	public Member getMember(Integer id) throws CommunicationException {
+	public Member getMember(Integer id) throws CommunicationException, NotFoundException {
 		try {
 			HttpGet request = this.getRequestGET("members/" + id.toString());
 			String result = this.execute(request, handler);
 			
 	        Log.d(Utils.LOGTAG, result);
-	        Member member = mapper.readValue(result, new TypeReference<Member>() {});
+	        Member member = mapper.readValue(result, Member.class );
 
 			return member;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			throw new CommunicationException(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new CommunicationException(e);
+		}
+	}
+
+	public List<Interest> getInterests() throws CommunicationException {
+		try {
+			HttpGet request = this.getRequestGET("interests");
+			String result = this.execute(request, handler);
+			
+	        Log.d(Utils.LOGTAG, result);
+			List<Interest> list = mapper.readValue(result, new TypeReference<List<Interest>>() {});
+
+			return list;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			throw new CommunicationException(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new CommunicationException(e);
+		}
+	}
+
+	public Interest getInterest(Integer id) throws CommunicationException,
+			NotFoundException {
+		try {
+			HttpGet request = this.getRequestGET("interests/" + id.toString());
+			String result = this.execute(request, handler);
+			
+	        Log.d(Utils.LOGTAG, result);
+	        Interest interest = mapper.readValue(result, Interest.class );
+
+			return interest;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 			throw new CommunicationException(e);
@@ -233,5 +280,4 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	protected HttpGet getRequestGET(String path) {
 		return new HttpGet(host + "/" + path);
 	}
-	
 }

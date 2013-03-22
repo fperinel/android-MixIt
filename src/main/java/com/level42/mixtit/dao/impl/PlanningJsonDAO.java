@@ -13,6 +13,7 @@ import roboguice.inject.InjectResource;
 
 import com.level42.mixtit.R;
 import com.level42.mixtit.dao.IPlanningDAO;
+import com.level42.mixtit.exceptions.DataAccessException;
 import com.level42.mixtit.models.Planning;
 import com.level42.mixtit.models.Session;
 
@@ -26,12 +27,7 @@ public class PlanningJsonDAO extends DefaultHandler implements IPlanningDAO {
 	
 	private Planning planning;
 
-	/**
-	 * Méthode retournant le planning des sessions
-	 * 
-	 * @return Planning
-	 */
-	public Planning getPlanning() {
+	public Planning getPlanning() throws DataAccessException {
 		if (planning == null) {
 			try {
 				ObjectMapper mapper = new ObjectMapper();
@@ -40,10 +36,13 @@ public class PlanningJsonDAO extends DefaultHandler implements IPlanningDAO {
 				planning.setSessions(sessions);
 			} catch (JsonParseException e) {
 				e.printStackTrace();
+				throw new DataAccessException(e);
 			} catch (JsonMappingException e) {
 				e.printStackTrace();
+				throw new DataAccessException(e);
 			} catch (IOException e) {
 				e.printStackTrace();
+				throw new DataAccessException(e);
 			}
 		}
 		return planning;

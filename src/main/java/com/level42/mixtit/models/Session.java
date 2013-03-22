@@ -1,13 +1,17 @@
 package com.level42.mixtit.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import android.annotation.SuppressLint;
 
 /**
  * Classe représentant le planning
  */
 public class Session {
 
-	private Integer sessionId;
+	private Integer id;
 	
 	private String salle;
 	
@@ -18,15 +22,15 @@ public class Session {
 	/**
 	 * @return the sessionId
 	 */
-	public Integer getSessionId() {
-		return sessionId;
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param sessionId the sessionId to set
+	 * @param id the id to set
 	 */
-	public void setSessionId(Integer sessionId) {
-		this.sessionId = sessionId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**
@@ -60,8 +64,17 @@ public class Session {
 	/**
 	 * @return the dateFormat
 	 */
+	@SuppressLint("SimpleDateFormat")
 	public Date getDateFormat() {
-		dateFormat = new Date(this.date);
+		if (dateFormat == null) {
+			try {
+				SimpleDateFormat formatOrigin = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				dateFormat = formatOrigin.parse(this.date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
 		return dateFormat;
 	}
 }

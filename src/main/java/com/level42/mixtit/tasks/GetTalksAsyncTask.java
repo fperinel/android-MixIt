@@ -4,7 +4,8 @@ import java.util.List;
 
 import android.os.AsyncTask;
 
-import com.level42.mixtit.exceptions.CommunicationException;
+import com.level42.mixtit.exceptions.FunctionnalException;
+import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixtit.models.Talk;
 import com.level42.mixtit.services.ITalkService;
@@ -31,7 +32,9 @@ public class GetTalksAsyncTask extends AsyncTask<ITalkService, Integer, List<Tal
 		try {
 			ITalkService service = (ITalkService) params[0];
 			return service.getTalks();
-		} catch (CommunicationException e) {
+		} catch (FunctionnalException e) {
+			e.printStackTrace();
+		} catch (TechnicalException e) {
 			e.printStackTrace();
 		}
 		return null;

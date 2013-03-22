@@ -7,27 +7,18 @@ import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-import com.google.inject.Inject;
 import com.level42.mixtit.R;
-import com.level42.mixtit.models.Session;
-import com.level42.mixtit.services.IPlanningService;
-
 
 /**
  * Ecran d'activité
  */
 @ContentView(R.layout.activity_activite)
 public class ActiviteActivity extends RoboTabActivity {
-	
-	@Inject
-	private IPlanningService service;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Session session = service.getPlanningSession(127);
-		
+
 		TabHost tabHost = getTabHost();
 		
 		Intent talkList = new Intent(this, TalkListActivity.class);

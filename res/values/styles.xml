@@ -17,7 +17,8 @@
 	</style>   
 	 
     <style name="TextAppearance.Small.Legend" parent="@android:style/TextAppearance.Small">
-		<item name="android:layout_marginTop">5dip</item>
+		<item name="android:layout_margin">5dip</item>
+		<item name="android:layout_marginTop">2dip</item>
 		<item name="android:layout_gravity">center_horizontal|right</item>
 		<item name="android:textStyle">italic</item>
 		<item name="android:textColor">@android:color/darker_gray</item>

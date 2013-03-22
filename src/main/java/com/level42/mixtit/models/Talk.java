@@ -1,5 +1,6 @@
 package com.level42.mixtit.models;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
@@ -23,6 +24,8 @@ public class Talk extends Observable {
 	private String format;
 	
 	private String level;
+	
+	private Session session;
 
 	/**
 	 * @return the id
@@ -134,5 +137,36 @@ public class Talk extends Observable {
 	 */
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	/**
+	 * @param session the session to set
+	 */
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	
+	/**
+	 * Retourne la date de la session du Talk
+	 * @return Date de la session du Talk
+	 */
+	public Date getDateSession() {
+		if (this.session != null) {
+			return this.session.getDateFormat();
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Retourne la salle de la session du Talk
+	 * @return Salle de la session du Talk
+	 */
+	public String getSalleSession() {
+		if (this.session != null) {
+			return this.session.getSalle();
+		} else {
+			return null;
+		}
 	}
 }

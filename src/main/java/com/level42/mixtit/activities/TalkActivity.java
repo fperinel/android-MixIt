@@ -1,9 +1,13 @@
 package com.level42.mixtit.activities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.app.ProgressDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -35,6 +39,12 @@ public class TalkActivity extends RoboActivity {
 	
 	@InjectView(R.id.talk_textFavoris)
 	private TextView favorisTalk;
+	
+	@InjectView(R.id.talk_textDate)
+	private TextView dateTalk;
+	
+	@InjectView(R.id.talk_textSalle)
+	private TextView salleTalk;
 	
 	private GetTalkAsyncTask getTalkAsyncService;
 	
@@ -122,9 +132,23 @@ public class TalkActivity extends RoboActivity {
 	protected void displayTalk(Talk talk) {
 		titreTalk.setText(talk.getTitle());
 		contenuTalk.setText(talk.getDescription());
+
+		Resources res = getResources();
+		
 		if (talk.getInterests() != null)
 		{
-			favorisTalk.setText(String.valueOf(talk.getInterests().size()));
+			favorisTalk.setText(String.format(res.getString(R.string.label_talk_favoris), String.valueOf(talk.getInterests().size())));
+		}
+		
+		if (talk.getSalleSession() != null)
+		{
+			salleTalk.setText(String.format(res.getString(R.string.label_talk_salle), talk.getSalleSession()));
+		}
+		
+		if (talk.getDateSession() != null)
+		{
+			DateFormat format = SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM, SimpleDateFormat.SHORT);
+			dateTalk.setText(String.format(res.getString(R.string.label_talk_date), format.format(talk.getDateSession())));
 		}
 	}
 }

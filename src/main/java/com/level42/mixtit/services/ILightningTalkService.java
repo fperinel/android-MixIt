@@ -2,8 +2,8 @@ package com.level42.mixtit.services;
 
 import java.util.List;
 
-import com.level42.mixtit.exceptions.CommunicationException;
-import com.level42.mixtit.exceptions.NotFoundException;
+import com.level42.mixtit.exceptions.FunctionnalException;
+import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.models.LightningTalk;
 
 /**
@@ -16,9 +16,10 @@ public interface ILightningTalkService {
 	 * 
 	 * @return Liste des talks
 	 * 
-	 * @throws CommunicationException En cas d'erreur de communication
+	 * @throws TechnicalException
+	 * @throws FunctionnalException
 	 */
-	public List<LightningTalk> getLightningTalks() throws CommunicationException;
+	public List<LightningTalk> getLightningTalks() throws FunctionnalException, TechnicalException;
 	
 	/**
 	 * Méthode retournant le détail d'un talk à partir de son 
@@ -26,8 +27,8 @@ public interface ILightningTalkService {
 	 * 
 	 * @param id Identifiant du talk
 	 * 
-	 * @throws CommunicationException En cas d'erreur de communication
-	 * @throws NotFoundException      Si aucun talk ne correspond à l'identifiant
+	 * @throws TechnicalException
+	 * @throws FunctionnalException
 	 */
-	public LightningTalk getLightningTalk(Integer id) throws CommunicationException, NotFoundException;
+	public LightningTalk getLightningTalk(Integer id) throws FunctionnalException, TechnicalException;
 }
