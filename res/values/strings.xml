@@ -3,8 +3,8 @@
     <string name="app_name">Mix-It 2013</string>
     
     <string name="loading_message">Chargement</string>
-    <string name="loading_message_talks">Recherche les talks du Mix-IT 2013</string>
     
+    <string name="loading_message_talks">Recherche les talks</string>
     <string name="loading_message_talk">Chargement du talk</string>
     
     

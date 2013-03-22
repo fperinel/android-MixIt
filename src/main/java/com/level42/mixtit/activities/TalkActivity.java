@@ -90,8 +90,8 @@ public class TalkActivity extends RoboActivity {
     	if(progressDialog == null) 
     	{
 			progressDialog = ProgressDialog.show(
-					TalkActivity.this, 
-					this.getText(R.string.loading_message),  
+					this, 
+					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talk), 
 				    false, 
 				    false);
@@ -112,7 +112,7 @@ public class TalkActivity extends RoboActivity {
 					Log.d(Utils.LOGTAG, "Talk chargé");
 					talk = result;
 					if (progressDialog.isShowing()) {
-						progressDialog.hide();
+						progressDialog.dismiss();
 					}
 					displayTalk(talk);
 				}

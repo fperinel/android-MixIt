@@ -3,12 +3,14 @@ package com.level42.mixtit.tasks;
 import java.util.List;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.level42.mixtit.exceptions.FunctionnalException;
 import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixtit.models.Talk;
 import com.level42.mixtit.services.ITalkService;
+import com.level42.mixtit.utils.Utils;
 
 public class GetTalksAsyncTask extends AsyncTask<ITalkService, Integer, List<Talk>> {
 	
@@ -33,9 +35,9 @@ public class GetTalksAsyncTask extends AsyncTask<ITalkService, Integer, List<Tal
 			ITalkService service = (ITalkService) params[0];
 			return service.getTalks();
 		} catch (FunctionnalException e) {
-			e.printStackTrace();
+			Log.e(Utils.LOGTAG, e.getMessage());
 		} catch (TechnicalException e) {
-			e.printStackTrace();
+			Log.e(Utils.LOGTAG, e.getMessage());
 		}
 		return null;
 	}
