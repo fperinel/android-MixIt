@@ -5,11 +5,14 @@
 	</style>
 	   
     <style name="Layout.Container">
-		<item name="android:layout_margin">2dip</item>
+		<item name="android:padding">2dip</item>
+		<item name="android:background">@color/blue_gradient</item>
 	</style>
     
     <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">
-		<item name="android:layout_marginBottom">5dip</item>
+		<item name="android:paddingBottom">5dip</item>
+		<item name="android:textColor">@color/mixitBlue</item>
+		<item name="android:textStyle">bold</item>
 	</style>
     
     <style name="TextAppearance.Medium.Content" parent="@android:style/TextAppearance.Medium">
@@ -17,11 +20,10 @@
 	</style>   
 	 
     <style name="TextAppearance.Small.Legend" parent="@android:style/TextAppearance.Small">
-		<item name="android:layout_margin">5dip</item>
-		<item name="android:layout_marginTop">2dip</item>
+		<item name="android:padding">2dip</item>
 		<item name="android:layout_gravity">center_horizontal|right</item>
 		<item name="android:textStyle">italic</item>
-		<item name="android:textColor">@android:color/darker_gray</item>
+		<item name="android:textColor">@color/mixitGrey</item>
 		<item name="android:textSize">12sp</item>
 	</style>
 	

@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.annotation.SuppressLint;
-
 /**
  * Classe représentant le planning
  */
@@ -64,7 +62,6 @@ public class Session {
 	/**
 	 * @return the dateFormat
 	 */
-	@SuppressLint("SimpleDateFormat")
 	public Date getDateFormat() {
 		if (dateFormat == null) {
 			try {

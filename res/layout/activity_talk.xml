@@ -4,28 +4,23 @@
     android:layout_height="fill_parent"
     android:fillViewport="true" >
 	
-	<LinearLayout 
+	<LinearLayout
 	    style="@style/Layout.Container"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
-	
-	    <TextView
-	        android:id="@+id/talk_textTitre"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        style="@style/TextAppearance.Large.Title" />
-			    
-	    <LinearLayout
+	    
+		<LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:gravity="right"
+		    android:id="@+id/talk_layout_informations"
+	        android:background="@color/mixitDarkGrey"
 	        android:orientation="horizontal" >
 	        	        
 		    <TextView
 		        android:id="@+id/talk_textDate"
 		        style="@style/TextAppearance.Small.Legend"
-		        android:text="Le 25 avril 9h30"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content" />
 	        
@@ -34,39 +29,47 @@
 		        style="@style/TextAppearance.Small.Legend"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_horizontal"
-		        android:text="Salle 100p" />
-		
-		</LinearLayout>	 
+		        android:layout_gravity="center_horizontal"/>
 
-	    <TextView
-	        android:id="@+id/talk_textFavoris"
-	        style="@style/TextAppearance.Small.Legend"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="XXX favoris" /> 
+		    <TextView
+		        android:id="@+id/talk_textFavoris"
+		        style="@style/TextAppearance.Small.Legend"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
 		
-	    <LinearLayout
-	        android:id="@+id/talk_speakers"
+		</LinearLayout>
+		
+		<LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical" >
+		    
+		    <TextView
+		        android:id="@+id/talk_textTitre"
+		        style="@style/TextAppearance.Large.Title"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content" />
+			        
+		    <TextView
+		        android:id="@+id/talk_textContenu"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        style="@style/TextAppearance.Medium.Content" />
 	
-	        <LinearLayout
-	            android:id="@+id/talk_speaker"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content" >
+		    <LinearLayout
+		        android:id="@+id/talk_speakers"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical" >
 	
-	        </LinearLayout>
-	
-	    </LinearLayout>
-		        
-	    <TextView
-	        android:id="@+id/talk_textContenu"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        style="@style/TextAppearance.Medium.Content" />  
-	    
+		        <LinearLayout
+		            android:id="@+id/talk_speaker"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content" >
+		        </LinearLayout>
+		    </LinearLayout>
+		</LinearLayout>	 
+		
 	</LinearLayout>
 	
 </ScrollView>

@@ -4,7 +4,7 @@
     
     <string name="loading_message">Chargement</string>
     
-    <string name="loading_message_talks">Recherche les talks</string>
+    <string name="loading_message_talks">Chargement des talks</string>
     <string name="loading_message_talk">Chargement du talk</string>
     
     
