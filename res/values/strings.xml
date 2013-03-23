@@ -2,17 +2,15 @@
 <resources>
     <string name="app_name">Mix-It 2013</string>
     
-    <string name="loading_message">Chargement</string>
+    <string name="mixit_address">Les Jardins d\'Osaka, 16 Rue Jean Desparmet, 69008 LYON</string>
+    <string name="mixit_gps">45.735867,4.877779</string>
     
+    <string name="loading_message">Chargement</string>
     <string name="loading_message_talks">Chargement des talks</string>
     <string name="loading_message_talk">Chargement du talk</string>
     
-    
     <string name="tab_talks">Talks</string>    
     <string name="tab_ltalks">Lightning Talks</string>
-    <string name="tab_staff">Staff Mix-IT</string>
-    <string name="tab_speakers">Speakers</string>
-    <string name="tab_sponsors">Sponsors</string>
     
     <string name="label_talk_titre">[%1$s] %2$s</string>
     <string name="label_talk_interets">%1$s tags</string>

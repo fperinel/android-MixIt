@@ -7,11 +7,22 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>apk</packaging>
 	<name>mixtit</name>
-
+	<organization>
+		<name>Level42</name>
+	</organization>
+	
+	<scm>
+		<connection>scm:git:git://github.com/fperinel/android-MixIt.git</connection>
+	</scm>
+	
 	<properties>
 		<platform.version>2.2.1</platform.version>
 		<platform.sdk>8</platform.sdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<key.alias>mixtit</key.alias>
+		<key.storepass>mixtit</key.storepass>
+		<key.keypass>mixtit</key.keypass>
 	</properties>
 
 	<dependencies>
@@ -39,25 +50,11 @@
 			<version>r7</version>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 		  <groupId>com.google.android.maps</groupId>
 		  <artifactId>maps</artifactId>
 		  <version>8_r2</version>
-		</dependency>
-
-
-		<!-- <dependency>
-            <groupId>org.robolectric</groupId>
-            <artifactId>robolectric</artifactId>
-            <version>2.0-alpha-2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency> -->
+		</dependency> -->
         
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -65,17 +62,27 @@
             <version>1.9.12</version>
         </dependency>
         
-        <!-- 
-        <dependency>
-	      <groupId>com.actionbarsherlock</groupId>
-	      <artifactId>library</artifactId>
-	      <version>4.1.0</version>
-	      <type>apklib</type>
-	    </dependency>
-         -->
 	</dependencies>
 
 	<build>
+	    <finalName>${project.artifactId}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/resources/main/${env}</directory>
+			</resource>
+			<resource>
+				<directory>src/resources/main/common</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/resources/test/${env}</directory>
+			</testResource>
+			<testResource>
+				<directory>src/resources/test/common</directory>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
@@ -89,9 +96,41 @@
 					<sdk>
 						<platform>${platform.sdk}</platform>
 					</sdk>
+					<sign>
+						<debug>false</debug>
+					</sign>
+					<zipalign>
+						<verbose>true</verbose>
+						<skip>false</skip>
+					</zipalign>
+					<file>${project.build.directory}/${project.artifactId}-${project.version}-aligned.apk</file>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
 					<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					<release>true</release>
 				</configuration>
 				<extensions>true</extensions>
+				<executions>
+                    <execution>
+	                    <id>update-manifest</id>
+	                    <phase>process-resources</phase>
+	                    <goals>
+	                        <goal>manifest-update</goal>
+	                    </goals>
+	                    <configuration>
+	                        <manifest>
+	                            <versionCodeAutoIncrement>true</versionCodeAutoIncrement>
+	                            <versionName>${project.version}</versionName>
+	                        </manifest>
+	                    </configuration>
+                    </execution>
+					<execution>
+						<id>alignApk</id>
+						<phase>install</phase>
+						<goals>
+							<goal>zipalign</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -100,8 +139,102 @@
 				<configuration>
 					<source>1.5</source>
 					<target>1.5</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>sign</id>
+						<phase>package</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>${project.basedir}/target/${project.artifactId}.apk</archive>
+					<keystore>${project.basedir}/debug.keystore</keystore>
+					<alias>${key.alias}</alias>
+					<storepass>${key.storepass}</storepass>
+					<keypass>${key.keypass}</keypass>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.0</version>
 			</plugin>
 		</plugins>
 	</build>
+	
+	<reporting>
+		<outputDirectory>${basedir}/target/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.0.1</version>
+				<reportSets>
+					<reportSet></reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<show>private</show>
+					<nohelp>true</nohelp>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<!-- Environnement dév local -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- Environnement d'intégration -->
+		<profile>
+			<id>int</id>
+			<properties>
+				<env>int</env>
+			</properties>
+		</profile>
+		<!-- Environnement de production -->
+		<profile>
+			<id>prod</id>
+			<properties>
+				<env>prod</env>
+			</properties>
+		</profile>
+	</profiles>
+	
 </project>

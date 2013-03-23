@@ -1,38 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.level42.mixtit"
-    android:versionCode="1"
-    android:versionName="1.0-SNAPSHOT" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.0-SNAPSHOT" package="com.level42.mixtit">
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
     
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name">
 	
-        <activity android:name=".activities.SplashActivity"
-                  android:label="@string/app_name"
-                  android:launchMode="singleTop"
-                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                  android:screenOrientation="portrait">
+        <activity android:label="@string/app_name" android:launchMode="singleTop" android:name=".activities.SplashActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         
-        <activity android:name="com.level42.mixtit.activities.TalkListActivity" />                
-        <activity android:name="com.level42.mixtit.activities.TalkActivity" />               
-        <activity android:name="com.level42.mixtit.activities.ActiviteActivity" />  
+        <activity android:name="com.level42.mixtit.activities.TalkListActivity"/>                
+        <activity android:name="com.level42.mixtit.activities.TalkActivity"/>               
+        <activity android:name="com.level42.mixtit.activities.ActiviteActivity"/>  
               
-        <activity android:name="com.level42.mixtit.activities.LightningTalkListActivity" />
-        <activity android:name="com.level42.mixtit.activities.LightningTalkActivity" />
+        <activity android:name="com.level42.mixtit.activities.LightningTalkListActivity"/>
+        <activity android:name="com.level42.mixtit.activities.LightningTalkActivity"/>
         
     </application>
 
