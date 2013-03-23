@@ -1,11 +1,14 @@
 package com.level42.mixtit.webservices.impl;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
@@ -46,6 +49,11 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	private ResponseHandler<String> handler;
 	
 	/**
+	 * Objet contenant le cache des appels Webservices
+	 */
+	private Map<String, String> cache;
+	
+	/**
 	 * Constructeur en charge d'initiliser le client HTTP avec les paramètres
 	 */
 	public WebServices() {	
@@ -59,12 +67,14 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		// Initialisation du mapper JSON
 		mapper = new ObjectMapper();		
 		handler = new BasicResponseHandler();
+		
+		cache = new HashMap<String, String>();
 	}
 	
 	public List<Talk> getTalks() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("talks");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Talk> talkList = mapper.readValue(result, new TypeReference<List<Talk>>() {});
@@ -83,7 +93,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
 		try {
 			HttpGet request = this.getRequestGET("talks/" + id.toString());
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			Talk talk = mapper.readValue(result, Talk.class);
@@ -105,7 +115,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<LightningTalk> getLightningTalks() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("lightningtalks");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<LightningTalk> talkList = mapper.readValue(result, new TypeReference<List<LightningTalk>>() {});
@@ -124,7 +134,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
 		try {
 			HttpGet request = this.getRequestGET("lightningtalks/" + id.toString());
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 	        LightningTalk talk = mapper.readValue(result, LightningTalk.class);
@@ -146,7 +156,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<Member> getMembers() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("members");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Member> list = mapper.readValue(result, new TypeReference<List<Member>>() {});
@@ -164,7 +174,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<Staff> getStaffs() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("members/staff");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Staff> list = mapper.readValue(result, new TypeReference<List<Staff>>() {});
@@ -182,7 +192,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<Speaker> getSpeakers() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("members/speakers");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Speaker> list = mapper.readValue(result, new TypeReference<List<Speaker>>() {});
@@ -200,7 +210,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<Sponsor> getSponsors() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("members/sponsors");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Sponsor> list = mapper.readValue(result, new TypeReference<List<Sponsor>>() {});
@@ -218,7 +228,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public Member getMember(Integer id) throws CommunicationException, NotFoundException {
 		try {
 			HttpGet request = this.getRequestGET("members/" + id.toString());
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 	        Member member = mapper.readValue(result, Member.class );
@@ -236,7 +246,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	public List<Interest> getInterests() throws CommunicationException {
 		try {
 			HttpGet request = this.getRequestGET("interests");
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 			List<Interest> list = mapper.readValue(result, new TypeReference<List<Interest>>() {});
@@ -255,7 +265,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 			NotFoundException {
 		try {
 			HttpGet request = this.getRequestGET("interests/" + id.toString());
-			String result = this.execute(request, handler);
+			String result = this.executeQuery(request);
 			
 	        Log.d(Utils.LOGTAG, result);
 	        Interest interest = mapper.readValue(result, Interest.class );
@@ -279,5 +289,29 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 	 */
 	protected HttpGet getRequestGET(String path) {
 		return new HttpGet(host + "/" + path);
+	}
+	
+	/**
+	 * Execute la requête d'appel au Webservice après vérification du cache.
+	 * 
+	 * @param request
+	 * @return Résultat (format jSon)
+	 * 
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	protected String executeQuery(HttpUriRequest request) throws ClientProtocolException, IOException {
+		String key = request.getURI().toString();
+		String result = null;
+		if (!cache.containsKey(key)) {
+			result = this.execute(request, handler);		
+			cache.put(key, result);
+			Log.d(Utils.LOGTAG, "Webservice cache set for key : " + key);
+		} else {
+			result = cache.get(key);
+			Log.d(Utils.LOGTAG, "Webservice cache hit for key : " + key);
+		}
+		
+		return result;
 	}
 }
