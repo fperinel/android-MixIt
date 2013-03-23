@@ -2,6 +2,10 @@ package com.level42.mixtit.models;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import android.graphics.Bitmap;
+
 /**
  * Classe représentant un membre
  */
@@ -22,6 +26,9 @@ public class Member {
 	private String longdesc;
 
 	private String urlimage;
+
+	@JsonIgnore
+	private Bitmap image;
 
 	private String nbConsults;
 
@@ -245,5 +252,19 @@ public class Member {
 	 */
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public Bitmap getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(Bitmap image) {
+		this.image = image;
 	}
 }

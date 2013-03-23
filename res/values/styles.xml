@@ -8,7 +8,11 @@
 		<item name="android:padding">2dip</item>
 		<item name="android:background">@color/blue_gradient</item>
 	</style>
-    
+	   
+    <style name="Layout.Speakers">
+		<item name="android:layout_margin">5dip</item>
+	</style>
+	
     <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">
 		<item name="android:paddingBottom">5dip</item>
 		<item name="android:textColor">@color/mixitBlue</item>

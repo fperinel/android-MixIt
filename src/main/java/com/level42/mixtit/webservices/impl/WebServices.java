@@ -225,15 +225,14 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 		}
 	}
 
-	public Member getMember(Integer id) throws CommunicationException, NotFoundException {
+	public Object getEntity(Integer id, Object entity) throws CommunicationException, NotFoundException {
 		try {
 			HttpGet request = this.getRequestGET("members/" + id.toString());
 			String result = this.executeQuery(request, true);
 			
 	        Log.d(Utils.LOGTAG, result);
-	        Member member = mapper.readValue(result, Member.class );
-
-			return member;
+	        Object resultObj = mapper.readValue(result, entity.getClass() );
+			return resultObj;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 			throw new CommunicationException(e);

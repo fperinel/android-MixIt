@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * Classe représentant un Talk
  */
@@ -17,14 +20,23 @@ public class Talk extends Observable {
 	
 	private String description;
 	
-	private List<Integer> interests;
+	@JsonProperty("interests")
+	private List<Integer> interestsId;
+
+	@JsonIgnore
+	private List<Interest> interests;
 	
-	private List<Integer> speakers;
+	@JsonProperty("speakers")
+	private List<Integer> speakersId;
+
+	@JsonIgnore
+	private List<Speaker> speakers;
 	
 	private String format;
 	
 	private String level;
-	
+
+	@JsonIgnore
 	private Session session;
 
 	/**
@@ -84,31 +96,31 @@ public class Talk extends Observable {
 	}
 
 	/**
-	 * @return the interests
+	 * @return the interests Id
 	 */
-	public List<Integer> getInterests() {
-		return interests;
+	public List<Integer> getInterestsId() {
+		return interestsId;
 	}
 
 	/**
-	 * @param interests the interests to set
+	 * @param interests the interests Id to set
 	 */
-	public void setInterests(List<Integer> interests) {
-		this.interests = interests;
+	public void setInterestsId(List<Integer> interestsId) {
+		this.interestsId = interestsId;
 	}
 
 	/**
-	 * @return the speakers
+	 * @return the speakers Id
 	 */
-	public List<Integer> getSpeakers() {
-		return speakers;
+	public List<Integer> getSpeakersId() {
+		return speakersId;
 	}
 
 	/**
-	 * @param speakers the speakers to set
+	 * @param speakers the speakers Id to set
 	 */
-	public void setSpeakers(List<Integer> speakers) {
-		this.speakers = speakers;
+	public void setSpeakersId(List<Integer> speakersId) {
+		this.speakersId = speakersId;
 	}
 
 	/**
@@ -168,5 +180,33 @@ public class Talk extends Observable {
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * @return the interests
+	 */
+	public List<Interest> getInterests() {
+		return interests;
+	}
+
+	/**
+	 * @param interests the interests to set
+	 */
+	public void setInterests(List<Interest> interests) {
+		this.interests = interests;
+	}
+
+	/**
+	 * @return the speakers
+	 */
+	public List<Speaker> getSpeakers() {
+		return speakers;
+	}
+
+	/**
+	 * @param speakers the speakers to set
+	 */
+	public void setSpeakers(List<Speaker> speakers) {
+		this.speakers = speakers;
 	}
 }

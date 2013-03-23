@@ -92,16 +92,17 @@ public interface IWebServices {
 	public List<Sponsor> getSponsors() throws CommunicationException;
 	
 	/**
-	 * Retourne le détail d'un membre
+	 * Retourne le détail d'une entité (membre, staff etc...)
 	 * 
 	 * @param id Identifiant du membre
+	 * @param <T> Type de l'entité
 	 * 
-	 * @return Détail d'un membre
+	 * @return Détail d'une entité
 	 * 
 	 * @throws CommunicationException
 	 * @throws NotFoundException
 	 */
-	public Member getMember(Integer id) throws CommunicationException, NotFoundException;
+	public <T> Object getEntity(Integer id, T type) throws CommunicationException, NotFoundException;
 
 	/**
 	 * Retourne la liste des tags "intérêt"

@@ -10,11 +10,15 @@ import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.level42.mixtit.R;
+import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
+import com.level42.mixtit.models.Speaker;
 import com.level42.mixtit.models.Talk;
 import com.level42.mixtit.services.ITalkService;
 import com.level42.mixtit.tasks.GetTalkAsyncTask;
@@ -46,7 +50,8 @@ public class TalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textSalle)
 	private TextView salleTalk;
 	
-	private GetTalkAsyncTask getTalkAsyncService;
+	@InjectView(R.id.talk_speakers)
+	private LinearLayout speakersTalk;
 	
 	/**
 	 * Liste des talkls de l'activité
@@ -102,8 +107,9 @@ public class TalkActivity extends RoboActivity {
      * Rafraichit la liste des talks
      */
     protected void loadTalk() {
+    	
     	// Préparation du service
-    	getTalkAsyncService = new GetTalkAsyncTask();
+    	GetTalkAsyncTask getTalkAsyncService = new GetTalkAsyncTask();
     	
     	// Ajout d'un listener pour récupérer le retour
     	getTalkAsyncService.setPostExecuteListener(new OnTaskPostExecuteListener<Talk>() {			
@@ -122,19 +128,34 @@ public class TalkActivity extends RoboActivity {
     	// Execution du service
     	Integer id = (int) this.getIntent().getExtras().getLong(TalkActivity.TALK_ID);
     	Log.d(Utils.LOGTAG, "Chargement du talk " + id.toString());
-    	getTalkAsyncService.execute(talkService, id);
+    	getTalkAsyncService.execute(talkService, id);    	
     }
 	
 	/**
 	 * Gère le rendu du talk dans le template
 	 * @param talk
 	 */
-	protected void displayTalk(Talk talk) {
-		titreTalk.setText(talk.getTitle());
-		contenuTalk.setText(talk.getDescription());
-
-		Resources res = getResources();
+	protected void displayTalk(Talk talk) {		
 		
+		Resources res = getResources();
+	
+		titreTalk.setText(String.format(res.getString(R.string.label_talk_titre), talk.getFormat(), talk.getTitle()));
+		contenuTalk.setText(talk.getDescription());
+		
+		// Ajout des speakers
+		for (Speaker speaker : talk.getSpeakers() ) {			
+			ImageView speakerAvatarView = new ImageView(TalkActivity.this);
+			speakerAvatarView.setImageBitmap(speaker.getImage());
+			speakersTalk.addView(speakerAvatarView);
+			
+			TextView speakerNameView = new TextView(TalkActivity.this);
+			speakerNameView.setPadding(5, 10, 5, 10);
+			speakerNameView.setMaxLines(2);
+			speakerNameView.setMaxWidth(300);
+			speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));			
+			speakersTalk.addView(speakerNameView);
+		}
+
 		if (talk.getInterests() != null)
 		{
 			favorisTalk.setText(String.format(res.getString(R.string.label_talk_favoris), String.valueOf(talk.getInterests().size())));
