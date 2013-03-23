@@ -97,7 +97,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     	if(progressDialog == null) 
     	{
 			progressDialog = ProgressDialog.show(
-					this, 
+					LightningTalkListActivity.this,
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talks), 
 				    false, 

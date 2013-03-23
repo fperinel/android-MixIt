@@ -91,7 +91,7 @@ public class LightningTalkActivity extends RoboActivity {
     	if(progressDialog == null) 
     	{
 			progressDialog = ProgressDialog.show(
-					this, 
+					LightningTalkActivity.this,
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talk), 
 				    false, 

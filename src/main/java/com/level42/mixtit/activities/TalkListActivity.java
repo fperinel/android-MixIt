@@ -97,7 +97,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
     	if(progressDialog == null) 
     	{
 			progressDialog = ProgressDialog.show(
-					this, 
+					TalkListActivity.this,
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talks), 
 				    false, 
