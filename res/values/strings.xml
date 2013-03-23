@@ -15,7 +15,8 @@
     <string name="tab_sponsors">Sponsors</string>
     
     <string name="label_talk_titre">[%1$s] %2$s</string>
-    <string name="label_talk_favoris">%1$s favoris</string>
+    <string name="label_talk_interets">%1$s tags</string>
+    <string name="label_talk_votes">%1$s votes</string>
     <string name="label_talk_date">Le %1$s</string>
     <string name="label_talk_salle">Salle %1$s</string>
     <string name="label_talk_speaker">%1$s %2$s</string>

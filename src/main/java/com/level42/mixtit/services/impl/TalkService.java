@@ -41,7 +41,7 @@ public class TalkService extends AbstractService implements ITalkService {
 	
 	public List<Talk> getTalks() throws FunctionnalException, TechnicalException {
 		try {
-			List<Talk> talks = ws.getTalks();			
+			List<Talk> talks = ws.getTalks();
 			return talks;
 		} catch (CommunicationException e) {
 			e.printStackTrace();

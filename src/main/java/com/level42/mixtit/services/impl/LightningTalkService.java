@@ -15,7 +15,7 @@ import com.level42.mixtit.webservices.IWebServices;
 /**
  * Service bouchonné pour l'appel des Webservices
  */
-public class LightningTalkService extends AbstractService implements ILightningTalkService {
+public class LightningTalkService extends TalkService implements ILightningTalkService {
 	
 	@Inject
 	private IWebServices ws;
@@ -31,7 +31,10 @@ public class LightningTalkService extends AbstractService implements ILightningT
 
 	public LightningTalk getLightningTalk(Integer id) throws FunctionnalException, TechnicalException {
 		try {	
-			return ws.getLightningTalk(id);
+			LightningTalk lTalk = ws.getLightningTalk(id);
+			this.hydrateTalkInterests(lTalk);
+			this.hydrateTalkSpeakers(lTalk);			
+			return lTalk;
 		} catch (CommunicationException e) {
 			e.printStackTrace();
 			throw new TechnicalException(getText(R.string.exception_message_CommunicationException), e);

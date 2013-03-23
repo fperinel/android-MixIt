@@ -32,7 +32,13 @@
 		        android:layout_gravity="center_horizontal"/>
 
 		    <TextView
-		        android:id="@+id/talk_textFavoris"
+		        android:id="@+id/talk_textInterets"
+		        style="@style/TextAppearance.Small.Legend"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+
+		    <TextView
+		        android:id="@+id/talk_textVotes"
 		        style="@style/TextAppearance.Small.Legend"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"/>

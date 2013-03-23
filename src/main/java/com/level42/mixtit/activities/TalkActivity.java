@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.level42.mixtit.R;
-import com.level42.mixtit.exceptions.TechnicalException;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixtit.models.Speaker;
 import com.level42.mixtit.models.Talk;
@@ -41,8 +40,8 @@ public class TalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textContenu)
 	private TextView contenuTalk;
 	
-	@InjectView(R.id.talk_textFavoris)
-	private TextView favorisTalk;
+	@InjectView(R.id.talk_textInterets)
+	private TextView interetsTalk;
 	
 	@InjectView(R.id.talk_textDate)
 	private TextView dateTalk;
@@ -158,7 +157,7 @@ public class TalkActivity extends RoboActivity {
 
 		if (talk.getInterests() != null)
 		{
-			favorisTalk.setText(String.format(res.getString(R.string.label_talk_favoris), String.valueOf(talk.getInterests().size())));
+			interetsTalk.setText(String.format(res.getString(R.string.label_talk_interets), String.valueOf(talk.getInterests().size())));
 		}
 		
 		if (talk.getSalleSession() != null)

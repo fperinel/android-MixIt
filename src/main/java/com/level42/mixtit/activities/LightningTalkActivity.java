@@ -10,13 +10,15 @@ import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.level42.mixtit.R;
 import com.level42.mixtit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixtit.models.LightningTalk;
-import com.level42.mixtit.models.Talk;
+import com.level42.mixtit.models.Speaker;
 import com.level42.mixtit.services.ILightningTalkService;
 import com.level42.mixtit.tasks.GetLightningTalkAsyncTask;
 import com.level42.mixtit.utils.Utils;
@@ -38,14 +40,20 @@ public class LightningTalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textContenu)
 	private TextView contenuTalk;
 	
-	@InjectView(R.id.talk_textFavoris)
-	private TextView favorisTalk;
+	@InjectView(R.id.talk_textInterets)
+	private TextView interetsTalk;
+	
+	@InjectView(R.id.talk_textVotes)
+	private TextView votesTalk;
 	
 	@InjectView(R.id.talk_textDate)
 	private TextView dateTalk;
 	
 	@InjectView(R.id.talk_textSalle)
 	private TextView salleTalk;
+	
+	@InjectView(R.id.talk_speakers)
+	private LinearLayout speakersTalk;
 	
 	private GetLightningTalkAsyncTask getTalkAsyncService;
 	
@@ -130,15 +138,34 @@ public class LightningTalkActivity extends RoboActivity {
 	 * Gère le rendu du talk dans le template
 	 * @param talk
 	 */
-	protected void displayTalk(Talk talk) {
+	protected void displayTalk(LightningTalk talk) {
+		Resources res = getResources();
+		
 		titreTalk.setText(talk.getTitle());
 		contenuTalk.setText(talk.getDescription());
-
-		Resources res = getResources();
+		
+		// Ajout des speakers
+		for (Speaker speaker : talk.getSpeakers() ) {			
+			ImageView speakerAvatarView = new ImageView(LightningTalkActivity.this);
+			speakerAvatarView.setImageBitmap(speaker.getImage());
+			speakersTalk.addView(speakerAvatarView);
+			
+			TextView speakerNameView = new TextView(LightningTalkActivity.this);
+			speakerNameView.setPadding(5, 10, 5, 10);
+			speakerNameView.setMaxLines(2);
+			speakerNameView.setMaxWidth(300);
+			speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));			
+			speakersTalk.addView(speakerNameView);
+		}
 		
 		if (talk.getInterests() != null)
 		{
-			favorisTalk.setText(String.format(res.getString(R.string.label_talk_favoris), String.valueOf(talk.getInterests().size())));
+			interetsTalk.setText(String.format(res.getString(R.string.label_talk_interets), String.valueOf(talk.getInterests().size())));
+		}
+		
+		if (talk.getNbVotes() != null)
+		{
+			votesTalk.setText(String.format(res.getString(R.string.label_talk_votes), String.valueOf(talk.getNbVotes())));
 		}
 		
 		if (talk.getSalleSession() != null)
