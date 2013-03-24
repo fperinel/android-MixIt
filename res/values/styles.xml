@@ -9,11 +9,21 @@
 		<item name="android:background">@color/blue_gradient</item>
 	</style>
 	   
+    <style name="Layout.Informations">
+		<item name="android:background">@color/mixitDarkGrey</item>
+	</style>
+	
     <style name="Layout.Speakers">
 		<item name="android:layout_margin">5dip</item>
 	</style>
 	
     <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">
+		<item name="android:paddingBottom">5dip</item>
+		<item name="android:textColor">@color/mixitBlue</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	
+    <style name="TextAppearance.Medium.Title" parent="@android:style/TextAppearance.Medium">
 		<item name="android:paddingBottom">5dip</item>
 		<item name="android:textColor">@color/mixitBlue</item>
 		<item name="android:textStyle">bold</item>

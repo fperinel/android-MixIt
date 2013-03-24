@@ -15,7 +15,7 @@
 	        android:layout_height="wrap_content"
 	        android:gravity="right"
 		    android:id="@+id/talk_layout_informations"
-	        android:background="@color/mixitDarkGrey"
+	    	style="@style/Layout.Informations"
 	        android:orientation="horizontal" >
 	        	        
 		    <TextView
