@@ -29,15 +29,15 @@ import com.level42.mixit.webservices.IWebServices;
 public class TalkService extends AbstractService implements ITalkService {
 	
 	@Inject
-	private IWebServices ws;
+	protected IWebServices ws;
 	
 	@Inject
-	private IPlanningService planningService;
+	protected IPlanningService planningService;
 	
 	@Inject
-	private IEntityService entityService;
+	protected IEntityService entityService;
 	
-	private Map<Integer, Speaker> speakers;
+	protected Map<Integer, Speaker> speakers;
 	
 	public List<Talk> getTalks() throws FunctionnalException, TechnicalException {
 		try {

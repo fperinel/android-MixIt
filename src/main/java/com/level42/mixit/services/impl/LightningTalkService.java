@@ -2,7 +2,6 @@ package com.level42.mixit.services.impl;
 
 import java.util.List;
 
-import com.google.inject.Inject;
 import com.level42.mixit.R;
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.FunctionnalException;
@@ -10,16 +9,12 @@ import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.services.ILightningTalkService;
-import com.level42.mixit.webservices.IWebServices;
 
 /**
  * Service bouchonné pour l'appel des Webservices
  */
 public class LightningTalkService extends TalkService implements ILightningTalkService {
-	
-	@Inject
-	private IWebServices ws;
-	
+		
 	public List<LightningTalk> getLightningTalks() throws FunctionnalException, TechnicalException {
 		try {
 			return ws.getLightningTalks();
