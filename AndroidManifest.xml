@@ -17,7 +17,8 @@
         
         <activity android:name="com.level42.mixit.activities.TalkListActivity"/>                
         <activity android:name="com.level42.mixit.activities.TalkActivity"/>               
-        <activity android:name="com.level42.mixit.activities.ActiviteActivity"/>  
+        <activity android:name="com.level42.mixit.activities.ActiviteActivity"/>                
+        <activity android:name="com.level42.mixit.activities.PlanningActivity"/>     
               
         <activity android:name="com.level42.mixit.activities.LightningTalkListActivity"/>
         <activity android:name="com.level42.mixit.activities.LightningTalkActivity"/>

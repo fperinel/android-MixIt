@@ -10,7 +10,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 /**
  * Classe représentant un Talk
  */
-public class Talk extends Observable {
+public class Talk extends Observable implements Comparable<Talk> {
 
 	private Integer id;
 	
@@ -208,5 +208,15 @@ public class Talk extends Observable {
 	 */
 	public void setSpeakers(List<Speaker> speakers) {
 		this.speakers = speakers;
+	}
+
+	public int compareTo(Talk another) {
+		if (another.getDateSession() == null) {
+			return 1;
+		}
+		if (this.getDateSession() == null) {
+			return -1;
+		}
+		return getDateSession().compareTo(another.getDateSession());
 	}
 }

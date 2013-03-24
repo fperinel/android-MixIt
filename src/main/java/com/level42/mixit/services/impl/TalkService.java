@@ -1,6 +1,8 @@
 package com.level42.mixit.services.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +49,7 @@ public class TalkService extends AbstractService implements ITalkService {
 	
 	public List<Talk> getTalks() throws FunctionnalException, TechnicalException {
 		try {
-			List<Talk> talks = ws.getTalks();
-			return talks;
+			return ws.getTalks();			
 		} catch (CommunicationException e) {
 			e.printStackTrace();
 			throw new TechnicalException(getText(R.string.exception_message_CommunicationException), e);
@@ -129,6 +130,25 @@ public class TalkService extends AbstractService implements ITalkService {
 			}
 		}
 		return interests.get(id);
+	}
+
+	public List<Talk> getTalksForPlanning() throws FunctionnalException,
+			TechnicalException {
+		List<Talk> talks = this.getTalks();
+		
+		// Ajout des sessions
+		List<Talk> plannedTalks = new ArrayList<Talk>();
+		for (Talk talk : talks) {
+			this.hydrateTalkSession(talk);
+			if(talk.getDateSession() != null) {
+				plannedTalks.add(talk);
+			}
+		}		
+		
+		// Tri
+		Collections.sort(plannedTalks);
+		
+		return plannedTalks;
 	}
 
 }

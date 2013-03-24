@@ -31,4 +31,14 @@ public interface ITalkService {
 	 * @throws FunctionnalException
 	 */
 	public Talk getTalk(Integer id) throws FunctionnalException, TechnicalException;
+
+	/**
+	 * Méthode listant l'ensemble des talks disponibles par date
+	 * 
+	 * @return Liste des talks triés par date (pour le planning)
+	 * 
+	 * @throws TechnicalException
+	 * @throws FunctionnalException
+	 */
+	public List<Talk> getTalksForPlanning() throws FunctionnalException, TechnicalException;
 }

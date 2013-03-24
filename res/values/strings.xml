@@ -8,7 +8,8 @@
     <string name="loading_message">Chargement</string>
     <string name="loading_message_talks">Chargement des talks</string>
     <string name="loading_message_talk">Chargement du talk</string>
-    
+        
+    <string name="tab_planning">Planning</string>
     <string name="tab_talks">Talks</string>    
     <string name="tab_ltalks">Lightning Talks</string>
     

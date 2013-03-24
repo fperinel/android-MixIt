@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rowPlanning"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+	    android:layout_width="fill_parent"
+	    style="@style/Layout.Informations"
+	    android:layout_height="wrap_content"	    
+	    android:orientation="horizontal" >
+	    
+	    <TextView
+	        android:id="@+id/txtPlanningDate"
+	        style="@style/TextAppearance.Medium.Content"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="4dip"
+	        android:text="Le 25/04/2013 9h00" />
+
+	    <TextView
+	        android:id="@+id/txtPlanningSalle"
+	        style="@style/TextAppearance.Medium.Content"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="4dip"
+	        android:text="Salle 100p" />
+
+	</LinearLayout>
+	
+    <LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+	    <TextView
+	        android:id="@+id/txtPlanningTalk"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="4dip"
+	        android:text="Titre du talk avec sa session et sa salle"
+	        style="@style/TextAppearance.Medium.Title" />
+
+	</LinearLayout>
+
+</LinearLayout>
