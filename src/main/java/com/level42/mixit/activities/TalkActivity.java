@@ -42,7 +42,7 @@ public class TalkActivity extends RoboActivity {
 	private TextView contenuTalk;
 	
 	@InjectView(R.id.talk_layout_interests)
-	private LinearLayout interetsLayoutTalk;
+	private LinearLayout interestsLayoutTalk;
 	
 	@InjectView(R.id.talk_textDate)
 	private TextView dateTalk;
@@ -169,7 +169,7 @@ public class TalkActivity extends RoboActivity {
 				interestView.setTextSize(12);
 				interestView.setTextColor(getResources().getColor(R.color.mixitBlue));
 				interestView.setText(interest.getName());
-				interetsLayoutTalk.addView(interestView);
+				interestsLayoutTalk.addView(interestView);
 			}
 		}
 		

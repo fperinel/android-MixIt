@@ -1,8 +1,5 @@
 package com.level42.mixit.activities;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -17,6 +14,7 @@ import android.widget.TextView;
 import com.google.inject.Inject;
 import com.level42.mixit.R;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
+import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.services.ILightningTalkService;
@@ -41,16 +39,10 @@ public class LightningTalkActivity extends RoboActivity {
 	private TextView contenuTalk;
 	
 	@InjectView(R.id.talk_layout_interests)
-	private TextView interetsTalk;
+	private LinearLayout interestsLayoutTalk;
 	
 	@InjectView(R.id.talk_textVotes)
 	private TextView votesTalk;
-	
-	@InjectView(R.id.talk_textDate)
-	private TextView dateTalk;
-	
-	@InjectView(R.id.talk_textSalle)
-	private TextView salleTalk;
 	
 	@InjectView(R.id.talk_speakers)
 	private LinearLayout speakersTalk;
@@ -157,26 +149,23 @@ public class LightningTalkActivity extends RoboActivity {
 			speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));			
 			speakersTalk.addView(speakerNameView);
 		}
-		
+
 		if (talk.getInterests() != null)
 		{
-			interetsTalk.setText(String.format(res.getString(R.string.label_talk_interets), String.valueOf(talk.getInterests().size())));
+			for (Interest interest : talk.getInterests() ) {
+				TextView interestView = new TextView(LightningTalkActivity.this);
+				interestView.setMaxLines(5);
+				interestView.setPadding(5, 2, 5, 2);
+				interestView.setTextSize(12);
+				interestView.setTextColor(getResources().getColor(R.color.mixitBlue));
+				interestView.setText(interest.getName());
+				interestsLayoutTalk.addView(interestView);
+			}
 		}
 		
 		if (talk.getNbVotes() != null)
 		{
 			votesTalk.setText(String.format(res.getString(R.string.label_talk_votes), String.valueOf(talk.getNbVotes())));
-		}
-		
-		if (talk.getSalleSession() != null)
-		{
-			salleTalk.setText(String.format(res.getString(R.string.label_talk_salle), talk.getSalleSession()));
-		}
-		
-		if (talk.getDateSession() != null)
-		{
-			DateFormat format = SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM, SimpleDateFormat.SHORT);
-			dateTalk.setText(String.format(res.getString(R.string.label_talk_date), format.format(talk.getDateSession())));
 		}
 	}
 }
