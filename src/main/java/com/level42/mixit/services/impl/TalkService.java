@@ -18,6 +18,7 @@ import com.level42.mixit.models.Session;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.IEntityService;
+import com.level42.mixit.services.IInterestService;
 import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
@@ -37,7 +38,12 @@ public class TalkService extends AbstractService implements ITalkService {
 	@Inject
 	protected IEntityService entityService;
 	
+	@Inject
+	protected IInterestService interestService;
+	
 	protected Map<Integer, Speaker> speakers;
+	
+	protected Map<Integer, Interest> interests;
 	
 	public List<Talk> getTalks() throws FunctionnalException, TechnicalException {
 		try {
@@ -74,27 +80,31 @@ public class TalkService extends AbstractService implements ITalkService {
 	}
 	
 	protected void hydrateTalkSpeakers(Talk talk) throws FunctionnalException, TechnicalException {
-		List<Speaker> speakers = new ArrayList<Speaker>();
-		for (Integer id : talk.getSpeakersId()) {
-			Speaker spk = this.getSpeakerById(id);		
-			if (spk != null) {
-				Bitmap image = Utils.loadBitmap(spk.getUrlimage());
-				spk.setImage(image);
-				speakers.add(spk);
+		if (talk.getSpeakersId() != null) {
+			List<Speaker> speakers = new ArrayList<Speaker>();
+			for (Integer id : talk.getSpeakersId()) {
+				Speaker spk = this.getSpeakerById(id);		
+				if (spk != null) {
+					Bitmap image = Utils.loadBitmap(spk.getUrlimage());
+					spk.setImage(image);
+					speakers.add(spk);
+				}
 			}
+			talk.setSpeakers(speakers);
 		}
-		talk.setSpeakers(speakers);
 	}
 	
 	protected void hydrateTalkInterests(Talk talk) throws FunctionnalException, TechnicalException {
-
-		// Ajoute les centre d'intérêts
-		List<Interest> interests = new ArrayList<Interest>();
-		/*for (Integer id : talk.getInterestsId()) {
-			Speaker speaker = entityService.getSpeaker(id);
-			speakers.add(speaker);
-		}*/
-		talk.setInterests(interests);
+		if (talk.getInterestsId() != null) {
+			List<Interest> interests = new ArrayList<Interest>();
+			for (Integer id : talk.getInterestsId()) {
+				Interest interest = this.getInterestById(id);		
+				if (interest != null) {
+					interests.add(interest);
+				}
+			}
+			talk.setInterests(interests);
+		}
 	}
 	
 	protected Speaker getSpeakerById(Integer id) throws FunctionnalException, TechnicalException {
@@ -107,6 +117,18 @@ public class TalkService extends AbstractService implements ITalkService {
 			}
 		}
 		return speakers.get(id);
+	}
+	
+	protected Interest getInterestById(Integer id) throws FunctionnalException, TechnicalException {
+		if (interests == null) {
+			interests = new HashMap<Integer, Interest>();
+			// Ajoute les speakers
+			List<Interest> allInterests = interestService.getInterests();		
+			for (Interest interest : allInterests) {
+				interests.put(interest.getId(), interest);
+			}
+		}
+		return interests.get(id);
 	}
 
 }

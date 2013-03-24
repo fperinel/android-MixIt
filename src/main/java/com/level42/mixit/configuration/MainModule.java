@@ -5,10 +5,12 @@ import com.google.inject.Singleton;
 import com.level42.mixit.dao.IPlanningDAO;
 import com.level42.mixit.dao.impl.PlanningJsonDAO;
 import com.level42.mixit.services.IEntityService;
+import com.level42.mixit.services.IInterestService;
 import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.services.impl.EntityService;
+import com.level42.mixit.services.impl.InterestService;
 import com.level42.mixit.services.impl.LightningTalkService;
 import com.level42.mixit.services.impl.PlanningService;
 import com.level42.mixit.services.impl.TalkService;
@@ -27,7 +29,8 @@ public class MainModule extends AbstractModule {
 		bind(ILightningTalkService.class).to(LightningTalkService.class).in(Singleton.class);
 		bind(IPlanningService.class).to(PlanningService.class).in(Singleton.class);
 		bind(IEntityService.class).to(EntityService.class).in(Singleton.class);
-		
+		bind(IInterestService.class).to(InterestService.class).in(Singleton.class);
+
 		bind(IWebServices.class).to(WebServices.class).in(Singleton.class);
 		
 		bind(IPlanningDAO.class).to(PlanningJsonDAO.class).in(Singleton.class);

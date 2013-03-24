@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.google.inject.Inject;
 import com.level42.mixit.R;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
+import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.ITalkService;
@@ -40,8 +41,8 @@ public class TalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textContenu)
 	private TextView contenuTalk;
 	
-	@InjectView(R.id.talk_textInterets)
-	private TextView interetsTalk;
+	@InjectView(R.id.talk_layout_interests)
+	private LinearLayout interetsLayoutTalk;
 	
 	@InjectView(R.id.talk_textDate)
 	private TextView dateTalk;
@@ -49,8 +50,12 @@ public class TalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textSalle)
 	private TextView salleTalk;
 	
+	@InjectView(R.id.talk_textNiveau)
+	private TextView niveauTalk;
+	
 	@InjectView(R.id.talk_speakers)
-	private LinearLayout speakersTalk;
+	private LinearLayout speakersLayoutTalk;
+	
 	
 	/**
 	 * Liste des talkls de l'activité
@@ -98,7 +103,7 @@ public class TalkActivity extends RoboActivity {
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talk), 
 				    false, 
-				    false);
+				    true);
     	}
     }
     
@@ -145,19 +150,33 @@ public class TalkActivity extends RoboActivity {
 		for (Speaker speaker : talk.getSpeakers() ) {			
 			ImageView speakerAvatarView = new ImageView(TalkActivity.this);
 			speakerAvatarView.setImageBitmap(speaker.getImage());
-			speakersTalk.addView(speakerAvatarView);
+			speakersLayoutTalk.addView(speakerAvatarView);
 			
 			TextView speakerNameView = new TextView(TalkActivity.this);
 			speakerNameView.setPadding(5, 10, 5, 10);
 			speakerNameView.setMaxLines(2);
 			speakerNameView.setMaxWidth(300);
 			speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));			
-			speakersTalk.addView(speakerNameView);
+			speakersLayoutTalk.addView(speakerNameView);
 		}
 
 		if (talk.getInterests() != null)
 		{
-			interetsTalk.setText(String.format(res.getString(R.string.label_talk_interets), String.valueOf(talk.getInterests().size())));
+			for (Interest interest : talk.getInterests() ) {
+				TextView interestView = new TextView(TalkActivity.this);
+				interestView.setMaxLines(5);
+				interestView.setPadding(5, 2, 5, 2);
+				interestView.setTextSize(12);
+				interestView.setTextColor(getResources().getColor(R.color.mixitBlue));
+				interestView.setText(interest.getName());
+				interetsLayoutTalk.addView(interestView);
+			}
+		}
+		
+		if (talk.getLevel() != null)
+		{
+			String niveau = (String) getResources().getText(getResources().getIdentifier("label_talk_" + talk.getLevel(), "string", "com.level42.mixit"));
+			niveauTalk.setText(String.format(res.getString(R.string.label_talk_niveau), niveau));
 		}
 		
 		if (talk.getSalleSession() != null)

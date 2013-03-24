@@ -3,4 +3,5 @@
     <color name="mixitBlue">#00ADEE</color>
     <color name="mixitGrey">#7F7F7F</color>
     <color name="mixitDarkGrey">#2C2C2C</color>
+    <color name="white">#FFFFFF</color>
 </resources>

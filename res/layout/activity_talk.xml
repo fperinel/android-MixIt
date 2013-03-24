@@ -32,12 +32,6 @@
 		        android:layout_gravity="center_horizontal"/>
 
 		    <TextView
-		        android:id="@+id/talk_textInterets"
-		        style="@style/TextAppearance.Small.Legend"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"/>
-
-		    <TextView
 		        android:id="@+id/talk_textVotes"
 		        style="@style/TextAppearance.Small.Legend"
 		        android:layout_width="wrap_content"
@@ -64,6 +58,12 @@
 		        android:orientation="horizontal" >
 		        
 		    </LinearLayout>
+
+		    <TextView
+		        android:id="@+id/talk_textNiveau"
+		        style="@style/TextAppearance.Small.Niveau"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
 		      
 		    <TextView
 		        android:id="@+id/talk_textContenu"
@@ -73,6 +73,16 @@
 
 		    
 		</LinearLayout>	 
+			    
+		<LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	    	style="@style/Layout.Interests"
+		    android:id="@+id/talk_layout_interests"
+	        android:orientation="horizontal" >
+		    
+		</LinearLayout>
 		
 	</LinearLayout>
 	

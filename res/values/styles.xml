@@ -16,6 +16,11 @@
     <style name="Layout.Speakers">
 		<item name="android:layout_margin">5dip</item>
 	</style>
+	   
+    <style name="Layout.Interests">
+        <item name="android:layout_marginTop">10dip</item>
+		<item name="android:textColor">@color/mixitBlue</item>
+	</style>
 	
     <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">
 		<item name="android:paddingBottom">5dip</item>
@@ -38,6 +43,14 @@
 		<item name="android:layout_gravity">center_horizontal|right</item>
 		<item name="android:textStyle">italic</item>
 		<item name="android:textColor">@color/mixitGrey</item>
+		<item name="android:textSize">12sp</item>
+	</style>
+	   
+    <style name="TextAppearance.Small.Niveau" parent="@android:style/TextAppearance.Small">
+		<item name="android:padding">2dip</item>
+		<item name="android:layout_gravity">center_horizontal|right</item>
+		<item name="android:textStyle">italic</item>
+		<item name="android:textColor">@color/mixitBlue</item>
 		<item name="android:textSize">12sp</item>
 	</style>
 	

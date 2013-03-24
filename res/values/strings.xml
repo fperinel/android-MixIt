@@ -18,6 +18,10 @@
     <string name="label_talk_date">Le %1$s</string>
     <string name="label_talk_salle">Salle %1$s</string>
     <string name="label_talk_speaker">%1$s %2$s</string>
+    <string name="label_talk_niveau">Niveau : %1$s</string>
+    
+    <string name="label_talk_Beginner">Débutant</string>
+    <string name="label_talk_Experienced">Expérimenté</string>
     
     <string name="exception_message_DataAccessException">Impossible d\'accèder aux données</string>
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>

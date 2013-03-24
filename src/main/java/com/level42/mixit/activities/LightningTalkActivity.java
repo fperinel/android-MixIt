@@ -40,7 +40,7 @@ public class LightningTalkActivity extends RoboActivity {
 	@InjectView(R.id.talk_textContenu)
 	private TextView contenuTalk;
 	
-	@InjectView(R.id.talk_textInterets)
+	@InjectView(R.id.talk_layout_interests)
 	private TextView interetsTalk;
 	
 	@InjectView(R.id.talk_textVotes)
@@ -103,7 +103,7 @@ public class LightningTalkActivity extends RoboActivity {
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talk), 
 				    false, 
-				    false);
+				    true);
     	}
     }
     

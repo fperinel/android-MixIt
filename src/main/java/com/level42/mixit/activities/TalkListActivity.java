@@ -101,7 +101,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
 					null, //this.getText(R.string.loading_message),  
 					this.getText(R.string.loading_message_talks), 
 				    false, 
-				    false);
+				    true);
     	}
     }
     
