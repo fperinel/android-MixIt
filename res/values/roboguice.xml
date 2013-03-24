@@ -2,8 +2,8 @@
 <resources>
 
     <string-array name="roboguice_modules">
-        <!-- <item>com.level42.mixtit.configuration.MockedModule</item> -->
-        <item>com.level42.mixtit.configuration.MainModule</item>
+        <!-- <item>com.level42.mixit.configuration.MockedModule</item> -->
+        <item>com.level42.mixit.configuration.MainModule</item>
     </string-array>
 
 </resources>

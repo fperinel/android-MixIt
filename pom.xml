@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.level42.mixtit</groupId>
-	<artifactId>mixtit</artifactId>
+	<groupId>com.level42.mix-it</groupId>
+	<artifactId>mixit</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>apk</packaging>
-	<name>mixtit</name>
+	<name>mix-it</name>
 	<organization>
 		<name>Level42</name>
 	</organization>
@@ -20,9 +20,9 @@
 		<platform.sdk>8</platform.sdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<key.alias>mixtit</key.alias>
-		<key.storepass>mixtit2013</key.storepass>
-		<key.keypass>mixtit2013</key.keypass>
+		<key.alias>mix-it</key.alias>
+		<key.storepass>mix-it2013</key.storepass>
+		<key.keypass>mix-it2013</key.keypass>
 	</properties>
 
 	<dependencies>
