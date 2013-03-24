@@ -20,9 +20,9 @@
 		<platform.sdk>8</platform.sdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<key.alias>mix-it</key.alias>
-		<key.storepass>mix-it2013</key.storepass>
-		<key.keypass>mix-it2013</key.keypass>
+		<key.alias>mixit</key.alias>
+		<key.storepass>mixit2013</key.storepass>
+		<key.keypass>mixit2013</key.keypass>
 	</properties>
 
 	<dependencies>
