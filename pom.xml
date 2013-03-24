@@ -21,7 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<key.alias>mixtit</key.alias>
-		<key.storepass>mixtit</key.storepass>
+		<key.storepass>mixtit2013</key.storepass>
 		<key.keypass>mixtit2013</key.keypass>
 	</properties>
 
