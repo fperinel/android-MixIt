@@ -212,7 +212,7 @@ public class Talk extends Observable implements Comparable<Talk> {
 
 	public int compareTo(Talk another) {
 		if (another.getDateSession() == null) {
-			return 1;
+q
 		}
 		if (this.getDateSession() == null) {
 			return -1;
