@@ -7,24 +7,27 @@ import java.util.Observer;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
-import com.level42.mixit.models.Talk;
-import com.level42.mixit.models.TalkList;
+import com.level42.mixit.models.GroupedTalks;
+import com.level42.mixit.models.PlanningTalk;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.services.adapters.PlanningAdapter;
-import com.level42.mixit.services.adapters.TalksAdapter;
 import com.level42.mixit.tasks.GetPlanningAsyncTask;
-import com.level42.mixit.tasks.GetTalksAsyncTask;
 import com.level42.mixit.utils.Utils;
 
 /**
@@ -33,8 +36,8 @@ import com.level42.mixit.utils.Utils;
 @ContentView(R.layout.activity_planning)
 public class PlanningActivity extends RoboActivity implements Observer {
 
-	@InjectView(R.id.listPlanning)
-	private ListView listPlanning;
+	@InjectView(R.id.expandableListPlanning)
+	private ExpandableListView listPlanning;
 	
 	@Inject
 	private ITalkService talkService;
@@ -44,7 +47,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
 	/**
 	 * Liste des talkls de l'activité
 	 */
-	private TalkList talks = new TalkList(); 
+	private PlanningTalk talks = new PlanningTalk(); 
 
 	/**
 	 * Boite d'attente de chargement
@@ -72,18 +75,18 @@ public class PlanningActivity extends RoboActivity implements Observer {
 	    });
 		
 		@SuppressWarnings("unchecked")
-		List<Talk> savedTalks = (List<Talk>) getLastNonConfigurationInstance();
+		List<GroupedTalks> savedTalks = (List<GroupedTalks>) getLastNonConfigurationInstance();
         if (savedTalks == null) {
         	this.setupProgressDialog();
         	this.refreshTalks();  
         } else {
-        	talks.setTalks(savedTalks);
+        	talks.setGroupedTalks(savedTalks);
         }
     }
     
     @Override
     public Object onRetainNonConfigurationInstance() {
-        final List<Talk> talks = this.talks.getTalks();
+        final List<GroupedTalks> talks = this.talks.getGroupedTalks();
         return talks;
     }
     
@@ -115,15 +118,35 @@ public class PlanningActivity extends RoboActivity implements Observer {
     	getTalksAsyncService = new GetPlanningAsyncTask();
 		
     	// Ajout d'un listener pour récupérer le retour
-    	getTalksAsyncService.setPostExecuteListener(new OnTaskPostExecuteListener<List<Talk>>() {			
-			public void onTaskPostExecuteListener(List<Talk> result) {
+    	getTalksAsyncService.setPostExecuteListener(new OnTaskPostExecuteListener<List<GroupedTalks>>() {			
+			public void onTaskPostExecuteListener(List<GroupedTalks> result) {
 				if(result != null) {
 					Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
-					talks.setTalks(result);
-					if (progressDialog.isShowing()) {
-						progressDialog.dismiss();
-					}
+					talks.setGroupedTalks(result);
+				} else {
+					Log.d(Utils.LOGTAG, "Aucun planning");
 				}
+				if (progressDialog.isShowing()) {
+					progressDialog.dismiss();
+				}
+			}
+
+			public void onTaskInterruptListener(Exception cancelReason) {
+		        Builder builder = new AlertDialog.Builder(getApplicationContext());
+		        builder.setMessage("Erreur")
+		               .setCancelable(false)
+		               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                	   finish();
+		                   }
+		               });
+		        AlertDialog alertDialog = builder.create();
+				alertDialog.setMessage(cancelReason.getMessage());
+		        alertDialog.show();
+			}
+
+			public void onTaskCancelledListener() {
+				Toast.makeText(getApplicationContext(), "Action annulée", Toast.LENGTH_SHORT).show();
 			}
 		});
     	
@@ -138,11 +161,11 @@ public class PlanningActivity extends RoboActivity implements Observer {
      * @param data Données mise à jour
      */
 	public void update(Observable observable, Object data) {
-		if (observable instanceof TalkList) {
-			Log.d(Utils.LOGTAG, "Changement sur la liste des sessions");
-			TalkList list = (TalkList) observable;
-			if(list != null) {
-				adapter.updateTalks(list.getTalks());
+		if (observable instanceof PlanningTalk) {
+			Log.d(Utils.LOGTAG, "Changement sur le planning");
+			PlanningTalk planning = (PlanningTalk) observable;
+			if(planning != null) {
+				adapter.updateTalks(planning.getGroupedTalks());
 			}
 		}
 	}

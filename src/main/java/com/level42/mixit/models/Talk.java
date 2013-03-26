@@ -2,7 +2,6 @@ package com.level42.mixit.models;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Observable;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -10,7 +9,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 /**
  * Classe représentant un Talk
  */
-public class Talk extends Observable implements Comparable<Talk> {
+public class Talk implements Comparable<Talk> {
 
 	private Integer id;
 	

@@ -37,6 +37,11 @@
     <style name="TextAppearance.Medium.Content" parent="@android:style/TextAppearance.Medium">
 		<item name="android:layout_marginBottom">5dip</item>
 	</style>   
+	   
+    <style name="TextAppearance.Medium.Content.Blue">
+		<item name="android:background">@color/mixitBlue</item>
+		<item name="android:padding">3dip</item>
+	</style>
 	 
     <style name="TextAppearance.Small.Legend" parent="@android:style/TextAppearance.Small">
 		<item name="android:padding">2dip</item>

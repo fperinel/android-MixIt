@@ -8,16 +8,18 @@ import android.util.Log;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
-import com.level42.mixit.models.Talk;
+import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
-public class GetPlanningAsyncTask extends AsyncTask<ITalkService, Integer, List<Talk>> {
+public class GetPlanningAsyncTask extends AsyncTask<ITalkService, Integer, List<GroupedTalks>> {
 	
 	/**
 	 * Listener
 	 */
-	private OnTaskPostExecuteListener<List<Talk>> onTaskPostExecuteListener = null;
+	private OnTaskPostExecuteListener<List<GroupedTalks>> onTaskPostExecuteListener = null;
+	
+	private Exception cancelReason;
 	
 	@Override
 	protected void onPreExecute() {
@@ -30,20 +32,35 @@ public class GetPlanningAsyncTask extends AsyncTask<ITalkService, Integer, List<
 	}
 
 	@Override
-	protected List<Talk> doInBackground(ITalkService... params) {
+	protected List<GroupedTalks> doInBackground(ITalkService... params) {
 		try {
 			ITalkService service = (ITalkService) params[0];
 			return service.getTalksForPlanning();
 		} catch (FunctionnalException e) {
 			Log.e(Utils.LOGTAG, e.getMessage());
+			cancelReason = e;
 		} catch (TechnicalException e) {
 			Log.e(Utils.LOGTAG, e.getMessage());
+			cancelReason = e;
 		}
+		this.cancel(true);
 		return null;
 	}
 	
 	@Override
-	protected void onPostExecute(List<Talk> result) {
+	protected void onCancelled() {
+		super.onCancelled();
+		
+		if(onTaskPostExecuteListener != null && cancelReason != null) {
+			onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
+		}
+		if(onTaskPostExecuteListener != null && cancelReason == null) {
+			onTaskPostExecuteListener.onTaskCancelledListener();
+		}
+	}
+	
+	@Override
+	protected void onPostExecute(List<GroupedTalks> result) {
 		super.onPostExecute(result);
 		
 		if(onTaskPostExecuteListener != null) {
@@ -51,7 +68,7 @@ public class GetPlanningAsyncTask extends AsyncTask<ITalkService, Integer, List<
 		}
 	}
 	
-	public void setPostExecuteListener(OnTaskPostExecuteListener<List<Talk>> taskPostExecute){
+	public void setPostExecuteListener(OnTaskPostExecuteListener<List<GroupedTalks>> taskPostExecute){
 		onTaskPostExecuteListener = taskPostExecute;
 	}
 	

@@ -1,7 +1,10 @@
 package com.level42.mixit.services;
 
+import java.util.List;
+
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Session;
 
 /**

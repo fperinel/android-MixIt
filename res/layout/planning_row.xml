@@ -3,45 +3,23 @@
     android:id="@+id/rowPlanning"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <LinearLayout 
-	    android:layout_width="fill_parent"
-	    style="@style/Layout.Informations"
-	    android:layout_height="wrap_content"	    
-	    android:orientation="horizontal" >
-	    
-	    <TextView
-	        android:id="@+id/txtPlanningDate"
-	        style="@style/TextAppearance.Medium.Content"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="4dip"
-	        android:text="Le 25/04/2013 9h00" />
-
-	    <TextView
-	        android:id="@+id/txtPlanningSalle"
-	        style="@style/TextAppearance.Medium.Content"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="4dip"
-	        android:text="Salle 100p" />
-
-	</LinearLayout>
-	
-    <LinearLayout 
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal" >
-	    
-	    <TextView
-	        android:id="@+id/txtPlanningTalk"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="4dip"
-	        android:text="Titre du talk avec sa session et sa salle"
-	        style="@style/TextAppearance.Medium.Title" />
-
-	</LinearLayout>
+    android:minHeight="50dp"
+    android:orientation="horizontal" >
+    
+    <TextView
+        android:id="@+id/txtPlanningSalle"
+        android:layout_width="70dp"
+        style="@style/TextAppearance.Small.Legend"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Salle 90p" />
+    
+    <TextView
+        android:id="@+id/txtPlanningTalk"
+        style="@style/TextAppearance.Medium.Title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="[Talk] Titre du talk" />
 
 </LinearLayout>

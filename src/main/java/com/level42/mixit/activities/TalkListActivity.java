@@ -7,13 +7,17 @@ import java.util.Observer;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
@@ -122,6 +126,24 @@ public class TalkListActivity extends RoboActivity implements Observer {
 						progressDialog.dismiss();
 					}
 				}
+			}
+
+			public void onTaskInterruptListener(Exception cancelReason) {
+		        Builder builder = new AlertDialog.Builder(getApplicationContext());
+		        builder.setMessage("Erreur")
+		               .setCancelable(false)
+		               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                	   finish();
+		                   }
+		               });
+		        AlertDialog alertDialog = builder.create();
+				alertDialog.setMessage(cancelReason.getMessage());
+		        alertDialog.show();
+			}
+
+			public void onTaskCancelledListener() {
+				Toast.makeText(getApplicationContext(), "Action annulée", Toast.LENGTH_SHORT).show();
 			}
 		});
     	
