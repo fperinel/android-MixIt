@@ -4,6 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:minHeight="50dp"
+    style="@style/Layout.Informations"
+    android:background="@color/list_colors"
     android:orientation="horizontal" >
     
     <TextView
@@ -11,15 +13,13 @@
         android:layout_width="70dp"
         style="@style/TextAppearance.Small.Legend"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Salle 90p" />
+        android:layout_gravity="center_vertical" />
     
     <TextView
         android:id="@+id/txtPlanningTalk"
         style="@style/TextAppearance.Medium.Title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="[Talk] Titre du talk" />
+        android:layout_gravity="center_vertical"/>
 
 </LinearLayout>

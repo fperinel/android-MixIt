@@ -5,4 +5,6 @@
     <string name="host">http://www.mix-it.fr/api</string>
     <string name="connectionTimeout">3000</string>
     <string name="socketTimeout">5000</string>    
+    <string name="planningDelay">15</string>     
+    <string name="planningAlert">10</string>
 </resources>

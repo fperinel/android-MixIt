@@ -1,15 +1,10 @@
 package com.level42.mixit.services.impl;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 
 import com.google.inject.Inject;
@@ -18,7 +13,6 @@ import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
-import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.Session;
 import com.level42.mixit.models.Speaker;
@@ -134,51 +128,6 @@ public class TalkService extends AbstractService implements ITalkService {
 			}
 		}
 		return interests.get(id);
-	}
-
-	public List<GroupedTalks> getTalksForPlanning() throws FunctionnalException,
-			TechnicalException {
-		// Récupère les sessions
-		List<Talk> talks = this.getTalks();
-		
-		// Ajout des sessions
-		List<Talk> plannedTalks = new ArrayList<Talk>();
-		for (Talk talk : talks) {
-			this.hydrateTalkSession(talk);
-			if(talk.getDateSession() != null) {
-				plannedTalks.add(talk);
-			}
-		}		
-		
-		// Tri
-		Collections.sort(plannedTalks);
-		
-		List<GroupedTalks> groupedTalks = new ArrayList<GroupedTalks>();
-		
-		Date lastDate = null;
-		GroupedTalks gTalks = null;
-		Integer id = 0;
-		List<Talk> lTalks = new ArrayList<Talk>();
-		for(Talk talk : plannedTalks) {
-			if (lastDate == null || talk.getDateSession().compareTo(lastDate) != 0) {
-				
-				if (gTalks != null && lTalks != null) {
-					gTalks.setTalks(lTalks);
-					groupedTalks.add(gTalks);
-					lTalks = new ArrayList<Talk>();
-				}
-				
-				gTalks = new GroupedTalks();
-				gTalks.setId(id);
-				gTalks.setDate(talk.getDateSession());
-				
-				lastDate = talk.getDateSession();
-				id++;
-			}
-			lTalks.add(talk);
-		}
-		
-		return groupedTalks;
 	}
 
 }

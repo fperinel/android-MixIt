@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
-import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Talk;
 
 /**
@@ -32,14 +31,4 @@ public interface ITalkService {
 	 * @throws FunctionnalException
 	 */
 	public Talk getTalk(Integer id) throws FunctionnalException, TechnicalException;
-	
-	/**
-	 * Méthode retournant les talks groupés par date
-	 * 
-	 * @return Talk groupés par date
-	 * 
-	 * @throws TechnicalException
-	 * @throws FunctionnalException
-	 */
-	public List<GroupedTalks> getTalksForPlanning() throws FunctionnalException, TechnicalException;
 }

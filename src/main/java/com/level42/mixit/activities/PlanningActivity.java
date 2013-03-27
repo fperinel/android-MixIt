@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ import com.level42.mixit.R;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.PlanningTalk;
-import com.level42.mixit.services.ITalkService;
+import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.services.adapters.PlanningAdapter;
 import com.level42.mixit.tasks.GetPlanningAsyncTask;
 import com.level42.mixit.utils.Utils;
@@ -40,7 +41,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
 	private ExpandableListView listPlanning;
 	
 	@Inject
-	private ITalkService talkService;
+	private IPlanningService planningService;
 	
 	private GetPlanningAsyncTask getTalksAsyncService;
 	
@@ -66,13 +67,15 @@ public class PlanningActivity extends RoboActivity implements Observer {
 		adapter = new PlanningAdapter(this.getBaseContext());
 		listPlanning.setAdapter(adapter);
 		
-		listPlanning.setOnItemClickListener(new ListView.OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {				
+		listPlanning.setOnChildClickListener(new OnChildClickListener() {
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
 				Intent talkActivity = new Intent(PlanningActivity.this, TalkActivity.class);
 				talkActivity.putExtra(TalkActivity.TALK_ID, id);
 	            PlanningActivity.this.startActivity(talkActivity);
+	            return true;
 			}
-	    });
+		});
 		
 		@SuppressWarnings("unchecked")
 		List<GroupedTalks> savedTalks = (List<GroupedTalks>) getLastNonConfigurationInstance();
@@ -151,7 +154,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
 		});
     	
     	// Execution du service
-    	getTalksAsyncService.execute(talkService);
+    	getTalksAsyncService.execute(planningService);
     }
     
     /**
