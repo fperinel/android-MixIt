@@ -1,6 +1,7 @@
 package com.level42.mixit.services.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
@@ -31,6 +32,9 @@ public class PlanningService extends AbstractService implements IPlanningService
 	@Inject
 	private ITalkService talkService;
 	
+	@Inject
+	private String planningDelay;
+	
 	private Map<Integer, Session> sessions;
 	
 	public Session getPlanningSession(Integer sessionId) throws FunctionnalException, TechnicalException {
@@ -48,17 +52,21 @@ public class PlanningService extends AbstractService implements IPlanningService
 		}
 	}
 
-	public List<GroupedTalks> getTalksForPlanning() throws FunctionnalException,
+	public List<GroupedTalks> getTalksForPlanning(Integer delay) throws FunctionnalException,
 			TechnicalException {
 		// Récupère les sessions
 		List<Talk> talks = talkService.getTalks();
 		
+		Calendar minDate = Calendar.getInstance();  
+		minDate.setTime(new Date());
+		minDate.add(Calendar.MINUTE, delay);
+	    
 		// Ajout des sessions
 		List<Talk> plannedTalks = new ArrayList<Talk>();
 		for (Talk talk : talks) {
 			Session session = this.getPlanningSession(talk.getId());
 			talk.setSession(session);
-			if(talk.getDateSession() != null) {
+			if(talk.getDateSession() != null && talk.getDateSession().after(minDate.getTime())) {
 				plannedTalks.add(talk);
 			}
 		}		

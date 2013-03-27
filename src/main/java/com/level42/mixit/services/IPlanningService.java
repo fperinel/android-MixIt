@@ -25,10 +25,12 @@ public interface IPlanningService {
 	/**
 	 * Méthode retournant les talks groupés par date
 	 * 
+	 * @param delay Delai a partir duquel les sessions sont masquées.
+	 * 
 	 * @return Talk groupés par date
 	 * 
 	 * @throws TechnicalException
 	 * @throws FunctionnalException
 	 */
-	public List<GroupedTalks> getTalksForPlanning() throws FunctionnalException, TechnicalException;
+	public List<GroupedTalks> getTalksForPlanning(Integer delay) throws FunctionnalException, TechnicalException;
 }

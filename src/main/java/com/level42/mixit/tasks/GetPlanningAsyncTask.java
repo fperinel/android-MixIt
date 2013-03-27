@@ -12,7 +12,7 @@ import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.utils.Utils;
 
-public class GetPlanningAsyncTask extends AsyncTask<IPlanningService, Integer, List<GroupedTalks>> {
+public class GetPlanningAsyncTask extends AsyncTask<Object, Integer, List<GroupedTalks>> {
 	
 	/**
 	 * Listener
@@ -32,10 +32,11 @@ public class GetPlanningAsyncTask extends AsyncTask<IPlanningService, Integer, L
 	}
 
 	@Override
-	protected List<GroupedTalks> doInBackground(IPlanningService... params) {
+	protected List<GroupedTalks> doInBackground(Object... params) {
 		try {
 			IPlanningService service = (IPlanningService) params[0];
-			return service.getTalksForPlanning();
+			Integer delay = (Integer) params[1];
+			return service.getTalksForPlanning(delay);
 		} catch (FunctionnalException e) {
 			Log.e(Utils.LOGTAG, e.getMessage());
 			cancelReason = e;
