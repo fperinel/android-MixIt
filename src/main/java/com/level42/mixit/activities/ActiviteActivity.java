@@ -4,7 +4,11 @@ import roboguice.activity.RoboTabActivity;
 import roboguice.inject.ContentView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
 import com.level42.mixit.R;
@@ -41,25 +45,29 @@ public class ActiviteActivity extends RoboTabActivity {
 					getResources().getDrawable(R.drawable.ic_launcher)
 				).setContent(lTalkList);
 		tabHost.addTab(tabSpec2);
-		
+	}
 	
-		/*tabSpec = tabHost.newTabSpec("tab_staff").setIndicator(
-					this.getText(R.string.tab_staff), 
-					getResources().getDrawable(R.drawable.ic_launcher)
-				).setContent(intent);
-		tabHost.addTab(tabSpec);
-		
-		tabSpec = tabHost.newTabSpec("tab_speakers").setIndicator(
-					this.getText(R.string.tab_speakers), 
-					getResources().getDrawable(R.drawable.ic_launcher)
-				).setContent(intent);
-		tabHost.addTab(tabSpec);
-		
-		tabSpec = tabHost.newTabSpec("tab_sponsors").setIndicator(
-					this.getText(R.string.tab_sponsors), 
-					getResources().getDrawable(R.drawable.ic_launcher)
-				).setContent(intent);
-		tabHost.addTab(tabSpec);*/
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_main, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch(item.getItemId())
+	    {
+		    case R.id.menu_adresse:
+		    	Toast.makeText(getApplicationContext(), "Menu adresse", Toast.LENGTH_LONG).show();
+		    	break;
+		    case R.id.menu_billet:
+		    	Toast.makeText(getApplicationContext(), "Menu mon billet", Toast.LENGTH_LONG).show();
+		        break;
+		    default:
+		    	break;
+	    }
+	    return true;
 	}
 
 }

@@ -28,4 +28,7 @@
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>
     <string name="exception_message_NotFoundException">L\'information demandée est introuvable.</string>
     
+    <string name="menu_billet">Mon billet</string>
+    <string name="menu_adresse">Aller au MixIt</string>
+    
 </resources>
