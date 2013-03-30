@@ -3,17 +3,15 @@ package com.level42.mixit.activities;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
@@ -23,6 +21,7 @@ import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.tasks.GetLightningTalkAsyncTask;
+import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
@@ -94,12 +93,7 @@ public class LightningTalkActivity extends RoboActivity {
     protected void setupProgressDialog() {
     	if(progressDialog == null) 
     	{
-			progressDialog = ProgressDialog.show(
-					LightningTalkActivity.this,
-					null, //this.getText(R.string.loading_message),  
-					this.getText(R.string.loading_message_talk), 
-				    false, 
-				    true);
+			progressDialog = MessageBox.getProgressDialog(LightningTalkActivity.this);
     	}
     }
     
@@ -122,29 +116,21 @@ public class LightningTalkActivity extends RoboActivity {
 					displayTalk(talk);
 				}
 			}
-
 			public void onTaskInterruptListener(Exception cancelReason) {
-		        Builder builder = new AlertDialog.Builder(getApplicationContext());
-		        builder.setMessage("Erreur")
-		               .setCancelable(false)
-		               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-		                   public void onClick(DialogInterface dialog, int id) {
-		                	   finish();
-		                   }
-		               });
-		        AlertDialog alertDialog = builder.create();
-				alertDialog.setMessage(cancelReason.getMessage());
-		        alertDialog.show();
+				OnClickListener listener = new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+				    } 
+				};
+				MessageBox.showError(getResources().getString(R.string.label_dialog_error), cancelReason.getMessage(), listener, LightningTalkActivity.this);
 			}
-
 			public void onTaskCancelledListener() {
-				Toast.makeText(getApplicationContext(), "Action annulée", Toast.LENGTH_SHORT).show();
+				MessageBox.showInformation(getResources().getString(R.string.label_dialog_aborted), LightningTalkActivity.this);
 			}
 		});
     	
     	// Execution du service
     	Integer id = (int) this.getIntent().getExtras().getLong(LightningTalkActivity.TALK_ID);
-    	Log.d(Utils.LOGTAG, "Chargement du LightningTalk " + id.toString());
     	getTalkAsyncService.execute(talkService, id);
     }
 	

@@ -7,17 +7,15 @@ import java.util.Observer;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
@@ -27,6 +25,7 @@ import com.level42.mixit.models.LightningTalkList;
 import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.services.adapters.LightningTalksAdapter;
 import com.level42.mixit.tasks.GetLightningTalksAsyncTask;
+import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
@@ -100,12 +99,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     protected void setupProgressDialog() {
     	if(progressDialog == null) 
     	{
-			progressDialog = ProgressDialog.show(
-					LightningTalkListActivity.this,
-					null, //this.getText(R.string.loading_message),  
-					this.getText(R.string.loading_message_talks), 
-				    false, 
-				    true);
+			progressDialog = MessageBox.getProgressDialog(LightningTalkListActivity.this);
     	}
     }
     
@@ -120,30 +114,22 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     	getLightningTalksAsyncService.setPostExecuteListener(new OnTaskPostExecuteListener<List<LightningTalk>>() {			
 			public void onTaskPostExecuteListener(List<LightningTalk> result) {
 				if(result != null) {
-					Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
 					talks.setTalks(result);
 					if (progressDialog.isShowing()) {
 						progressDialog.dismiss();
 					}
 				}
 			}
-
 			public void onTaskInterruptListener(Exception cancelReason) {
-		        Builder builder = new AlertDialog.Builder(getApplicationContext());
-		        builder.setMessage("Erreur")
-		               .setCancelable(false)
-		               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-		                   public void onClick(DialogInterface dialog, int id) {
-		                	   finish();
-		                   }
-		               });
-		        AlertDialog alertDialog = builder.create();
-				alertDialog.setMessage(cancelReason.getMessage());
-		        alertDialog.show();
+				OnClickListener listener = new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+				    } 
+				};
+				MessageBox.showError(getResources().getString(R.string.label_dialog_error), cancelReason.getMessage(), listener, LightningTalkListActivity.this);
 			}
-
 			public void onTaskCancelledListener() {
-				Toast.makeText(getApplicationContext(), "Action annulée", Toast.LENGTH_SHORT).show();
+				MessageBox.showInformation(getResources().getString(R.string.label_dialog_aborted), LightningTalkListActivity.this);
 			}
 		});
     	

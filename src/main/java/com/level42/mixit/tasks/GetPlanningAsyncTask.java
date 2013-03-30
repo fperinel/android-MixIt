@@ -63,13 +63,15 @@ public class GetPlanningAsyncTask extends AsyncTask<Object, Integer, List<Groupe
 	@Override
 	protected void onPostExecute(List<GroupedTalks> result) {
 		super.onPostExecute(result);
+
+		Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
 		
 		if(onTaskPostExecuteListener != null) {
 			onTaskPostExecuteListener.onTaskPostExecuteListener(result);
 		}
 	}
 	
-	public void setPostExecuteListener(OnTaskPostExecuteListener<List<GroupedTalks>> taskPostExecute){
+	public void setPostExecuteListener(OnTaskPostExecuteListener<List<GroupedTalks>> taskPostExecute) {
 		onTaskPostExecuteListener = taskPostExecute;
 	}
 	

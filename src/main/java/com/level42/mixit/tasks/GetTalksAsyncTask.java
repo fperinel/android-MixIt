@@ -18,6 +18,8 @@ public class GetTalksAsyncTask extends AsyncTask<ITalkService, Integer, List<Tal
 	 * Listener
 	 */
 	private OnTaskPostExecuteListener<List<Talk>> onTaskPostExecuteListener = null;
+
+	private Exception cancelReason;
 	
 	@Override
 	protected void onPreExecute() {
@@ -36,15 +38,32 @@ public class GetTalksAsyncTask extends AsyncTask<ITalkService, Integer, List<Tal
 			return service.getTalks();
 		} catch (FunctionnalException e) {
 			Log.e(Utils.LOGTAG, e.getMessage());
+			cancelReason = e;
 		} catch (TechnicalException e) {
 			Log.e(Utils.LOGTAG, e.getMessage());
+			cancelReason = e;
 		}
+		this.cancel(true);
 		return null;
+	}
+	
+	@Override
+	protected void onCancelled() {
+		super.onCancelled();
+		
+		if(onTaskPostExecuteListener != null && cancelReason != null) {
+			onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
+		}
+		if(onTaskPostExecuteListener != null && cancelReason == null) {
+			onTaskPostExecuteListener.onTaskCancelledListener();
+		}
 	}
 	
 	@Override
 	protected void onPostExecute(List<Talk> result) {
 		super.onPostExecute(result);
+		
+		Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
 		
 		if(onTaskPostExecuteListener != null) {
 			onTaskPostExecuteListener.onTaskPostExecuteListener(result);

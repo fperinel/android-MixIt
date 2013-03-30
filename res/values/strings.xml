@@ -31,4 +31,11 @@
     <string name="menu_billet">Mon billet</string>
     <string name="menu_adresse">Aller au MixIt</string>
     
+    <string name="label_dialog_error">Une erreur s\'est produite</string>
+    <string name="label_dialog_aborted">Opération annulée</string>
+    
+    <string name="btn_dialog_ok">OK</string>
+    <string name="btn_dialog_validate">Continuer</string>
+    <string name="btn_dialog_abort">Annuler</string>
+    
 </resources>

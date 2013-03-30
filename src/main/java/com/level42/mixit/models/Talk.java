@@ -37,7 +37,11 @@ public class Talk implements Comparable<Talk> {
 
 	@JsonIgnore
 	private Session session;
-
+	
+	private String start;
+	
+	private String end;	
+	
 	/**
 	 * @return the id
 	 */
@@ -217,5 +221,33 @@ public class Talk implements Comparable<Talk> {
 			return -1;
 		}
 		return getDateSession().compareTo(another.getDateSession());
+	}
+
+	/**
+	 * @return the start
+	 */
+	public String getStart() {
+		return start;
+	}
+
+	/**
+	 * @param start the start to set
+	 */
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	/**
+	 * @return the end
+	 */
+	public String getEnd() {
+		return end;
+	}
+
+	/**
+	 * @param end the end to set
+	 */
+	public void setEnd(String end) {
+		this.end = end;
 	}
 }

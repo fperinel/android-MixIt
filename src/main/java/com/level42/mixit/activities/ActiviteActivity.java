@@ -59,7 +59,8 @@ public class ActiviteActivity extends RoboTabActivity {
 	    switch(item.getItemId())
 	    {
 		    case R.id.menu_adresse:
-		    	Toast.makeText(getApplicationContext(), "Menu adresse", Toast.LENGTH_LONG).show();
+				Intent adresseActivity = new Intent(ActiviteActivity.this, AdresseActivity.class);
+	            ActiviteActivity.this.startActivity(adresseActivity);
 		    	break;
 		    case R.id.menu_billet:
 		    	Toast.makeText(getApplicationContext(), "Menu mon billet", Toast.LENGTH_LONG).show();
