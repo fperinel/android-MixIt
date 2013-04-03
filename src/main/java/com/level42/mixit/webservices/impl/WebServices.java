@@ -35,6 +35,8 @@ import com.level42.mixit.webservices.IWebServices;
 
 public class WebServices extends DefaultHttpClient implements IWebServices {
 
+	private static String DETAIL_SUFFIX = "?details=true";
+	
 	@InjectResource(R.string.host)
 	private String host;
 	

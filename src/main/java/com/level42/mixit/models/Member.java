@@ -3,12 +3,14 @@ package com.level42.mixit.models;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import android.graphics.Bitmap;
 
 /**
  * Classe représentant un membre
  */
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Member {
 
 	private Integer id;

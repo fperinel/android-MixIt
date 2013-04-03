@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.level42.mix-it</groupId>
+	<groupId>com.level42.mixit</groupId>
 	<artifactId>mixit</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>apk</packaging>
-	<name>mix-it</name>
+	<name>mixit</name>
 	<organization>
 		<name>Level42</name>
 	</organization>
@@ -18,6 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
+		<java.version>1.6</java.version>
 		<platform.version>2.2.1</platform.version>
 		<platform.sdk>8</platform.sdk>
 		
@@ -59,41 +60,11 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        
-	    <!-- <dependency>
-	        <groupId>com.google.android.gms</groupId>
-	        <artifactId>google-play-services</artifactId>
-	        <version>4</version>
-	    </dependency>
-		<dependency>
-			<groupId>com.google.android.google-play-services</groupId>
-			<artifactId>google-play-services</artifactId>
-			<version>1</version>
-		</dependency> -->
-		   
+        </dependency>		   
 	</dependencies>
 
 	<build>
 	    <finalName>${project.artifactId}</finalName>
-		<!-- <sourceDirectory>src</sourceDirectory> -->
-		<!-- <resources>
-			<resource>
-				<directory>src/resources/main/${env}</directory>
-			</resource>
-			<resource>
-				<directory>src/resources/main/common</directory>
-			</resource>
-		</resources>
-		<testResources>
-			<testResource>
-				<directory>src/resources/test/${env}</directory>
-			</testResource>
-			<testResource>
-				<directory>src/resources/test/common</directory>
-			</testResource>
-		</testResources> -->
-
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
@@ -121,19 +92,6 @@
 				</configuration>
 				<extensions>true</extensions>
 				<executions>
-                    <!-- <execution>
-	                    <id>update-manifest</id>
-	                    <phase>process-resources</phase>
-	                    <goals>
-	                        <goal>manifest-update</goal>
-	                    </goals>
-	                    <configuration>
-	                        <manifest>
-	                            <versionCodeAutoIncrement>true</versionCodeAutoIncrement>
-	                            <versionName>${project.version}</versionName>
-	                        </manifest>
-	                    </configuration>
-                    </execution> -->
 					<execution>
 						<id>alignApk</id>
 						<phase>install</phase>
@@ -148,8 +106,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

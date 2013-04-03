@@ -47,7 +47,7 @@ public class TalkService extends AbstractService implements ITalkService {
 	
 	public List<Talk> getTalks() throws FunctionnalException, TechnicalException {
 		try {
-			return ws.getTalks();			
+			return ws.getTalks();
 		} catch (CommunicationException e) {
 			e.printStackTrace();
 			throw new TechnicalException(getText(R.string.exception_message_CommunicationException), e);
@@ -58,6 +58,7 @@ public class TalkService extends AbstractService implements ITalkService {
 		try {
 			Talk talk = ws.getTalk(id);
 
+			// Dans la nouvelle version des APIP, les objects sont retournés
 			this.hydrateTalkInterests(talk);
 			this.hydrateTalkSession(talk);
 			this.hydrateTalkSpeakers(talk);
