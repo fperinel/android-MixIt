@@ -68,7 +68,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
@@ -101,7 +100,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
@@ -112,7 +110,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override

@@ -14,7 +14,6 @@ public class AdresseActivity extends RoboActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override

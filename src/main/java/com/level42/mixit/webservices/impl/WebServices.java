@@ -93,7 +93,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getTalks()
      */
     public List<Talk> getTalks() throws CommunicationException {
@@ -118,9 +117,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * com.level42.mixit.webservices.IWebServices#getTalk(java.lang.Integer)
+     * @see com.level42.mixit.webservices.IWebServices#getTalk(java.lang.Integer)
      */
     public Talk getTalk(Integer id) throws CommunicationException,
             NotFoundException {
@@ -148,7 +145,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getLightningTalks()
      */
     public List<LightningTalk> getLightningTalks()
@@ -174,10 +170,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * com.level42.mixit.webservices.IWebServices#getLightningTalk(java.lang
-     * .Integer)
+     * @see com.level42.mixit.webservices.IWebServices#getLightningTalk(java.lang.Integer)
      */
     public LightningTalk getLightningTalk(Integer id)
             throws CommunicationException, NotFoundException {
@@ -207,7 +200,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getMembers()
      */
     public List<Member> getMembers() throws CommunicationException {
@@ -232,7 +224,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getStaffs()
      */
     public List<Staff> getStaffs() throws CommunicationException {
@@ -257,7 +248,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getSpeakers()
      */
     public List<Speaker> getSpeakers() throws CommunicationException {
@@ -282,7 +272,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getSponsors()
      */
     public List<Sponsor> getSponsors() throws CommunicationException {
@@ -307,10 +296,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * com.level42.mixit.webservices.IWebServices#getEntity(java.lang.Integer,
-     * java.lang.Object)
+     * @see com.level42.mixit.webservices.IWebServices#getEntity(java.lang.Integer, java.lang.Object)
      */
     public Object getEntity(Integer id, Object entity)
             throws CommunicationException, NotFoundException {
@@ -332,7 +318,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.webservices.IWebServices#getInterests()
      */
     public List<Interest> getInterests() throws CommunicationException {
@@ -357,9 +342,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * com.level42.mixit.webservices.IWebServices#getInterest(java.lang.Integer)
+     * @see com.level42.mixit.webservices.IWebServices#getInterest(java.lang.Integer)
      */
     public Interest getInterest(Integer id) throws CommunicationException,
             NotFoundException {

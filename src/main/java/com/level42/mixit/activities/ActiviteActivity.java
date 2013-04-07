@@ -21,7 +21,6 @@ public class ActiviteActivity extends RoboTabActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboTabActivity#onCreate(android.os.Bundle)
      */
     @Override
@@ -57,7 +56,6 @@ public class ActiviteActivity extends RoboTabActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
      */
     @Override
@@ -69,7 +67,6 @@ public class ActiviteActivity extends RoboTabActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      */
     @Override

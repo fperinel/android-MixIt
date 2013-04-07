@@ -36,7 +36,6 @@ public class PlanningJsonDAO extends DefaultHandler implements IPlanningDAO {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.level42.mixit.dao.IPlanningDAO#getPlanning()
      */
     public Planning getPlanning() throws DataAccessException {

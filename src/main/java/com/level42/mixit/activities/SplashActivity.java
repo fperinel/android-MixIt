@@ -17,7 +17,6 @@ public class SplashActivity extends RoboSplashActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboSplashActivity#onCreate(android.os.Bundle)
      */
     @Override
@@ -28,7 +27,6 @@ public class SplashActivity extends RoboSplashActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboSplashActivity#startNextActivity()
      */
     @Override
@@ -40,10 +38,7 @@ public class SplashActivity extends RoboSplashActivity {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * roboguice.activity.RoboSplashActivity#doStuffInBackground(android.app
-     * .Application)
+     * @see roboguice.activity.RoboSplashActivity#doStuffInBackground(android.app.Application)
      */
     @Override
     protected void doStuffInBackground(Application app) {

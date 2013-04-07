@@ -30,7 +30,6 @@ public class GetPlanningAsyncTask extends
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.os.AsyncTask#onPreExecute()
      */
     @Override
@@ -40,7 +39,6 @@ public class GetPlanningAsyncTask extends
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.os.AsyncTask#onProgressUpdate(Progress[])
      */
     @Override
@@ -50,7 +48,6 @@ public class GetPlanningAsyncTask extends
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.os.AsyncTask#doInBackground(Params[])
      */
     @Override
@@ -72,7 +69,6 @@ public class GetPlanningAsyncTask extends
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.os.AsyncTask#onCancelled()
      */
     @Override
@@ -89,7 +85,6 @@ public class GetPlanningAsyncTask extends
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      */
     @Override

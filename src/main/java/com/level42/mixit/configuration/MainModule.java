@@ -24,7 +24,6 @@ public class MainModule extends AbstractModule {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.google.inject.AbstractModule#configure()
      */
     @Override

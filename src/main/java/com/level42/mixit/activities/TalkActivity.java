@@ -34,7 +34,7 @@ public class TalkActivity extends RoboActivity {
     /**
      * Identifiant du talk passé en paramètre de l'activité
      */
-    public final static String TALK_ID = "TALK_ID";
+    public static final String TALK_ID = "TALK_ID";
 
     /**
      * Interface vers le service de gestion des talks
@@ -96,7 +96,6 @@ public class TalkActivity extends RoboActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
@@ -115,7 +114,6 @@ public class TalkActivity extends RoboActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
@@ -126,7 +124,6 @@ public class TalkActivity extends RoboActivity {
 
     /*
      * (non-Javadoc)
-     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override
