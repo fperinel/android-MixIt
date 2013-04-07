@@ -1,18 +1,29 @@
 package com.level42.mixit.exceptions;
 
 /**
- * Exception spécifique déclenchée lorsqu'un élément n'est
- * pas trouvé par son identifiant lors des appels Webservices
+ * Exception spécifique déclenchée lorsqu'un élément n'est pas trouvé par son
+ * identifiant lors des appels Webservices
  */
 public class NotFoundException extends Exception {
 
-	private static final long serialVersionUID = -393040476228798643L;
+    /**
+     * Serial de l'objet
+     */
+    private static final long serialVersionUID = -393040476228798643L;
 
-	public NotFoundException(String message) {
-		super(message);
-	}
-	
-	public NotFoundException(Exception e) {
-		super(e.getMessage(), e);
-	}
+    /**
+     * Constructeur 
+     * @param message Message d'erreur
+     */
+    public NotFoundException(String message) {
+	super(message);
+    }
+
+    /**
+     * Constructeur
+     * @param e Exception parente
+     */
+    public NotFoundException(Exception e) {
+	super(e.getMessage(), e);
+    }
 }

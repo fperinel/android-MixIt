@@ -16,35 +16,41 @@ import com.level42.mixit.webservices.IWebServices;
 /**
  * Service de gestion des Talks
  */
-public class InterestService extends AbstractService implements IInterestService {
-	
-	@Inject
-	protected IWebServices ws;
-	
-	protected Map<Integer, Interest> interests;
+public class InterestService extends AbstractService implements
+	IInterestService {
 
-	public List<Interest> getInterests() throws FunctionnalException,
-			TechnicalException {
-		try {
-			List<Interest> interests = ws.getInterests();
-			return interests;
-		} catch (CommunicationException e) {
-			e.printStackTrace();
-			throw new TechnicalException(getText(R.string.exception_message_CommunicationException), e);
-		}
-	}
+    @Inject
+    protected IWebServices ws;
 
-	public Interest getInterest(Integer id) throws FunctionnalException,
-			TechnicalException {
-		try {
-			Interest interest = ws.getInterest(id);			
-			return interest;
-		} catch (CommunicationException e) {
-			e.printStackTrace();
-			throw new TechnicalException(getText(R.string.exception_message_CommunicationException), e);
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-			throw new TechnicalException(getText(R.string.exception_message_NotFoundException), e);
-		}
+    protected Map<Integer, Interest> interests;
+
+    public List<Interest> getInterests() throws FunctionnalException,
+	    TechnicalException {
+	try {
+	    List<Interest> interests = ws.getInterests();
+	    return interests;
+	} catch (CommunicationException e) {
+	    e.printStackTrace();
+	    throw new TechnicalException(
+		    getText(R.string.exception_message_CommunicationException),
+		    e);
 	}
+    }
+
+    public Interest getInterest(Integer id) throws FunctionnalException,
+	    TechnicalException {
+	try {
+	    Interest interest = ws.getInterest(id);
+	    return interest;
+	} catch (CommunicationException e) {
+	    e.printStackTrace();
+	    throw new TechnicalException(
+		    getText(R.string.exception_message_CommunicationException),
+		    e);
+	} catch (NotFoundException e) {
+	    e.printStackTrace();
+	    throw new TechnicalException(
+		    getText(R.string.exception_message_NotFoundException), e);
+	}
+    }
 }

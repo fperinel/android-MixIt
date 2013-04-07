@@ -10,263 +10,279 @@ import android.graphics.Bitmap;
 /**
  * Classe représentant un membre
  */
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Member {
 
-	private Integer id;
-	
-	private String firstname;
+    private Integer id;
 
-	private String lastname;
+    private String firstname;
 
-	private String login;
+    private String lastname;
 
-	private String company;
+    private String login;
 
-	private String shortdesc;
+    private String company;
 
-	private String longdesc;
+    private String shortdesc;
 
-	private String urlimage;
+    private String longdesc;
 
-	@JsonIgnore
-	private Bitmap image;
+    private String urlimage;
 
-	private String nbConsults;
+    @JsonIgnore
+    private Bitmap image;
 
-	private List<Integer> links;
+    private String nbConsults;
 
-	private List<Integer> linkers;
+    private List<Integer> links;
 
-	private List<Link> sharedLinks;
+    private List<Integer> linkers;
 
-	private String logo;
+    private List<Link> sharedLinks;
 
-	private String level;
+    private String logo;
 
-	private String type;
+    private String level;
 
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
+    private String type;
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+	return id;
+    }
 
-	/**
-	 * @return the firstname
-	 */
-	public String getFirstname() {
-		return firstname;
-	}
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	/**
-	 * @param firstname the firstname to set
-	 */
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    /**
+     * @return the firstname
+     */
+    public String getFirstname() {
+	return firstname;
+    }
 
-	/**
-	 * @return the lastname
-	 */
-	public String getLastname() {
-		return lastname;
-	}
+    /**
+     * @param firstname
+     *            the firstname to set
+     */
+    public void setFirstname(String firstname) {
+	this.firstname = firstname;
+    }
 
-	/**
-	 * @param lastname the lastname to set
-	 */
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    /**
+     * @return the lastname
+     */
+    public String getLastname() {
+	return lastname;
+    }
 
-	/**
-	 * @return the login
-	 */
-	public String getLogin() {
-		return login;
-	}
+    /**
+     * @param lastname
+     *            the lastname to set
+     */
+    public void setLastname(String lastname) {
+	this.lastname = lastname;
+    }
 
-	/**
-	 * @param login the login to set
-	 */
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    /**
+     * @return the login
+     */
+    public String getLogin() {
+	return login;
+    }
 
-	/**
-	 * @return the company
-	 */
-	public String getCompany() {
-		return company;
-	}
+    /**
+     * @param login
+     *            the login to set
+     */
+    public void setLogin(String login) {
+	this.login = login;
+    }
 
-	/**
-	 * @param company the company to set
-	 */
-	public void setCompany(String company) {
-		this.company = company;
-	}
+    /**
+     * @return the company
+     */
+    public String getCompany() {
+	return company;
+    }
 
-	/**
-	 * @return the shortdesc
-	 */
-	public String getShortdesc() {
-		return shortdesc;
-	}
+    /**
+     * @param company
+     *            the company to set
+     */
+    public void setCompany(String company) {
+	this.company = company;
+    }
 
-	/**
-	 * @param shortdesc the shortdesc to set
-	 */
-	public void setShortdesc(String shortdesc) {
-		this.shortdesc = shortdesc;
-	}
+    /**
+     * @return the shortdesc
+     */
+    public String getShortdesc() {
+	return shortdesc;
+    }
 
-	/**
-	 * @return the longdesc
-	 */
-	public String getLongdesc() {
-		return longdesc;
-	}
+    /**
+     * @param shortdesc
+     *            the shortdesc to set
+     */
+    public void setShortdesc(String shortdesc) {
+	this.shortdesc = shortdesc;
+    }
 
-	/**
-	 * @param longdesc the longdesc to set
-	 */
-	public void setLongdesc(String longdesc) {
-		this.longdesc = longdesc;
-	}
+    /**
+     * @return the longdesc
+     */
+    public String getLongdesc() {
+	return longdesc;
+    }
 
-	/**
-	 * @return the urlimage
-	 */
-	public String getUrlimage() {
-		return urlimage;
-	}
+    /**
+     * @param longdesc
+     *            the longdesc to set
+     */
+    public void setLongdesc(String longdesc) {
+	this.longdesc = longdesc;
+    }
 
-	/**
-	 * @param urlimage the urlimage to set
-	 */
-	public void setUrlimage(String urlimage) {
-		this.urlimage = urlimage;
-	}
+    /**
+     * @return the urlimage
+     */
+    public String getUrlimage() {
+	return urlimage;
+    }
 
-	/**
-	 * @return the nbConsults
-	 */
-	public String getNbConsults() {
-		return nbConsults;
-	}
+    /**
+     * @param urlimage
+     *            the urlimage to set
+     */
+    public void setUrlimage(String urlimage) {
+	this.urlimage = urlimage;
+    }
 
-	/**
-	 * @param nbConsults the nbConsults to set
-	 */
-	public void setNbConsults(String nbConsults) {
-		this.nbConsults = nbConsults;
-	}
+    /**
+     * @return the nbConsults
+     */
+    public String getNbConsults() {
+	return nbConsults;
+    }
 
-	/**
-	 * @return the links
-	 */
-	public List<Integer> getLinks() {
-		return links;
-	}
+    /**
+     * @param nbConsults
+     *            the nbConsults to set
+     */
+    public void setNbConsults(String nbConsults) {
+	this.nbConsults = nbConsults;
+    }
 
-	/**
-	 * @param links the links to set
-	 */
-	public void setLinks(List<Integer> links) {
-		this.links = links;
-	}
+    /**
+     * @return the links
+     */
+    public List<Integer> getLinks() {
+	return links;
+    }
 
-	/**
-	 * @return the linkers
-	 */
-	public List<Integer> getLinkers() {
-		return linkers;
-	}
+    /**
+     * @param links
+     *            the links to set
+     */
+    public void setLinks(List<Integer> links) {
+	this.links = links;
+    }
 
-	/**
-	 * @param linkers the linkers to set
-	 */
-	public void setLinkers(List<Integer> linkers) {
-		this.linkers = linkers;
-	}
+    /**
+     * @return the linkers
+     */
+    public List<Integer> getLinkers() {
+	return linkers;
+    }
 
-	/**
-	 * @return the sharedLinks
-	 */
-	public List<Link> getSharedLinks() {
-		return sharedLinks;
-	}
+    /**
+     * @param linkers
+     *            the linkers to set
+     */
+    public void setLinkers(List<Integer> linkers) {
+	this.linkers = linkers;
+    }
 
-	/**
-	 * @param sharedLinks the sharedLinks to set
-	 */
-	public void setSharedLinks(List<Link> sharedLinks) {
-		this.sharedLinks = sharedLinks;
-	}
+    /**
+     * @return the sharedLinks
+     */
+    public List<Link> getSharedLinks() {
+	return sharedLinks;
+    }
 
-	/**
-	 * @return the logo
-	 */
-	public String getLogo() {
-		return logo;
-	}
+    /**
+     * @param sharedLinks
+     *            the sharedLinks to set
+     */
+    public void setSharedLinks(List<Link> sharedLinks) {
+	this.sharedLinks = sharedLinks;
+    }
 
-	/**
-	 * @param logo the logo to set
-	 */
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
+    /**
+     * @return the logo
+     */
+    public String getLogo() {
+	return logo;
+    }
 
-	/**
-	 * @return the level
-	 */
-	public String getLevel() {
-		return level;
-	}
+    /**
+     * @param logo
+     *            the logo to set
+     */
+    public void setLogo(String logo) {
+	this.logo = logo;
+    }
 
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    /**
+     * @return the level
+     */
+    public String getLevel() {
+	return level;
+    }
 
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
+    /**
+     * @param level
+     *            the level to set
+     */
+    public void setLevel(String level) {
+	this.level = level;
+    }
 
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
+    /**
+     * @return the type
+     */
+    public String getType() {
+	return type;
+    }
 
-	/**
-	 * @return the image
-	 */
-	public Bitmap getImage() {
-		return image;
-	}
+    /**
+     * @param type
+     *            the type to set
+     */
+    public void setType(String type) {
+	this.type = type;
+    }
 
-	/**
-	 * @param image the image to set
-	 */
-	public void setImage(Bitmap image) {
-		this.image = image;
-	}
+    /**
+     * @return the image
+     */
+    public Bitmap getImage() {
+	return image;
+    }
+
+    /**
+     * @param image
+     *            the image to set
+     */
+    public void setImage(Bitmap image) {
+	this.image = image;
+    }
 }

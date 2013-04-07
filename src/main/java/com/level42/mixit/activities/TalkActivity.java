@@ -31,169 +31,228 @@ import com.level42.mixit.utils.MessageBox;
 @ContentView(R.layout.activity_talk)
 public class TalkActivity extends RoboActivity {
 
-	public final static String TALK_ID = "TALK_ID";
-	
-	@Inject
-	private ITalkService talkService;
-	
-	@InjectView(R.id.talk_textTitre)
-	private TextView titreTalk;
-	
-	@InjectView(R.id.talk_textContenu)
-	private TextView contenuTalk;
-	
-	@InjectView(R.id.talk_layout_interests)
-	private LinearLayout interestsLayoutTalk;
-	
-	@InjectView(R.id.talk_textDate)
-	private TextView dateTalk;
-	
-	@InjectView(R.id.talk_textSalle)
-	private TextView salleTalk;
-	
-	@InjectView(R.id.talk_textNiveau)
-	private TextView niveauTalk;
-	
-	@InjectView(R.id.talk_speakers)
-	private LinearLayout speakersLayoutTalk;
-	
-	
-	/**
-	 * Liste des talkls de l'activité
-	 */
-	private Talk talk = new Talk();
+    /**
+     * Identifiant du talk passé en paramètre de l'activité
+     */
+    public final static String TALK_ID = "TALK_ID";
+    
+    /**
+     * Interface vers le service de gestion des talks
+     */
+    @Inject
+    private ITalkService talkService;
+    
+    /**
+     * Contrôle : Titre du talk
+     */
+    @InjectView(R.id.talk_textTitre)
+    private TextView titreTalk;
+    
+    /**
+     * Contrôle : Contenu du talk
+     */
+    @InjectView(R.id.talk_textContenu)
+    private TextView contenuTalk;
 
-	/**
-	 * Boite d'attente de chargement
-	 */
-	private ProgressDialog progressDialog;
-		
+    /**
+     * Contrôle : Centre d'intérêts du talk
+     */
+    @InjectView(R.id.talk_layout_interests)
+    private LinearLayout interestsLayoutTalk;
+
+    /**
+     * Contrôle : Date du talk
+     */
+    @InjectView(R.id.talk_textDate)
+    private TextView dateTalk;
+    
+    /**
+     * Contrôle : Salle du talk
+     */
+    @InjectView(R.id.talk_textSalle)
+    private TextView salleTalk;
+
+    /**
+     * Contrôle : Niveau du talk
+     */
+    @InjectView(R.id.talk_textNiveau)
+    private TextView niveauTalk;
+
+    /**
+     * Contrôle : Liste des speakers du talk
+     */
+    @InjectView(R.id.talk_speakers)
+    private LinearLayout speakersLayoutTalk;
+
+    /**
+     * Liste des talkls de l'activité
+     */
+    private Talk talk = new Talk();
+
+    /**
+     * Boite d'attente de chargement
+     */
+    private ProgressDialog progressDialog;
+
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        		
-		Talk savedTalk = (Talk) getLastNonConfigurationInstance();
-        if (savedTalk == null) {
-        	this.setupProgressDialog();
-        	this.loadTalk();  
-        } else {
-        	talk = savedTalk;
-            this.displayTalk(talk);
-        }
+	super.onCreate(savedInstanceState);
+
+	Talk savedTalk = (Talk) getLastNonConfigurationInstance();
+	if (savedTalk == null) {
+	    this.setupProgressDialog();
+	    this.loadTalk();
+	} else {
+	    talk = savedTalk;
+	    this.displayTalk(talk);
+	}
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * @see android.app.Activity#onRetainNonConfigurationInstance()
+     */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        final Talk talk = this.talk;
-        return talk;
+	final Talk talk = this.talk;
+	return talk;
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboActivity#onResume()
+     */
     @Override
     protected void onResume() {
-    	super.onResume();
+	super.onResume();
     }
 
     /**
      * Affiche la boite de chargement
      */
     protected void setupProgressDialog() {
-    	if(progressDialog == null) 
-    	{
-			progressDialog = MessageBox.getProgressDialog(TalkActivity.this);
-    	}
+	if (progressDialog == null) {
+	    progressDialog = MessageBox.getProgressDialog(TalkActivity.this);
+	}
     }
-    
+
     /**
      * Rafraichit la liste des talks
      */
     protected void loadTalk() {
-    	
-    	// Préparation du service
-    	GetTalkAsyncTask getTalkAsyncService = new GetTalkAsyncTask();
-    	
-    	// Ajout d'un listener pour récupérer le retour
-    	getTalkAsyncService.setPostExecuteListener(new OnTaskPostExecuteListener<Talk>() {			
-			public void onTaskPostExecuteListener(Talk result) {
-				if(result != null) {
-					talk = result;
-					if (progressDialog.isShowing()) {
-						progressDialog.dismiss();
-					}
-					displayTalk(talk);
-				}
+
+	// Préparation du service
+	GetTalkAsyncTask getTalkAsyncService = new GetTalkAsyncTask();
+
+	// Ajout d'un listener pour récupérer le retour
+	getTalkAsyncService
+		.setPostExecuteListener(new OnTaskPostExecuteListener<Talk>() {
+		    public void onTaskPostExecuteListener(Talk result) {
+			if (result != null) {
+			    talk = result;
+			    if (progressDialog.isShowing()) {
+				progressDialog.dismiss();
+			    }
+			    displayTalk(talk);
 			}
-			public void onTaskInterruptListener(Exception cancelReason) {
-				OnClickListener listener = new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						finish();
-				    } 
-				};
-				MessageBox.showError(getResources().getString(R.string.label_dialog_error), cancelReason.getMessage(), listener, TalkActivity.this);
-			}
-			public void onTaskCancelledListener() {
-				MessageBox.showInformation(getResources().getString(R.string.label_dialog_aborted), TalkActivity.this);
-			}
+		    }
+
+		    public void onTaskInterruptListener(Exception cancelReason) {
+			OnClickListener listener = new DialogInterface.OnClickListener() {
+			    public void onClick(DialogInterface dialog,
+				    int which) {
+				finish();
+			    }
+			};
+			MessageBox.showError(
+				getResources().getString(
+					R.string.label_dialog_error),
+				cancelReason.getMessage(), listener,
+				TalkActivity.this);
+		    }
+
+		    public void onTaskCancelledListener() {
+			MessageBox.showInformation(
+				getResources().getString(
+					R.string.label_dialog_aborted),
+				TalkActivity.this);
+		    }
 		});
-    	
-    	// Execution du service
-    	Integer id = (int) this.getIntent().getExtras().getLong(TalkActivity.TALK_ID);
-    	getTalkAsyncService.execute(talkService, id);    	
+
+	// Execution du service
+	Integer id = (int) this.getIntent().getExtras()
+		.getLong(TalkActivity.TALK_ID);
+	getTalkAsyncService.execute(talkService, id);
     }
-	
-	/**
-	 * Gère le rendu du talk dans le template
-	 * @param talk
-	 */
-	protected void displayTalk(Talk talk) {		
-		
-		Resources res = getResources();
-	
-		titreTalk.setText(String.format(res.getString(R.string.label_talk_titre), talk.getFormat(), talk.getTitle()));
-		contenuTalk.setText(talk.getDescription());
-		
-		// Ajout des speakers
-		for (Speaker speaker : talk.getSpeakers() ) {			
-			ImageView speakerAvatarView = new ImageView(TalkActivity.this);
-			speakerAvatarView.setImageBitmap(speaker.getImage());
-			speakersLayoutTalk.addView(speakerAvatarView);
-			
-			TextView speakerNameView = new TextView(TalkActivity.this);
-			speakerNameView.setPadding(5, 10, 5, 10);
-			speakerNameView.setMaxLines(2);
-			speakerNameView.setMaxWidth(300);
-			speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));			
-			speakersLayoutTalk.addView(speakerNameView);
-		}
 
-		if (talk.getInterests() != null)
-		{
-			for (Interest interest : talk.getInterests() ) {
-				TextView interestView = new TextView(TalkActivity.this);
-				interestView.setMaxLines(5);
-				interestView.setPadding(5, 2, 5, 2);
-				interestView.setTextSize(12);
-				interestView.setTextColor(getResources().getColor(R.color.mixitBlue));
-				interestView.setText(interest.getName());
-				interestsLayoutTalk.addView(interestView);
-			}
-		}
-		
-		if (talk.getLevel() != null)
-		{
-			String niveau = (String) getResources().getText(getResources().getIdentifier("label_talk_" + talk.getLevel(), "string", "com.level42.mixit"));
-			niveauTalk.setText(String.format(res.getString(R.string.label_talk_niveau), niveau));
-		}
-		
-		if (talk.getSalleSession() != null)
-		{
-			salleTalk.setText(String.format(res.getString(R.string.label_talk_salle), talk.getSalleSession()));
-		}
-		
-		if (talk.getDateSession() != null)
-		{
-			DateFormat format = SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM, SimpleDateFormat.SHORT);
-			dateTalk.setText(String.format(res.getString(R.string.label_talk_date), format.format(talk.getDateSession())));
-		}
+    /**
+     * Gère le rendu du talk dans le template
+     * 
+     * @param talk Talk a afficher
+     */
+    protected void displayTalk(Talk talk) {
+
+	Resources res = getResources();
+
+	titreTalk.setText(String.format(
+		res.getString(R.string.label_talk_titre), talk.getFormat(),
+		talk.getTitle()));
+	contenuTalk.setText(talk.getDescription());
+
+	// Ajout des speakers
+	for (Speaker speaker : talk.getSpeakers()) {
+	    ImageView speakerAvatarView = new ImageView(TalkActivity.this);
+	    speakerAvatarView.setImageBitmap(speaker.getImage());
+	    speakersLayoutTalk.addView(speakerAvatarView);
+
+	    TextView speakerNameView = new TextView(TalkActivity.this);
+	    speakerNameView.setPadding(5, 10, 5, 10);
+	    speakerNameView.setMaxLines(2);
+	    speakerNameView.setMaxWidth(300);
+	    speakerNameView.setText(String.format(
+		    res.getString(R.string.label_talk_speaker),
+		    speaker.getFirstname(), speaker.getLastname()));
+	    speakersLayoutTalk.addView(speakerNameView);
 	}
-}
 
+	if (talk.getInterests() != null) {
+	    for (Interest interest : talk.getInterests()) {
+		TextView interestView = new TextView(TalkActivity.this);
+		interestView.setMaxLines(5);
+		interestView.setPadding(5, 2, 5, 2);
+		interestView.setTextSize(12);
+		interestView.setTextColor(getResources().getColor(
+			R.color.mixitBlue));
+		interestView.setText(interest.getName());
+		interestsLayoutTalk.addView(interestView);
+	    }
+	}
+
+	if (talk.getLevel() != null) {
+	    String niveau = (String) getResources().getText(
+		    getResources().getIdentifier(
+			    "label_talk_" + talk.getLevel(), "string",
+			    "com.level42.mixit"));
+	    niveauTalk.setText(String.format(
+		    res.getString(R.string.label_talk_niveau), niveau));
+	}
+
+	if (talk.getSalleSession() != null) {
+	    salleTalk.setText(String.format(
+		    res.getString(R.string.label_talk_salle),
+		    talk.getSalleSession()));
+	}
+
+	if (talk.getDateSession() != null) {
+	    DateFormat format = SimpleDateFormat.getDateTimeInstance(
+		    SimpleDateFormat.MEDIUM, SimpleDateFormat.SHORT);
+	    dateTalk.setText(String.format(
+		    res.getString(R.string.label_talk_date),
+		    format.format(talk.getDateSession())));
+	}
+    }
+}

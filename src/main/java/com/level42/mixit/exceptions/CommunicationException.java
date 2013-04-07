@@ -5,9 +5,16 @@ package com.level42.mixit.exceptions;
  */
 public class CommunicationException extends Exception {
 
-	private static final long serialVersionUID = -142143821715631857L;
+    /**
+     * Serial de l'objet
+     */
+    private static final long serialVersionUID = -142143821715631857L;
 
-	public CommunicationException(Exception e) {
-		super(e.getMessage(), e);
-	}
+    /**
+     * Constructeur
+     * @param e Exception parente
+     */
+    public CommunicationException(Exception e) {
+	super(e.getMessage(), e);
+    }
 }

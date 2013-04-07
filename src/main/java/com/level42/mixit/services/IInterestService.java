@@ -11,23 +11,26 @@ import com.level42.mixit.models.Interest;
  */
 public interface IInterestService {
 
-	/**
-	 * Méthode listant l'ensemble des tags
-	 * 
-	 * @return Liste des tags
-	 * 
-	 * @throws TechnicalException
-	 * @throws FunctionnalException
-	 */
-	public List<Interest> getInterests() throws FunctionnalException, TechnicalException;
+    /**
+     * Méthode listant l'ensemble des tags
+     * 
+     * @return Liste des tags
+     * 
+     * @throws TechnicalException
+     * @throws FunctionnalException
+     */
+    public List<Interest> getInterests() throws FunctionnalException,
+	    TechnicalException;
 
-	/**
-	 * Méthode retournant le détail d'un tag
-	 * 
-	 * @param id Identifiant du tag
-	 * 
-	 * @throws TechnicalException
-	 * @throws FunctionnalException
-	 */
-	public Interest getInterest(Integer id) throws FunctionnalException, TechnicalException;
+    /**
+     * Méthode retournant le détail d'un tag
+     * 
+     * @param id
+     *            Identifiant du tag
+     * 
+     * @throws TechnicalException
+     * @throws FunctionnalException
+     */
+    public Interest getInterest(Integer id) throws FunctionnalException,
+	    TechnicalException;
 }

@@ -11,243 +11,258 @@ import org.codehaus.jackson.annotate.JsonProperty;
  */
 public class Talk implements Comparable<Talk> {
 
-	private Integer id;
-	
-	private String title;
-	
-	private String summary;
-	
-	private String description;
-	
-	@JsonProperty("interests")
-	private List<Integer> interestsId;
+    private Integer id;
 
-	@JsonIgnore
-	private List<Interest> interests;
-	
-	@JsonProperty("speakers")
-	private List<Integer> speakersId;
+    private String title;
 
-	@JsonIgnore
-	private List<Speaker> speakers;
-	
-	private String format;
-	
-	private String level;
+    private String summary;
 
-	@JsonIgnore
-	private Session session;
-	
-	private String start;
-	
-	private String end;	
-	
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
+    private String description;
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @JsonProperty("interests")
+    private List<Integer> interestsId;
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
+    @JsonIgnore
+    private List<Interest> interests;
 
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @JsonProperty("speakers")
+    private List<Integer> speakersId;
 
-	/**
-	 * @return the summary
-	 */
-	public String getSummary() {
-		return summary;
-	}
+    @JsonIgnore
+    private List<Speaker> speakers;
 
-	/**
-	 * @param summary the summary to set
-	 */
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
+    private String format;
 
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
+    private String level;
 
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @JsonIgnore
+    private Session session;
 
-	/**
-	 * @return the interests Id
-	 */
-	public List<Integer> getInterestsId() {
-		return interestsId;
-	}
+    private String start;
 
-	/**
-	 * @param interests the interests Id to set
-	 */
-	public void setInterestsId(List<Integer> interestsId) {
-		this.interestsId = interestsId;
-	}
+    private String end;
 
-	/**
-	 * @return the speakers Id
-	 */
-	public List<Integer> getSpeakersId() {
-		return speakersId;
-	}
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+	return id;
+    }
 
-	/**
-	 * @param speakers the speakers Id to set
-	 */
-	public void setSpeakersId(List<Integer> speakersId) {
-		this.speakersId = speakersId;
-	}
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	/**
-	 * @return the format
-	 */
-	public String getFormat() {
-		return format;
-	}
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+	return title;
+    }
 
-	/**
-	 * @param format the format to set
-	 */
-	public void setFormat(String format) {
-		this.format = format;
-	}
+    /**
+     * @param title
+     *            the title to set
+     */
+    public void setTitle(String title) {
+	this.title = title;
+    }
 
-	/**
-	 * @return the level
-	 */
-	public String getLevel() {
-		return level;
-	}
+    /**
+     * @return the summary
+     */
+    public String getSummary() {
+	return summary;
+    }
 
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    /**
+     * @param summary
+     *            the summary to set
+     */
+    public void setSummary(String summary) {
+	this.summary = summary;
+    }
 
-	/**
-	 * @param session the session to set
-	 */
-	public void setSession(Session session) {
-		this.session = session;
-	}
-	
-	/**
-	 * Retourne la date de la session du Talk
-	 * @return Date de la session du Talk
-	 */
-	public Date getDateSession() {
-		if (this.session != null) {
-			return this.session.getDateFormat();
-		} else {
-			return null;
-		}
-	}
-	
-	/**
-	 * Retourne la salle de la session du Talk
-	 * @return Salle de la session du Talk
-	 */
-	public String getSalleSession() {
-		if (this.session != null) {
-			return this.session.getSalle();
-		} else {
-			return null;
-		}
-	}
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+	return description;
+    }
 
-	/**
-	 * @return the interests
-	 */
-	public List<Interest> getInterests() {
-		return interests;
-	}
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(String description) {
+	this.description = description;
+    }
 
-	/**
-	 * @param interests the interests to set
-	 */
-	public void setInterests(List<Interest> interests) {
-		this.interests = interests;
-	}
+    /**
+     * @return the interests Id
+     */
+    public List<Integer> getInterestsId() {
+	return interestsId;
+    }
 
-	/**
-	 * @return the speakers
-	 */
-	public List<Speaker> getSpeakers() {
-		return speakers;
-	}
+    /**
+     * @param interests
+     *            the interests Id to set
+     */
+    public void setInterestsId(List<Integer> interestsId) {
+	this.interestsId = interestsId;
+    }
 
-	/**
-	 * @param speakers the speakers to set
-	 */
-	public void setSpeakers(List<Speaker> speakers) {
-		this.speakers = speakers;
-	}
+    /**
+     * @return the speakers Id
+     */
+    public List<Integer> getSpeakersId() {
+	return speakersId;
+    }
 
-	public int compareTo(Talk another) {
-		if (another.getDateSession() == null) {
-			return 1;
-		}
-		if (this.getDateSession() == null) {
-			return -1;
-		}
-		return getDateSession().compareTo(another.getDateSession());
-	}
+    /**
+     * @param speakers
+     *            the speakers Id to set
+     */
+    public void setSpeakersId(List<Integer> speakersId) {
+	this.speakersId = speakersId;
+    }
 
-	/**
-	 * @return the start
-	 */
-	public String getStart() {
-		return start;
-	}
+    /**
+     * @return the format
+     */
+    public String getFormat() {
+	return format;
+    }
 
-	/**
-	 * @param start the start to set
-	 */
-	public void setStart(String start) {
-		this.start = start;
-	}
+    /**
+     * @param format
+     *            the format to set
+     */
+    public void setFormat(String format) {
+	this.format = format;
+    }
 
-	/**
-	 * @return the end
-	 */
-	public String getEnd() {
-		return end;
-	}
+    /**
+     * @return the level
+     */
+    public String getLevel() {
+	return level;
+    }
 
-	/**
-	 * @param end the end to set
-	 */
-	public void setEnd(String end) {
-		this.end = end;
+    /**
+     * @param level
+     *            the level to set
+     */
+    public void setLevel(String level) {
+	this.level = level;
+    }
+
+    /**
+     * @param session
+     *            the session to set
+     */
+    public void setSession(Session session) {
+	this.session = session;
+    }
+
+    /**
+     * Retourne la date de la session du Talk
+     * 
+     * @return Date de la session du Talk
+     */
+    public Date getDateSession() {
+	if (this.session != null) {
+	    return this.session.getDateFormat();
+	} else {
+	    return null;
 	}
+    }
+
+    /**
+     * Retourne la salle de la session du Talk
+     * 
+     * @return Salle de la session du Talk
+     */
+    public String getSalleSession() {
+	if (this.session != null) {
+	    return this.session.getSalle();
+	} else {
+	    return null;
+	}
+    }
+
+    /**
+     * @return the interests
+     */
+    public List<Interest> getInterests() {
+	return interests;
+    }
+
+    /**
+     * @param interests
+     *            the interests to set
+     */
+    public void setInterests(List<Interest> interests) {
+	this.interests = interests;
+    }
+
+    /**
+     * @return the speakers
+     */
+    public List<Speaker> getSpeakers() {
+	return speakers;
+    }
+
+    /**
+     * @param speakers
+     *            the speakers to set
+     */
+    public void setSpeakers(List<Speaker> speakers) {
+	this.speakers = speakers;
+    }
+
+    public int compareTo(Talk another) {
+	if (another.getDateSession() == null) {
+	    return 1;
+	}
+	if (this.getDateSession() == null) {
+	    return -1;
+	}
+	return getDateSession().compareTo(another.getDateSession());
+    }
+
+    /**
+     * @return the start
+     */
+    public String getStart() {
+	return start;
+    }
+
+    /**
+     * @param start
+     *            the start to set
+     */
+    public void setStart(String start) {
+	this.start = start;
+    }
+
+    /**
+     * @return the end
+     */
+    public String getEnd() {
+	return end;
+    }
+
+    /**
+     * @param end
+     *            the end to set
+     */
+    public void setEnd(String end) {
+	this.end = end;
+    }
 }

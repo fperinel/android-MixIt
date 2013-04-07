@@ -10,27 +10,39 @@ import android.os.Looper;
 import com.level42.mixit.R;
 
 /**
- * Activité principale de l'application
+ * Activité de lancement de l'application (Splash Screen)
  */
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboSplashActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_splash);	
-	}
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboSplashActivity#onCreate(android.os.Bundle)
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_splash);
+    }
 
-	@Override
-	protected void startNextActivity() {
-		Intent intent = new Intent(this.getApplicationContext(), ActiviteActivity.class);
-		this.startActivity(intent);
-	}
-	
-	@Override
-	protected void doStuffInBackground(Application app) {
-		Looper.prepare();
-		super.doStuffInBackground(app);
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboSplashActivity#startNextActivity()
+     */
+    @Override
+    protected void startNextActivity() {
+	Intent intent = new Intent(this.getApplicationContext(),
+		ActiviteActivity.class);
+	this.startActivity(intent);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboSplashActivity#doStuffInBackground(android.app.Application)
+     */
+    @Override
+    protected void doStuffInBackground(Application app) {
+	Looper.prepare();
+	super.doStuffInBackground(app);
     }
 }
-

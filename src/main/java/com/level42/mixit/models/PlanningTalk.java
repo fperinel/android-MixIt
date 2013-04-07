@@ -5,22 +5,23 @@ import java.util.Observable;
 
 public class PlanningTalk extends Observable {
 
-	private List<GroupedTalks> groupedTalks;
+    private List<GroupedTalks> groupedTalks;
 
-	/**
-	 * @return the groupedTalks
-	 */
-	public List<GroupedTalks> getGroupedTalks() {
-		return groupedTalks;
-	}
+    /**
+     * @return the groupedTalks
+     */
+    public List<GroupedTalks> getGroupedTalks() {
+	return groupedTalks;
+    }
 
-	/**
-	 * @param groupedTalks the groupedTalks to set
-	 */
-	public void setGroupedTalks(List<GroupedTalks> groupedTalks) {
-		this.groupedTalks = groupedTalks;
-		setChanged();
-		notifyObservers(this);
-	}
-	
+    /**
+     * @param groupedTalks
+     *            the groupedTalks to set
+     */
+    public void setGroupedTalks(List<GroupedTalks> groupedTalks) {
+	this.groupedTalks = groupedTalks;
+	setChanged();
+	notifyObservers(this);
+    }
+
 }
