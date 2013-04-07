@@ -11,11 +11,15 @@ import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.services.ILightningTalkService;
 
 /**
- * Service bouchonné pour l'appel des Webservices
+ * Service de gestion des lightning talks
  */
 public class LightningTalkService extends TalkService implements
         ILightningTalkService {
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.ILightningTalkService#getLightningTalks()
+     */
     public List<LightningTalk> getLightningTalks() throws FunctionnalException,
             TechnicalException {
         try {
@@ -28,6 +32,10 @@ public class LightningTalkService extends TalkService implements
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.ILightningTalkService#getLightningTalk(java.lang.Integer)
+     */
     public LightningTalk getLightningTalk(Integer id)
             throws FunctionnalException, TechnicalException {
         try {

@@ -27,17 +27,34 @@ import com.level42.mixit.services.ITalkService;
 public class PlanningService extends AbstractService implements
         IPlanningService {
 
+    /**
+     * Interface pour l'obtention des sessions des talks
+     */
     @Inject
     private IPlanningDAO planningDAO;
 
+    /**
+     * Interface vers le service de gestion des talk
+     */
     @Inject
     private ITalkService talkService;
 
+    /**
+     * Paramètre définissant le délai à partir duquel les talks 
+     * en cours sont masqués
+     */
     @Inject
     private String planningDelay;
 
+    /**
+     * Liste des sessions indexées sur l'identifiant
+     */
     private Map<Integer, Session> sessions;
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IPlanningService#getPlanningSession(java.lang.Integer)
+     */
     public Session getPlanningSession(Integer sessionId)
             throws FunctionnalException, TechnicalException {
         try {
@@ -55,6 +72,10 @@ public class PlanningService extends AbstractService implements
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IPlanningService#getTalksForPlanning(java.lang.Integer)
+     */
     public List<GroupedTalks> getTalksForPlanning(Integer delay)
             throws FunctionnalException, TechnicalException {
         // Récupère les sessions

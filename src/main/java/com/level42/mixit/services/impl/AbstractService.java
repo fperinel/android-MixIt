@@ -9,16 +9,28 @@ import com.google.inject.Inject;
  */
 public class AbstractService {
 
+    /**
+     * Contexte de l'application
+     */
     @Inject
     private Context context;
 
+    /**
+     * Retourne le contexte de l'application
+     * 
+     * @return Contexte de l'application
+     */
     public Context getContext() {
-        /*
-         * if (context == null) { context = MixItApplication.getAppContext(); }
-         */
         return context;
     }
 
+    /**
+     * Méthode de traduction dans les servcies
+     * 
+     * @param resId
+     *            Identifiant de la ressources "String".
+     * @return Valeur de la traduction
+     */
     public String getText(Integer resId) {
         return getContext().getText(resId).toString();
     }

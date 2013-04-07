@@ -21,12 +21,22 @@ import com.level42.mixit.webservices.IWebServices;
  */
 public class EntityService extends AbstractService implements IEntityService {
 
+    /**
+     * Interface vers les webservices
+     */
     @Inject
     private IWebServices ws;
 
+    /**
+     * Interface vers le service des plannings
+     */
     @Inject
     private IPlanningService planningService;
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getMembers()
+     */
     public List<Member> getMembers() throws FunctionnalException,
             TechnicalException {
         try {
@@ -40,6 +50,10 @@ public class EntityService extends AbstractService implements IEntityService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getSponsors()
+     */
     public List<Sponsor> getSponsors() throws FunctionnalException,
             TechnicalException {
         try {
@@ -53,6 +67,10 @@ public class EntityService extends AbstractService implements IEntityService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getSpeakers()
+     */
     public List<Speaker> getSpeakers() throws FunctionnalException,
             TechnicalException {
         try {
@@ -66,6 +84,10 @@ public class EntityService extends AbstractService implements IEntityService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getStaffs()
+     */
     public List<Staff> getStaffs() throws FunctionnalException,
             TechnicalException {
         try {
@@ -79,21 +101,37 @@ public class EntityService extends AbstractService implements IEntityService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getMember(java.lang.Integer)
+     */
     public Member getMember(Integer id) throws FunctionnalException,
             TechnicalException {
         return (Member) this.getEntity(id, new Member());
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getSpeaker(java.lang.Integer)
+     */
     public Speaker getSpeaker(Integer id) throws FunctionnalException,
             TechnicalException {
         return (Speaker) this.getEntity(id, new Speaker());
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getStaff(java.lang.Integer)
+     */
     public Staff getStaff(Integer id) throws FunctionnalException,
             TechnicalException {
         return (Staff) this.getEntity(id, new Staff());
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IEntityService#getSponsor(java.lang.Integer)
+     */
     public Sponsor getSponsor(Integer id) throws FunctionnalException,
             TechnicalException {
         return (Sponsor) this.getEntity(id, new Sponsor());
@@ -102,7 +140,7 @@ public class EntityService extends AbstractService implements IEntityService {
     /**
      * Interroge le ws pour retourner une entité (membr, staff ...)
      * 
-     * @param <T>
+     * @param <T> Type d'entité (membre, speaker, sponsor ...)
      * 
      * @param id
      *            Identifiant de l'entité

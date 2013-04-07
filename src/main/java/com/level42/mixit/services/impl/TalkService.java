@@ -45,6 +45,10 @@ public class TalkService extends AbstractService implements ITalkService {
 
     protected Map<Integer, Interest> interests;
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.ITalkService#getTalks()
+     */
     public List<Talk> getTalks() throws FunctionnalException,
             TechnicalException {
         try {
@@ -57,6 +61,10 @@ public class TalkService extends AbstractService implements ITalkService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.ITalkService#getTalk(java.lang.Integer)
+     */
     public Talk getTalk(Integer id) throws FunctionnalException,
             TechnicalException {
         try {
@@ -80,6 +88,15 @@ public class TalkService extends AbstractService implements ITalkService {
         }
     }
 
+    /**
+     * Hydrate la session d'un talk
+     * 
+     * @param talk
+     *            Talk à hydrater
+     * 
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
     protected void hydrateTalkSession(Talk talk) throws FunctionnalException,
             TechnicalException {
         // Ajoute le planning
@@ -87,6 +104,14 @@ public class TalkService extends AbstractService implements ITalkService {
         talk.setSession(session);
     }
 
+    /**
+     * Hydrate les speakers d'un talk
+     * 
+     * @param talk
+     *            Talk à hydrater
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
     protected void hydrateTalkSpeakers(Talk talk) throws FunctionnalException,
             TechnicalException {
         if (talk.getSpeakersId() != null) {
@@ -103,6 +128,14 @@ public class TalkService extends AbstractService implements ITalkService {
         }
     }
 
+    /**
+     * Hydrate les centres d'intérêt d'un talk
+     * 
+     * @param talk
+     *            Talk à hydrater
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
     protected void hydrateTalkInterests(Talk talk) throws FunctionnalException,
             TechnicalException {
         if (talk.getInterestsId() != null) {
@@ -117,6 +150,14 @@ public class TalkService extends AbstractService implements ITalkService {
         }
     }
 
+    /**
+     * Retourne un objet speaker par son identifiant
+     * 
+     * @param id Identifiant du speaker
+     * @return Speaker
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
     protected Speaker getSpeakerById(Integer id) throws FunctionnalException,
             TechnicalException {
         if (speakers == null) {
@@ -130,6 +171,14 @@ public class TalkService extends AbstractService implements ITalkService {
         return speakers.get(id);
     }
 
+    /**
+     * Retourne un objet centre d'intérêt par son identifiant
+     * 
+     * @param id Identifiant du centre d'intérêt
+     * @return Centre d'intérêt 
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
     protected Interest getInterestById(Integer id) throws FunctionnalException,
             TechnicalException {
         if (interests == null) {

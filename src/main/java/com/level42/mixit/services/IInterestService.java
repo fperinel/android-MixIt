@@ -7,7 +7,7 @@ import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.Interest;
 
 /**
- * Interface de manipulation des membres de MixIT
+ * Interface de manipulation des centre d'intérêt de MixIT
  */
 public interface IInterestService {
 

@@ -14,16 +14,26 @@ import com.level42.mixit.services.IInterestService;
 import com.level42.mixit.webservices.IWebServices;
 
 /**
- * Service de gestion des Talks
+ * Service de gestion des centre d'intérêts
  */
 public class InterestService extends AbstractService implements
         IInterestService {
 
+    /**
+     * Interface vers les webservices
+     */
     @Inject
     protected IWebServices ws;
 
+    /**
+     * Liste des centres d'intérêts, indexés par identifiant
+     */
     protected Map<Integer, Interest> interests;
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IInterestService#getInterests()
+     */
     public List<Interest> getInterests() throws FunctionnalException,
             TechnicalException {
         try {
@@ -37,6 +47,10 @@ public class InterestService extends AbstractService implements
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.IInterestService#getInterest(java.lang.Integer)
+     */
     public Interest getInterest(Integer id) throws FunctionnalException,
             TechnicalException {
         try {
