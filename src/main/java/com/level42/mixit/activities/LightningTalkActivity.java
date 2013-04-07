@@ -88,145 +88,149 @@ public class LightningTalkActivity extends RoboActivity {
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-	LightningTalk savedTalk = (LightningTalk) getLastNonConfigurationInstance();
-	if (savedTalk == null) {
-	    this.setupProgressDialog();
-	    this.loadTalk();
-	} else {
-	    talk = savedTalk;
-	    this.displayTalk(talk);
-	}
+        LightningTalk savedTalk = (LightningTalk) getLastNonConfigurationInstance();
+        if (savedTalk == null) {
+            this.setupProgressDialog();
+            this.loadTalk();
+        } else {
+            talk = savedTalk;
+            this.displayTalk(talk);
+        }
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-	final LightningTalk talk = this.talk;
-	return talk;
+        final LightningTalk talk = this.talk;
+        return talk;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override
     protected void onResume() {
-	super.onResume();
+        super.onResume();
     }
 
     /**
      * Affiche la boite de chargement
      */
     protected void setupProgressDialog() {
-	if (progressDialog == null) {
-	    progressDialog = MessageBox
-		    .getProgressDialog(LightningTalkActivity.this);
-	}
+        if (progressDialog == null) {
+            progressDialog = MessageBox
+                    .getProgressDialog(LightningTalkActivity.this);
+        }
     }
 
     /**
      * Rafraichit la liste des talks
      */
     protected void loadTalk() {
-	// Préparation du service
-	getTalkAsyncService = new GetLightningTalkAsyncTask();
+        // Préparation du service
+        getTalkAsyncService = new GetLightningTalkAsyncTask();
 
-	// Ajout d'un listener pour récupérer le retour
-	getTalkAsyncService
-		.setPostExecuteListener(new OnTaskPostExecuteListener<LightningTalk>() {
-		    public void onTaskPostExecuteListener(LightningTalk result) {
-			if (result != null) {
-			    Log.d(Utils.LOGTAG, "LightningTalk chargé");
-			    talk = result;
-			    if (progressDialog.isShowing()) {
-				progressDialog.dismiss();
-			    }
-			    displayTalk(talk);
-			}
-		    }
+        // Ajout d'un listener pour récupérer le retour
+        getTalkAsyncService
+                .setPostExecuteListener(new OnTaskPostExecuteListener<LightningTalk>() {
+                    public void onTaskPostExecuteListener(LightningTalk result) {
+                        if (result != null) {
+                            Log.d(Utils.LOGTAG, "LightningTalk chargé");
+                            talk = result;
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                            displayTalk(talk);
+                        }
+                    }
 
-		    public void onTaskInterruptListener(Exception cancelReason) {
-			OnClickListener listener = new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog,
-				    int which) {
-				finish();
-			    }
-			};
-			MessageBox.showError(
-				getResources().getString(
-					R.string.label_dialog_error),
-				cancelReason.getMessage(), listener,
-				LightningTalkActivity.this);
-		    }
+                    public void onTaskInterruptListener(Exception cancelReason) {
+                        OnClickListener listener = new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                finish();
+                            }
+                        };
+                        MessageBox.showError(
+                                getResources().getString(
+                                        R.string.label_dialog_error),
+                                cancelReason.getMessage(), listener,
+                                LightningTalkActivity.this);
+                    }
 
-		    public void onTaskCancelledListener() {
-			MessageBox.showInformation(
-				getResources().getString(
-					R.string.label_dialog_aborted),
-				LightningTalkActivity.this);
-		    }
-		});
+                    public void onTaskCancelledListener() {
+                        MessageBox.showInformation(
+                                getResources().getString(
+                                        R.string.label_dialog_aborted),
+                                LightningTalkActivity.this);
+                    }
+                });
 
-	// Execution du service
-	Integer id = (int) this.getIntent().getExtras()
-		.getLong(LightningTalkActivity.TALK_ID);
-	getTalkAsyncService.execute(talkService, id);
+        // Execution du service
+        Integer id = (int) this.getIntent().getExtras()
+                .getLong(LightningTalkActivity.TALK_ID);
+        getTalkAsyncService.execute(talkService, id);
     }
 
     /**
      * Gère le rendu du talk dans le template
      * 
-     * @param talk Talk à afficher
+     * @param talk
+     *            Talk à afficher
      */
     protected void displayTalk(LightningTalk talk) {
-	Resources res = getResources();
+        Resources res = getResources();
 
-	titreTalk.setText(talk.getTitle());
-	contenuTalk.setText(talk.getDescription());
+        titreTalk.setText(talk.getTitle());
+        contenuTalk.setText(talk.getDescription());
 
-	// Ajout des speakers
-	for (Speaker speaker : talk.getSpeakers()) {
-	    ImageView speakerAvatarView = new ImageView(
-		    LightningTalkActivity.this);
-	    speakerAvatarView.setImageBitmap(speaker.getImage());
-	    speakersTalk.addView(speakerAvatarView);
+        // Ajout des speakers
+        for (Speaker speaker : talk.getSpeakers()) {
+            ImageView speakerAvatarView = new ImageView(
+                    LightningTalkActivity.this);
+            speakerAvatarView.setImageBitmap(speaker.getImage());
+            speakersTalk.addView(speakerAvatarView);
 
-	    TextView speakerNameView = new TextView(LightningTalkActivity.this);
-	    speakerNameView.setPadding(5, 10, 5, 10);
-	    speakerNameView.setMaxLines(2);
-	    speakerNameView.setMaxWidth(300);
-	    speakerNameView.setText(String.format(
-		    res.getString(R.string.label_talk_speaker),
-		    speaker.getFirstname(), speaker.getLastname()));
-	    speakersTalk.addView(speakerNameView);
-	}
+            TextView speakerNameView = new TextView(LightningTalkActivity.this);
+            speakerNameView.setPadding(5, 10, 5, 10);
+            speakerNameView.setMaxLines(2);
+            speakerNameView.setMaxWidth(300);
+            speakerNameView.setText(String.format(
+                    res.getString(R.string.label_talk_speaker),
+                    speaker.getFirstname(), speaker.getLastname()));
+            speakersTalk.addView(speakerNameView);
+        }
 
-	if (talk.getInterests() != null) {
-	    for (Interest interest : talk.getInterests()) {
-		TextView interestView = new TextView(LightningTalkActivity.this);
-		interestView.setMaxLines(5);
-		interestView.setPadding(5, 2, 5, 2);
-		interestView.setTextSize(12);
-		interestView.setTextColor(getResources().getColor(
-			R.color.mixitBlue));
-		interestView.setText(interest.getName());
-		interestsLayoutTalk.addView(interestView);
-	    }
-	}
+        if (talk.getInterests() != null) {
+            for (Interest interest : talk.getInterests()) {
+                TextView interestView = new TextView(LightningTalkActivity.this);
+                interestView.setMaxLines(5);
+                interestView.setPadding(5, 2, 5, 2);
+                interestView.setTextSize(12);
+                interestView.setTextColor(getResources().getColor(
+                        R.color.mixitBlue));
+                interestView.setText(interest.getName());
+                interestsLayoutTalk.addView(interestView);
+            }
+        }
 
-	if (talk.getNbVotes() != null) {
-	    votesTalk.setText(String.format(
-		    res.getString(R.string.label_talk_votes),
-		    String.valueOf(talk.getNbVotes())));
-	}
+        if (talk.getNbVotes() != null) {
+            votesTalk.setText(String.format(
+                    res.getString(R.string.label_talk_votes),
+                    String.valueOf(talk.getNbVotes())));
+        }
     }
 }

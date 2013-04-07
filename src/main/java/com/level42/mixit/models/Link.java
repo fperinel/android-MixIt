@@ -20,7 +20,7 @@ public class Link {
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -28,14 +28,14 @@ public class Link {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
@@ -43,14 +43,14 @@ public class Link {
      *            the name to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     /**
      * @return the url
      */
     public String getUrl() {
-	return url;
+        return url;
     }
 
     /**
@@ -58,14 +58,14 @@ public class Link {
      *            the url to set
      */
     public void setUrl(String url) {
-	this.url = url;
+        this.url = url;
     }
 
     /**
      * @return the ordernum
      */
     public Integer getOrdernum() {
-	return ordernum;
+        return ordernum;
     }
 
     /**
@@ -73,6 +73,6 @@ public class Link {
      *            the ordernum to set
      */
     public void setOrdernum(Integer ordernum) {
-	this.ordernum = ordernum;
+        this.ordernum = ordernum;
     }
 }

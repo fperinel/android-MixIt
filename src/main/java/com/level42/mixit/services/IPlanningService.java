@@ -21,7 +21,7 @@ public interface IPlanningService {
      * @throws FunctionnalException
      */
     public Session getPlanningSession(Integer sessionId)
-	    throws FunctionnalException, TechnicalException;
+            throws FunctionnalException, TechnicalException;
 
     /**
      * Méthode retournant les talks groupés par date
@@ -35,5 +35,5 @@ public interface IPlanningService {
      * @throws FunctionnalException
      */
     public List<GroupedTalks> getTalksForPlanning(Integer delay)
-	    throws FunctionnalException, TechnicalException;
+            throws FunctionnalException, TechnicalException;
 }

@@ -14,7 +14,7 @@ public class LightningTalkList extends Observable {
      * @return the talks
      */
     public List<LightningTalk> getTalks() {
-	return talks;
+        return talks;
     }
 
     /**
@@ -22,9 +22,9 @@ public class LightningTalkList extends Observable {
      *            the talks to set
      */
     public void setTalks(List<LightningTalk> talks) {
-	this.talks = talks;
-	setChanged();
-	notifyObservers(this);
+        this.talks = talks;
+        setChanged();
+        notifyObservers(this);
     }
 
 }

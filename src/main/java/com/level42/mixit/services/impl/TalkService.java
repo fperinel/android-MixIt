@@ -46,101 +46,101 @@ public class TalkService extends AbstractService implements ITalkService {
     protected Map<Integer, Interest> interests;
 
     public List<Talk> getTalks() throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    return ws.getTalks();
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	}
+            TechnicalException {
+        try {
+            return ws.getTalks();
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        }
     }
 
     public Talk getTalk(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    Talk talk = ws.getTalk(id);
+            TechnicalException {
+        try {
+            Talk talk = ws.getTalk(id);
 
-	    // Dans la nouvelle version des APIP, les objects sont retournés
-	    this.hydrateTalkInterests(talk);
-	    this.hydrateTalkSession(talk);
-	    this.hydrateTalkSpeakers(talk);
+            // Dans la nouvelle version des APIP, les objects sont retournés
+            this.hydrateTalkInterests(talk);
+            this.hydrateTalkSession(talk);
+            this.hydrateTalkSpeakers(talk);
 
-	    return talk;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	} catch (NotFoundException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_NotFoundException), e);
-	}
+            return talk;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_NotFoundException), e);
+        }
     }
 
     protected void hydrateTalkSession(Talk talk) throws FunctionnalException,
-	    TechnicalException {
-	// Ajoute le planning
-	Session session = planningService.getPlanningSession(talk.getId());
-	talk.setSession(session);
+            TechnicalException {
+        // Ajoute le planning
+        Session session = planningService.getPlanningSession(talk.getId());
+        talk.setSession(session);
     }
 
     protected void hydrateTalkSpeakers(Talk talk) throws FunctionnalException,
-	    TechnicalException {
-	if (talk.getSpeakersId() != null) {
-	    List<Speaker> speakers = new ArrayList<Speaker>();
-	    for (Integer id : talk.getSpeakersId()) {
-		Speaker spk = this.getSpeakerById(id);
-		if (spk != null) {
-		    Bitmap image = Utils.loadBitmap(spk.getUrlimage());
-		    spk.setImage(image);
-		    speakers.add(spk);
-		}
-	    }
-	    talk.setSpeakers(speakers);
-	}
+            TechnicalException {
+        if (talk.getSpeakersId() != null) {
+            List<Speaker> speakers = new ArrayList<Speaker>();
+            for (Integer id : talk.getSpeakersId()) {
+                Speaker spk = this.getSpeakerById(id);
+                if (spk != null) {
+                    Bitmap image = Utils.loadBitmap(spk.getUrlimage());
+                    spk.setImage(image);
+                    speakers.add(spk);
+                }
+            }
+            talk.setSpeakers(speakers);
+        }
     }
 
     protected void hydrateTalkInterests(Talk talk) throws FunctionnalException,
-	    TechnicalException {
-	if (talk.getInterestsId() != null) {
-	    List<Interest> interests = new ArrayList<Interest>();
-	    for (Integer id : talk.getInterestsId()) {
-		Interest interest = this.getInterestById(id);
-		if (interest != null) {
-		    interests.add(interest);
-		}
-	    }
-	    talk.setInterests(interests);
-	}
+            TechnicalException {
+        if (talk.getInterestsId() != null) {
+            List<Interest> interests = new ArrayList<Interest>();
+            for (Integer id : talk.getInterestsId()) {
+                Interest interest = this.getInterestById(id);
+                if (interest != null) {
+                    interests.add(interest);
+                }
+            }
+            talk.setInterests(interests);
+        }
     }
 
     protected Speaker getSpeakerById(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	if (speakers == null) {
-	    speakers = new HashMap<Integer, Speaker>();
-	    // Ajoute les speakers
-	    List<Speaker> allSpeakers = entityService.getSpeakers();
-	    for (Speaker spk : allSpeakers) {
-		speakers.put(spk.getId(), spk);
-	    }
-	}
-	return speakers.get(id);
+            TechnicalException {
+        if (speakers == null) {
+            speakers = new HashMap<Integer, Speaker>();
+            // Ajoute les speakers
+            List<Speaker> allSpeakers = entityService.getSpeakers();
+            for (Speaker spk : allSpeakers) {
+                speakers.put(spk.getId(), spk);
+            }
+        }
+        return speakers.get(id);
     }
 
     protected Interest getInterestById(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	if (interests == null) {
-	    interests = new HashMap<Integer, Interest>();
-	    // Ajoute les speakers
-	    List<Interest> allInterests = interestService.getInterests();
-	    for (Interest interest : allInterests) {
-		interests.put(interest.getId(), interest);
-	    }
-	}
-	return interests.get(id);
+            TechnicalException {
+        if (interests == null) {
+            interests = new HashMap<Integer, Interest>();
+            // Ajoute les speakers
+            List<Interest> allInterests = interestService.getInterests();
+            for (Interest interest : allInterests) {
+                interests.put(interest.getId(), interest);
+            }
+        }
+        return interests.get(id);
     }
 
 }

@@ -14,7 +14,7 @@ public class TalkList extends Observable {
      * @return the talks
      */
     public List<Talk> getTalks() {
-	return talks;
+        return talks;
     }
 
     /**
@@ -22,9 +22,9 @@ public class TalkList extends Observable {
      *            the talks to set
      */
     public void setTalks(List<Talk> talks) {
-	this.talks = talks;
-	setChanged();
-	notifyObservers(this);
+        this.talks = talks;
+        setChanged();
+        notifyObservers(this);
     }
 
 }

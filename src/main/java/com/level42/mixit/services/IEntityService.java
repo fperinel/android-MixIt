@@ -23,7 +23,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public List<Member> getMembers() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode listant l'ensemble des sponsors
@@ -34,7 +34,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public List<Sponsor> getSponsors() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode listant l'ensemble des speakers
@@ -45,7 +45,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public List<Speaker> getSpeakers() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode listant l'ensemble des membres du staff
@@ -56,7 +56,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public List<Staff> getStaffs() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un membre
@@ -68,7 +68,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public Member getMember(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un speaker
@@ -80,7 +80,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public Speaker getSpeaker(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un membre du staff
@@ -92,7 +92,7 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public Staff getStaff(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un sponsor
@@ -104,5 +104,5 @@ public interface IEntityService {
      * @throws FunctionnalException
      */
     public Sponsor getSponsor(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 }

@@ -26,14 +26,14 @@ public class MessageBox {
      *            Contexte parent du dialog
      */
     public static void showError(String title, String message,
-	    OnClickListener validationListener, Context context) {
-	AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-	alertDialog.setTitle(title);
-	alertDialog.setMessage(message);
-	alertDialog.setCancelable(false);
-	alertDialog.setButton(context.getString(R.string.btn_dialog_ok),
-		validationListener);
-	alertDialog.show();
+            OnClickListener validationListener, Context context) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setCancelable(false);
+        alertDialog.setButton(context.getString(R.string.btn_dialog_ok),
+                validationListener);
+        alertDialog.show();
     }
 
     /**
@@ -51,17 +51,17 @@ public class MessageBox {
      *            Contexte parent du dialog
      */
     public static void showConfirm(String title, String message,
-	    OnClickListener validationListener, OnClickListener cancelListener,
-	    Context context) {
-	AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-	alertDialog.setTitle(title);
-	alertDialog.setMessage(message);
-	alertDialog.setCancelable(false);
-	alertDialog.setButton(context.getString(R.string.btn_dialog_validate),
-		validationListener);
-	alertDialog.setButton(context.getString(R.string.btn_dialog_abort),
-		validationListener);
-	alertDialog.show();
+            OnClickListener validationListener, OnClickListener cancelListener,
+            Context context) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setCancelable(false);
+        alertDialog.setButton(context.getString(R.string.btn_dialog_validate),
+                validationListener);
+        alertDialog.setButton(context.getString(R.string.btn_dialog_abort),
+                validationListener);
+        alertDialog.show();
     }
 
     /**
@@ -73,7 +73,7 @@ public class MessageBox {
      *            Contexte parent du dialog
      */
     public static void showInformation(String message, Context context) {
-	Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -85,7 +85,7 @@ public class MessageBox {
      *            Contexte parent du dialog
      */
     public static ProgressDialog getProgressDialog(Context context) {
-	return ProgressDialog.show(context, null,
-		context.getString(R.string.loading_message_talks), false, true);
+        return ProgressDialog.show(context, null,
+                context.getString(R.string.loading_message_talks), false, true);
     }
 }

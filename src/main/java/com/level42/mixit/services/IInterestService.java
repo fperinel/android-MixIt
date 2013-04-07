@@ -20,7 +20,7 @@ public interface IInterestService {
      * @throws FunctionnalException
      */
     public List<Interest> getInterests() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un tag
@@ -32,5 +32,5 @@ public interface IInterestService {
      * @throws FunctionnalException
      */
     public Interest getInterest(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 }

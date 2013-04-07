@@ -68,109 +68,112 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	talks.addObserver(this);
-	adapter = new LightningTalksAdapter(this.getBaseContext());
-	listTalks.setAdapter(adapter);
+        super.onCreate(savedInstanceState);
+        talks.addObserver(this);
+        adapter = new LightningTalksAdapter(this.getBaseContext());
+        listTalks.setAdapter(adapter);
 
-	listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
-	    public void onItemClick(AdapterView<?> parent, View view,
-		    int position, long id) {
-		Intent talkActivity = new Intent(
-			LightningTalkListActivity.this,
-			LightningTalkActivity.class);
-		talkActivity.putExtra(LightningTalkActivity.TALK_ID, id);
-		LightningTalkListActivity.this.startActivity(talkActivity);
-	    }
-	});
+        listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+                Intent talkActivity = new Intent(
+                        LightningTalkListActivity.this,
+                        LightningTalkActivity.class);
+                talkActivity.putExtra(LightningTalkActivity.TALK_ID, id);
+                LightningTalkListActivity.this.startActivity(talkActivity);
+            }
+        });
 
-	@SuppressWarnings("unchecked")
-	List<LightningTalk> savedTalks = (List<LightningTalk>) getLastNonConfigurationInstance();
-	if (savedTalks == null) {
-	    this.setupProgressDialog();
-	    this.refreshTalks();
-	} else {
-	    talks.setTalks(savedTalks);
-	}
+        @SuppressWarnings("unchecked")
+        List<LightningTalk> savedTalks = (List<LightningTalk>) getLastNonConfigurationInstance();
+        if (savedTalks == null) {
+            this.setupProgressDialog();
+            this.refreshTalks();
+        } else {
+            talks.setTalks(savedTalks);
+        }
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-	final List<LightningTalk> talks = this.talks.getTalks();
-	return talks;
+        final List<LightningTalk> talks = this.talks.getTalks();
+        return talks;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override
     protected void onResume() {
-	super.onResume();
+        super.onResume();
     }
 
     /**
      * Affiche la boite de chargement
      */
     protected void setupProgressDialog() {
-	if (progressDialog == null) {
-	    progressDialog = MessageBox
-		    .getProgressDialog(LightningTalkListActivity.this);
-	}
+        if (progressDialog == null) {
+            progressDialog = MessageBox
+                    .getProgressDialog(LightningTalkListActivity.this);
+        }
     }
 
     /**
      * Rafraichit la liste des talks
      */
     protected void refreshTalks() {
-	// Préparation du service
-	getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
+        // Préparation du service
+        getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
 
-	// Ajout d'un listener pour récupérer le retour
-	getLightningTalksAsyncService
-		.setPostExecuteListener(new OnTaskPostExecuteListener<List<LightningTalk>>() {
-		    public void onTaskPostExecuteListener(
-			    List<LightningTalk> result) {
-			if (result != null) {
-			    talks.setTalks(result);
-			    if (progressDialog.isShowing()) {
-				progressDialog.dismiss();
-			    }
-			}
-		    }
+        // Ajout d'un listener pour récupérer le retour
+        getLightningTalksAsyncService
+                .setPostExecuteListener(new OnTaskPostExecuteListener<List<LightningTalk>>() {
+                    public void onTaskPostExecuteListener(
+                            List<LightningTalk> result) {
+                        if (result != null) {
+                            talks.setTalks(result);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        }
+                    }
 
-		    public void onTaskInterruptListener(Exception cancelReason) {
-			OnClickListener listener = new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog,
-				    int which) {
-				finish();
-			    }
-			};
-			MessageBox.showError(
-				getResources().getString(
-					R.string.label_dialog_error),
-				cancelReason.getMessage(), listener,
-				LightningTalkListActivity.this);
-		    }
+                    public void onTaskInterruptListener(Exception cancelReason) {
+                        OnClickListener listener = new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                finish();
+                            }
+                        };
+                        MessageBox.showError(
+                                getResources().getString(
+                                        R.string.label_dialog_error),
+                                cancelReason.getMessage(), listener,
+                                LightningTalkListActivity.this);
+                    }
 
-		    public void onTaskCancelledListener() {
-			MessageBox.showInformation(
-				getResources().getString(
-					R.string.label_dialog_aborted),
-				LightningTalkListActivity.this);
-		    }
-		});
+                    public void onTaskCancelledListener() {
+                        MessageBox.showInformation(
+                                getResources().getString(
+                                        R.string.label_dialog_aborted),
+                                LightningTalkListActivity.this);
+                    }
+                });
 
-	// Execution du service
-	getLightningTalksAsyncService.execute(talkService);
+        // Execution du service
+        getLightningTalksAsyncService.execute(talkService);
     }
 
     /**
@@ -183,12 +186,12 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      *            Données mise à jour
      */
     public void update(Observable observable, Object data) {
-	if (observable instanceof LightningTalkList) {
-	    Log.d(Utils.LOGTAG, "Changement sur la liste des lightning talks");
-	    LightningTalkList list = (LightningTalkList) observable;
-	    if (list != null) {
-		adapter.updateTalks(list.getTalks());
-	    }
-	}
+        if (observable instanceof LightningTalkList) {
+            Log.d(Utils.LOGTAG, "Changement sur la liste des lightning talks");
+            LightningTalkList list = (LightningTalkList) observable;
+            if (list != null) {
+                adapter.updateTalks(list.getTalks());
+            }
+        }
     }
 }

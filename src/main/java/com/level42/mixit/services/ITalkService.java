@@ -20,7 +20,7 @@ public interface ITalkService {
      * @throws FunctionnalException
      */
     public List<Talk> getTalks() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un talk à partir de son identifiant
@@ -32,5 +32,5 @@ public interface ITalkService {
      * @throws FunctionnalException
      */
     public Talk getTalk(Integer id) throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 }

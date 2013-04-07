@@ -12,9 +12,11 @@ public class CommunicationException extends Exception {
 
     /**
      * Constructeur
-     * @param e Exception parente
+     * 
+     * @param e
+     *            Exception parente
      */
     public CommunicationException(Exception e) {
-	super(e.getMessage(), e);
+        super(e.getMessage(), e);
     }
 }

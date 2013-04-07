@@ -12,10 +12,13 @@ public class TechnicalException extends Exception {
 
     /**
      * Constructeur
-     * @param message Message d'erreur technique
-     * @param e Exception parente
+     * 
+     * @param message
+     *            Message d'erreur technique
+     * @param e
+     *            Exception parente
      */
     public TechnicalException(String message, Exception e) {
-	super(message, e);
+        super(message, e);
     }
 }

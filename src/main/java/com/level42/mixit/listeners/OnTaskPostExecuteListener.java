@@ -7,13 +7,17 @@ public interface OnTaskPostExecuteListener<T> {
 
     /**
      * Déclenchement lorsque la tâche est terminée
-     * @param result Résultat de la tâche
+     * 
+     * @param result
+     *            Résultat de la tâche
      */
     public abstract void onTaskPostExecuteListener(T result);
 
     /**
      * Déclenchement lorsque la tâche est interrompue suite à une erreur
-     * @param cancelReason Exception représentant la raison de l'interuption
+     * 
+     * @param cancelReason
+     *            Exception représentant la raison de l'interuption
      */
     public abstract void onTaskInterruptListener(Exception cancelReason);
 

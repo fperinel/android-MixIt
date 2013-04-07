@@ -20,7 +20,7 @@ public interface ILightningTalkService {
      * @throws FunctionnalException
      */
     public List<LightningTalk> getLightningTalks() throws FunctionnalException,
-	    TechnicalException;
+            TechnicalException;
 
     /**
      * Méthode retournant le détail d'un talk à partir de son identifiant
@@ -32,5 +32,5 @@ public interface ILightningTalkService {
      * @throws FunctionnalException
      */
     public LightningTalk getLightningTalk(Integer id)
-	    throws FunctionnalException, TechnicalException;
+            throws FunctionnalException, TechnicalException;
 }

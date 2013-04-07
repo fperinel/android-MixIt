@@ -34,7 +34,7 @@ public interface IWebServices {
      * @throws CommunicationException
      */
     public List<LightningTalk> getLightningTalks()
-	    throws CommunicationException;
+            throws CommunicationException;
 
     /**
      * Retourne le détail d'un talk
@@ -45,7 +45,7 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     public Talk getTalk(Integer id) throws CommunicationException,
-	    NotFoundException;
+            NotFoundException;
 
     /**
      * Retourne le détail d'un LightningTalk
@@ -56,7 +56,7 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     public LightningTalk getLightningTalk(Integer id)
-	    throws CommunicationException, NotFoundException;
+            throws CommunicationException, NotFoundException;
 
     /**
      * Retourne la liste des membres
@@ -108,7 +108,7 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     public <T> Object getEntity(Integer id, T type)
-	    throws CommunicationException, NotFoundException;
+            throws CommunicationException, NotFoundException;
 
     /**
      * Retourne la liste des tags "intérêt"
@@ -131,5 +131,5 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     public Interest getInterest(Integer id) throws CommunicationException,
-	    NotFoundException;
+            NotFoundException;
 }

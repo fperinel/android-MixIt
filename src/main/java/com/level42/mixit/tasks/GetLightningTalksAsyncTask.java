@@ -13,7 +13,7 @@ import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.utils.Utils;
 
 public class GetLightningTalksAsyncTask extends
-	AsyncTask<ILightningTalkService, Integer, List<LightningTalk>> {
+        AsyncTask<ILightningTalkService, Integer, List<LightningTalk>> {
 
     /**
      * Listener
@@ -24,57 +24,57 @@ public class GetLightningTalksAsyncTask extends
 
     @Override
     protected void onPreExecute() {
-	super.onPreExecute();
+        super.onPreExecute();
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-	super.onProgressUpdate(values);
+        super.onProgressUpdate(values);
     }
 
     @Override
     protected List<LightningTalk> doInBackground(
-	    ILightningTalkService... params) {
-	try {
-	    ILightningTalkService service = (ILightningTalkService) params[0];
-	    return service.getLightningTalks();
-	} catch (FunctionnalException e) {
-	    Log.e(Utils.LOGTAG, e.getMessage());
-	    cancelReason = e;
-	} catch (TechnicalException e) {
-	    Log.e(Utils.LOGTAG, e.getMessage());
-	    cancelReason = e;
-	}
-	this.cancel(true);
-	return null;
+            ILightningTalkService... params) {
+        try {
+            ILightningTalkService service = (ILightningTalkService) params[0];
+            return service.getLightningTalks();
+        } catch (FunctionnalException e) {
+            Log.e(Utils.LOGTAG, e.getMessage());
+            cancelReason = e;
+        } catch (TechnicalException e) {
+            Log.e(Utils.LOGTAG, e.getMessage());
+            cancelReason = e;
+        }
+        this.cancel(true);
+        return null;
     }
 
     @Override
     protected void onCancelled() {
-	super.onCancelled();
+        super.onCancelled();
 
-	if (onTaskPostExecuteListener != null && cancelReason != null) {
-	    onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
-	}
-	if (onTaskPostExecuteListener != null && cancelReason == null) {
-	    onTaskPostExecuteListener.onTaskCancelledListener();
-	}
+        if (onTaskPostExecuteListener != null && cancelReason != null) {
+            onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
+        }
+        if (onTaskPostExecuteListener != null && cancelReason == null) {
+            onTaskPostExecuteListener.onTaskCancelledListener();
+        }
     }
 
     @Override
     protected void onPostExecute(List<LightningTalk> result) {
-	super.onPostExecute(result);
+        super.onPostExecute(result);
 
-	Log.d(Utils.LOGTAG, "Nombre de lightning talks : " + result.size());
+        Log.d(Utils.LOGTAG, "Nombre de lightning talks : " + result.size());
 
-	if (onTaskPostExecuteListener != null) {
-	    onTaskPostExecuteListener.onTaskPostExecuteListener(result);
-	}
+        if (onTaskPostExecuteListener != null) {
+            onTaskPostExecuteListener.onTaskPostExecuteListener(result);
+        }
     }
 
     public void setPostExecuteListener(
-	    OnTaskPostExecuteListener<List<LightningTalk>> taskPostExecute) {
-	onTaskPostExecuteListener = taskPostExecute;
+            OnTaskPostExecuteListener<List<LightningTalk>> taskPostExecute) {
+        onTaskPostExecuteListener = taskPostExecute;
     }
 
 }

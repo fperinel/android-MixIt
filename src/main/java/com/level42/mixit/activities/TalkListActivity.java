@@ -68,107 +68,110 @@ public class TalkListActivity extends RoboActivity implements Observer {
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	talks.addObserver(this);
-	adapter = new TalksAdapter(this.getBaseContext());
-	listTalks.setAdapter(adapter);
+        super.onCreate(savedInstanceState);
+        talks.addObserver(this);
+        adapter = new TalksAdapter(this.getBaseContext());
+        listTalks.setAdapter(adapter);
 
-	listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
-	    public void onItemClick(AdapterView<?> parent, View view,
-		    int position, long id) {
-		Intent talkActivity = new Intent(TalkListActivity.this,
-			TalkActivity.class);
-		talkActivity.putExtra(TalkActivity.TALK_ID, id);
-		TalkListActivity.this.startActivity(talkActivity);
-	    }
-	});
+        listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+                Intent talkActivity = new Intent(TalkListActivity.this,
+                        TalkActivity.class);
+                talkActivity.putExtra(TalkActivity.TALK_ID, id);
+                TalkListActivity.this.startActivity(talkActivity);
+            }
+        });
 
-	@SuppressWarnings("unchecked")
-	List<Talk> savedTalks = (List<Talk>) getLastNonConfigurationInstance();
-	if (savedTalks == null) {
-	    this.setupProgressDialog();
-	    this.refreshTalks();
-	} else {
-	    talks.setTalks(savedTalks);
-	}
+        @SuppressWarnings("unchecked")
+        List<Talk> savedTalks = (List<Talk>) getLastNonConfigurationInstance();
+        if (savedTalks == null) {
+            this.setupProgressDialog();
+            this.refreshTalks();
+        } else {
+            talks.setTalks(savedTalks);
+        }
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-	final List<Talk> talks = this.talks.getTalks();
-	return talks;
+        final List<Talk> talks = this.talks.getTalks();
+        return talks;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override
     protected void onResume() {
-	super.onResume();
+        super.onResume();
     }
 
     /**
      * Affiche la boite de chargement
      */
     protected void setupProgressDialog() {
-	if (progressDialog == null) {
-	    progressDialog = MessageBox
-		    .getProgressDialog(TalkListActivity.this);
-	}
+        if (progressDialog == null) {
+            progressDialog = MessageBox
+                    .getProgressDialog(TalkListActivity.this);
+        }
     }
 
     /**
      * Rafraichit la liste des talks
      */
     protected void refreshTalks() {
-	// Préparation du service
-	getTalksAsyncService = new GetTalksAsyncTask();
+        // Préparation du service
+        getTalksAsyncService = new GetTalksAsyncTask();
 
-	// Ajout d'un listener pour récupérer le retour
-	getTalksAsyncService
-		.setPostExecuteListener(new OnTaskPostExecuteListener<List<Talk>>() {
-		    public void onTaskPostExecuteListener(List<Talk> result) {
-			if (result != null) {
-			    talks.setTalks(result);
-			    if (progressDialog.isShowing()) {
-				progressDialog.dismiss();
-			    }
-			}
-		    }
+        // Ajout d'un listener pour récupérer le retour
+        getTalksAsyncService
+                .setPostExecuteListener(new OnTaskPostExecuteListener<List<Talk>>() {
+                    public void onTaskPostExecuteListener(List<Talk> result) {
+                        if (result != null) {
+                            talks.setTalks(result);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        }
+                    }
 
-		    public void onTaskInterruptListener(Exception cancelReason) {
-			OnClickListener listener = new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog,
-				    int which) {
-				finish();
-			    }
-			};
-			MessageBox.showError(
-				getResources().getString(
-					R.string.label_dialog_error),
-				cancelReason.getMessage(), listener,
-				TalkListActivity.this);
-		    }
+                    public void onTaskInterruptListener(Exception cancelReason) {
+                        OnClickListener listener = new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                finish();
+                            }
+                        };
+                        MessageBox.showError(
+                                getResources().getString(
+                                        R.string.label_dialog_error),
+                                cancelReason.getMessage(), listener,
+                                TalkListActivity.this);
+                    }
 
-		    public void onTaskCancelledListener() {
-			MessageBox.showInformation(
-				getResources().getString(
-					R.string.label_dialog_aborted),
-				TalkListActivity.this);
-		    }
-		});
+                    public void onTaskCancelledListener() {
+                        MessageBox.showInformation(
+                                getResources().getString(
+                                        R.string.label_dialog_aborted),
+                                TalkListActivity.this);
+                    }
+                });
 
-	// Execution du service
-	getTalksAsyncService.execute(talkService);
+        // Execution du service
+        getTalksAsyncService.execute(talkService);
     }
 
     /**
@@ -181,12 +184,12 @@ public class TalkListActivity extends RoboActivity implements Observer {
      *            Données mise à jour
      */
     public void update(Observable observable, Object data) {
-	if (observable instanceof TalkList) {
-	    Log.d(Utils.LOGTAG, "Changement sur la liste des talks");
-	    TalkList list = (TalkList) observable;
-	    if (list != null) {
-		adapter.updateTalks(list.getTalks());
-	    }
-	}
+        if (observable instanceof TalkList) {
+            Log.d(Utils.LOGTAG, "Changement sur la liste des talks");
+            TalkList list = (TalkList) observable;
+            if (list != null) {
+                adapter.updateTalks(list.getTalks());
+            }
+        }
     }
 }

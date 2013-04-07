@@ -50,7 +50,7 @@ public class Member {
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -58,14 +58,14 @@ public class Member {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the firstname
      */
     public String getFirstname() {
-	return firstname;
+        return firstname;
     }
 
     /**
@@ -73,14 +73,14 @@ public class Member {
      *            the firstname to set
      */
     public void setFirstname(String firstname) {
-	this.firstname = firstname;
+        this.firstname = firstname;
     }
 
     /**
      * @return the lastname
      */
     public String getLastname() {
-	return lastname;
+        return lastname;
     }
 
     /**
@@ -88,14 +88,14 @@ public class Member {
      *            the lastname to set
      */
     public void setLastname(String lastname) {
-	this.lastname = lastname;
+        this.lastname = lastname;
     }
 
     /**
      * @return the login
      */
     public String getLogin() {
-	return login;
+        return login;
     }
 
     /**
@@ -103,14 +103,14 @@ public class Member {
      *            the login to set
      */
     public void setLogin(String login) {
-	this.login = login;
+        this.login = login;
     }
 
     /**
      * @return the company
      */
     public String getCompany() {
-	return company;
+        return company;
     }
 
     /**
@@ -118,14 +118,14 @@ public class Member {
      *            the company to set
      */
     public void setCompany(String company) {
-	this.company = company;
+        this.company = company;
     }
 
     /**
      * @return the shortdesc
      */
     public String getShortdesc() {
-	return shortdesc;
+        return shortdesc;
     }
 
     /**
@@ -133,14 +133,14 @@ public class Member {
      *            the shortdesc to set
      */
     public void setShortdesc(String shortdesc) {
-	this.shortdesc = shortdesc;
+        this.shortdesc = shortdesc;
     }
 
     /**
      * @return the longdesc
      */
     public String getLongdesc() {
-	return longdesc;
+        return longdesc;
     }
 
     /**
@@ -148,14 +148,14 @@ public class Member {
      *            the longdesc to set
      */
     public void setLongdesc(String longdesc) {
-	this.longdesc = longdesc;
+        this.longdesc = longdesc;
     }
 
     /**
      * @return the urlimage
      */
     public String getUrlimage() {
-	return urlimage;
+        return urlimage;
     }
 
     /**
@@ -163,14 +163,14 @@ public class Member {
      *            the urlimage to set
      */
     public void setUrlimage(String urlimage) {
-	this.urlimage = urlimage;
+        this.urlimage = urlimage;
     }
 
     /**
      * @return the nbConsults
      */
     public String getNbConsults() {
-	return nbConsults;
+        return nbConsults;
     }
 
     /**
@@ -178,14 +178,14 @@ public class Member {
      *            the nbConsults to set
      */
     public void setNbConsults(String nbConsults) {
-	this.nbConsults = nbConsults;
+        this.nbConsults = nbConsults;
     }
 
     /**
      * @return the links
      */
     public List<Integer> getLinks() {
-	return links;
+        return links;
     }
 
     /**
@@ -193,14 +193,14 @@ public class Member {
      *            the links to set
      */
     public void setLinks(List<Integer> links) {
-	this.links = links;
+        this.links = links;
     }
 
     /**
      * @return the linkers
      */
     public List<Integer> getLinkers() {
-	return linkers;
+        return linkers;
     }
 
     /**
@@ -208,14 +208,14 @@ public class Member {
      *            the linkers to set
      */
     public void setLinkers(List<Integer> linkers) {
-	this.linkers = linkers;
+        this.linkers = linkers;
     }
 
     /**
      * @return the sharedLinks
      */
     public List<Link> getSharedLinks() {
-	return sharedLinks;
+        return sharedLinks;
     }
 
     /**
@@ -223,14 +223,14 @@ public class Member {
      *            the sharedLinks to set
      */
     public void setSharedLinks(List<Link> sharedLinks) {
-	this.sharedLinks = sharedLinks;
+        this.sharedLinks = sharedLinks;
     }
 
     /**
      * @return the logo
      */
     public String getLogo() {
-	return logo;
+        return logo;
     }
 
     /**
@@ -238,14 +238,14 @@ public class Member {
      *            the logo to set
      */
     public void setLogo(String logo) {
-	this.logo = logo;
+        this.logo = logo;
     }
 
     /**
      * @return the level
      */
     public String getLevel() {
-	return level;
+        return level;
     }
 
     /**
@@ -253,14 +253,14 @@ public class Member {
      *            the level to set
      */
     public void setLevel(String level) {
-	this.level = level;
+        this.level = level;
     }
 
     /**
      * @return the type
      */
     public String getType() {
-	return type;
+        return type;
     }
 
     /**
@@ -268,14 +268,14 @@ public class Member {
      *            the type to set
      */
     public void setType(String type) {
-	this.type = type;
+        this.type = type;
     }
 
     /**
      * @return the image
      */
     public Bitmap getImage() {
-	return image;
+        return image;
     }
 
     /**
@@ -283,6 +283,6 @@ public class Member {
      *            the image to set
      */
     public void setImage(Bitmap image) {
-	this.image = image;
+        this.image = image;
     }
 }

@@ -25,28 +25,28 @@ public class Utils {
      * @return Vrai si un réseau data est disponible
      */
     public static boolean isNetworkAvailable() {
-	/*
-	 * ConnectivityManager connectivityManager =
-	 * (ConnectivityManager)Application
-	 * .getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-	 * NetworkInfo activeNetworkInfo =
-	 * connectivityManager.getActiveNetworkInfo(); return activeNetworkInfo
-	 * != null;
-	 */
+        /*
+         * ConnectivityManager connectivityManager =
+         * (ConnectivityManager)Application
+         * .getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+         * NetworkInfo activeNetworkInfo =
+         * connectivityManager.getActiveNetworkInfo(); return activeNetworkInfo
+         * != null;
+         */
 
-	return true;
+        return true;
     }
 
     /**
      * Contrôle si le thread courant est le thread principal
      */
     public static void checkOnMainThread() {
-	if (BuildConfig.DEBUG) {
-	    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-		throw new IllegalStateException(
-			"This method should be called from the Main Thread");
-	    }
-	}
+        if (BuildConfig.DEBUG) {
+            if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+                throw new IllegalStateException(
+                        "This method should be called from the Main Thread");
+            }
+        }
     }
 
     /**
@@ -59,13 +59,13 @@ public class Utils {
      * @throws TechnicalException
      */
     public static Bitmap loadBitmap(String imageUrl) throws TechnicalException {
-	try {
-	    return BitmapFactory.decodeStream((InputStream) new URL(imageUrl)
-		    .getContent());
-	} catch (MalformedURLException e) {
-	    throw new TechnicalException(e.getMessage(), e);
-	} catch (IOException e) {
-	    throw new TechnicalException(e.getMessage(), e);
-	}
+        try {
+            return BitmapFactory.decodeStream((InputStream) new URL(imageUrl)
+                    .getContent());
+        } catch (MalformedURLException e) {
+            throw new TechnicalException(e.getMessage(), e);
+        } catch (IOException e) {
+            throw new TechnicalException(e.getMessage(), e);
+        }
     }
 }

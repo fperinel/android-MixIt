@@ -14,7 +14,7 @@ public class LightningTalk extends Talk {
      * @return the nbVotes
      */
     public Integer getNbVotes() {
-	return nbVotes;
+        return nbVotes;
     }
 
     /**
@@ -22,6 +22,6 @@ public class LightningTalk extends Talk {
      *            the nbVotes to set
      */
     public void setNbVotes(Integer nbVotes) {
-	this.nbVotes = nbVotes;
+        this.nbVotes = nbVotes;
     }
 }

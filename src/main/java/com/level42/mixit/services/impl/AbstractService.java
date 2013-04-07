@@ -13,14 +13,14 @@ public class AbstractService {
     private Context context;
 
     public Context getContext() {
-	/*
-	 * if (context == null) { context = MixItApplication.getAppContext(); }
-	 */
-	return context;
+        /*
+         * if (context == null) { context = MixItApplication.getAppContext(); }
+         */
+        return context;
     }
 
     public String getText(Integer resId) {
-	return getContext().getText(resId).toString();
+        return getContext().getText(resId).toString();
     }
 
 }

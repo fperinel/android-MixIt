@@ -46,7 +46,7 @@ public class Talk implements Comparable<Talk> {
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -54,14 +54,14 @@ public class Talk implements Comparable<Talk> {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the title
      */
     public String getTitle() {
-	return title;
+        return title;
     }
 
     /**
@@ -69,14 +69,14 @@ public class Talk implements Comparable<Talk> {
      *            the title to set
      */
     public void setTitle(String title) {
-	this.title = title;
+        this.title = title;
     }
 
     /**
      * @return the summary
      */
     public String getSummary() {
-	return summary;
+        return summary;
     }
 
     /**
@@ -84,14 +84,14 @@ public class Talk implements Comparable<Talk> {
      *            the summary to set
      */
     public void setSummary(String summary) {
-	this.summary = summary;
+        this.summary = summary;
     }
 
     /**
      * @return the description
      */
     public String getDescription() {
-	return description;
+        return description;
     }
 
     /**
@@ -99,14 +99,14 @@ public class Talk implements Comparable<Talk> {
      *            the description to set
      */
     public void setDescription(String description) {
-	this.description = description;
+        this.description = description;
     }
 
     /**
      * @return the interests Id
      */
     public List<Integer> getInterestsId() {
-	return interestsId;
+        return interestsId;
     }
 
     /**
@@ -114,14 +114,14 @@ public class Talk implements Comparable<Talk> {
      *            the interests Id to set
      */
     public void setInterestsId(List<Integer> interestsId) {
-	this.interestsId = interestsId;
+        this.interestsId = interestsId;
     }
 
     /**
      * @return the speakers Id
      */
     public List<Integer> getSpeakersId() {
-	return speakersId;
+        return speakersId;
     }
 
     /**
@@ -129,14 +129,14 @@ public class Talk implements Comparable<Talk> {
      *            the speakers Id to set
      */
     public void setSpeakersId(List<Integer> speakersId) {
-	this.speakersId = speakersId;
+        this.speakersId = speakersId;
     }
 
     /**
      * @return the format
      */
     public String getFormat() {
-	return format;
+        return format;
     }
 
     /**
@@ -144,14 +144,14 @@ public class Talk implements Comparable<Talk> {
      *            the format to set
      */
     public void setFormat(String format) {
-	this.format = format;
+        this.format = format;
     }
 
     /**
      * @return the level
      */
     public String getLevel() {
-	return level;
+        return level;
     }
 
     /**
@@ -159,7 +159,7 @@ public class Talk implements Comparable<Talk> {
      *            the level to set
      */
     public void setLevel(String level) {
-	this.level = level;
+        this.level = level;
     }
 
     /**
@@ -167,7 +167,7 @@ public class Talk implements Comparable<Talk> {
      *            the session to set
      */
     public void setSession(Session session) {
-	this.session = session;
+        this.session = session;
     }
 
     /**
@@ -176,11 +176,11 @@ public class Talk implements Comparable<Talk> {
      * @return Date de la session du Talk
      */
     public Date getDateSession() {
-	if (this.session != null) {
-	    return this.session.getDateFormat();
-	} else {
-	    return null;
-	}
+        if (this.session != null) {
+            return this.session.getDateFormat();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -189,18 +189,18 @@ public class Talk implements Comparable<Talk> {
      * @return Salle de la session du Talk
      */
     public String getSalleSession() {
-	if (this.session != null) {
-	    return this.session.getSalle();
-	} else {
-	    return null;
-	}
+        if (this.session != null) {
+            return this.session.getSalle();
+        } else {
+            return null;
+        }
     }
 
     /**
      * @return the interests
      */
     public List<Interest> getInterests() {
-	return interests;
+        return interests;
     }
 
     /**
@@ -208,14 +208,14 @@ public class Talk implements Comparable<Talk> {
      *            the interests to set
      */
     public void setInterests(List<Interest> interests) {
-	this.interests = interests;
+        this.interests = interests;
     }
 
     /**
      * @return the speakers
      */
     public List<Speaker> getSpeakers() {
-	return speakers;
+        return speakers;
     }
 
     /**
@@ -223,24 +223,24 @@ public class Talk implements Comparable<Talk> {
      *            the speakers to set
      */
     public void setSpeakers(List<Speaker> speakers) {
-	this.speakers = speakers;
+        this.speakers = speakers;
     }
 
     public int compareTo(Talk another) {
-	if (another.getDateSession() == null) {
-	    return 1;
-	}
-	if (this.getDateSession() == null) {
-	    return -1;
-	}
-	return getDateSession().compareTo(another.getDateSession());
+        if (another.getDateSession() == null) {
+            return 1;
+        }
+        if (this.getDateSession() == null) {
+            return -1;
+        }
+        return getDateSession().compareTo(another.getDateSession());
     }
 
     /**
      * @return the start
      */
     public String getStart() {
-	return start;
+        return start;
     }
 
     /**
@@ -248,14 +248,14 @@ public class Talk implements Comparable<Talk> {
      *            the start to set
      */
     public void setStart(String start) {
-	this.start = start;
+        this.start = start;
     }
 
     /**
      * @return the end
      */
     public String getEnd() {
-	return end;
+        return end;
     }
 
     /**
@@ -263,6 +263,6 @@ public class Talk implements Comparable<Talk> {
      *            the end to set
      */
     public void setEnd(String end) {
-	this.end = end;
+        this.end = end;
     }
 }

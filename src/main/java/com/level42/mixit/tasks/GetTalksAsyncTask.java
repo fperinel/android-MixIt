@@ -13,7 +13,7 @@ import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
 public class GetTalksAsyncTask extends
-	AsyncTask<ITalkService, Integer, List<Talk>> {
+        AsyncTask<ITalkService, Integer, List<Talk>> {
 
     /**
      * Listener
@@ -24,56 +24,56 @@ public class GetTalksAsyncTask extends
 
     @Override
     protected void onPreExecute() {
-	super.onPreExecute();
+        super.onPreExecute();
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-	super.onProgressUpdate(values);
+        super.onProgressUpdate(values);
     }
 
     @Override
     protected List<Talk> doInBackground(ITalkService... params) {
-	try {
-	    ITalkService service = (ITalkService) params[0];
-	    return service.getTalks();
-	} catch (FunctionnalException e) {
-	    Log.e(Utils.LOGTAG, e.getMessage());
-	    cancelReason = e;
-	} catch (TechnicalException e) {
-	    Log.e(Utils.LOGTAG, e.getMessage());
-	    cancelReason = e;
-	}
-	this.cancel(true);
-	return null;
+        try {
+            ITalkService service = (ITalkService) params[0];
+            return service.getTalks();
+        } catch (FunctionnalException e) {
+            Log.e(Utils.LOGTAG, e.getMessage());
+            cancelReason = e;
+        } catch (TechnicalException e) {
+            Log.e(Utils.LOGTAG, e.getMessage());
+            cancelReason = e;
+        }
+        this.cancel(true);
+        return null;
     }
 
     @Override
     protected void onCancelled() {
-	super.onCancelled();
+        super.onCancelled();
 
-	if (onTaskPostExecuteListener != null && cancelReason != null) {
-	    onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
-	}
-	if (onTaskPostExecuteListener != null && cancelReason == null) {
-	    onTaskPostExecuteListener.onTaskCancelledListener();
-	}
+        if (onTaskPostExecuteListener != null && cancelReason != null) {
+            onTaskPostExecuteListener.onTaskInterruptListener(cancelReason);
+        }
+        if (onTaskPostExecuteListener != null && cancelReason == null) {
+            onTaskPostExecuteListener.onTaskCancelledListener();
+        }
     }
 
     @Override
     protected void onPostExecute(List<Talk> result) {
-	super.onPostExecute(result);
+        super.onPostExecute(result);
 
-	Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
+        Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
 
-	if (onTaskPostExecuteListener != null) {
-	    onTaskPostExecuteListener.onTaskPostExecuteListener(result);
-	}
+        if (onTaskPostExecuteListener != null) {
+            onTaskPostExecuteListener.onTaskPostExecuteListener(result);
+        }
     }
 
     public void setPostExecuteListener(
-	    OnTaskPostExecuteListener<List<Talk>> taskPostExecute) {
-	onTaskPostExecuteListener = taskPostExecute;
+            OnTaskPostExecuteListener<List<Talk>> taskPostExecute) {
+        onTaskPostExecuteListener = taskPostExecute;
     }
 
 }

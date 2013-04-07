@@ -12,10 +12,13 @@ public class FunctionnalException extends Exception {
 
     /**
      * Constructeur
-     * @param message Message d'erreur fonctionnelle
-     * @param e Exception parente
+     * 
+     * @param message
+     *            Message d'erreur fonctionnelle
+     * @param e
+     *            Exception parente
      */
     public FunctionnalException(String message, Exception e) {
-	super(message, e);
+        super(message, e);
     }
 }

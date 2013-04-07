@@ -16,7 +16,7 @@ public class Interest {
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -24,14 +24,14 @@ public class Interest {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
@@ -39,6 +39,6 @@ public class Interest {
      *            the name to set
      */
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 }

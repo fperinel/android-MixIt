@@ -28,75 +28,75 @@ public class EntityService extends AbstractService implements IEntityService {
     private IPlanningService planningService;
 
     public List<Member> getMembers() throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    List<Member> members = ws.getMembers();
-	    return members;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	}
+            TechnicalException {
+        try {
+            List<Member> members = ws.getMembers();
+            return members;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        }
     }
 
     public List<Sponsor> getSponsors() throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    List<Sponsor> sponsors = ws.getSponsors();
-	    return sponsors;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	}
+            TechnicalException {
+        try {
+            List<Sponsor> sponsors = ws.getSponsors();
+            return sponsors;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        }
     }
 
     public List<Speaker> getSpeakers() throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    List<Speaker> speakers = ws.getSpeakers();
-	    return speakers;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	}
+            TechnicalException {
+        try {
+            List<Speaker> speakers = ws.getSpeakers();
+            return speakers;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        }
     }
 
     public List<Staff> getStaffs() throws FunctionnalException,
-	    TechnicalException {
-	try {
-	    List<Staff> staffs = ws.getStaffs();
-	    return staffs;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	}
+            TechnicalException {
+        try {
+            List<Staff> staffs = ws.getStaffs();
+            return staffs;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        }
     }
 
     public Member getMember(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	return (Member) this.getEntity(id, new Member());
+            TechnicalException {
+        return (Member) this.getEntity(id, new Member());
     }
 
     public Speaker getSpeaker(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	return (Speaker) this.getEntity(id, new Speaker());
+            TechnicalException {
+        return (Speaker) this.getEntity(id, new Speaker());
     }
 
     public Staff getStaff(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	return (Staff) this.getEntity(id, new Staff());
+            TechnicalException {
+        return (Staff) this.getEntity(id, new Staff());
     }
 
     public Sponsor getSponsor(Integer id) throws FunctionnalException,
-	    TechnicalException {
-	return (Sponsor) this.getEntity(id, new Sponsor());
+            TechnicalException {
+        return (Sponsor) this.getEntity(id, new Sponsor());
     }
 
     /**
@@ -109,20 +109,20 @@ public class EntityService extends AbstractService implements IEntityService {
      * @return Entité
      */
     protected <T> Object getEntity(Integer id, T type)
-	    throws FunctionnalException, TechnicalException {
-	try {
-	    T entity = (T) ws.getEntity(id, type);
-	    return entity;
-	} catch (CommunicationException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_CommunicationException),
-		    e);
-	} catch (NotFoundException e) {
-	    e.printStackTrace();
-	    throw new TechnicalException(
-		    getText(R.string.exception_message_NotFoundException), e);
-	}
+            throws FunctionnalException, TechnicalException {
+        try {
+            T entity = (T) ws.getEntity(id, type);
+            return entity;
+        } catch (CommunicationException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+            throw new TechnicalException(
+                    getText(R.string.exception_message_NotFoundException), e);
+        }
     }
 
 }

@@ -21,7 +21,7 @@ public class Session {
      * @return the sessionId
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -29,14 +29,14 @@ public class Session {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
     /**
      * @return the salle
      */
     public String getSalle() {
-	return salle;
+        return salle;
     }
 
     /**
@@ -44,14 +44,14 @@ public class Session {
      *            the salle to set
      */
     public void setSalle(String salle) {
-	this.salle = salle;
+        this.salle = salle;
     }
 
     /**
      * @return the date
      */
     public String getDate() {
-	return date;
+        return date;
     }
 
     /**
@@ -59,23 +59,23 @@ public class Session {
      *            the date to set
      */
     public void setDate(String date) {
-	this.date = date;
+        this.date = date;
     }
 
     /**
      * @return the dateFormat
      */
     public Date getDateFormat() {
-	if (dateFormat == null) {
-	    try {
-		SimpleDateFormat formatOrigin = new SimpleDateFormat(
-			"yyyy-MM-dd HH:mm:ss");
-		dateFormat = formatOrigin.parse(this.date);
-	    } catch (ParseException e) {
-		e.printStackTrace();
-		return null;
-	    }
-	}
-	return dateFormat;
+        if (dateFormat == null) {
+            try {
+                SimpleDateFormat formatOrigin = new SimpleDateFormat(
+                        "yyyy-MM-dd HH:mm:ss");
+                dateFormat = formatOrigin.parse(this.date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return dateFormat;
     }
 }

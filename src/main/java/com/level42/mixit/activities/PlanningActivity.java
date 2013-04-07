@@ -68,110 +68,113 @@ public class PlanningActivity extends RoboActivity implements Observer {
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	talks.addObserver(this);
-	adapter = new PlanningAdapter(this.getBaseContext());
-	listPlanning.setAdapter(adapter);
+        super.onCreate(savedInstanceState);
+        talks.addObserver(this);
+        adapter = new PlanningAdapter(this.getBaseContext());
+        listPlanning.setAdapter(adapter);
 
-	listPlanning.setOnChildClickListener(new OnChildClickListener() {
-	    public boolean onChildClick(ExpandableListView parent, View v,
-		    int groupPosition, int childPosition, long id) {
-		Intent talkActivity = new Intent(PlanningActivity.this,
-			TalkActivity.class);
-		talkActivity.putExtra(TalkActivity.TALK_ID, id);
-		PlanningActivity.this.startActivity(talkActivity);
-		return true;
-	    }
-	});
+        listPlanning.setOnChildClickListener(new OnChildClickListener() {
+            public boolean onChildClick(ExpandableListView parent, View v,
+                    int groupPosition, int childPosition, long id) {
+                Intent talkActivity = new Intent(PlanningActivity.this,
+                        TalkActivity.class);
+                talkActivity.putExtra(TalkActivity.TALK_ID, id);
+                PlanningActivity.this.startActivity(talkActivity);
+                return true;
+            }
+        });
 
-	@SuppressWarnings("unchecked")
-	List<GroupedTalks> savedTalks = (List<GroupedTalks>) getLastNonConfigurationInstance();
-	if (savedTalks == null) {
-	    this.setupProgressDialog();
-	    this.refreshTalks();
-	} else {
-	    talks.setGroupedTalks(savedTalks);
-	}
+        @SuppressWarnings("unchecked")
+        List<GroupedTalks> savedTalks = (List<GroupedTalks>) getLastNonConfigurationInstance();
+        if (savedTalks == null) {
+            this.setupProgressDialog();
+            this.refreshTalks();
+        } else {
+            talks.setGroupedTalks(savedTalks);
+        }
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see android.app.Activity#onRetainNonConfigurationInstance()
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-	final List<GroupedTalks> talks = this.talks.getGroupedTalks();
-	return talks;
+        final List<GroupedTalks> talks = this.talks.getGroupedTalks();
+        return talks;
     }
 
     /*
      * (non-Javadoc)
+     * 
      * @see roboguice.activity.RoboActivity#onResume()
      */
     @Override
     protected void onResume() {
-	super.onResume();
+        super.onResume();
     }
 
     /**
      * Affiche la boite de chargement
      */
     protected void setupProgressDialog() {
-	if (progressDialog == null) {
-	    progressDialog = MessageBox
-		    .getProgressDialog(PlanningActivity.this);
-	}
+        if (progressDialog == null) {
+            progressDialog = MessageBox
+                    .getProgressDialog(PlanningActivity.this);
+        }
     }
 
     /**
      * Rafraichit la liste des sessions
      */
     protected void refreshTalks() {
-	// Préparation du service
-	getTalksAsyncService = new GetPlanningAsyncTask();
+        // Préparation du service
+        getTalksAsyncService = new GetPlanningAsyncTask();
 
-	// Ajout d'un listener pour récupérer le retour
-	getTalksAsyncService
-		.setPostExecuteListener(new OnTaskPostExecuteListener<List<GroupedTalks>>() {
-		    public void onTaskPostExecuteListener(
-			    List<GroupedTalks> result) {
-			if (result != null) {
-			    talks.setGroupedTalks(result);
-			}
-			if (progressDialog.isShowing()) {
-			    progressDialog.dismiss();
-			}
-		    }
+        // Ajout d'un listener pour récupérer le retour
+        getTalksAsyncService
+                .setPostExecuteListener(new OnTaskPostExecuteListener<List<GroupedTalks>>() {
+                    public void onTaskPostExecuteListener(
+                            List<GroupedTalks> result) {
+                        if (result != null) {
+                            talks.setGroupedTalks(result);
+                        }
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+                    }
 
-		    public void onTaskInterruptListener(Exception cancelReason) {
-			OnClickListener listener = new DialogInterface.OnClickListener() {
-			    public void onClick(DialogInterface dialog,
-				    int which) {
-				finish();
-			    }
-			};
-			MessageBox.showError(
-				getResources().getString(
-					R.string.label_dialog_error),
-				cancelReason.getMessage(), listener,
-				PlanningActivity.this);
-		    }
+                    public void onTaskInterruptListener(Exception cancelReason) {
+                        OnClickListener listener = new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                finish();
+                            }
+                        };
+                        MessageBox.showError(
+                                getResources().getString(
+                                        R.string.label_dialog_error),
+                                cancelReason.getMessage(), listener,
+                                PlanningActivity.this);
+                    }
 
-		    public void onTaskCancelledListener() {
-			MessageBox.showInformation(
-				getResources().getString(
-					R.string.label_dialog_aborted),
-				PlanningActivity.this);
-		    }
-		});
+                    public void onTaskCancelledListener() {
+                        MessageBox.showInformation(
+                                getResources().getString(
+                                        R.string.label_dialog_aborted),
+                                PlanningActivity.this);
+                    }
+                });
 
-	// Execution du service
-	Integer delay = Integer.valueOf(getString(R.string.planningDelay));
-	getTalksAsyncService.execute(planningService, delay);
+        // Execution du service
+        Integer delay = Integer.valueOf(getString(R.string.planningDelay));
+        getTalksAsyncService.execute(planningService, delay);
     }
 
     /**
@@ -184,12 +187,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
      *            Données mise à jour
      */
     public void update(Observable observable, Object data) {
-	if (observable instanceof PlanningTalk) {
-	    Log.d(Utils.LOGTAG, "Changement sur le planning");
-	    PlanningTalk planning = (PlanningTalk) observable;
-	    if (planning != null) {
-		adapter.updateTalks(planning.getGroupedTalks());
-	    }
-	}
+        if (observable instanceof PlanningTalk) {
+            Log.d(Utils.LOGTAG, "Changement sur le planning");
+            PlanningTalk planning = (PlanningTalk) observable;
+            if (planning != null) {
+                adapter.updateTalks(planning.getGroupedTalks());
+            }
+        }
     }
 }

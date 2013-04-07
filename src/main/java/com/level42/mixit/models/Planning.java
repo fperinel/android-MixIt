@@ -13,7 +13,7 @@ public class Planning {
      * @return the sessions
      */
     public List<Session> getSessions() {
-	return sessions;
+        return sessions;
     }
 
     /**
@@ -21,6 +21,6 @@ public class Planning {
      *            the sessions to set
      */
     public void setSessions(List<Session> sessions) {
-	this.sessions = sessions;
+        this.sessions = sessions;
     }
 }

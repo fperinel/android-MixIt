@@ -11,7 +11,7 @@ public class PlanningTalk extends Observable {
      * @return the groupedTalks
      */
     public List<GroupedTalks> getGroupedTalks() {
-	return groupedTalks;
+        return groupedTalks;
     }
 
     /**
@@ -19,9 +19,9 @@ public class PlanningTalk extends Observable {
      *            the groupedTalks to set
      */
     public void setGroupedTalks(List<GroupedTalks> groupedTalks) {
-	this.groupedTalks = groupedTalks;
-	setChanged();
-	notifyObservers(this);
+        this.groupedTalks = groupedTalks;
+        setChanged();
+        notifyObservers(this);
     }
 
 }

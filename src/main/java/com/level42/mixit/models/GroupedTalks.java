@@ -18,7 +18,7 @@ public class GroupedTalks {
      * @return the date
      */
     public Date getDate() {
-	return date;
+        return date;
     }
 
     /**
@@ -26,14 +26,14 @@ public class GroupedTalks {
      *            the date to set
      */
     public void setDate(Date date) {
-	this.date = date;
+        this.date = date;
     }
 
     /**
      * @return the talks
      */
     public List<Talk> getTalks() {
-	return talks;
+        return talks;
     }
 
     /**
@@ -41,14 +41,14 @@ public class GroupedTalks {
      *            the talks to set
      */
     public void setTalks(List<Talk> talks) {
-	this.talks = talks;
+        this.talks = talks;
     }
 
     /**
      * @return the id
      */
     public Integer getId() {
-	return id;
+        return id;
     }
 
     /**
@@ -56,7 +56,7 @@ public class GroupedTalks {
      *            the id to set
      */
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
 
 }
