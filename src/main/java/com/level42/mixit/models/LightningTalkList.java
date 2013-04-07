@@ -4,13 +4,18 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * Objet représentant une liste de lightning Talks Permet d'ajouter un observer
+ * Objet représentant une liste de lightning Talks
  */
 public class LightningTalkList extends Observable {
 
+    /**
+     * Liste des lightning talks
+     */
     private List<LightningTalk> talks;
 
     /**
+     * Retourne la liste des lightning talks
+     * 
      * @return the talks
      */
     public List<LightningTalk> getTalks() {
@@ -18,6 +23,8 @@ public class LightningTalkList extends Observable {
     }
 
     /**
+     * Reseigne la liste des lightning talks
+     * 
      * @param talks
      *            the talks to set
      */

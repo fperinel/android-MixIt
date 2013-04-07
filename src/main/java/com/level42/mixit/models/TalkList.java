@@ -8,9 +8,14 @@ import java.util.Observable;
  */
 public class TalkList extends Observable {
 
+    /**
+     * Liste des talks
+     */
     private List<Talk> talks;
 
     /**
+     * Retourne la liste des talks
+     * 
      * @return the talks
      */
     public List<Talk> getTalks() {
@@ -18,6 +23,8 @@ public class TalkList extends Observable {
     }
 
     /**
+     * Renseigne la liste des talks
+     * 
      * @param talks
      *            the talks to set
      */

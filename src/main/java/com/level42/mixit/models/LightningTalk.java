@@ -8,9 +8,14 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LightningTalk extends Talk {
 
+    /**
+     * Nombre de vote
+     */
     private Integer nbVotes;
 
     /**
+     * Retourne le nombre de vote
+     * 
      * @return the nbVotes
      */
     public Integer getNbVotes() {
@@ -18,6 +23,8 @@ public class LightningTalk extends Talk {
     }
 
     /**
+     * Renseigne le nombre de vote
+     * 
      * @param nbVotes
      *            the nbVotes to set
      */

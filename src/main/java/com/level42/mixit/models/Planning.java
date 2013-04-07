@@ -7,9 +7,14 @@ import java.util.List;
  */
 public class Planning {
 
+    /**
+     * Liste des sessions
+     */
     private List<Session> sessions;
 
     /**
+     * Retourne la liste des sessions
+     * 
      * @return the sessions
      */
     public List<Session> getSessions() {
@@ -17,6 +22,8 @@ public class Planning {
     }
 
     /**
+     * Renseigne la liste des sessions
+     * 
      * @param sessions
      *            the sessions to set
      */
