@@ -13,6 +13,9 @@ import com.level42.mixit.R;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Adapter pour la liste des lightning talks
+ */
 public class TalksAdapter extends BaseAdapter {
 
     /**
@@ -20,25 +23,40 @@ public class TalksAdapter extends BaseAdapter {
      */
     private List<Talk> talks = Collections.emptyList();
 
+    /**
+     * Contexte de l'activité appelante
+     */
     private Context context;
 
     /**
-     * Constructeur de l'adaptateur
+     * Constructeur
      * 
-     * @param lives
+     * @param context Contexte de l'activité
      */
     public TalksAdapter(Context context) {
         this.context = context;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.Adapter#getCount()
+     */
     public int getCount() {
         return (talks != null ? talks.size() : 0);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.Adapter#getItem(int)
+     */
     public Talk getItem(int arg0) {
         return talks.get(arg0);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.Adapter#getItemId(int)
+     */
     public long getItemId(int arg0) {
         Talk talk = (Talk) this.getItem(arg0);
         if (talk != null) {
@@ -46,13 +64,22 @@ public class TalksAdapter extends BaseAdapter {
         }
         return -1;
     }
-
+    
+    /**
+     * Mise à jour des talks
+     * 
+     * @param talks
+     */
     public void updateTalks(List<Talk> talks) {
         Utils.checkOnMainThread();
         this.talks = talks;
         notifyDataSetChanged();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
 
         TextView txtTalkTitre;

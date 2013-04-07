@@ -17,6 +17,9 @@ import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Adapter pour le planning
+ */
 public class PlanningAdapter extends BaseExpandableListAdapter {
 
     /**
@@ -24,6 +27,9 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      */
     private List<GroupedTalks> talks = Collections.emptyList();
 
+    /**
+     * Contexte de l'activité parente
+     */
     private Context context;
 
     /**
@@ -35,44 +41,85 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
         this.context = context;
     }
 
+    /**
+     * Mise à jour des talks
+     * 
+     * @param talks
+     */
     public void updateTalks(List<GroupedTalks> talks) {
         Utils.checkOnMainThread();
         this.talks = talks;
         notifyDataSetChanged();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getChild(int, int)
+     */
     public Talk getChild(int groupPosition, int childPosition) {
         return talks.get(groupPosition).getTalks().get(childPosition);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getChildId(int, int)
+     */
     public long getChildId(int groupPosition, int childPosition) {
         return talks.get(groupPosition).getTalks().get(childPosition).getId();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getChildrenCount(int)
+     */
     public int getChildrenCount(int groupPosition) {
         return talks.get(groupPosition).getTalks().size();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getGroup(int)
+     */
     public GroupedTalks getGroup(int groupPosition) {
         return talks.get(groupPosition);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getGroupCount()
+     */
     public int getGroupCount() {
         return talks.size();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getGroupId(int)
+     */
     public long getGroupId(int groupPosition) {
         return talks.get(groupPosition).getId();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#hasStableIds()
+     */
     public boolean hasStableIds() {
         return true;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#isChildSelectable(int, int)
+     */
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getGroupView(int, boolean, android.view.View, android.view.ViewGroup)
+     */
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
 
@@ -97,6 +144,10 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.widget.ExpandableListAdapter#getChildView(int, int, boolean, android.view.View, android.view.ViewGroup)
+     */
     public View getChildView(int groupPosition, int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
 
