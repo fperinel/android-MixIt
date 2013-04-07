@@ -10,6 +10,9 @@ import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Tâche asynchrone pour la collecte des informations d'un lightning talk
+ */
 public class GetLightningTalkAsyncTask extends
         AsyncTask<Object, Integer, LightningTalk> {
 
@@ -18,18 +21,36 @@ public class GetLightningTalkAsyncTask extends
      */
     private OnTaskPostExecuteListener<LightningTalk> onTaskPostExecuteListener = null;
 
+    /**
+     * Raison de l'interuption
+     */
     private Exception cancelReason;
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPreExecute()
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+     */
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#doInBackground(Params[])
+     */
     @Override
     protected LightningTalk doInBackground(Object... params) {
         try {
@@ -47,6 +68,11 @@ public class GetLightningTalkAsyncTask extends
         return null;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onCancelled()
+     */
     @Override
     protected void onCancelled() {
         super.onCancelled();
@@ -59,6 +85,11 @@ public class GetLightningTalkAsyncTask extends
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     */
     @Override
     protected void onPostExecute(LightningTalk result) {
         super.onPostExecute(result);
@@ -71,6 +102,12 @@ public class GetLightningTalkAsyncTask extends
         }
     }
 
+    /**
+     * Permet de renseigner un listener
+     * 
+     * @param taskPostExecute
+     *            Listener de la tâche
+     */
     public void setPostExecuteListener(
             OnTaskPostExecuteListener<LightningTalk> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;

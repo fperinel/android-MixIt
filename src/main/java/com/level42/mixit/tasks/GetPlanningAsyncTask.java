@@ -12,6 +12,9 @@ import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Tâche asynchrone pour la collecte des informations des sessions
+ */
 public class GetPlanningAsyncTask extends
         AsyncTask<Object, Integer, List<GroupedTalks>> {
 
@@ -20,18 +23,36 @@ public class GetPlanningAsyncTask extends
      */
     private OnTaskPostExecuteListener<List<GroupedTalks>> onTaskPostExecuteListener = null;
 
+    /**
+     * Raison de l'interuption
+     */
     private Exception cancelReason;
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPreExecute()
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+     */
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#doInBackground(Params[])
+     */
     @Override
     protected List<GroupedTalks> doInBackground(Object... params) {
         try {
@@ -49,6 +70,11 @@ public class GetPlanningAsyncTask extends
         return null;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onCancelled()
+     */
     @Override
     protected void onCancelled() {
         super.onCancelled();
@@ -61,6 +87,11 @@ public class GetPlanningAsyncTask extends
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     */
     @Override
     protected void onPostExecute(List<GroupedTalks> result) {
         super.onPostExecute(result);
@@ -72,6 +103,12 @@ public class GetPlanningAsyncTask extends
         }
     }
 
+    /**
+     * Permet de renseigner un listener
+     * 
+     * @param taskPostExecute
+     *            Listener de la tâche
+     */
     public void setPostExecuteListener(
             OnTaskPostExecuteListener<List<GroupedTalks>> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;

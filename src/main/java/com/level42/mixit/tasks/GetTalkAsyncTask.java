@@ -10,6 +10,9 @@ import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Tâche asynchrone pour la collecte des informations d'un talk
+ */
 public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
 
     /**
@@ -17,18 +20,36 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
      */
     private OnTaskPostExecuteListener<Talk> onTaskPostExecuteListener = null;
 
+    /**
+     * Raison de l'interuption
+     */
     private Exception cancelReason;
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPreExecute()
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+     */
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#doInBackground(Params[])
+     */
     @Override
     protected Talk doInBackground(Object... params) {
         try {
@@ -46,6 +67,11 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
         return null;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onCancelled()
+     */
     @Override
     protected void onCancelled() {
         super.onCancelled();
@@ -58,6 +84,11 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     */
     @Override
     protected void onPostExecute(Talk result) {
         super.onPostExecute(result);
@@ -69,6 +100,12 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
         }
     }
 
+    /**
+     * Permet de renseigner un listener
+     * 
+     * @param taskPostExecute
+     *            Listener de la tâche
+     */
     public void setPostExecuteListener(
             OnTaskPostExecuteListener<Talk> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;
