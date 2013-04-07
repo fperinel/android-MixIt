@@ -41,11 +41,8 @@ public class Utils {
      * Contrôle si le thread courant est le thread principal
      */
     public static void checkOnMainThread() {
-        if (BuildConfig.DEBUG) {
-            if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-                throw new IllegalStateException(
-                        "This method should be called from the Main Thread");
-            }
+        if (BuildConfig.DEBUG && Thread.currentThread() != Looper.getMainLooper().getThread()) {
+            throw new IllegalStateException("This method should be called from the Main Thread");
         }
     }
 
