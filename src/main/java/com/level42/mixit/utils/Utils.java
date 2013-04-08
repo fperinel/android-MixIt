@@ -23,7 +23,7 @@ public class Utils {
     public final static String logTag = "[MIXIT]";
 
     /**
-     * On masque le constructeur par défaut
+     * On masque le constructeur par défaut.
      */
     private Utils() {
     }
@@ -43,7 +43,7 @@ public class Utils {
      * @return Bitmap
      * @throws TechnicalException
      */
-    public static Bitmap loadBitmap(String imageUrl) throws TechnicalException {
+    public static Bitmap loadBitmap(final String imageUrl) throws TechnicalException {
         try {
             return BitmapFactory.decodeStream((InputStream) new URL(imageUrl)
                     .getContent());

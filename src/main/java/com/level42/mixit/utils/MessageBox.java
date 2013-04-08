@@ -14,7 +14,7 @@ import com.level42.mixit.R;
 public class MessageBox {
 
     /**
-     * On masque le constructeur par défaut
+     * On masque le constructeur par défaut.
      */
     private MessageBox() {
     }
@@ -31,8 +31,8 @@ public class MessageBox {
      * @param context
      *            Contexte parent du dialog
      */
-    public static void showError(String title, String message,
-            OnClickListener validationListener, Context context) {
+    public static void showError(final String title, final String message,
+            final OnClickListener validationListener, final Context context) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
@@ -48,18 +48,17 @@ public class MessageBox {
      * @param message Message
      * @param context Contexte parent du dialog
      */
-    public static void showInformation(String message, Context context) {
+    public static void showInformation(final String message, final Context context) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
     /**
      * Construit et affiche une boite de dialog de type "Information".
      *
-     * @param message Message
      * @param context Contexte parent du dialog
      */
-    public static ProgressDialog getProgressDialog(Context context) {
+    public static ProgressDialog getProgressDialog(final Context context) {
         return ProgressDialog.show(context, null,
-                context.getString(R.string.loading_message_talks), false, true);
+                context.getString(R.string.loading_message), false, true);
     }
 }
