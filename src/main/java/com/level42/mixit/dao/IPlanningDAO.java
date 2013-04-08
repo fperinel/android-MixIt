@@ -10,8 +10,9 @@ public interface IPlanningDAO {
 
     /**
      * Méthode retournant le planning des sessions.
+     *
      * @return Planning
      * @throws DataAccessException
      */
-    public Planning getPlanning() throws DataAccessException;
+    Planning getPlanning() throws DataAccessException;
 }

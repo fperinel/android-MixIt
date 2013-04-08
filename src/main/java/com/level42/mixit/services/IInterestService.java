@@ -17,7 +17,7 @@ public interface IInterestService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<Interest> getInterests() throws FunctionnalException,
+    List<Interest> getInterests() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -26,6 +26,6 @@ public interface IInterestService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public Interest getInterest(Integer id) throws FunctionnalException,
+    Interest getInterest(Integer id) throws FunctionnalException,
             TechnicalException;
 }

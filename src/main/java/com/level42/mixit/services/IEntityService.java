@@ -20,7 +20,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<Member> getMembers() throws FunctionnalException,
+    List<Member> getMembers() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -29,7 +29,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<Sponsor> getSponsors() throws FunctionnalException,
+    List<Sponsor> getSponsors() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -38,7 +38,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<Speaker> getSpeakers() throws FunctionnalException,
+    List<Speaker> getSpeakers() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -47,7 +47,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<Staff> getStaffs() throws FunctionnalException,
+    List<Staff> getStaffs() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -56,7 +56,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public Member getMember(Integer id) throws FunctionnalException,
+    Member getMember(Integer id) throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -65,7 +65,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public Speaker getSpeaker(Integer id) throws FunctionnalException,
+    Speaker getSpeaker(Integer id) throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -74,7 +74,7 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public Staff getStaff(Integer id) throws FunctionnalException,
+    Staff getStaff(Integer id) throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -83,6 +83,6 @@ public interface IEntityService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public Sponsor getSponsor(Integer id) throws FunctionnalException,
+    Sponsor getSponsor(Integer id) throws FunctionnalException,
             TechnicalException;
 }

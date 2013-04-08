@@ -17,7 +17,7 @@ public interface ILightningTalkService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public List<LightningTalk> getLightningTalks() throws FunctionnalException,
+    List<LightningTalk> getLightningTalks() throws FunctionnalException,
             TechnicalException;
 
     /**
@@ -26,6 +26,6 @@ public interface ILightningTalkService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    public LightningTalk getLightningTalk(Integer id)
+    LightningTalk getLightningTalk(Integer id)
             throws FunctionnalException, TechnicalException;
 }
