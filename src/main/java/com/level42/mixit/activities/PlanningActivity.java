@@ -104,17 +104,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        final List<GroupedTalks> talks = this.talks.getGroupedTalks();
-        return talks;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see roboguice.activity.RoboActivity#onResume()
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
+        return this.talks.getGroupedTalks();
     }
 
     /**

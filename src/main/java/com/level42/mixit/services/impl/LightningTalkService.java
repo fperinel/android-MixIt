@@ -23,7 +23,7 @@ public class LightningTalkService extends TalkService implements
     public List<LightningTalk> getLightningTalks() throws FunctionnalException,
             TechnicalException {
         try {
-            return ws.getLightningTalks();
+            return getWs().getLightningTalks();
         } catch (CommunicationException e) {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
@@ -38,7 +38,7 @@ public class LightningTalkService extends TalkService implements
     public LightningTalk getLightningTalk(Integer id)
             throws FunctionnalException, TechnicalException {
         try {
-            LightningTalk lTalk = ws.getLightningTalk(id);
+            LightningTalk lTalk = getWs().getLightningTalk(id);
             this.hydrateTalkInterests(lTalk);
             this.hydrateTalkSpeakers(lTalk);
             return lTalk;

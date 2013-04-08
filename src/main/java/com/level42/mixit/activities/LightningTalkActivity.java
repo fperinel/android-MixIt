@@ -110,17 +110,7 @@ public class LightningTalkActivity extends RoboActivity {
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        final LightningTalk talk = this.talk;
-        return talk;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see roboguice.activity.RoboActivity#onResume()
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
+        return this.talk;
     }
 
     /**

@@ -104,17 +104,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        final List<LightningTalk> talks = this.talks.getTalks();
-        return talks;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see roboguice.activity.RoboActivity#onResume()
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
+        return this.talks.getTalks();
     }
 
     /**

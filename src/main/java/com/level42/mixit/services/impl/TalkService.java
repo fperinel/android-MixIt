@@ -33,35 +33,83 @@ public class TalkService extends AbstractService implements ITalkService {
      * Interface vers les webservices.
      */
     @Inject
-    protected IWebServices ws;
+    private IWebServices ws;
 
     /**
      * Interface vers le service de gestion des plannings.
      */
     @Inject
-    protected IPlanningService planningService;
+    private IPlanningService planningService;
     
     /**
      * Interface vers le service de gestion des entités.
      */
     @Inject
-    protected IEntityService entityService;
+    private IEntityService entityService;
 
     /**
      * Interface vers le service de gestion des centres d'intérêts.
      */
     @Inject
-    protected IInterestService interestService;
+    private IInterestService interestService;
 
     /**
      * Liste des speakers indéxés par identifiant.
      */
-    protected Map<Integer, Speaker> speakers;
+    private Map<Integer, Speaker> idxSpeakers;
 
     /**
      * Interface vers le service de gestion des centres d'intérêts.
      */
-    protected Map<Integer, Interest> interests;
+    private Map<Integer, Interest> idxInterests;
+
+    /**
+     * Retourne l'interface Webservice
+     * @return the ws
+     */
+    public IWebServices getWs() {
+        return ws;
+    }
+
+    /**
+     * Reoturne le service de gestion du planning
+     * @return the planningService
+     */
+    public IPlanningService getPlanningService() {
+        return planningService;
+    }
+
+    /**
+     * Retourne le service de gestion des entités
+     * @return the entityService
+     */
+    public IEntityService getEntityService() {
+        return entityService;
+    }
+
+    /**
+     * Retourne le service de gestion des centres d'intérêts
+     * @return the interestService
+     */
+    public IInterestService getInterestService() {
+        return interestService;
+    }
+
+    /**
+     * Retourne la liste indexées des speakers
+     * @return the speakers
+     */
+    public Map<Integer, Speaker> getIdxSpeakers() {
+        return idxSpeakers;
+    }
+
+    /**
+     * Retourne la liste indexées des centre d'intérêts
+     * @return the interests
+     */
+    public Map<Integer, Interest> getIdxInterests() {
+        return idxInterests;
+    }
 
     /*
      * (non-Javadoc)
@@ -170,15 +218,15 @@ public class TalkService extends AbstractService implements ITalkService {
      */
     protected Speaker getSpeakerById(Integer id) throws FunctionnalException,
             TechnicalException {
-        if (speakers == null) {
-            speakers = new HashMap<Integer, Speaker>();
+        if (idxSpeakers == null) {
+            idxSpeakers = new HashMap<Integer, Speaker>();
             // Ajoute les speakers
             List<Speaker> allSpeakers = entityService.getSpeakers();
             for (Speaker spk : allSpeakers) {
-                speakers.put(spk.getId(), spk);
+                idxSpeakers.put(spk.getId(), spk);
             }
         }
-        return speakers.get(id);
+        return idxSpeakers.get(id);
     }
 
     /**
@@ -190,15 +238,15 @@ public class TalkService extends AbstractService implements ITalkService {
      */
     protected Interest getInterestById(Integer id) throws FunctionnalException,
             TechnicalException {
-        if (interests == null) {
-            interests = new HashMap<Integer, Interest>();
+        if (idxInterests == null) {
+            idxInterests = new HashMap<Integer, Interest>();
             // Ajoute les speakers
             List<Interest> allInterests = interestService.getInterests();
             for (Interest interest : allInterests) {
-                interests.put(interest.getId(), interest);
+                idxInterests.put(interest.getId(), interest);
             }
         }
-        return interests.get(id);
+        return idxInterests.get(id);
     }
 
 }
