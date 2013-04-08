@@ -6,17 +6,14 @@ package com.level42.mixit.exceptions;
 public class FunctionnalException extends Exception {
 
     /**
-     * Serial de l'objet
+     * Serial de l'objet.
      */
     private static final long serialVersionUID = -393040476228798643L;
 
     /**
-     * Constructeur
-     * 
-     * @param message
-     *            Message d'erreur fonctionnelle
-     * @param e
-     *            Exception parente
+     * Constructeur.
+     * @param message Message d'erreur fonctionnelle
+     * @param e Exception parente
      */
     public FunctionnalException(String message, Exception e) {
         super(message, e);

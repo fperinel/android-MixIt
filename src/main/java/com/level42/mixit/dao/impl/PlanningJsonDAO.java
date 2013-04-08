@@ -18,19 +18,19 @@ import com.level42.mixit.models.Planning;
 import com.level42.mixit.models.Session;
 
 /**
- * Interface de manipulation des Talks de MixIT
+ * Interface de manipulation des Talks de MixIT.
  */
 public class PlanningJsonDAO extends DefaultHandler implements IPlanningDAO {
 
     /**
-     * Source de données des sessions (salle/heure => id du talk) Ces
-     * informations ne sont pas fournies par le WS (pour le moment)
+     * Source de données des sessions (salle/heure => id du talk).
+     * Ces informations ne sont pas fournies par le WS (pour le moment)
      */
     @InjectResource(R.string.planning_json)
     private String planningJson;
 
     /**
-     * Objet planning
+     * Objet planning.
      */
     private Planning planning;
 

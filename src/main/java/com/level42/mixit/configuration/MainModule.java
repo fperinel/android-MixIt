@@ -18,7 +18,7 @@ import com.level42.mixit.webservices.IWebServices;
 import com.level42.mixit.webservices.impl.WebServices;
 
 /**
- * Classe de gestion des injections
+ * Classe de gestion des injections.
  */
 public class MainModule extends AbstractModule {
 
