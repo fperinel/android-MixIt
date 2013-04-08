@@ -27,24 +27,6 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
 
     /*
      * (non-Javadoc)
-     * @see android.os.AsyncTask#onPreExecute()
-     */
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see android.os.AsyncTask#onProgressUpdate(Progress[])
-     */
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
-    }
-
-    /*
-     * (non-Javadoc)
      * @see android.os.AsyncTask#doInBackground(Params[])
      */
     @Override

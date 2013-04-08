@@ -35,7 +35,6 @@ public class EntityService extends AbstractService implements IEntityService {
         try {
             return ws.getMembers();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
@@ -51,7 +50,6 @@ public class EntityService extends AbstractService implements IEntityService {
         try {
             return ws.getSponsors();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
@@ -67,7 +65,6 @@ public class EntityService extends AbstractService implements IEntityService {
         try {
             return ws.getSpeakers();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
@@ -83,7 +80,6 @@ public class EntityService extends AbstractService implements IEntityService {
         try {
             return ws.getStaffs();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);

@@ -48,13 +48,10 @@ public class PlanningJsonDAO extends DefaultHandler implements IPlanningDAO {
                 planning = new Planning();
                 planning.setSessions(sessions);
             } catch (JsonParseException e) {
-                e.printStackTrace();
                 throw new DataAccessException(e);
             } catch (JsonMappingException e) {
-                e.printStackTrace();
                 throw new DataAccessException(e);
             } catch (IOException e) {
-                e.printStackTrace();
                 throw new DataAccessException(e);
             }
         }
