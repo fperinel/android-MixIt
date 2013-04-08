@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.level42.mixit.R;
 
 /**
- * Ecran principal affichant les onglets de navigation
+ * Ecran principal affichant les onglets de navigation.
  */
 @ContentView(R.layout.activity_activite)
 public class ActiviteActivity extends RoboTabActivity {

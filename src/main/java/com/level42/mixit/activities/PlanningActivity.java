@@ -29,40 +29,40 @@ import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Activité d'affichage du planning de l'événément MixIt
+ * Activité d'affichage du planning de l'événément MixIt.
  */
 @ContentView(R.layout.activity_planning)
 public class PlanningActivity extends RoboActivity implements Observer {
 
     /**
-     * Contrôle : Liste des sessions
+     * Contrôle : Liste des sessions.
      */
     @InjectView(R.id.expandableListPlanning)
     private ExpandableListView listPlanning;
 
     /**
-     * Interface vers le service de gestion du planning
+     * Interface vers le service de gestion du planning.
      */
     @Inject
     private IPlanningService planningService;
 
     /**
-     * Tâche asynchrone pour collecter les informations du planning
+     * Tâche asynchrone pour collecter les informations du planning.
      */
     private GetPlanningAsyncTask getTalksAsyncService;
 
     /**
-     * Liste des talkls de l'activité
+     * Liste des talkls de l'activité.
      */
     private PlanningTalk talks = new PlanningTalk();
 
     /**
-     * Boite d'attente de chargement
+     * Boite d'attente de chargement.
      */
     private ProgressDialog progressDialog;
 
     /**
-     * Adapter de la liste des talks
+     * Adapter de la liste des talks.
      */
     private PlanningAdapter adapter;
 
@@ -118,7 +118,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Affiche la boite de chargement
+     * Affiche la boite de chargement.
      */
     protected void setupProgressDialog() {
         if (progressDialog == null) {
@@ -128,7 +128,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Rafraichit la liste des sessions
+     * Rafraichit la liste des sessions.
      */
     protected void refreshTalks() {
         // Préparation du service
@@ -175,13 +175,9 @@ public class PlanningActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis
-     * à jour
-     * 
-     * @param observable
-     *            Objet mis à jour
-     * @param data
-     *            Données mise à jour
+     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis à jour.
+     * @param observable Objet mis à jour
+     * @param data Données mise à jour
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof PlanningTalk) {

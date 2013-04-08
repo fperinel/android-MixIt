@@ -29,40 +29,40 @@ import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Activité de listage des talks
+ * Activité de listage des talks.
  */
 @ContentView(R.layout.activity_talk_list)
 public class TalkListActivity extends RoboActivity implements Observer {
 
     /**
-     * Contrôle : Liste des talks
+     * Contrôle : Liste des talks.
      */
     @InjectView(R.id.listTalks)
     private ListView listTalks;
 
     /**
-     * Interface vers le service de gestion des talks
+     * Interface vers le service de gestion des talks.
      */
     @Inject
     private ITalkService talkService;
 
     /**
-     * Tâche asynchrone pour collecter la liste des talks
+     * Tâche asynchrone pour collecter la liste des talks.
      */
     private GetTalksAsyncTask getTalksAsyncService;
 
     /**
-     * Liste des talks de l'activité
+     * Liste des talks de l'activité.
      */
     private TalkList talks = new TalkList();
 
     /**
-     * Boite d'attente de chargement
+     * Boite d'attente de chargement.
      */
     private ProgressDialog progressDialog;
 
     /**
-     * Adapter de la liste des talks
+     * Adapter de la liste des talks.
      */
     private TalksAdapter adapter;
 
@@ -117,7 +117,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Affiche la boite de chargement
+     * Affiche la boite de chargement.
      */
     protected void setupProgressDialog() {
         if (progressDialog == null) {
@@ -127,7 +127,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Rafraichit la liste des talks
+     * Rafraichit la liste des talks.
      */
     protected void refreshTalks() {
         // Préparation du service
@@ -172,13 +172,9 @@ public class TalkListActivity extends RoboActivity implements Observer {
     }
 
     /**
-     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis
-     * à jour
-     * 
-     * @param observable
-     *            Objet mis à jour
-     * @param data
-     *            Données mise à jour
+     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis à jour.
+     * @param observable Objet mis à jour
+     * @param data Données mise à jour
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof TalkList) {

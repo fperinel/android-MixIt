@@ -29,40 +29,40 @@ import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Activité de listage des lightning talks
+ * Activité de listage des lightning talks.
  */
 @ContentView(R.layout.activity_lightningtalk_list)
 public class LightningTalkListActivity extends RoboActivity implements Observer {
 
     /**
-     * Contrôle : Liste des talks
+     * Contrôle : Liste des talks.
      */
     @InjectView(R.id.listLightningTalks)
     private ListView listTalks;
 
     /**
-     * Interface vers le service de gestion des lightning talk
+     * Interface vers le service de gestion des lightning talk.
      */
     @Inject
     private ILightningTalkService talkService;
 
     /**
-     * Tâche asynchrone pour collecter la liste des talks
+     * Tâche asynchrone pour collecter la liste des talks.
      */
     private GetLightningTalksAsyncTask getLightningTalksAsyncService;
 
     /**
-     * Liste des talks de l'activité
+     * Liste des talks de l'activité.
      */
     private LightningTalkList talks = new LightningTalkList();
 
     /**
-     * Boite d'attente de chargement
+     * Boite d'attente de chargement.
      */
     private ProgressDialog progressDialog;
 
     /**
-     * Adapter de la liste des talks
+     * Adapter de la liste des talks.
      */
     private LightningTalksAdapter adapter;
 
@@ -128,7 +128,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     }
 
     /**
-     * Rafraichit la liste des talks
+     * Rafraichit la liste des talks.
      */
     protected void refreshTalks() {
         // Préparation du service
@@ -174,13 +174,9 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     }
 
     /**
-     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis
-     * à jour
-     * 
-     * @param observable
-     *            Objet mis à jour
-     * @param data
-     *            Données mise à jour
+     * Méthode appelée lorsqu'un objet sur lequel l'activité est abonnée est mis à jour.
+     * @param observable Objet mis à jour
+     * @param data Données mise à jour
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof LightningTalkList) {

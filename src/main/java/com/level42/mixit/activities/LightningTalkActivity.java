@@ -25,64 +25,64 @@ import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Ecran de détail d'un lightning talk
+ * Ecran de détail d'un lightning talk.
  */
 @ContentView(R.layout.activity_talk)
 public class LightningTalkActivity extends RoboActivity {
 
     /**
-     * Identifiant du talk passé en paramètre de l'activité
+     * Identifiant du talk passé en paramètre de l'activité.
      */
     public static final String TALK_ID = "TALK_ID";
 
     /**
-     * Interface vers le service de gestion des lightning talk
+     * Interface vers le service de gestion des lightning talk.
      */
     @Inject
     private ILightningTalkService talkService;
 
     /**
-     * Contrôle : Titre du talk
+     * Contrôle : Titre du talk.
      */
     @InjectView(R.id.talk_textTitre)
     private TextView titreTalk;
 
     /**
-     * Contrôle : Contenu du talk
+     * Contrôle : Contenu du talk.
      */
     @InjectView(R.id.talk_textContenu)
     private TextView contenuTalk;
 
     /**
-     * Contrôle : Centre d'intérêts du talk
+     * Contrôle : Centre d'intérêts du talk.
      */
     @InjectView(R.id.talk_layout_interests)
     private LinearLayout interestsLayoutTalk;
 
     /**
-     * Contrôle : Nombre de vote du talk
+     * Contrôle : Nombre de vote du talk.
      */
     @InjectView(R.id.talk_textVotes)
     private TextView votesTalk;
 
     /**
-     * Contrôle : Liste des speakers du talk
+     * Contrôle : Liste des speakers du talk.
      */
     @InjectView(R.id.talk_speakers)
     private LinearLayout speakersTalk;
 
     /**
-     * Tâche asynchrone pour collecter les informations du talk
+     * Tâche asynchrone pour collecter les informations du talk.
      */
     private GetLightningTalkAsyncTask getTalkAsyncService;
 
     /**
-     * Liste des talks de l'activité
+     * Liste des talks de l'activité.
      */
     private LightningTalk talk = new LightningTalk();
 
     /**
-     * Boite d'attente de chargement
+     * Boite d'attente de chargement.
      */
     private ProgressDialog progressDialog;
 
@@ -124,7 +124,7 @@ public class LightningTalkActivity extends RoboActivity {
     }
 
     /**
-     * Affiche la boite de chargement
+     * Affiche la boite de chargement.
      */
     protected void setupProgressDialog() {
         if (progressDialog == null) {
@@ -134,7 +134,7 @@ public class LightningTalkActivity extends RoboActivity {
     }
 
     /**
-     * Rafraichit la liste des talks
+     * Rafraichit la liste des talks.
      */
     protected void loadTalk() {
         // Préparation du service
@@ -183,10 +183,8 @@ public class LightningTalkActivity extends RoboActivity {
     }
 
     /**
-     * Gère le rendu du talk dans le template
-     * 
-     * @param talk
-     *            Talk à afficher
+     * Gère le rendu du talk dans le template.
+     * @param talk Talk à afficher
      */
     protected void displayTalk(LightningTalk talk) {
         Resources res = getResources();

@@ -26,71 +26,71 @@ import com.level42.mixit.tasks.GetTalkAsyncTask;
 import com.level42.mixit.utils.MessageBox;
 
 /**
- * Ecran de détail d'un talk
+ * Ecran de détail d'un talk.
  */
 @ContentView(R.layout.activity_talk)
 public class TalkActivity extends RoboActivity {
 
     /**
-     * Identifiant du talk passé en paramètre de l'activité
+     * Identifiant du talk passé en paramètre de l'activité.
      */
     public static final String TALK_ID = "TALK_ID";
 
     /**
-     * Interface vers le service de gestion des talks
+     * Interface vers le service de gestion des talks.
      */
     @Inject
     private ITalkService talkService;
 
     /**
-     * Contrôle : Titre du talk
+     * Contrôle : Titre du talk.
      */
     @InjectView(R.id.talk_textTitre)
     private TextView titreTalk;
 
     /**
-     * Contrôle : Contenu du talk
+     * Contrôle : Contenu du talk.
      */
     @InjectView(R.id.talk_textContenu)
     private TextView contenuTalk;
 
     /**
-     * Contrôle : Centre d'intérêts du talk
+     * Contrôle : Centre d'intérêts du talk.
      */
     @InjectView(R.id.talk_layout_interests)
     private LinearLayout interestsLayoutTalk;
 
     /**
-     * Contrôle : Date du talk
+     * Contrôle : Date du talk.
      */
     @InjectView(R.id.talk_textDate)
     private TextView dateTalk;
 
     /**
-     * Contrôle : Salle du talk
+     * Contrôle : Salle du talk.
      */
     @InjectView(R.id.talk_textSalle)
     private TextView salleTalk;
 
     /**
-     * Contrôle : Niveau du talk
+     * Contrôle : Niveau du talk.
      */
     @InjectView(R.id.talk_textNiveau)
     private TextView niveauTalk;
 
     /**
-     * Contrôle : Liste des speakers du talk
+     * Contrôle : Liste des speakers du talk.
      */
     @InjectView(R.id.talk_speakers)
     private LinearLayout speakersLayoutTalk;
 
     /**
-     * Liste des talkls de l'activité
+     * Liste des talkls de l'activité.
      */
     private Talk talk = new Talk();
 
     /**
-     * Boite d'attente de chargement
+     * Boite d'attente de chargement.
      */
     private ProgressDialog progressDialog;
 
@@ -132,7 +132,7 @@ public class TalkActivity extends RoboActivity {
     }
 
     /**
-     * Affiche la boite de chargement
+     * Affiche la boite de chargement.
      */
     protected void setupProgressDialog() {
         if (progressDialog == null) {
@@ -141,7 +141,7 @@ public class TalkActivity extends RoboActivity {
     }
 
     /**
-     * Rafraichit la liste des talks
+     * Rafraichit la liste des talks.
      */
     protected void loadTalk() {
 
@@ -190,10 +190,8 @@ public class TalkActivity extends RoboActivity {
     }
 
     /**
-     * Gère le rendu du talk dans le template
-     * 
-     * @param talk
-     *            Talk a afficher
+     * Gère le rendu du talk dans le template.
+     * @param talk Talk a afficher
      */
     protected void displayTalk(Talk talk) {
 

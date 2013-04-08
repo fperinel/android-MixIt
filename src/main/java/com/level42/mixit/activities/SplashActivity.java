@@ -10,7 +10,7 @@ import android.os.Looper;
 import com.level42.mixit.R;
 
 /**
- * Activité de lancement de l'application (Splash Screen)
+ * Activité de lancement de l'application (Splash Screen).
  */
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboSplashActivity {

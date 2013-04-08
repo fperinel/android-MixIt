@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.level42.mixit.R;
 
 /**
- * Ecran d'adresse
+ * Ecran d'adresse.
  */
 @ContentView(R.layout.activity_adresse)
 public class AdresseActivity extends RoboActivity {
