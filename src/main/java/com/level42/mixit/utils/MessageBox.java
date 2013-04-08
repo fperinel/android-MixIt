@@ -9,13 +9,12 @@ import android.widget.Toast;
 import com.level42.mixit.R;
 
 /**
- * Classe utilitaire pour les boites de dialog
+ * Classe utilitaire pour les boites de dialog.
  */
 public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Erreur".
-     * 
      * @param title
      *            Titre de la boite
      * @param message
@@ -38,7 +37,6 @@ public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Confirmation".
-     * 
      * @param title
      *            Titre de la boite
      * @param message
@@ -66,7 +64,6 @@ public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Information".
-     * 
      * @param message
      *            Message
      * @param context
@@ -78,7 +75,6 @@ public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Information".
-     * 
      * @param message
      *            Message
      * @param context

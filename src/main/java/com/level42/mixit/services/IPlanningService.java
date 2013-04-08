@@ -8,15 +8,13 @@ import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Session;
 
 /**
- * Interface de manipulation des planning de MixIT
+ * Interface de manipulation des planning de MixIT.
  */
 public interface IPlanningService {
 
     /**
-     * Méthode retournant la date, la salle d'une session de talk
-     * 
+     * Méthode retournant la date, la salle d'une session de talk.
      * @return Date et salle d'une session de talk
-     * 
      * @throws TechnicalException
      * @throws FunctionnalException
      */
@@ -24,13 +22,9 @@ public interface IPlanningService {
             throws FunctionnalException, TechnicalException;
 
     /**
-     * Méthode retournant les talks groupés par date
-     * 
-     * @param delay
-     *            Delai a partir duquel les sessions sont masquées.
-     * 
+     * Méthode retournant les talks groupés par date.
+     * @param delay Delai a partir duquel les sessions sont masquées
      * @return Talk groupés par date
-     * 
      * @throws TechnicalException
      * @throws FunctionnalException
      */

@@ -17,25 +17,10 @@ import com.level42.mixit.exceptions.TechnicalException;
  */
 public class Utils {
 
-    public static String LOGTAG = "[MIXIT]";
-
     /**
-     * Indique si un réseau data est disponible
-     * 
-     * @return Vrai si un réseau data est disponible
+     * Tag des logs.
      */
-    public static boolean isNetworkAvailable() {
-        /*
-         * ConnectivityManager connectivityManager =
-         * (ConnectivityManager)Application
-         * .getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-         * NetworkInfo activeNetworkInfo =
-         * connectivityManager.getActiveNetworkInfo(); return activeNetworkInfo
-         * != null;
-         */
-
-        return true;
-    }
+    public static String LOGTAG = "[MIXIT]";
 
     /**
      * Contrôle si le thread courant est le thread principal
@@ -47,12 +32,10 @@ public class Utils {
     }
 
     /**
-     * Retourne une image bitmap à partir d'une URL
-     * 
+     * Retourne une image bitmap à partir d'une URL.
      * @param imageUrl
      *            URL de l'image
      * @return Bitmap
-     * 
      * @throws TechnicalException
      */
     public static Bitmap loadBitmap(String imageUrl) throws TechnicalException {

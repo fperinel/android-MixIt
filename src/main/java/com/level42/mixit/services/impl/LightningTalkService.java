@@ -11,7 +11,7 @@ import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.services.ILightningTalkService;
 
 /**
- * Service de gestion des lightning talks
+ * Service de gestion des lightning talks.
  */
 public class LightningTalkService extends TalkService implements
         ILightningTalkService {

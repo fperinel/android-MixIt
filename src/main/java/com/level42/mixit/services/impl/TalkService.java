@@ -25,24 +25,42 @@ import com.level42.mixit.utils.Utils;
 import com.level42.mixit.webservices.IWebServices;
 
 /**
- * Service de gestion des Talks
+ * Service de gestion des Talks.
  */
 public class TalkService extends AbstractService implements ITalkService {
-
+    
+    /**
+     * Interface vers les webservices.
+     */
     @Inject
     protected IWebServices ws;
 
+    /**
+     * Interface vers le service de gestion des plannings.
+     */
     @Inject
     protected IPlanningService planningService;
-
+    
+    /**
+     * Interface vers le service de gestion des entités.
+     */
     @Inject
     protected IEntityService entityService;
 
+    /**
+     * Interface vers le service de gestion des centres d'intérêts.
+     */
     @Inject
     protected IInterestService interestService;
 
+    /**
+     * Liste des speakers indéxés par identifiant.
+     */
     protected Map<Integer, Speaker> speakers;
 
+    /**
+     * Interface vers le service de gestion des centres d'intérêts.
+     */
     protected Map<Integer, Interest> interests;
 
     /*
@@ -89,11 +107,9 @@ public class TalkService extends AbstractService implements ITalkService {
     }
 
     /**
-     * Hydrate la session d'un talk
-     * 
+     * Hydrate la session d'un talk.
      * @param talk
      *            Talk à hydrater
-     * 
      * @throws FunctionnalException
      * @throws TechnicalException
      */
@@ -105,8 +121,7 @@ public class TalkService extends AbstractService implements ITalkService {
     }
 
     /**
-     * Hydrate les speakers d'un talk
-     * 
+     * Hydrate les speakers d'un talk.
      * @param talk
      *            Talk à hydrater
      * @throws FunctionnalException
@@ -129,8 +144,7 @@ public class TalkService extends AbstractService implements ITalkService {
     }
 
     /**
-     * Hydrate les centres d'intérêt d'un talk
-     * 
+     * Hydrate les centres d'intérêt d'un talk.
      * @param talk
      *            Talk à hydrater
      * @throws FunctionnalException
@@ -151,8 +165,7 @@ public class TalkService extends AbstractService implements ITalkService {
     }
 
     /**
-     * Retourne un objet speaker par son identifiant
-     * 
+     * Retourne un objet speaker par son identifiant.
      * @param id Identifiant du speaker
      * @return Speaker
      * @throws FunctionnalException
@@ -172,8 +185,7 @@ public class TalkService extends AbstractService implements ITalkService {
     }
 
     /**
-     * Retourne un objet centre d'intérêt par son identifiant
-     * 
+     * Retourne un objet centre d'intérêt par son identifiant.
      * @param id Identifiant du centre d'intérêt
      * @return Centre d'intérêt 
      * @throws FunctionnalException

@@ -22,32 +22,31 @@ import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.services.ITalkService;
 
 /**
- * Service de gestion du planning
+ * Service de gestion du planning.
  */
 public class PlanningService extends AbstractService implements
         IPlanningService {
 
     /**
-     * Interface pour l'obtention des sessions des talks
+     * Interface pour l'obtention des sessions des talks.
      */
     @Inject
     private IPlanningDAO planningDAO;
 
     /**
-     * Interface vers le service de gestion des talk
+     * Interface vers le service de gestion des talk.
      */
     @Inject
     private ITalkService talkService;
 
     /**
-     * Paramètre définissant le délai à partir duquel les talks 
-     * en cours sont masqués
+     * Paramètre définissant le délai à partir duquel les talks en cours sont masqués.
      */
     @Inject
     private String planningDelay;
 
     /**
-     * Liste des sessions indexées sur l'identifiant
+     * Liste des sessions indexées sur l'identifiant.
      */
     private Map<Integer, Session> sessions;
 
@@ -129,8 +128,7 @@ public class PlanningService extends AbstractService implements
     }
 
     /**
-     * Index les sessions par identifiant de talk
-     * 
+     * Index les sessions par identifiant de talk.
      * @param planning
      */
     protected void indexPlanning(Planning planning) {

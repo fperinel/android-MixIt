@@ -11,18 +11,18 @@ import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Tâche asynchrone pour la collecte des informations d'un lightning talk
+ * Tâche asynchrone pour la collecte des informations d'un lightning talk.
  */
 public class GetLightningTalkAsyncTask extends
         AsyncTask<Object, Integer, LightningTalk> {
 
     /**
-     * Listener
+     * Listener.
      */
     private OnTaskPostExecuteListener<LightningTalk> onTaskPostExecuteListener = null;
 
     /**
-     * Raison de l'interuption
+     * Raison de l'interuption.
      */
     private Exception cancelReason;
 
@@ -98,8 +98,7 @@ public class GetLightningTalkAsyncTask extends
     }
 
     /**
-     * Permet de renseigner un listener
-     * 
+     * Permet de renseigner un listener.
      * @param taskPostExecute
      *            Listener de la tâche
      */

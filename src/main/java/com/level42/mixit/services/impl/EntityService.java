@@ -17,18 +17,18 @@ import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.webservices.IWebServices;
 
 /**
- * Service de gestion des membres
+ * Service de gestion des membres.
  */
 public class EntityService extends AbstractService implements IEntityService {
 
     /**
-     * Interface vers les webservices
+     * Interface vers les webservices.
      */
     @Inject
     private IWebServices ws;
 
     /**
-     * Interface vers le service des plannings
+     * Interface vers le service des plannings.
      */
     @Inject
     private IPlanningService planningService;
@@ -138,12 +138,9 @@ public class EntityService extends AbstractService implements IEntityService {
     }
 
     /**
-     * Interroge le ws pour retourner une entité (membr, staff ...)
-     * 
+     * Interroge le ws pour retourner une entité (membr, staff ...).
      * @param <T> Type d'entité (membre, speaker, sponsor ...)
-     * 
-     * @param id
-     *            Identifiant de l'entité
+     * @param id Identifiant de l'entité
      * @return Entité
      */
     protected <T> Object getEntity(Integer id, T type)

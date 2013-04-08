@@ -18,23 +18,22 @@ import com.level42.mixit.models.Talk;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Adapter pour le planning
+ * Adapter pour le planning.
  */
 public class PlanningAdapter extends BaseExpandableListAdapter {
 
     /**
-     * Liste des talks
+     * Liste des talks.
      */
     private List<GroupedTalks> talks = Collections.emptyList();
 
     /**
-     * Contexte de l'activité parente
+     * Contexte de l'activité parente.
      */
     private Context context;
 
     /**
-     * Constructeur de l'adaptateur
-     * 
+     * Constructeur de l'adaptateur.
      * @param lives
      */
     public PlanningAdapter(Context context) {
@@ -42,8 +41,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
     }
 
     /**
-     * Mise à jour des talks
-     * 
+     * Mise à jour des talks.
      * @param talks
      */
     public void updateTalks(List<GroupedTalks> talks) {

@@ -14,19 +14,19 @@ import com.level42.mixit.services.IInterestService;
 import com.level42.mixit.webservices.IWebServices;
 
 /**
- * Service de gestion des centre d'intérêts
+ * Service de gestion des centre d'intérêts.
  */
 public class InterestService extends AbstractService implements
         IInterestService {
 
     /**
-     * Interface vers les webservices
+     * Interface vers les webservices.
      */
     @Inject
     protected IWebServices ws;
 
     /**
-     * Liste des centres d'intérêts, indexés par identifiant
+     * Liste des centres d'intérêts, indexés par identifiant.
      */
     protected Map<Integer, Interest> interests;
 

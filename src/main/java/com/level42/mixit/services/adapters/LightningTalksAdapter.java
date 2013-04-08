@@ -15,23 +15,22 @@ import com.level42.mixit.models.Talk;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Adapter pour la liste des lightning talks
+ * Adapter pour la liste des lightning talks.
  */
 public class LightningTalksAdapter extends BaseAdapter {
 
     /**
-     * Liste des talks
+     * Liste des talks.
      */
     private List<LightningTalk> talks = Collections.emptyList();
 
     /**
-     * Contexte de l'activité appelante
+     * Contexte de l'activité appelante.
      */
     private Context context;
 
     /**
-     * Constructeur
-     * 
+     * Constructeur.
      * @param context Contexte de l'activité
      */
     public LightningTalksAdapter(Context context) {
@@ -67,8 +66,7 @@ public class LightningTalksAdapter extends BaseAdapter {
     }
 
     /**
-     * Mise à jour des talks
-     * 
+     * Mise à jour des talks.
      * @param talks
      */
     public void updateTalks(List<LightningTalk> talks) {

@@ -7,15 +7,13 @@ import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.Interest;
 
 /**
- * Interface de manipulation des centre d'intérêt de MixIT
+ * Interface de manipulation des centre d'intérêt de MixIT.
  */
 public interface IInterestService {
 
     /**
-     * Méthode listant l'ensemble des tags
-     * 
+     * Méthode listant l'ensemble des tags.
      * @return Liste des tags
-     * 
      * @throws TechnicalException
      * @throws FunctionnalException
      */
@@ -23,11 +21,8 @@ public interface IInterestService {
             TechnicalException;
 
     /**
-     * Méthode retournant le détail d'un tag
-     * 
-     * @param id
-     *            Identifiant du tag
-     * 
+     * Méthode retournant le détail d'un tag.
+     * @param id Identifiant du tag
      * @throws TechnicalException
      * @throws FunctionnalException
      */

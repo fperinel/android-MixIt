@@ -13,18 +13,18 @@ import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Tâche asynchrone pour la collecte des informations des sessions
+ * Tâche asynchrone pour la collecte des informations des sessions.
  */
 public class GetPlanningAsyncTask extends
         AsyncTask<Object, Integer, List<GroupedTalks>> {
 
     /**
-     * Listener
+     * Listener.
      */
     private OnTaskPostExecuteListener<List<GroupedTalks>> onTaskPostExecuteListener = null;
 
     /**
-     * Raison de l'interuption
+     * Raison de l'interuption.
      */
     private Exception cancelReason;
 
@@ -99,8 +99,7 @@ public class GetPlanningAsyncTask extends
     }
 
     /**
-     * Permet de renseigner un listener
-     * 
+     * Permet de renseigner un listener.
      * @param taskPostExecute
      *            Listener de la tâche
      */

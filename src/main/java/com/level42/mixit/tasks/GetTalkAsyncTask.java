@@ -11,17 +11,17 @@ import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
 /**
- * Tâche asynchrone pour la collecte des informations d'un talk
+ * Tâche asynchrone pour la collecte des informations d'un talk.
  */
 public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
 
     /**
-     * Listener
+     * Listener.
      */
     private OnTaskPostExecuteListener<Talk> onTaskPostExecuteListener = null;
 
     /**
-     * Raison de l'interuption
+     * Raison de l'interuption.
      */
     private Exception cancelReason;
 
@@ -96,8 +96,7 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
     }
 
     /**
-     * Permet de renseigner un listener
-     * 
+     * Permet de renseigner un listener.
      * @param taskPostExecute
      *            Listener de la tâche
      */

@@ -34,45 +34,45 @@ import com.level42.mixit.utils.Utils;
 import com.level42.mixit.webservices.IWebServices;
 
 /**
- * Service de connexion avec les Webservices MixIt
+ * Service de connexion avec les Webservices MixIt.
  */
 public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /**
-     * URL du serveur des Webservices
+     * URL du serveur des Webservices.
      */
     @InjectResource(R.string.host)
     private String host;
 
     /**
-     * Délai maximum de connexion
+     * Délai maximum de connexion.
      */
     @InjectResource(R.string.connectionTimeout)
     private String connectionTimeout;
 
     /**
-     * Délai maximum de communication
+     * Délai maximum de communication.
      */
     @InjectResource(R.string.socketTimeout)
     private String socketTimeout;
 
     /**
-     * Mapper Json
+     * Mapper Json.
      */
     private ObjectMapper mapper;
 
     /**
-     * Objet de récupération des réponses
+     * Objet de récupération des réponses.
      */
     private ResponseHandler<String> handler;
 
     /**
-     * Objet contenant le cache des appels Webservices
+     * Objet contenant le cache des appels Webservices.
      */
     private Map<String, String> cache;
 
     /**
-     * Constructeur en charge d'initiliser le client HTTP avec les paramètres
+     * Constructeur en charge d'initiliser le client HTTP avec les paramètres.
      */
     public WebServices() {
         HttpParams httpParameters = new BasicHttpParams();
@@ -364,11 +364,9 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
     }
 
     /**
-     * Génère une requête GET
-     * 
+     * Génère une requête GET.
      * @param path
      *            Chemin d'appel
-     * 
      * @return Requete
      */
     protected HttpGet getRequestGET(String path) {
@@ -377,10 +375,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
     /**
      * Execute la requête d'appel au Webservice après vérification du cache.
-     * 
      * @param request
      * @return Résultat (format jSon)
-     * 
      * @throws ClientProtocolException
      * @throws IOException
      */

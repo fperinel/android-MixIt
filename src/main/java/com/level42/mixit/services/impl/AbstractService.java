@@ -5,19 +5,18 @@ import android.content.Context;
 import com.google.inject.Inject;
 
 /**
- * Service de base
+ * Service de base.
  */
 public class AbstractService {
 
     /**
-     * Contexte de l'application
+     * Contexte de l'application.
      */
     @Inject
     private Context context;
 
     /**
-     * Retourne le contexte de l'application
-     * 
+     * Retourne le contexte de l'application.
      * @return Contexte de l'application
      */
     public Context getContext() {
@@ -25,8 +24,7 @@ public class AbstractService {
     }
 
     /**
-     * Méthode de traduction dans les servcies
-     * 
+     * Méthode de traduction dans les servcies.
      * @param resId
      *            Identifiant de la ressources "String".
      * @return Valeur de la traduction

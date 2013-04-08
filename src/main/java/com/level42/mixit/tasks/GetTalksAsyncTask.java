@@ -12,16 +12,26 @@ import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
+/**
+ * Tâche asynchrone pour la collecte de la liste des talks.
+ */
 public class GetTalksAsyncTask extends
         AsyncTask<ITalkService, Integer, List<Talk>> {
 
     /**
-     * Listener
+     * Listener.
      */
     private OnTaskPostExecuteListener<List<Talk>> onTaskPostExecuteListener = null;
 
+    /**
+     * Raison de l'interuption.
+     */
     private Exception cancelReason;
 
+    /*
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPreExecute()
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -32,6 +42,10 @@ public class GetTalksAsyncTask extends
         super.onProgressUpdate(values);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#doInBackground(Params[])
+     */
     @Override
     protected List<Talk> doInBackground(ITalkService... params) {
         try {
@@ -48,6 +62,10 @@ public class GetTalksAsyncTask extends
         return null;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onCancelled()
+     */
     @Override
     protected void onCancelled() {
         super.onCancelled();
@@ -60,6 +78,10 @@ public class GetTalksAsyncTask extends
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+     */
     @Override
     protected void onPostExecute(List<Talk> result) {
         super.onPostExecute(result);
@@ -71,6 +93,11 @@ public class GetTalksAsyncTask extends
         }
     }
 
+    /**
+     * Permet de renseigner un listener.
+     * @param taskPostExecute
+     *            Listener de la tâche
+     */
     public void setPostExecuteListener(
             OnTaskPostExecuteListener<List<Talk>> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;
