@@ -47,11 +47,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
     private IPlanningService planningService;
 
     /**
-     * Tâche asynchrone pour collecter les informations du planning.
-     */
-    private GetPlanningAsyncTask getTalksAsyncService;
-
-    /**
      * Liste des talkls de l'activité.
      */
     private PlanningTalk talks = new PlanningTalk();
@@ -122,7 +117,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     protected void refreshTalks() {
         // Préparation du service
-        getTalksAsyncService = new GetPlanningAsyncTask();
+        GetPlanningAsyncTask getTalksAsyncService = new GetPlanningAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
         getTalksAsyncService
@@ -171,7 +166,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof PlanningTalk) {
-            Log.d(Utils.logTag, "Changement sur le planning");
+            Log.d(Utils.LOGTAG, "Changement sur le planning");
             PlanningTalk planning = (PlanningTalk) observable;
             if (planning != null) {
                 adapter.updateTalks(planning.getGroupedTalks());

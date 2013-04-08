@@ -11,7 +11,7 @@ import com.level42.mixit.R;
 /**
  * Classe utilitaire pour les boites de dialog.
  */
-public class MessageBox {
+public final class MessageBox {
 
     /**
      * On masque le constructeur par défaut.

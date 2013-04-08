@@ -15,12 +15,12 @@ import com.level42.mixit.exceptions.TechnicalException;
 /**
  * Classe utilitaire.
  */
-public class Utils {
+public final class Utils {
 
     /**
      * Tag des logs.
      */
-    public final static String logTag = "[MIXIT]";
+    public static final String LOGTAG = "[MIXIT]";
 
     /**
      * On masque le constructeur par défaut.

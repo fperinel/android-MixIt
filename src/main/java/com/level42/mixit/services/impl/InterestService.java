@@ -1,7 +1,6 @@
 package com.level42.mixit.services.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
@@ -23,13 +22,16 @@ public class InterestService extends AbstractService implements
      * Interface vers les webservices.
      */
     @Inject
-    protected IWebServices ws;
+    private IWebServices ws;
 
     /**
-     * Liste des centres d'intérêts, indexés par identifiant.
+     * Retourne l'interface des webservices.
+     * @return the ws
      */
-    protected Map<Integer, Interest> interests;
-
+    public IWebServices getWs() {
+        return ws;
+    }
+    
     /*
      * (non-Javadoc)
      * @see com.level42.mixit.services.IInterestService#getInterests()

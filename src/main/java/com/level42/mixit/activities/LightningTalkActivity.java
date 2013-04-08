@@ -72,11 +72,6 @@ public class LightningTalkActivity extends RoboActivity {
     private LinearLayout speakersTalk;
 
     /**
-     * Tâche asynchrone pour collecter les informations du talk.
-     */
-    private GetLightningTalkAsyncTask getTalkAsyncService;
-
-    /**
      * Liste des talks de l'activité.
      */
     private LightningTalk talk = new LightningTalk();
@@ -128,14 +123,14 @@ public class LightningTalkActivity extends RoboActivity {
      */
     protected void loadTalk() {
         // Préparation du service
-        getTalkAsyncService = new GetLightningTalkAsyncTask();
+        GetLightningTalkAsyncTask getTalkAsyncService = new GetLightningTalkAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
         getTalkAsyncService
                 .setPostExecuteListener(new OnTaskPostExecuteListener<LightningTalk>() {
                     public void onTaskPostExecuteListener(LightningTalk result) {
                         if (result != null) {
-                            Log.d(Utils.logTag, "LightningTalk chargé");
+                            Log.d(Utils.LOGTAG, "LightningTalk chargé");
                             talk = result;
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();

@@ -38,10 +38,10 @@ public class GetLightningTalksAsyncTask extends
             ILightningTalkService service = (ILightningTalkService) params[0];
             return service.getLightningTalks();
         } catch (FunctionnalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         }
         this.cancel(true);
@@ -72,7 +72,7 @@ public class GetLightningTalksAsyncTask extends
     protected void onPostExecute(List<LightningTalk> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.logTag, "Nombre de lightning talks : " + result.size());
+        Log.d(Utils.LOGTAG, "Nombre de lightning talks : " + result.size());
 
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);

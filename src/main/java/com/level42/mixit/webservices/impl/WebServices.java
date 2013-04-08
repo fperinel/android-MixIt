@@ -100,7 +100,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("talks");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Talk> talkList = mapper.readValue(result,
                     new TypeReference<List<Talk>>() {
                     });
@@ -124,7 +124,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("talks/" + id.toString());
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             Talk talk = mapper.readValue(result, Talk.class);
 
             if (talk == null) {
@@ -149,7 +149,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("lightningtalks");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<LightningTalk> talkList = mapper.readValue(result,
                     new TypeReference<List<LightningTalk>>() {
                     });
@@ -174,7 +174,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
                     + id.toString());
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             LightningTalk talk = mapper.readValue(result, LightningTalk.class);
 
             if (talk == null) {
@@ -199,7 +199,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("members");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Member> list = mapper.readValue(result,
                     new TypeReference<List<Member>>() {
                     });
@@ -221,7 +221,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("members/staff");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Staff> list = mapper.readValue(result,
                     new TypeReference<List<Staff>>() {
                     });
@@ -243,7 +243,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("members/speakers");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Speaker> list = mapper.readValue(result,
                     new TypeReference<List<Speaker>>() {
                     });
@@ -265,7 +265,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("members/sponsors");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Sponsor> list = mapper.readValue(result,
                     new TypeReference<List<Sponsor>>() {
                     });
@@ -288,7 +288,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("members/" + id.toString());
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             return mapper.readValue(result, entity.getClass());
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -306,7 +306,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("interests");
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             List<Interest> list = mapper.readValue(result,
                     new TypeReference<List<Interest>>() {
                     });
@@ -329,7 +329,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("interests/" + id.toString());
             String result = this.executeQuery(request, true);
 
-            Log.d(Utils.logTag, result);
+            Log.d(Utils.LOGTAG, result);
             Interest interest = mapper.readValue(result, Interest.class);
 
             return interest;
@@ -361,15 +361,15 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             throws IOException {
         String key = request.getURI().toString();
         String result = null;
-        Log.i(Utils.logTag, "Webservice request : "
+        Log.i(Utils.LOGTAG, "Webservice request : "
                 + request.getURI().toString());
         if (!cache.containsKey(key) || !useCache) {
             result = this.execute(request, handler);
             cache.put(key, result);
-            Log.d(Utils.logTag, "Webservice cache set for key : " + key);
+            Log.d(Utils.LOGTAG, "Webservice cache set for key : " + key);
         } else {
             result = cache.get(key);
-            Log.d(Utils.logTag, "Webservice cache hit for key : " + key);
+            Log.d(Utils.LOGTAG, "Webservice cache hit for key : " + key);
         }
 
         return result;

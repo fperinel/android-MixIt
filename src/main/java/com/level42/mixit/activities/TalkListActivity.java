@@ -47,11 +47,6 @@ public class TalkListActivity extends RoboActivity implements Observer {
     private ITalkService talkService;
 
     /**
-     * Tâche asynchrone pour collecter la liste des talks.
-     */
-    private GetTalksAsyncTask getTalksAsyncService;
-
-    /**
      * Liste des talks de l'activité.
      */
     private TalkList talks = new TalkList();
@@ -121,7 +116,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
      */
     protected void refreshTalks() {
         // Préparation du service
-        getTalksAsyncService = new GetTalksAsyncTask();
+        GetTalksAsyncTask getTalksAsyncService = new GetTalksAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
         getTalksAsyncService
@@ -168,7 +163,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof TalkList) {
-            Log.d(Utils.logTag, "Changement sur la liste des talks");
+            Log.d(Utils.LOGTAG, "Changement sur la liste des talks");
             TalkList list = (TalkList) observable;
             if (list != null) {
                 adapter.updateTalks(list.getTalks());

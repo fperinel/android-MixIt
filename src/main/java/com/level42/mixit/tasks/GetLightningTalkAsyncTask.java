@@ -37,10 +37,10 @@ public class GetLightningTalkAsyncTask extends
             Integer talkId = (Integer) params[1];
             return service.getLightningTalk(talkId);
         } catch (FunctionnalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         }
         this.cancel(true);
@@ -71,7 +71,7 @@ public class GetLightningTalkAsyncTask extends
     protected void onPostExecute(LightningTalk result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.logTag, "Lightning talks : " + result.getId().toString()
+        Log.d(Utils.LOGTAG, "Lightning talks : " + result.getId().toString()
                 + " chargé");
 
         if (onTaskPostExecuteListener != null) {

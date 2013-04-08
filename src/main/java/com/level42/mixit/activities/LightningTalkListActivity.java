@@ -47,11 +47,6 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     private ILightningTalkService talkService;
 
     /**
-     * Tâche asynchrone pour collecter la liste des talks.
-     */
-    private GetLightningTalksAsyncTask getLightningTalksAsyncService;
-
-    /**
      * Liste des talks de l'activité.
      */
     private LightningTalkList talks = new LightningTalkList();
@@ -122,7 +117,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     protected void refreshTalks() {
         // Préparation du service
-        getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
+        GetLightningTalksAsyncTask getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
         getLightningTalksAsyncService
@@ -170,7 +165,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof LightningTalkList) {
-            Log.d(Utils.logTag, "Changement sur la liste des lightning talks");
+            Log.d(Utils.LOGTAG, "Changement sur la liste des lightning talks");
             LightningTalkList list = (LightningTalkList) observable;
             if (list != null) {
                 adapter.updateTalks(list.getTalks());

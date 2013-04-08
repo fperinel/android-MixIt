@@ -39,10 +39,10 @@ public class GetPlanningAsyncTask extends
             Integer delay = (Integer) params[1];
             return service.getTalksForPlanning(delay);
         } catch (FunctionnalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
-            Log.e(Utils.logTag, e.getMessage());
+            Log.e(Utils.LOGTAG, e.getMessage());
             cancelReason = e;
         }
         this.cancel(true);
@@ -73,7 +73,7 @@ public class GetPlanningAsyncTask extends
     protected void onPostExecute(List<GroupedTalks> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.logTag, "Nombre de talks : " + result.size());
+        Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
 
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
