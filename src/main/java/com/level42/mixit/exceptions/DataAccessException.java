@@ -14,7 +14,7 @@ public class DataAccessException extends Exception {
      * Constructeur.
      * @param e Exception parente
      */
-    public DataAccessException(Exception e) {
+    public DataAccessException(final Exception e) {
         super(e.getMessage(), e);
     }
 }

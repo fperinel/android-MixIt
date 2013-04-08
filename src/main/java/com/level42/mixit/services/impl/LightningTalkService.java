@@ -25,7 +25,6 @@ public class LightningTalkService extends TalkService implements
         try {
             return ws.getLightningTalks();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
@@ -44,12 +43,10 @@ public class LightningTalkService extends TalkService implements
             this.hydrateTalkSpeakers(lTalk);
             return lTalk;
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
         } catch (NotFoundException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_NotFoundException), e);
         }

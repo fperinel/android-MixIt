@@ -14,7 +14,7 @@ public class CommunicationException extends Exception {
      * Constructeur.
      * @param eException parente
      */
-    public CommunicationException(Exception e) {
+    public CommunicationException(final Exception e) {
         super(e.getMessage(), e);
     }
 }

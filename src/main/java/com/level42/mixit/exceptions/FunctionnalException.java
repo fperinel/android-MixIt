@@ -15,7 +15,7 @@ public class FunctionnalException extends Exception {
      * @param message Message d'erreur fonctionnelle
      * @param e Exception parente
      */
-    public FunctionnalException(String message, Exception e) {
+    public FunctionnalException(final String message, final Exception e) {
         super(message, e);
     }
 }

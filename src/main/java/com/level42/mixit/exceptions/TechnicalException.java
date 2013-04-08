@@ -15,7 +15,7 @@ public class TechnicalException extends Exception {
      * @param message Message d'erreur technique
      * @param e Exception parente
      */
-    public TechnicalException(String message, Exception e) {
+    public TechnicalException(final String message, final Exception e) {
         super(message, e);
     }
 }

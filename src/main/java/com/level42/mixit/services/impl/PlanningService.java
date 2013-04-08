@@ -65,7 +65,6 @@ public class PlanningService extends AbstractService implements
                 return null;
             }
         } catch (DataAccessException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_DataAccessException), e);
         }

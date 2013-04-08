@@ -14,7 +14,7 @@ public class NotFoundException extends Exception {
      * Constructeur.
      * @param message Message d'erreur
      */
-    public NotFoundException(String message) {
+    public NotFoundException(final String message) {
         super(message);
     }
 
@@ -22,7 +22,7 @@ public class NotFoundException extends Exception {
      * Constructeur.
      * @param e Exception parente
      */
-    public NotFoundException(Exception e) {
+    public NotFoundException(final Exception e) {
         super(e.getMessage(), e);
     }
 }

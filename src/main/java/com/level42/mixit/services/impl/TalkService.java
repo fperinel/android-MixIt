@@ -72,7 +72,6 @@ public class TalkService extends AbstractService implements ITalkService {
         try {
             return ws.getTalks();
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
@@ -95,12 +94,10 @@ public class TalkService extends AbstractService implements ITalkService {
 
             return talk;
         } catch (CommunicationException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
         } catch (NotFoundException e) {
-            e.printStackTrace();
             throw new TechnicalException(
                     getText(R.string.exception_message_NotFoundException), e);
         }
