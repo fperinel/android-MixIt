@@ -96,7 +96,6 @@ public class Member {
 
     /**
      * Retourne l'identifiant unique du membre.
-     * 
      * @return Identifiant
      */
     public Integer getId() {
@@ -105,7 +104,6 @@ public class Member {
 
     /**
      * Renseigne l'identifiant unique du membre.
-     * 
      * @param id
      *            the id to set
      */
@@ -115,7 +113,6 @@ public class Member {
 
     /**
      * Retourne le prénom.
-     * 
      * @return the firstname
      */
     public String getFirstname() {
@@ -124,7 +121,6 @@ public class Member {
 
     /**
      * Renseigne le prénom.
-     * 
      * @param firstname
      *            the firstname to set
      */
@@ -134,7 +130,6 @@ public class Member {
 
     /**
      * Retourne le nom.
-     * 
      * @return the lastname
      */
     public String getLastname() {
@@ -143,7 +138,6 @@ public class Member {
 
     /**
      * Renseigne le nom.
-     * 
      * @param lastname
      *            the lastname to set
      */
@@ -153,7 +147,6 @@ public class Member {
 
     /**
      * Retourne le login.
-     * 
      * @return the login
      */
     public String getLogin() {
@@ -162,7 +155,6 @@ public class Member {
 
     /**
      * Renseigne le login.
-     * 
      * @param login
      *            the login to set
      */
@@ -172,7 +164,6 @@ public class Member {
 
     /**
      * Retourne l'entreprise.
-     * 
      * @return the company
      */
     public String getCompany() {
@@ -181,7 +172,6 @@ public class Member {
 
     /**
      * Rensiegne l'entreprise.
-     * 
      * @param company
      *            the company to set
      */
@@ -191,7 +181,6 @@ public class Member {
 
     /**
      * Retourne la description courte.
-     * 
      * @return the shortdesc
      */
     public String getShortdesc() {
@@ -200,7 +189,6 @@ public class Member {
 
     /**
      * Renseigne la description courte.
-     * 
      * @param shortdesc
      *            the shortdesc to set
      */
@@ -210,7 +198,6 @@ public class Member {
 
     /**
      * Retourne la description longue.
-     * 
      * @return the longdesc
      */
     public String getLongdesc() {
@@ -219,7 +206,6 @@ public class Member {
 
     /**
      * Renseigne la description longue.
-     * 
      * @param longdesc
      *            the longdesc to set
      */
@@ -229,7 +215,6 @@ public class Member {
 
     /**
      * Retourne de l'url de l'avatar.
-     * 
      * @return the urlimage
      */
     public String getUrlimage() {
@@ -238,7 +223,6 @@ public class Member {
 
     /**
      * Renseigne l'url de l'avatar.
-     * 
      * @param urlimage
      *            the urlimage to set
      */
@@ -248,7 +232,6 @@ public class Member {
 
     /**
      * Retourne le nombre de consultation.
-     * 
      * @return the nbConsults
      */
     public String getNbConsults() {
@@ -257,7 +240,6 @@ public class Member {
 
     /**
      * Renseigne le nombre de consultation.
-     * 
      * @param nbConsults
      *            the nbConsults to set
      */
@@ -267,7 +249,6 @@ public class Member {
 
     /**
      * Retourne les liens.
-     * 
      * @return the links
      */
     public List<Integer> getLinks() {
@@ -275,8 +256,7 @@ public class Member {
     }
 
     /**
-     * Rensiegne les liens.
-     * 
+     * Renseigne les liens.
      * @param links
      *            the links to set
      */
@@ -286,7 +266,6 @@ public class Member {
 
     /**
      * Retourne les membres liés.
-     * 
      * @return the linkers
      */
     public List<Integer> getLinkers() {
@@ -295,7 +274,6 @@ public class Member {
 
     /**
      * rensiegne les membres liés.
-     * 
      * @param linkers
      *            the linkers to set
      */
@@ -305,7 +283,6 @@ public class Member {
 
     /**
      * Retourne les liens partagés.
-     * 
      * @return the sharedLinks
      */
     public List<Link> getSharedLinks() {
@@ -314,7 +291,6 @@ public class Member {
 
     /**
      * Renseigne les liens partagés.
-     * 
      * @param sharedLinks
      *            the sharedLinks to set
      */
@@ -324,7 +300,6 @@ public class Member {
 
     /**
      * Retourne le logo de l'entreprise.
-     * 
      * @return the logo
      */
     public String getLogo() {
@@ -333,7 +308,6 @@ public class Member {
 
     /**
      * Renseigne le logo de l'entreprise.
-     * 
      * @param logo
      *            the logo to set
      */
@@ -343,7 +317,6 @@ public class Member {
 
     /**
      * Retourne le niveau du sponsor.
-     * 
      * @return the level
      */
     public String getLevel() {
@@ -352,7 +325,6 @@ public class Member {
 
     /**
      * Renseigne le niveau du sponsor.
-     * 
      * @param level
      *            the level to set
      */
@@ -362,7 +334,6 @@ public class Member {
 
     /**
      * Retourne le type de membre.
-     * 
      * @return the type
      */
     public String getType() {
@@ -371,7 +342,6 @@ public class Member {
 
     /**
      * Renseigne le type de membre.
-     * 
      * @param type
      *            the type to set
      */
@@ -381,7 +351,6 @@ public class Member {
 
     /**
      * Retourne l'objet image de l'avatar.
-     * 
      * @return the image
      */
     public Bitmap getImage() {
@@ -390,7 +359,6 @@ public class Member {
 
     /**
      * Renseigne l'objet image de l'avatar.
-     * 
      * @param image
      *            the image to set
      */

@@ -20,7 +20,6 @@ public class Interest {
 
     /**
      * Retourne l'identifiant du tag.
-     * 
      * @return the id
      */
     public Integer getId() {
@@ -29,7 +28,6 @@ public class Interest {
 
     /**
      * Renseigne l'identifiant du tag.
-     * 
      * @param id
      *            the id to set
      */
@@ -39,7 +37,6 @@ public class Interest {
 
     /**
      * Retourne le nom du centre d'intérêt.
-     * 
      * @return the name
      */
     public String getName() {
@@ -48,7 +45,6 @@ public class Interest {
 
     /**
      * Renseigne le nom du centre d'intérêt.
-     * 
      * @param name
      *            the name to set
      */

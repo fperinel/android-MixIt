@@ -15,7 +15,6 @@ public class LightningTalkList extends Observable {
 
     /**
      * Retourne la liste des lightning talks.
-     * 
      * @return the talks
      */
     public List<LightningTalk> getTalks() {
@@ -24,7 +23,6 @@ public class LightningTalkList extends Observable {
 
     /**
      * Reseigne la liste des lightning talks.
-     * 
      * @param talks
      *            the talks to set
      */

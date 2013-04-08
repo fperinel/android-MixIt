@@ -25,7 +25,6 @@ public class GroupedTalks {
 
     /**
      * Renseigne la date de la session.
-     * 
      * @return the date
      */
     public Date getDate() {
@@ -34,7 +33,6 @@ public class GroupedTalks {
 
     /**
      * Retourne la date de la session.
-     * 
      * @param date
      *            the date to set
      */
@@ -44,7 +42,6 @@ public class GroupedTalks {
 
     /**
      * Retourne la liste des talks.
-     * 
      * @return the talks
      */
     public List<Talk> getTalks() {
@@ -53,7 +50,6 @@ public class GroupedTalks {
 
     /**
      * Renseigne la liste des talks.
-     * 
      * @param talks
      *            the talks to set
      */
@@ -63,7 +59,6 @@ public class GroupedTalks {
 
     /**
      * Retourne l'identifiant unique.
-     * 
      * @return the id
      */
     public Integer getId() {
@@ -72,7 +67,6 @@ public class GroupedTalks {
 
     /**
      * Renseigne l'identifiant unique.
-     * 
      * @param id
      *            the id to set
      */

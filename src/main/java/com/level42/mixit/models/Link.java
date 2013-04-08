@@ -30,7 +30,6 @@ public class Link {
 
     /**
      * Retourne l'identifiant du lien.
-     * 
      * @return the id
      */
     public Integer getId() {
@@ -39,7 +38,6 @@ public class Link {
 
     /**
      * Renseigne l'identifiant du lien.
-     * 
      * @param id
      *            the id to set
      */
@@ -49,7 +47,6 @@ public class Link {
 
     /**
      * Retourne le nom du lien.
-     * 
      * @return the name
      */
     public String getName() {
@@ -58,7 +55,6 @@ public class Link {
 
     /**
      * Renseigne le nom du lien.
-     * 
      * @param name
      *            the name to set
      */
@@ -68,7 +64,6 @@ public class Link {
 
     /**
      * Retourne l'URL du lien.
-     * 
      * @return the url
      */
     public String getUrl() {
@@ -77,7 +72,6 @@ public class Link {
 
     /**
      * Renseigne l'URL du lien.
-     * 
      * @param url
      *            the url to set
      */
@@ -87,7 +81,6 @@ public class Link {
 
     /**
      * Retourne l'ordre du lien.
-     * 
      * @return the ordernum
      */
     public Integer getOrdernum() {
@@ -96,7 +89,6 @@ public class Link {
 
     /**
      * Renseigne l'ordre du lien.
-     * 
      * @param ordernum
      *            the ordernum to set
      */

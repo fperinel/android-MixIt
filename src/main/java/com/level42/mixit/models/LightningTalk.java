@@ -15,7 +15,6 @@ public class LightningTalk extends Talk {
 
     /**
      * Retourne le nombre de vote
-     * 
      * @return the nbVotes.
      */
     public Integer getNbVotes() {
@@ -24,7 +23,6 @@ public class LightningTalk extends Talk {
 
     /**
      * Renseigne le nombre de vote.
-     * 
      * @param nbVotes
      *            the nbVotes to set
      */
