@@ -38,10 +38,10 @@ public class GetTalksAsyncTask extends
             ITalkService service = (ITalkService) params[0];
             return service.getTalks();
         } catch (FunctionnalException e) {
-            Log.e(Utils.LOGTAG, e.getMessage());
+            Log.e(Utils.logTag, e.getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
-            Log.e(Utils.LOGTAG, e.getMessage());
+            Log.e(Utils.logTag, e.getMessage());
             cancelReason = e;
         }
         this.cancel(true);
@@ -72,7 +72,7 @@ public class GetTalksAsyncTask extends
     protected void onPostExecute(List<Talk> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
+        Log.d(Utils.logTag, "Nombre de talks : " + result.size());
 
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);

@@ -170,7 +170,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof LightningTalkList) {
-            Log.d(Utils.LOGTAG, "Changement sur la liste des lightning talks");
+            Log.d(Utils.logTag, "Changement sur la liste des lightning talks");
             LightningTalkList list = (LightningTalkList) observable;
             if (list != null) {
                 adapter.updateTalks(list.getTalks());

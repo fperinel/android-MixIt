@@ -171,7 +171,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof PlanningTalk) {
-            Log.d(Utils.LOGTAG, "Changement sur le planning");
+            Log.d(Utils.logTag, "Changement sur le planning");
             PlanningTalk planning = (PlanningTalk) observable;
             if (planning != null) {
                 adapter.updateTalks(planning.getGroupedTalks());

@@ -13,17 +13,17 @@ import com.level42.mixit.BuildConfig;
 import com.level42.mixit.exceptions.TechnicalException;
 
 /**
- * Classe utilitaire
+ * Classe utilitaire.
  */
 public class Utils {
 
     /**
      * Tag des logs.
      */
-    public static String LOGTAG = "[MIXIT]";
+    public final static String logTag = "[MIXIT]";
 
     /**
-     * Contrôle si le thread courant est le thread principal
+     * Contrôle si le thread courant est le thread principal.
      */
     public static void checkOnMainThread() {
         if (BuildConfig.DEBUG && Thread.currentThread() != Looper.getMainLooper().getThread()) {
@@ -33,8 +33,7 @@ public class Utils {
 
     /**
      * Retourne une image bitmap à partir d'une URL.
-     * @param imageUrl
-     *            URL de l'image
+     * @param imageUrl URL de l'image
      * @return Bitmap
      * @throws TechnicalException
      */

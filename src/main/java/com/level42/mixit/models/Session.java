@@ -95,7 +95,7 @@ public class Session {
                         "yyyy-MM-dd HH:mm:ss");
                 dateFormat = formatOrigin.parse(this.date);
             } catch (ParseException e) {
-                Log.w(Utils.LOGTAG, "Date format exception");
+                Log.w(Utils.logTag, "Date format exception");
                 return null;
             }
         }

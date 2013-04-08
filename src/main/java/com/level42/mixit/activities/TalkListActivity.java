@@ -168,7 +168,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
      */
     public void update(Observable observable, Object data) {
         if (observable instanceof TalkList) {
-            Log.d(Utils.LOGTAG, "Changement sur la liste des talks");
+            Log.d(Utils.logTag, "Changement sur la liste des talks");
             TalkList list = (TalkList) observable;
             if (list != null) {
                 adapter.updateTalks(list.getTalks());

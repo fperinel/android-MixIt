@@ -15,6 +15,7 @@ public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Erreur".
+     *
      * @param title
      *            Titre de la boite
      * @param message
@@ -36,38 +37,10 @@ public class MessageBox {
     }
 
     /**
-     * Construit et affiche une boite de dialog de type "Confirmation".
-     * @param title
-     *            Titre de la boite
-     * @param message
-     *            Message
-     * @param validationListener
-     *            Ecouteur sur le bouton OK
-     * @param cancelListener
-     *            Ecouteur sur le bouton annulé
-     * @param context
-     *            Contexte parent du dialog
-     */
-    public static void showConfirm(String title, String message,
-            OnClickListener validationListener, OnClickListener cancelListener,
-            Context context) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle(title);
-        alertDialog.setMessage(message);
-        alertDialog.setCancelable(false);
-        alertDialog.setButton(context.getString(R.string.btn_dialog_validate),
-                validationListener);
-        alertDialog.setButton(context.getString(R.string.btn_dialog_abort),
-                validationListener);
-        alertDialog.show();
-    }
-
-    /**
      * Construit et affiche une boite de dialog de type "Information".
-     * @param message
-     *            Message
-     * @param context
-     *            Contexte parent du dialog
+     *
+     * @param message Message
+     * @param context Contexte parent du dialog
      */
     public static void showInformation(String message, Context context) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
@@ -75,10 +48,9 @@ public class MessageBox {
 
     /**
      * Construit et affiche une boite de dialog de type "Information".
-     * @param message
-     *            Message
-     * @param context
-     *            Contexte parent du dialog
+     *
+     * @param message Message
+     * @param context Contexte parent du dialog
      */
     public static ProgressDialog getProgressDialog(Context context) {
         return ProgressDialog.show(context, null,

@@ -135,7 +135,7 @@ public class LightningTalkActivity extends RoboActivity {
                 .setPostExecuteListener(new OnTaskPostExecuteListener<LightningTalk>() {
                     public void onTaskPostExecuteListener(LightningTalk result) {
                         if (result != null) {
-                            Log.d(Utils.LOGTAG, "LightningTalk chargé");
+                            Log.d(Utils.logTag, "LightningTalk chargé");
                             talk = result;
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
