@@ -5,32 +5,32 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Classe représentant une session de talk
+ * Classe représentant une session de talk.
  */
 public class Session {
 
     /**
-     * Identifiant de la session
+     * Identifiant de la session.
      */
     private Integer id;
 
     /**
-     * Salle de la session
+     * Salle de la session.
      */
     private String salle;
 
     /**
-     * Date de la session
+     * Date de la session.
      */
     private String date;
 
     /**
-     * Date formatée de la session
+     * Date formatée de la session.
      */
     private Date dateFormat;
 
     /**
-     * Retourne l'identiant
+     * Retourne l'identiant.
      * @return the sessionId
      */
     public Integer getId() {
@@ -38,7 +38,7 @@ public class Session {
     }
 
     /**
-     * Renseigne l'identifiant
+     * Renseigne l'identifiant.
      * @param id
      *            the id to set
      */
@@ -47,7 +47,7 @@ public class Session {
     }
 
     /**
-     * Retourne la salle de la session
+     * Retourne la salle de la session.
      * @return the salle
      */
     public String getSalle() {
@@ -55,7 +55,7 @@ public class Session {
     }
 
     /**
-     * Renseigne la salle de la session
+     * Renseigne la salle de la session.
      * @param salle
      *            the salle to set
      */
@@ -64,7 +64,7 @@ public class Session {
     }
 
     /**
-     * Retourne la date de la session
+     * Retourne la date de la session.
      * @return the date
      */
     public String getDate() {
@@ -72,7 +72,7 @@ public class Session {
     }
 
     /**
-     * Renseigne la date de la session
+     * Renseigne la date de la session.
      * @param date
      *            the date to set
      */
@@ -81,7 +81,7 @@ public class Session {
     }
 
     /**
-     * Retourne la date formatée de la session
+     * Retourne la date formatée de la session.
      * 
      * @return the dateFormat
      */

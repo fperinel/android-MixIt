@@ -3,17 +3,17 @@ package com.level42.mixit.models;
 import java.util.List;
 
 /**
- * Classe représentant le planning
+ * Classe représentant le planning.
  */
 public class Planning {
 
     /**
-     * Liste des sessions
+     * Liste des sessions.
      */
     private List<Session> sessions;
 
     /**
-     * Retourne la liste des sessions
+     * Retourne la liste des sessions.
      * 
      * @return the sessions
      */
@@ -22,7 +22,7 @@ public class Planning {
     }
 
     /**
-     * Renseigne la liste des sessions
+     * Renseigne la liste des sessions.
      * 
      * @param sessions
      *            the sessions to set

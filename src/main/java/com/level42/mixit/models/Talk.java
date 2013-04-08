@@ -7,82 +7,82 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
- * Classe représentant un Talk
+ * Classe représentant un Talk.
  */
 public class Talk implements Comparable<Talk> {
 
     /**
-     * Identifiant du talk
+     * Identifiant du talk.
      */
     private Integer id;
 
     /**
-     * Titre du talk
+     * Titre du talk.
      */
     private String title;
 
     /**
-     * Sommaire du talk
+     * Sommaire du talk.
      */
     private String summary;
 
     /**
-     * Description du talk
+     * Description du talk.
      */
     private String description;
 
     /**
-     * Liste des identifiant des tags "centre d'intérêt"
+     * Liste des identifiant des tags "centre d'intérêt".
      */
     @JsonProperty("interests")
     private List<Integer> interestsId;
 
     /**
-     * Liste des tags "centre d'intérêt"
+     * Liste des tags "centre d'intérêt".
      */
     @JsonIgnore
     private List<Interest> interests;
 
     /**
-     * Liste des identifiant des speakers
+     * Liste des identifiant des speakers.
      */
     @JsonProperty("speakers")
     private List<Integer> speakersId;
 
     /**
-     * Liste des speakerss
+     * Liste des speakers.
      */
     @JsonIgnore
     private List<Speaker> speakers;
 
     /**
-     * Format du talk
+     * Format du talk.
      */
     private String format;
 
     /**
-     * Niveau de difficulté du talk
+     * Niveau de difficulté du talk.
      */
     private String level;
 
     /**
-     * Session du talk
+     * Session du talk.
      */
     @JsonIgnore
     private Session session;
 
     /**
-     * Date de démarrage
+     * Date de démarrage.
      */
     private String start;
 
     /**
-     * Date de fin
+     * Date de fin.
      */
     private String end;
 
     /**
-     * Retourne l'identifiant du talk
+     * Retourne l'identifiant du talk.
      * 
      * @return the id
      */
@@ -91,7 +91,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne l'identifiant du talk
+     * Renseigne l'identifiant du talk.
      * 
      * @param id
      *            the id to set
@@ -101,7 +101,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne le titre du talk
+     * Retourne le titre du talk.
      * 
      * @return the title
      */
@@ -110,7 +110,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne le titre du talk
+     * Renseigne le titre du talk.
      * 
      * @param title
      *            the title to set
@@ -120,7 +120,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne le sommaire du talk
+     * Retourne le sommaire du talk.
      * 
      * @return the summary
      */
@@ -129,7 +129,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne le sommaire du talk
+     * Renseigne le sommaire du talk.
      * 
      * @param summary
      *            the summary to set
@@ -139,7 +139,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la description du talk
+     * Retourne la description du talk.
      * 
      * @return the description
      */
@@ -148,7 +148,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la description du talk
+     * Renseigne la description du talk.
      * 
      * @param description
      *            the description to set
@@ -158,7 +158,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne les identifiants des tags "centre d'intérêts"
+     * Retourne les identifiants des tags "centre d'intérêts".
      * 
      * @return the interests Id
      */
@@ -167,7 +167,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne les identifiants des tags "centre d'intérêts"
+     * Renseigne les identifiants des tags "centre d'intérêts".
      * 
      * @param interests
      *            the interests Id to set
@@ -177,7 +177,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la liste des identifiants des speakers du talk
+     * Retourne la liste des identifiants des speakers du talk.
      * 
      * @return the speakers Id
      */
@@ -186,7 +186,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la liste des identifiants des speakers du talk
+     * Renseigne la liste des identifiants des speakers du talk.
      * 
      * @param speakers
      *            the speakers Id to set
@@ -196,7 +196,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne le format du talk
+     * Retourne le format du talk.
      * 
      * @return the format
      */
@@ -205,7 +205,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne le format du talk
+     * Renseigne le format du talk.
      * 
      * @param format
      *            the format to set
@@ -215,7 +215,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne le niveau de difficulté du talk
+     * Retourne le niveau de difficulté du talk.
      * 
      * @return the level
      */
@@ -224,7 +224,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne le niveau de difficulté du talk
+     * Renseigne le niveau de difficulté du talk.
      * 
      * @param level
      *            the level to set
@@ -234,7 +234,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la session du talk
+     * Renseigne la session du talk.
      * 
      * @param session
      *            the session to set
@@ -244,7 +244,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la date de la session du Talk
+     * Retourne la date de la session du Talk.
      * 
      * @return Date de la session du Talk
      */
@@ -257,7 +257,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la salle de la session du Talk
+     * Retourne la salle de la session du Talk.
      * 
      * @return Salle de la session du Talk
      */
@@ -270,7 +270,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la liste des centres d'intérêt du talk
+     * Retourne la liste des centres d'intérêt du talk.
      * 
      * @return the interests
      */
@@ -279,7 +279,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la liste des centres d'intérêt du talk
+     * Renseigne la liste des centres d'intérêt du talk.
      * 
      * @param interests
      *            the interests to set
@@ -289,7 +289,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la liste des speakers
+     * Retourne la liste des speakers.
      * 
      * @return the speakers
      */
@@ -298,7 +298,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la liste des speakers
+     * Renseigne la liste des speakers.
      * 
      * @param speakers
      *            the speakers to set
@@ -308,7 +308,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la date de début
+     * Retourne la date de début.
      * 
      * @return the start
      */
@@ -317,7 +317,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la date de début
+     * Renseigne la date de début.
      * 
      * @param start
      *            the start to set
@@ -327,7 +327,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Retourne la date de fin
+     * Retourne la date de fin.
      * 
      * @return the end
      */
@@ -336,7 +336,7 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la date de fin
+     * Renseigne la date de fin.
      * 
      * @param end
      *            the end to set

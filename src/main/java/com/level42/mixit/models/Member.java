@@ -8,102 +8,94 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import android.graphics.Bitmap;
 
 /**
- * Classe représentant un membre
- */
-/**
- * @author fperinel
- *
- */
-/**
- * @author fperinel
- * 
+ * Classe représentant un membre.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Member {
 
     /**
-     * Identifiant du membre
+     * Identifiant du membre.
      */
     private Integer id;
 
     /**
-     * Prénom
+     * Prénom.
      */
     private String firstname;
 
     /**
-     * Nom
+     * Nom.
      */
     private String lastname;
 
     /**
-     * login
+     * login.
      */
     private String login;
 
     /**
-     * Entreprise
+     * Entreprise.
      */
     private String company;
 
     /**
-     * Description courte
+     * Description courte.
      */
     private String shortdesc;
 
     /**
-     * Description longue
+     * Description longue.
      */
     private String longdesc;
 
     /**
-     * URL de l'avatar du membre
+     * URL de l'avatar du membre.
      */
     private String urlimage;
 
     /**
-     * Objet image de l'avatar du membre
+     * Objet image de l'avatar du membre.
      */
     @JsonIgnore
     private Bitmap image;
 
     /**
-     * Nombre de consultations
+     * Nombre de consultations.
      */
     private String nbConsults;
 
     /**
-     * Liste des liens
+     * Liste des liens.
      */
     private List<Integer> links;
 
     /**
-     * Liste des membre liés
+     * Liste des membre liés.
      */
     private List<Integer> linkers;
 
     /**
-     * Liste des liens partagés
+     * Liste des liens partagés.
      */
     private List<Link> sharedLinks;
 
     /**
-     * Logo (entreprise)
+     * Logo (entreprise).
      */
     private String logo;
 
     /**
-     * Niveau sponsor
+     * Niveau sponsor.
      */
     private String level;
 
     /**
-     * Type de membre
+     * Type de membre.
      */
     private String type;
 
     /**
-     * Retourne l'identifiant unique du membre
+     * Retourne l'identifiant unique du membre.
      * 
      * @return Identifiant
      */
@@ -112,7 +104,7 @@ public class Member {
     }
 
     /**
-     * Renseigne l'identifiant unique du membre
+     * Renseigne l'identifiant unique du membre.
      * 
      * @param id
      *            the id to set
@@ -122,7 +114,7 @@ public class Member {
     }
 
     /**
-     * Retourne le prénom
+     * Retourne le prénom.
      * 
      * @return the firstname
      */
@@ -131,7 +123,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le prénom
+     * Renseigne le prénom.
      * 
      * @param firstname
      *            the firstname to set
@@ -141,7 +133,7 @@ public class Member {
     }
 
     /**
-     * Retourne le nom
+     * Retourne le nom.
      * 
      * @return the lastname
      */
@@ -150,7 +142,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le nom
+     * Renseigne le nom.
      * 
      * @param lastname
      *            the lastname to set
@@ -160,7 +152,7 @@ public class Member {
     }
 
     /**
-     * Retourne le login
+     * Retourne le login.
      * 
      * @return the login
      */
@@ -169,7 +161,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le login
+     * Renseigne le login.
      * 
      * @param login
      *            the login to set
@@ -179,7 +171,7 @@ public class Member {
     }
 
     /**
-     * Retourne l'entreprise
+     * Retourne l'entreprise.
      * 
      * @return the company
      */
@@ -188,7 +180,7 @@ public class Member {
     }
 
     /**
-     * Rensiegne l'entreprise
+     * Rensiegne l'entreprise.
      * 
      * @param company
      *            the company to set
@@ -198,7 +190,7 @@ public class Member {
     }
 
     /**
-     * Retourne la description courte
+     * Retourne la description courte.
      * 
      * @return the shortdesc
      */
@@ -207,7 +199,7 @@ public class Member {
     }
 
     /**
-     * Renseigne la description courte
+     * Renseigne la description courte.
      * 
      * @param shortdesc
      *            the shortdesc to set
@@ -217,7 +209,7 @@ public class Member {
     }
 
     /**
-     * Retourne la description longue
+     * Retourne la description longue.
      * 
      * @return the longdesc
      */
@@ -226,7 +218,7 @@ public class Member {
     }
 
     /**
-     * Renseigne la description longue
+     * Renseigne la description longue.
      * 
      * @param longdesc
      *            the longdesc to set
@@ -236,7 +228,7 @@ public class Member {
     }
 
     /**
-     * Retourne de l'url de l'avatar
+     * Retourne de l'url de l'avatar.
      * 
      * @return the urlimage
      */
@@ -245,7 +237,7 @@ public class Member {
     }
 
     /**
-     * Renseigne l'url de l'avatar
+     * Renseigne l'url de l'avatar.
      * 
      * @param urlimage
      *            the urlimage to set
@@ -255,7 +247,7 @@ public class Member {
     }
 
     /**
-     * Retourne le nombre de consultation
+     * Retourne le nombre de consultation.
      * 
      * @return the nbConsults
      */
@@ -264,7 +256,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le nombre de consultation
+     * Renseigne le nombre de consultation.
      * 
      * @param nbConsults
      *            the nbConsults to set
@@ -274,7 +266,7 @@ public class Member {
     }
 
     /**
-     * Retourne les liens
+     * Retourne les liens.
      * 
      * @return the links
      */
@@ -283,7 +275,7 @@ public class Member {
     }
 
     /**
-     * Rensiegne les liens
+     * Rensiegne les liens.
      * 
      * @param links
      *            the links to set
@@ -293,7 +285,7 @@ public class Member {
     }
 
     /**
-     * Retourne les membres liés
+     * Retourne les membres liés.
      * 
      * @return the linkers
      */
@@ -302,7 +294,7 @@ public class Member {
     }
 
     /**
-     * rensiegne les membres liés
+     * rensiegne les membres liés.
      * 
      * @param linkers
      *            the linkers to set
@@ -312,7 +304,7 @@ public class Member {
     }
 
     /**
-     * Retourne les liens partagés
+     * Retourne les liens partagés.
      * 
      * @return the sharedLinks
      */
@@ -321,7 +313,7 @@ public class Member {
     }
 
     /**
-     * Renseigne les liens partagés
+     * Renseigne les liens partagés.
      * 
      * @param sharedLinks
      *            the sharedLinks to set
@@ -331,7 +323,7 @@ public class Member {
     }
 
     /**
-     * Retourne le logo de l'entreprise
+     * Retourne le logo de l'entreprise.
      * 
      * @return the logo
      */
@@ -340,7 +332,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le logo de l'entreprise
+     * Renseigne le logo de l'entreprise.
      * 
      * @param logo
      *            the logo to set
@@ -350,7 +342,7 @@ public class Member {
     }
 
     /**
-     * Retourne le niveau du sponsor
+     * Retourne le niveau du sponsor.
      * 
      * @return the level
      */
@@ -359,7 +351,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le niveau du sponsor
+     * Renseigne le niveau du sponsor.
      * 
      * @param level
      *            the level to set
@@ -369,7 +361,7 @@ public class Member {
     }
 
     /**
-     * Retourne le type de membre
+     * Retourne le type de membre.
      * 
      * @return the type
      */
@@ -378,7 +370,7 @@ public class Member {
     }
 
     /**
-     * Renseigne le type de membre
+     * Renseigne le type de membre.
      * 
      * @param type
      *            the type to set
@@ -388,7 +380,7 @@ public class Member {
     }
 
     /**
-     * Retourne l'objet image de l'avatar
+     * Retourne l'objet image de l'avatar.
      * 
      * @return the image
      */
@@ -397,7 +389,7 @@ public class Member {
     }
 
     /**
-     * Renseigne l'objet image de l'avatar
+     * Renseigne l'objet image de l'avatar.
      * 
      * @param image
      *            the image to set

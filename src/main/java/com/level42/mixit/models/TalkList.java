@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * Objet représentant une liste de talk Permet d'ajouter un observer
+ * Objet représentant une liste de talk Permet d'ajouter un observer.
  */
 public class TalkList extends Observable {
 
     /**
-     * Liste des talks
+     * Liste des talks.
      */
     private List<Talk> talks;
 
     /**
-     * Retourne la liste des talks
+     * Retourne la liste des talks.
      * 
      * @return the talks
      */
@@ -23,7 +23,7 @@ public class TalkList extends Observable {
     }
 
     /**
-     * Renseigne la liste des talks
+     * Renseigne la liste des talks.
      * 
      * @param talks
      *            the talks to set

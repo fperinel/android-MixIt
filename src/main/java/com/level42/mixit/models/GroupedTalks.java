@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Classe représentant le planning avec les talks regroupés par date
+ * Classe représentant le planning avec les talks regroupés par date.
  */
 public class GroupedTalks {
 
     /**
-     * Identifiant unique
+     * Identifiant unique.
      */
     private Integer id;
 
     /**
-     * Date de la session du talk
+     * Date de la session du talk.
      */
     private Date date;
 
@@ -24,7 +24,7 @@ public class GroupedTalks {
     private List<Talk> talks;
 
     /**
-     * Renseigne la date de la session
+     * Renseigne la date de la session.
      * 
      * @return the date
      */
@@ -33,7 +33,7 @@ public class GroupedTalks {
     }
 
     /**
-     * Retourne la date de la session
+     * Retourne la date de la session.
      * 
      * @param date
      *            the date to set
@@ -43,7 +43,7 @@ public class GroupedTalks {
     }
 
     /**
-     * Retourne la liste des talks
+     * Retourne la liste des talks.
      * 
      * @return the talks
      */
@@ -52,7 +52,7 @@ public class GroupedTalks {
     }
 
     /**
-     * Renseigne la liste des talks
+     * Renseigne la liste des talks.
      * 
      * @param talks
      *            the talks to set
@@ -62,7 +62,7 @@ public class GroupedTalks {
     }
 
     /**
-     * Retourne l'identifiant unique
+     * Retourne l'identifiant unique.
      * 
      * @return the id
      */
@@ -71,7 +71,7 @@ public class GroupedTalks {
     }
 
     /**
-     * Renseigne l'identifiant unique
+     * Renseigne l'identifiant unique.
      * 
      * @param id
      *            the id to set

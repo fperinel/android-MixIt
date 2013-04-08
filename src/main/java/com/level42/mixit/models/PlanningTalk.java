@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * Objet représentant le planning des sessiosn de talks
+ * Objet représentant le planning des sessiosn de talks.
  */
 public class PlanningTalk extends Observable {
 
     /**
-     * Liste des talks regroupés par date de session
+     * Liste des talks regroupés par date de session.
      */
     private List<GroupedTalks> groupedTalks;
 
     /**
-     * Retourne la liste des talks regroupés par date de session
+     * Retourne la liste des talks regroupés par date de session.
      * 
      * @return the groupedTalks
      */
@@ -23,7 +23,7 @@ public class PlanningTalk extends Observable {
     }
 
     /**
-     * Renseigne la liste des talks regroupés par date de session
+     * Renseigne la liste des talks regroupés par date de session.
      * 
      * @param groupedTalks
      *            the groupedTalks to set

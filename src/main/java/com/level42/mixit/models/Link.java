@@ -3,33 +3,33 @@ package com.level42.mixit.models;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
- * Classe représentant un lien
+ * Classe représentant un lien.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Link {
 
     /**
-     * Identifiant du lien
+     * Identifiant du lien.
      */
     private Integer id;
 
     /**
-     * Nom du lien
+     * Nom du lien.
      */
     private String name;
 
     /**
-     * Url du lien
+     * Url du lien.
      */
     private String url;
 
     /**
-     * Ordre du lien
+     * Ordre du lien.
      */
     private Integer ordernum;
 
     /**
-     * Retourne l'identifiant du lien
+     * Retourne l'identifiant du lien.
      * 
      * @return the id
      */
@@ -38,7 +38,7 @@ public class Link {
     }
 
     /**
-     * Renseigne l'identifiant du lien
+     * Renseigne l'identifiant du lien.
      * 
      * @param id
      *            the id to set
@@ -48,7 +48,7 @@ public class Link {
     }
 
     /**
-     * Retourne le nom du lein
+     * Retourne le nom du lien.
      * 
      * @return the name
      */
@@ -57,7 +57,7 @@ public class Link {
     }
 
     /**
-     * Renseigne le nom du lien
+     * Renseigne le nom du lien.
      * 
      * @param name
      *            the name to set
@@ -67,7 +67,7 @@ public class Link {
     }
 
     /**
-     * Retourne l'URL du lien
+     * Retourne l'URL du lien.
      * 
      * @return the url
      */
@@ -76,7 +76,7 @@ public class Link {
     }
 
     /**
-     * Renseigne l'URL du lien
+     * Renseigne l'URL du lien.
      * 
      * @param url
      *            the url to set
@@ -86,7 +86,7 @@ public class Link {
     }
 
     /**
-     * Retourne l'ordre du lien
+     * Retourne l'ordre du lien.
      * 
      * @return the ordernum
      */
@@ -95,7 +95,7 @@ public class Link {
     }
 
     /**
-     * Renseigne l'ordre du lien
+     * Renseigne l'ordre du lien.
      * 
      * @param ordernum
      *            the ordernum to set
