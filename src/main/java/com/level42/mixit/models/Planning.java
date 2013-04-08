@@ -14,7 +14,6 @@ public class Planning {
 
     /**
      * Retourne la liste des sessions.
-     * 
      * @return the sessions
      */
     public List<Session> getSessions() {
@@ -23,7 +22,6 @@ public class Planning {
 
     /**
      * Renseigne la liste des sessions.
-     * 
      * @param sessions
      *            the sessions to set
      */

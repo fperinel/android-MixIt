@@ -82,7 +82,6 @@ public class Session {
 
     /**
      * Retourne la date formatée de la session.
-     * 
      * @return the dateFormat
      */
     public Date getDateFormat() {

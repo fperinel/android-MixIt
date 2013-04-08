@@ -83,7 +83,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne l'identifiant du talk.
-     * 
      * @return the id
      */
     public Integer getId() {
@@ -92,7 +91,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne l'identifiant du talk.
-     * 
      * @param id
      *            the id to set
      */
@@ -102,7 +100,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne le titre du talk.
-     * 
      * @return the title
      */
     public String getTitle() {
@@ -111,7 +108,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le titre du talk.
-     * 
      * @param title
      *            the title to set
      */
@@ -121,7 +117,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne le sommaire du talk.
-     * 
      * @return the summary
      */
     public String getSummary() {
@@ -130,7 +125,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le sommaire du talk.
-     * 
      * @param summary
      *            the summary to set
      */
@@ -140,7 +134,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la description du talk.
-     * 
      * @return the description
      */
     public String getDescription() {
@@ -149,7 +142,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la description du talk.
-     * 
      * @param description
      *            the description to set
      */
@@ -159,7 +151,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne les identifiants des tags "centre d'intérêts".
-     * 
      * @return the interests Id
      */
     public List<Integer> getInterestsId() {
@@ -168,7 +159,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne les identifiants des tags "centre d'intérêts".
-     * 
      * @param interests
      *            the interests Id to set
      */
@@ -178,7 +168,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la liste des identifiants des speakers du talk.
-     * 
      * @return the speakers Id
      */
     public List<Integer> getSpeakersId() {
@@ -187,7 +176,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des identifiants des speakers du talk.
-     * 
      * @param speakers
      *            the speakers Id to set
      */
@@ -197,7 +185,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne le format du talk.
-     * 
      * @return the format
      */
     public String getFormat() {
@@ -206,7 +193,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le format du talk.
-     * 
      * @param format
      *            the format to set
      */
@@ -216,7 +202,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne le niveau de difficulté du talk.
-     * 
      * @return the level
      */
     public String getLevel() {
@@ -225,7 +210,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le niveau de difficulté du talk.
-     * 
      * @param level
      *            the level to set
      */
@@ -235,7 +219,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la session du talk.
-     * 
      * @param session
      *            the session to set
      */
@@ -245,7 +228,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la date de la session du Talk.
-     * 
      * @return Date de la session du Talk
      */
     public Date getDateSession() {
@@ -258,7 +240,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la salle de la session du Talk.
-     * 
      * @return Salle de la session du Talk
      */
     public String getSalleSession() {
@@ -271,7 +252,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la liste des centres d'intérêt du talk.
-     * 
      * @return the interests
      */
     public List<Interest> getInterests() {
@@ -280,7 +260,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des centres d'intérêt du talk.
-     * 
      * @param interests
      *            the interests to set
      */
@@ -290,7 +269,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la liste des speakers.
-     * 
      * @return the speakers
      */
     public List<Speaker> getSpeakers() {
@@ -299,7 +277,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des speakers.
-     * 
      * @param speakers
      *            the speakers to set
      */
@@ -309,7 +286,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la date de début.
-     * 
      * @return the start
      */
     public String getStart() {
@@ -318,7 +294,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la date de début.
-     * 
      * @param start
      *            the start to set
      */
@@ -328,7 +303,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Retourne la date de fin.
-     * 
      * @return the end
      */
     public String getEnd() {
@@ -337,7 +311,6 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la date de fin.
-     * 
      * @param end
      *            the end to set
      */

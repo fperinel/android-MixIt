@@ -15,7 +15,6 @@ public class TalkList extends Observable {
 
     /**
      * Retourne la liste des talks.
-     * 
      * @return the talks
      */
     public List<Talk> getTalks() {
@@ -24,7 +23,6 @@ public class TalkList extends Observable {
 
     /**
      * Renseigne la liste des talks.
-     * 
      * @param talks
      *            the talks to set
      */

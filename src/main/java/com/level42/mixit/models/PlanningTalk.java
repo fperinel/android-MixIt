@@ -15,7 +15,6 @@ public class PlanningTalk extends Observable {
 
     /**
      * Retourne la liste des talks regroupés par date de session.
-     * 
      * @return the groupedTalks
      */
     public List<GroupedTalks> getGroupedTalks() {
@@ -24,7 +23,6 @@ public class PlanningTalk extends Observable {
 
     /**
      * Renseigne la liste des talks regroupés par date de session.
-     * 
      * @param groupedTalks
      *            the groupedTalks to set
      */
