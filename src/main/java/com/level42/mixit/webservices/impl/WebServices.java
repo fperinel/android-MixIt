@@ -289,8 +289,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             String result = this.executeQuery(request, true);
 
             Log.d(Utils.logTag, result);
-            Object resultObj = mapper.readValue(result, entity.getClass());
-            return resultObj;
+            return mapper.readValue(result, entity.getClass());
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
         } catch (IOException e) {

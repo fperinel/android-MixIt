@@ -14,6 +14,12 @@ import com.level42.mixit.R;
 public class MessageBox {
 
     /**
+     * On masque le constructeur par défaut
+     */
+    private MessageBox() {
+    }
+    
+    /**
      * Construit et affiche une boite de dialog de type "Erreur".
      *
      * @param title

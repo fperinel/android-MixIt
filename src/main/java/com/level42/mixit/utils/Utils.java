@@ -23,6 +23,12 @@ public class Utils {
     public final static String logTag = "[MIXIT]";
 
     /**
+     * On masque le constructeur par défaut
+     */
+    private Utils() {
+    }
+    
+    /**
      * Contrôle si le thread courant est le thread principal.
      */
     public static void checkOnMainThread() {
