@@ -91,8 +91,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne l'identifiant du talk.
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(Integer id) {
         this.id = id;
@@ -108,8 +107,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le titre du talk.
-     * @param title
-     *            the title to set
+     * @param title the title to set
      */
     public void setTitle(String title) {
         this.title = title;
@@ -125,8 +123,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le sommaire du talk.
-     * @param summary
-     *            the summary to set
+     * @param summary the summary to set
      */
     public void setSummary(String summary) {
         this.summary = summary;
@@ -142,8 +139,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la description du talk.
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
         this.description = description;
@@ -159,8 +155,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne les identifiants des tags "centre d'intérêts".
-     * @param interests
-     *            the interests Id to set
+     * @param interestsId the interests Id to set
      */
     public void setInterestsId(List<Integer> interestsId) {
         this.interestsId = interestsId;
@@ -176,8 +171,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des identifiants des speakers du talk.
-     * @param speakers
-     *            the speakers Id to set
+     * @param speakersId the speakers Id to set
      */
     public void setSpeakersId(List<Integer> speakersId) {
         this.speakersId = speakersId;
@@ -193,8 +187,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le format du talk.
-     * @param format
-     *            the format to set
+     * @param format the format to set
      */
     public void setFormat(String format) {
         this.format = format;
@@ -210,8 +203,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne le niveau de difficulté du talk.
-     * @param level
-     *            the level to set
+     * @param level the level to set
      */
     public void setLevel(String level) {
         this.level = level;
@@ -219,8 +211,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la session du talk.
-     * @param session
-     *            the session to set
+     * @param session the session to set
      */
     public void setSession(Session session) {
         this.session = session;
@@ -260,8 +251,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des centres d'intérêt du talk.
-     * @param interests
-     *            the interests to set
+     * @param interests the interests to set
      */
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
@@ -277,8 +267,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la liste des speakers.
-     * @param speakers
-     *            the speakers to set
+     * @param speakers the speakers to set
      */
     public void setSpeakers(List<Speaker> speakers) {
         this.speakers = speakers;
@@ -294,8 +283,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la date de début.
-     * @param start
-     *            the start to set
+     * @param start the start to set
      */
     public void setStart(String start) {
         this.start = start;
@@ -311,8 +299,7 @@ public class Talk implements Comparable<Talk> {
 
     /**
      * Renseigne la date de fin.
-     * @param end
-     *            the end to set
+     * @param end the end to set
      */
     public void setEnd(String end) {
         this.end = end;

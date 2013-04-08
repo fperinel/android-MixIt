@@ -54,6 +54,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getChild(int, int)
      */
+    @Override
     public Talk getChild(int groupPosition, int childPosition) {
         return talks.get(groupPosition).getTalks().get(childPosition);
     }
@@ -62,6 +63,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getChildId(int, int)
      */
+    @Override
     public long getChildId(int groupPosition, int childPosition) {
         return talks.get(groupPosition).getTalks().get(childPosition).getId();
     }
@@ -70,6 +72,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getChildrenCount(int)
      */
+    @Override
     public int getChildrenCount(int groupPosition) {
         return talks.get(groupPosition).getTalks().size();
     }
@@ -78,6 +81,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getGroup(int)
      */
+    @Override
     public GroupedTalks getGroup(int groupPosition) {
         return talks.get(groupPosition);
     }
@@ -86,6 +90,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getGroupCount()
      */
+    @Override
     public int getGroupCount() {
         return talks.size();
     }
@@ -94,6 +99,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getGroupId(int)
      */
+    @Override
     public long getGroupId(int groupPosition) {
         return talks.get(groupPosition).getId();
     }
@@ -102,6 +108,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#hasStableIds()
      */
+    @Override
     public boolean hasStableIds() {
         return true;
     }
@@ -110,6 +117,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#isChildSelectable(int, int)
      */
+    @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
@@ -118,6 +126,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getGroupView(int, boolean, android.view.View, android.view.ViewGroup)
      */
+    @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
 
@@ -146,6 +155,7 @@ public class PlanningAdapter extends BaseExpandableListAdapter {
      * (non-Javadoc)
      * @see android.widget.ExpandableListAdapter#getChildView(int, int, boolean, android.view.View, android.view.ViewGroup)
      */
+    @Override
     public View getChildView(int groupPosition, int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
 

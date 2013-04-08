@@ -41,6 +41,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getCount()
      */
+    @Override
     public int getCount() {
         return (talks != null ? talks.size() : 0);
     }
@@ -49,6 +50,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getItem(int)
      */
+    @Override
     public LightningTalk getItem(int arg0) {
         return talks.get(arg0);
     }
@@ -57,6 +59,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getItemId(int)
      */
+    @Override
     public long getItemId(int arg0) {
         Talk talk = (Talk) this.getItem(arg0);
         if (talk != null) {
@@ -79,6 +82,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
      */
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         TextView txtTalkTitre;

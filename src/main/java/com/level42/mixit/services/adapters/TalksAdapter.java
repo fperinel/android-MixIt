@@ -40,6 +40,7 @@ public class TalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getCount()
      */
+    @Override
     public int getCount() {
         return (talks != null ? talks.size() : 0);
     }
@@ -48,6 +49,7 @@ public class TalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getItem(int)
      */
+    @Override
     public Talk getItem(int arg0) {
         return talks.get(arg0);
     }
@@ -56,6 +58,7 @@ public class TalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getItemId(int)
      */
+    @Override
     public long getItemId(int arg0) {
         Talk talk = (Talk) this.getItem(arg0);
         if (talk != null) {
@@ -78,6 +81,7 @@ public class TalksAdapter extends BaseAdapter {
      * (non-Javadoc)
      * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
      */
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         TextView txtTalkTitre;
