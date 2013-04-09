@@ -61,6 +61,42 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     private LightningTalksAdapter adapter;
 
+    /**
+     * Listener pour la tâche asynchrone
+     */
+    private OnTaskPostExecuteListener<List<LightningTalk>> listener = new OnTaskPostExecuteListener<List<LightningTalk>>() {
+        public void onTaskPostExecuteListener(
+                List<LightningTalk> result) {
+            if (result != null) {
+                lightningTalks.setTalks(result);
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+        }
+
+        public void onTaskInterruptListener(Exception cancelReason) {
+            OnClickListener listener = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,
+                        int which) {
+                    finish();
+                }
+            };
+            MessageBox.showError(
+                    getResources().getString(
+                            R.string.label_dialog_error),
+                    cancelReason.getMessage(), listener,
+                    LightningTalkListActivity.this);
+        }
+
+        public void onTaskCancelledListener() {
+            MessageBox.showInformation(
+                    getResources().getString(
+                            R.string.label_dialog_aborted),
+                    LightningTalkListActivity.this);
+        }
+    };
+    
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
@@ -120,39 +156,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
         GetLightningTalksAsyncTask getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getLightningTalksAsyncService
-                .setPostExecuteListener(new OnTaskPostExecuteListener<List<LightningTalk>>() {
-                    public void onTaskPostExecuteListener(
-                            List<LightningTalk> result) {
-                        if (result != null) {
-                            lightningTalks.setTalks(result);
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                        }
-                    }
-
-                    public void onTaskInterruptListener(Exception cancelReason) {
-                        OnClickListener listener = new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                                finish();
-                            }
-                        };
-                        MessageBox.showError(
-                                getResources().getString(
-                                        R.string.label_dialog_error),
-                                cancelReason.getMessage(), listener,
-                                LightningTalkListActivity.this);
-                    }
-
-                    public void onTaskCancelledListener() {
-                        MessageBox.showInformation(
-                                getResources().getString(
-                                        R.string.label_dialog_aborted),
-                                LightningTalkListActivity.this);
-                    }
-                });
+        getLightningTalksAsyncService.setPostExecuteListener(listener);
 
         // Execution du service
         getLightningTalksAsyncService.execute(lightningTalkService);

@@ -61,6 +61,42 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     private PlanningAdapter adapter;
 
+    /**
+     * Listener pour la tâche asynchrone
+     */
+    private OnTaskPostExecuteListener<List<GroupedTalks>> listener = new OnTaskPostExecuteListener<List<GroupedTalks>>() {
+        public void onTaskPostExecuteListener(
+                List<GroupedTalks> result) {
+            if (result != null) {
+                talks.setGroupedTalks(result);
+            }
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+
+        public void onTaskInterruptListener(Exception cancelReason) {
+            OnClickListener listener = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,
+                        int which) {
+                    finish();
+                }
+            };
+            MessageBox.showError(
+                    getResources().getString(
+                            R.string.label_dialog_error),
+                    cancelReason.getMessage(), listener,
+                    PlanningActivity.this);
+        }
+
+        public void onTaskCancelledListener() {
+            MessageBox.showInformation(
+                    getResources().getString(
+                            R.string.label_dialog_aborted),
+                    PlanningActivity.this);
+        }
+    };
+    
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
@@ -120,39 +156,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         GetPlanningAsyncTask getTalksAsyncService = new GetPlanningAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getTalksAsyncService
-                .setPostExecuteListener(new OnTaskPostExecuteListener<List<GroupedTalks>>() {
-                    public void onTaskPostExecuteListener(
-                            List<GroupedTalks> result) {
-                        if (result != null) {
-                            talks.setGroupedTalks(result);
-                        }
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                    }
-
-                    public void onTaskInterruptListener(Exception cancelReason) {
-                        OnClickListener listener = new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                                finish();
-                            }
-                        };
-                        MessageBox.showError(
-                                getResources().getString(
-                                        R.string.label_dialog_error),
-                                cancelReason.getMessage(), listener,
-                                PlanningActivity.this);
-                    }
-
-                    public void onTaskCancelledListener() {
-                        MessageBox.showInformation(
-                                getResources().getString(
-                                        R.string.label_dialog_aborted),
-                                PlanningActivity.this);
-                    }
-                });
+        getTalksAsyncService.setPostExecuteListener(listener);
 
         // Execution du service
         Integer delay = Integer.valueOf(getString(R.string.planningDelay));

@@ -94,6 +94,42 @@ public class TalkActivity extends RoboActivity {
      */
     private ProgressDialog progressDialog;
 
+    /**
+     * Listener sur la tâche asynchrone
+     */
+    private OnTaskPostExecuteListener<Talk> listener = new OnTaskPostExecuteListener<Talk>() {
+        public void onTaskPostExecuteListener(Talk result) {
+            if (result != null) {
+                talk = result;
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                displayTalk(talk);
+            }
+        }
+
+        public void onTaskInterruptListener(Exception cancelReason) {
+            OnClickListener listener = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,
+                        int which) {
+                    finish();
+                }
+            };
+            MessageBox.showError(
+                    getResources().getString(
+                            R.string.label_dialog_error),
+                    cancelReason.getMessage(), listener,
+                    TalkActivity.this);
+        }
+
+        public void onTaskCancelledListener() {
+            MessageBox.showInformation(
+                    getResources().getString(
+                            R.string.label_dialog_aborted),
+                    TalkActivity.this);
+        }
+    };
+    
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
@@ -139,39 +175,7 @@ public class TalkActivity extends RoboActivity {
         GetTalkAsyncTask getTalkAsyncService = new GetTalkAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getTalkAsyncService
-                .setPostExecuteListener(new OnTaskPostExecuteListener<Talk>() {
-                    public void onTaskPostExecuteListener(Talk result) {
-                        if (result != null) {
-                            talk = result;
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            displayTalk(talk);
-                        }
-                    }
-
-                    public void onTaskInterruptListener(Exception cancelReason) {
-                        OnClickListener listener = new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                                finish();
-                            }
-                        };
-                        MessageBox.showError(
-                                getResources().getString(
-                                        R.string.label_dialog_error),
-                                cancelReason.getMessage(), listener,
-                                TalkActivity.this);
-                    }
-
-                    public void onTaskCancelledListener() {
-                        MessageBox.showInformation(
-                                getResources().getString(
-                                        R.string.label_dialog_aborted),
-                                TalkActivity.this);
-                    }
-                });
+        getTalkAsyncService.setPostExecuteListener(listener);
 
         // Execution du service
         Integer id = (int) this.getIntent().getExtras()

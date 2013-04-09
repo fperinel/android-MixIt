@@ -81,6 +81,43 @@ public class LightningTalkActivity extends RoboActivity {
      */
     private ProgressDialog progressDialog;
 
+    /**
+     * Listener sur la tâche asynchrone
+     */
+    private OnTaskPostExecuteListener<LightningTalk> listener = new OnTaskPostExecuteListener<LightningTalk>() {
+        public void onTaskPostExecuteListener(LightningTalk result) {
+            if (result != null) {
+                Log.d(Utils.LOGTAG, "LightningTalk chargé");
+                lightningTalk = result;
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                displayTalk(lightningTalk);
+            }
+        }
+
+        public void onTaskInterruptListener(Exception cancelReason) {
+            OnClickListener listener = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,
+                        int which) {
+                    finish();
+                }
+            };
+            MessageBox.showError(
+                    getResources().getString(
+                            R.string.label_dialog_error),
+                    cancelReason.getMessage(), listener,
+                    LightningTalkActivity.this);
+        }
+
+        public void onTaskCancelledListener() {
+            MessageBox.showInformation(
+                    getResources().getString(
+                            R.string.label_dialog_aborted),
+                    LightningTalkActivity.this);
+        }
+    };
+    
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboActivity#onCreate(android.os.Bundle)
@@ -127,39 +164,7 @@ public class LightningTalkActivity extends RoboActivity {
 
         // Ajout d'un listener pour récupérer le retour
         getTalkAsyncService
-                .setPostExecuteListener(new OnTaskPostExecuteListener<LightningTalk>() {
-                    public void onTaskPostExecuteListener(LightningTalk result) {
-                        if (result != null) {
-                            Log.d(Utils.LOGTAG, "LightningTalk chargé");
-                            lightningTalk = result;
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            displayTalk(lightningTalk);
-                        }
-                    }
-
-                    public void onTaskInterruptListener(Exception cancelReason) {
-                        OnClickListener listener = new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                                finish();
-                            }
-                        };
-                        MessageBox.showError(
-                                getResources().getString(
-                                        R.string.label_dialog_error),
-                                cancelReason.getMessage(), listener,
-                                LightningTalkActivity.this);
-                    }
-
-                    public void onTaskCancelledListener() {
-                        MessageBox.showInformation(
-                                getResources().getString(
-                                        R.string.label_dialog_aborted),
-                                LightningTalkActivity.this);
-                    }
-                });
+                .setPostExecuteListener(listener);
 
         // Execution du service
         Integer id = (int) this.getIntent().getExtras()
