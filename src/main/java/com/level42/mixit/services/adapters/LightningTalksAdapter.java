@@ -22,7 +22,7 @@ public class LightningTalksAdapter extends BaseAdapter {
     /**
      * Liste des talks.
      */
-    private List<LightningTalk> talks = Collections.emptyList();
+    private List<LightningTalk> lightningTalk = Collections.emptyList();
 
     /**
      * Contexte de l'activité appelante.
@@ -43,7 +43,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      */
     @Override
     public int getCount() {
-        return (talks != null ? talks.size() : 0);
+        return (lightningTalk != null ? lightningTalk.size() : 0);
     }
 
     /*
@@ -52,7 +52,7 @@ public class LightningTalksAdapter extends BaseAdapter {
      */
     @Override
     public LightningTalk getItem(int arg0) {
-        return talks.get(arg0);
+        return lightningTalk.get(arg0);
     }
 
     /*
@@ -70,11 +70,11 @@ public class LightningTalksAdapter extends BaseAdapter {
 
     /**
      * Mise à jour des talks.
-     * @param talks
+     * @param lightningTalk
      */
-    public void updateTalks(List<LightningTalk> talks) {
+    public void updateTalks(List<LightningTalk> lightningTalk) {
         Utils.checkOnMainThread();
-        this.talks = talks;
+        this.lightningTalk = lightningTalk;
         notifyDataSetChanged();
     }
 

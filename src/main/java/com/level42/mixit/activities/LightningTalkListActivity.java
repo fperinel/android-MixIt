@@ -38,18 +38,18 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      * Contrôle : Liste des talks.
      */
     @InjectView(R.id.listLightningTalks)
-    private ListView listTalks;
+    private ListView listLightningTalks;
 
     /**
      * Interface vers le service de gestion des lightning talk.
      */
     @Inject
-    private ILightningTalkService talkService;
+    private ILightningTalkService lightningTalkService;
 
     /**
      * Liste des talks de l'activité.
      */
-    private LightningTalkList talks = new LightningTalkList();
+    private LightningTalkList lightningTalks = new LightningTalkList();
 
     /**
      * Boite d'attente de chargement.
@@ -68,11 +68,11 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        talks.addObserver(this);
+        lightningTalks.addObserver(this);
         adapter = new LightningTalksAdapter(this.getBaseContext());
-        listTalks.setAdapter(adapter);
+        listLightningTalks.setAdapter(adapter);
 
-        listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
+        listLightningTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                     int position, long id) {
                 Intent talkActivity = new Intent(
@@ -87,9 +87,9 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
         List<LightningTalk> savedTalks = (List<LightningTalk>) getLastNonConfigurationInstance();
         if (savedTalks == null) {
             this.setupProgressDialog();
-            this.refreshTalks();
+            this.refreshLightningTalks();
         } else {
-            talks.setTalks(savedTalks);
+            lightningTalks.setTalks(savedTalks);
         }
     }
 
@@ -99,7 +99,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        return this.talks.getTalks();
+        return this.lightningTalks.getTalks();
     }
 
     /**
@@ -115,7 +115,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     /**
      * Rafraichit la liste des talks.
      */
-    protected void refreshTalks() {
+    protected void refreshLightningTalks() {
         // Préparation du service
         GetLightningTalksAsyncTask getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
 
@@ -125,7 +125,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
                     public void onTaskPostExecuteListener(
                             List<LightningTalk> result) {
                         if (result != null) {
-                            talks.setTalks(result);
+                            lightningTalks.setTalks(result);
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
@@ -155,7 +155,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
                 });
 
         // Execution du service
-        getLightningTalksAsyncService.execute(talkService);
+        getLightningTalksAsyncService.execute(lightningTalkService);
     }
 
     /**

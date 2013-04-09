@@ -86,7 +86,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
         List<Talk> savedTalks = (List<Talk>) getLastNonConfigurationInstance();
         if (savedTalks == null) {
             this.setupProgressDialog();
-            this.refreshTalks();
+            this.refreshTalksList();
         } else {
             talks.setTalks(savedTalks);
         }
@@ -114,7 +114,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
     /**
      * Rafraichit la liste des talks.
      */
-    protected void refreshTalks() {
+    protected void refreshTalksList() {
         // Préparation du service
         GetTalksAsyncTask getTalksAsyncService = new GetTalksAsyncTask();
 

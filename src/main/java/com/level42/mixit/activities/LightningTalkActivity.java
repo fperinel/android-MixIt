@@ -39,7 +39,7 @@ public class LightningTalkActivity extends RoboActivity {
      * Interface vers le service de gestion des lightning talk.
      */
     @Inject
-    private ILightningTalkService talkService;
+    private ILightningTalkService lightningTalkService;
 
     /**
      * Contrôle : Titre du talk.
@@ -74,7 +74,7 @@ public class LightningTalkActivity extends RoboActivity {
     /**
      * Liste des talks de l'activité.
      */
-    private LightningTalk talk = new LightningTalk();
+    private LightningTalk lightningTalk = new LightningTalk();
 
     /**
      * Boite d'attente de chargement.
@@ -94,8 +94,8 @@ public class LightningTalkActivity extends RoboActivity {
             this.setupProgressDialog();
             this.loadTalk();
         } else {
-            talk = savedTalk;
-            this.displayTalk(talk);
+            lightningTalk = savedTalk;
+            this.displayTalk(lightningTalk);
         }
     }
 
@@ -105,7 +105,7 @@ public class LightningTalkActivity extends RoboActivity {
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        return this.talk;
+        return this.lightningTalk;
     }
 
     /**
@@ -131,11 +131,11 @@ public class LightningTalkActivity extends RoboActivity {
                     public void onTaskPostExecuteListener(LightningTalk result) {
                         if (result != null) {
                             Log.d(Utils.LOGTAG, "LightningTalk chargé");
-                            talk = result;
+                            lightningTalk = result;
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
-                            displayTalk(talk);
+                            displayTalk(lightningTalk);
                         }
                     }
 
@@ -164,7 +164,7 @@ public class LightningTalkActivity extends RoboActivity {
         // Execution du service
         Integer id = (int) this.getIntent().getExtras()
                 .getLong(LightningTalkActivity.TALK_ID);
-        getTalkAsyncService.execute(talkService, id);
+        getTalkAsyncService.execute(lightningTalkService, id);
     }
 
     /**
