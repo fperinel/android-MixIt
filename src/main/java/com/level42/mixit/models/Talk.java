@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * Classe représentant un Talk.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Talk implements Comparable<Talk> {
 
     /**
