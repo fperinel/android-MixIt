@@ -82,6 +82,12 @@
 	    	style="@style/Layout.Interests"
 		    android:id="@+id/talk_layout_interests"
 	        android:orientation="horizontal" >
+		      
+		    <TextView
+		        android:id="@+id/talk_textInterests"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        style="@style/TextAppearance.Small.Niveau" />
 		    
 		</LinearLayout>
 		

@@ -26,6 +26,7 @@
 		<guice.version>3.0</guice.version>
 		<supportv4.version>r7</supportv4.version>
 		<jackson.version>1.9.12</jackson.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
 
 		<key.alias>mixit</key.alias>
 		<key.storepass>mixit2013</key.storepass>
@@ -60,7 +61,12 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
-        </dependency>		   
+        </dependency>		
+        <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>   
 	</dependencies>
 
 	<build>

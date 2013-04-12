@@ -2,6 +2,10 @@ package com.level42.mixit.activities;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -57,8 +61,8 @@ public class TalkActivity extends RoboActivity {
     /**
      * Contrôle : Centre d'intérêts du talk.
      */
-    @InjectView(R.id.talk_layout_interests)
-    private LinearLayout interestsLayoutTalk;
+    @InjectView(R.id.talk_textInterests)
+    private TextView interestsTalk;
 
     /**
      * Contrôle : Date du talk.
@@ -213,16 +217,11 @@ public class TalkActivity extends RoboActivity {
         }
 
         if (talk.getInterests() != null) {
+            List<String> list = new ArrayList<String>();
             for (Interest interest : talk.getInterests()) {
-                TextView interestView = new TextView(TalkActivity.this);
-                interestView.setMaxLines(5);
-                interestView.setPadding(5, 2, 5, 2);
-                interestView.setTextSize(12);
-                interestView.setTextColor(getResources().getColor(
-                        R.color.mixitBlue));
-                interestView.setText(interest.getName());
-                interestsLayoutTalk.addView(interestView);
+                list.add(interest.getName());
             }
+            interestsTalk.setText(StringUtils.join(list, ", "));
         }
 
         if (talk.getLevel() != null) {
