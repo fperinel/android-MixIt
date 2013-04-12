@@ -64,7 +64,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
     /**
      * Listener pour la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<List<Talk>> listener = new OnTaskPostExecuteListener<List<Talk>>() {
+    private OnTaskPostExecuteListener<List<Talk>> listenerAsync = new OnTaskPostExecuteListener<List<Talk>>() {
         public void onTaskPostExecuteListener(List<Talk> result) {
             if (result != null) {
                 talks.setTalks(result);
@@ -154,7 +154,7 @@ public class TalkListActivity extends RoboActivity implements Observer {
         GetTalksAsyncTask getTalksAsyncService = new GetTalksAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getTalksAsyncService.setPostExecuteListener(listener);
+        getTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
         getTalksAsyncService.execute(talkService);

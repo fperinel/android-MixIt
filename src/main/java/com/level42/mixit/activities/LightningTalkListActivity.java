@@ -62,11 +62,19 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
     private LightningTalksAdapter adapter;
 
     /**
+     * Listener sur la validation d'une erreur
+     */
+    private OnClickListener listenerFinish = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog,int which) {
+            finish();
+        }
+    };
+    
+    /**
      * Listener pour la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<List<LightningTalk>> listener = new OnTaskPostExecuteListener<List<LightningTalk>>() {
-        public void onTaskPostExecuteListener(
-                List<LightningTalk> result) {
+    private OnTaskPostExecuteListener<List<LightningTalk>> listenerAsync = new OnTaskPostExecuteListener<List<LightningTalk>>() {
+        public void onTaskPostExecuteListener(List<LightningTalk> result) {
             if (result != null) {
                 lightningTalks.setTalks(result);
                 if (progressDialog.isShowing()) {
@@ -76,23 +84,12 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
         }
 
         public void onTaskInterruptListener(Exception cancelReason) {
-            OnClickListener listener = new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,
-                        int which) {
-                    finish();
-                }
-            };
-            MessageBox.showError(
-                    getResources().getString(
-                            R.string.label_dialog_error),
-                    cancelReason.getMessage(), listener,
-                    LightningTalkListActivity.this);
+            MessageBox.showError(getResources().getString(R.string.label_dialog_error),
+                    cancelReason.getMessage(), listenerFinish, LightningTalkListActivity.this);
         }
 
         public void onTaskCancelledListener() {
-            MessageBox.showInformation(
-                    getResources().getString(
-                            R.string.label_dialog_aborted),
+            MessageBox.showInformation(getResources().getString(R.string.label_dialog_aborted),
                     LightningTalkListActivity.this);
         }
     };
@@ -156,7 +153,7 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
         GetLightningTalksAsyncTask getLightningTalksAsyncService = new GetLightningTalksAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getLightningTalksAsyncService.setPostExecuteListener(listener);
+        getLightningTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
         getLightningTalksAsyncService.execute(lightningTalkService);

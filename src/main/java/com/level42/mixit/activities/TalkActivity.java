@@ -97,7 +97,7 @@ public class TalkActivity extends RoboActivity {
     /**
      * Listener sur la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<Talk> listener = new OnTaskPostExecuteListener<Talk>() {
+    private OnTaskPostExecuteListener<Talk> listenerAsync = new OnTaskPostExecuteListener<Talk>() {
         public void onTaskPostExecuteListener(Talk result) {
             if (result != null) {
                 talk = result;
@@ -175,7 +175,7 @@ public class TalkActivity extends RoboActivity {
         GetTalkAsyncTask getTalkAsyncService = new GetTalkAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getTalkAsyncService.setPostExecuteListener(listener);
+        getTalkAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
         Integer id = (int) this.getIntent().getExtras()

@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,7 +21,6 @@ import com.level42.mixit.models.Speaker;
 import com.level42.mixit.services.ILightningTalkService;
 import com.level42.mixit.tasks.GetLightningTalkAsyncTask;
 import com.level42.mixit.utils.MessageBox;
-import com.level42.mixit.utils.Utils;
 
 /**
  * Ecran de détail d'un lightning talk.
@@ -82,38 +80,34 @@ public class LightningTalkActivity extends RoboActivity {
     private ProgressDialog progressDialog;
 
     /**
+     * Listener sur la validation d'une erreur
+     */
+    private OnClickListener listenerFinish = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog,int which) {
+            finish();
+        }
+    };
+    
+    /**
      * Listener sur la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<LightningTalk> listener = new OnTaskPostExecuteListener<LightningTalk>() {
+    private OnTaskPostExecuteListener<LightningTalk> listenerAsync = new OnTaskPostExecuteListener<LightningTalk>() {
         public void onTaskPostExecuteListener(LightningTalk result) {
             if (result != null) {
-                Log.d(Utils.LOGTAG, "LightningTalk chargé");
-                lightningTalk = result;
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
-                displayTalk(lightningTalk);
+                displayTalk(result);
             }
         }
 
         public void onTaskInterruptListener(Exception cancelReason) {
-            OnClickListener listener = new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,
-                        int which) {
-                    finish();
-                }
-            };
-            MessageBox.showError(
-                    getResources().getString(
-                            R.string.label_dialog_error),
-                    cancelReason.getMessage(), listener,
-                    LightningTalkActivity.this);
+            MessageBox.showError(getResources().getString(R.string.label_dialog_error), 
+                    cancelReason.getMessage(), listenerFinish, LightningTalkActivity.this);
         }
 
         public void onTaskCancelledListener() {
-            MessageBox.showInformation(
-                    getResources().getString(
-                            R.string.label_dialog_aborted),
+            MessageBox.showInformation(getResources().getString(R.string.label_dialog_aborted),
                     LightningTalkActivity.this);
         }
     };
@@ -131,8 +125,7 @@ public class LightningTalkActivity extends RoboActivity {
             this.setupProgressDialog();
             this.loadTalk();
         } else {
-            lightningTalk = savedTalk;
-            this.displayTalk(lightningTalk);
+            this.displayTalk(savedTalk);
         }
     }
 
@@ -164,7 +157,7 @@ public class LightningTalkActivity extends RoboActivity {
 
         // Ajout d'un listener pour récupérer le retour
         getTalkAsyncService
-                .setPostExecuteListener(listener);
+                .setPostExecuteListener(listenerAsync);
 
         // Execution du service
         Integer id = (int) this.getIntent().getExtras()
@@ -178,6 +171,8 @@ public class LightningTalkActivity extends RoboActivity {
      */
     protected void displayTalk(LightningTalk talk) {
         Resources res = getResources();
+        
+        lightningTalk = talk;
 
         titreTalk.setText(talk.getTitle());
         contenuTalk.setText(talk.getDescription());

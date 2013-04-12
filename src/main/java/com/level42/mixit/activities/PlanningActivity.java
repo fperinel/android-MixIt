@@ -64,7 +64,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     /**
      * Listener pour la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<List<GroupedTalks>> listener = new OnTaskPostExecuteListener<List<GroupedTalks>>() {
+    private OnTaskPostExecuteListener<List<GroupedTalks>> listenerAsync = new OnTaskPostExecuteListener<List<GroupedTalks>>() {
         public void onTaskPostExecuteListener(
                 List<GroupedTalks> result) {
             if (result != null) {
@@ -156,7 +156,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         GetPlanningAsyncTask getTalksAsyncService = new GetPlanningAsyncTask();
 
         // Ajout d'un listener pour récupérer le retour
-        getTalksAsyncService.setPostExecuteListener(listener);
+        getTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
         Integer delay = Integer.valueOf(getString(R.string.planningDelay));
