@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.inject.Inject;
-import com.level42.mixit.R;
-import com.level42.mixit.dao.IPlanningDAO;
-import com.level42.mixit.exceptions.DataAccessException;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.GroupedTalks;
@@ -26,12 +23,6 @@ import com.level42.mixit.services.ITalkService;
  */
 public class PlanningService extends AbstractService implements
         IPlanningService {
-
-    /**
-     * Interface pour l'obtention des sessions des talks.
-     */
-    @Inject
-    private IPlanningDAO planningDAO;
 
     /**
      * Interface vers le service de gestion des talk.
@@ -52,26 +43,6 @@ public class PlanningService extends AbstractService implements
 
     /*
      * (non-Javadoc)
-     * @see com.level42.mixit.services.IPlanningService#getPlanningSession(java.lang.Integer)
-     */
-    public Session getPlanningSession(Integer sessionId)
-            throws FunctionnalException, TechnicalException {
-        try {
-            Planning planning = planningDAO.getPlanning();
-            if (planning != null) {
-                this.indexPlanning(planning);
-                return sessions.get(sessionId);
-            } else {
-                return null;
-            }
-        } catch (DataAccessException e) {
-            throw new TechnicalException(
-                    getText(R.string.exception_message_DataAccessException), e);
-        }
-    }
-
-    /*
-     * (non-Javadoc)
      * @see com.level42.mixit.services.IPlanningService#getTalksForPlanning(java.lang.Integer)
      */
     public List<GroupedTalks> getTalksForPlanning(Integer delay)
@@ -86,8 +57,6 @@ public class PlanningService extends AbstractService implements
         // Ajout des sessions
         List<Talk> plannedTalks = new ArrayList<Talk>();
         for (Talk talk : talks) {
-            Session session = this.getPlanningSession(talk.getId());
-            talk.setSession(session);
             if (talk.getDateSession() != null
                     && talk.getDateSession().after(minDate.getTime())) {
                 plannedTalks.add(talk);

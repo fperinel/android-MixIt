@@ -1,12 +1,5 @@
 package com.level42.mixit.models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.level42.mixit.utils.Utils;
-
-import android.util.Log;
 
 /**
  * Classe représentant une session de talk.
@@ -27,11 +20,6 @@ public class Session {
      * Date de la session.
      */
     private String date;
-
-    /**
-     * Date formatée de la session.
-     */
-    private Date dateFormat;
 
     /**
      * Retourne l'identiant.
@@ -82,23 +70,5 @@ public class Session {
      */
     public void setDate(String date) {
         this.date = date;
-    }
-
-    /**
-     * Retourne la date formatée de la session.
-     * @return the dateFormat
-     */
-    public Date getDateFormat() {
-        if (dateFormat == null) {
-            try {
-                SimpleDateFormat formatOrigin = new SimpleDateFormat(
-                        "yyyy-MM-dd HH:mm:ss");
-                dateFormat = formatOrigin.parse(this.date);
-            } catch (ParseException e) {
-                Log.w(Utils.LOGTAG, "Date format exception");
-                return null;
-            }
-        }
-        return dateFormat;
     }
 }

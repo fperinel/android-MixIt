@@ -14,7 +14,6 @@ import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.Interest;
-import com.level42.mixit.models.Session;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.IEntityService;
@@ -135,9 +134,8 @@ public class TalkService extends AbstractService implements ITalkService {
         try {
             Talk talk = ws.getTalk(id);
 
-            // Dans la nouvelle version des APIP, les objects sont retournés
+            // Dans la nouvelle version des API, les objects sont retournés
             this.hydrateTalkInterests(talk);
-            this.hydrateTalkSession(talk);
             this.hydrateTalkSpeakers(talk);
 
             return talk;
@@ -149,20 +147,6 @@ public class TalkService extends AbstractService implements ITalkService {
             throw new TechnicalException(
                     getText(R.string.exception_message_NotFoundException), e);
         }
-    }
-
-    /**
-     * Hydrate la session d'un talk.
-     * @param talk
-     *            Talk à hydrater
-     * @throws FunctionnalException
-     * @throws TechnicalException
-     */
-    protected void hydrateTalkSession(Talk talk) throws FunctionnalException,
-            TechnicalException {
-        // Ajoute le planning
-        Session session = planningService.getPlanningSession(talk.getId());
-        talk.setSession(session);
     }
 
     /**

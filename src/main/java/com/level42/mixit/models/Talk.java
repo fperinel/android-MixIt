@@ -7,6 +7,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import com.level42.mixit.utils.Utils;
+
 /**
  * Classe représentant un Talk.
  */
@@ -66,13 +68,7 @@ public class Talk implements Comparable<Talk> {
      * Niveau de difficulté du talk.
      */
     private String level;
-
-    /**
-     * Session du talk.
-     */
-    @JsonIgnore
-    private Session session;
-
+    
     /**
      * Date de démarrage.
      */
@@ -82,6 +78,11 @@ public class Talk implements Comparable<Talk> {
      * Date de fin.
      */
     private String end;
+    
+    /**
+     * Salle du talk
+     */
+    private String room;
 
     /**
      * Retourne l'identifiant du talk.
@@ -212,20 +213,12 @@ public class Talk implements Comparable<Talk> {
     }
 
     /**
-     * Renseigne la session du talk.
-     * @param session the session to set
-     */
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-    /**
      * Retourne la date de la session du Talk.
      * @return Date de la session du Talk
      */
     public Date getDateSession() {
-        if (this.session != null) {
-            return this.session.getDateFormat();
+        if (this.getStart() != null) {
+            return Utils.formatWsDate(this.getStart());
         } else {
             return null;
         }
@@ -236,11 +229,7 @@ public class Talk implements Comparable<Talk> {
      * @return Salle de la session du Talk
      */
     public String getSalleSession() {
-        if (this.session != null) {
-            return this.session.getSalle();
-        } else {
-            return null;
-        }
+        return this.getRoom();
     }
 
     /**
@@ -305,6 +294,22 @@ public class Talk implements Comparable<Talk> {
      */
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    /**
+     * Retourne la salle
+     * @return the room
+     */
+    public String getRoom() {
+        return room;
+    }
+
+    /**
+     * Renseigne la salle
+     * @param room the room to set
+     */
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     /*
