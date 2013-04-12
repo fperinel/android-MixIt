@@ -1,7 +1,6 @@
 package com.level42.mixit.services.impl;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
@@ -31,12 +30,6 @@ public class PlanningService extends AbstractService implements
     private ITalkService talkService;
 
     /**
-     * Paramètre définissant le délai à partir duquel les talks en cours sont masqués.
-     */
-    @Inject
-    private String planningDelay;
-
-    /**
      * Liste des sessions indexées sur l'identifiant.
      */
     private Map<Integer, Session> sessions;
@@ -49,16 +42,13 @@ public class PlanningService extends AbstractService implements
             throws FunctionnalException, TechnicalException {
         // Récupère les sessions
         List<Talk> talks = talkService.getTalks();
-
-        Calendar minDate = Calendar.getInstance();
-        minDate.setTime(new Date());
-        minDate.add(Calendar.MINUTE, delay);
+        Long limiteDate = new Date().getTime() - (delay * 60 * 1000);
 
         // Ajout des sessions
         List<Talk> plannedTalks = new ArrayList<Talk>();
         for (Talk talk : talks) {
-            if (talk.getDateSession() != null
-                    && talk.getDateSession().after(minDate.getTime())) {
+            if (talk.getDateSession() != null 
+                    && talk.getDateSession().after(new Date(limiteDate))) {
                 plannedTalks.add(talk);
             }
         }
@@ -68,13 +58,13 @@ public class PlanningService extends AbstractService implements
 
         List<GroupedTalks> groupedTalks = new ArrayList<GroupedTalks>();
 
-        Date lastDate = null;
         GroupedTalks gTalks = null;
+        Date lastDate = null;
         Integer id = 0;
         List<Talk> lTalks = new ArrayList<Talk>();
         for (Talk talk : plannedTalks) {
-            if (lastDate == null
-                    || talk.getDateSession().compareTo(lastDate) != 0) {
+            if (lastDate == null 
+                    || talk.getDateSession().compareTo(lastDate) != 0 ) {
 
                 if (gTalks != null && lTalks != null) {
                     gTalks.setTalks(lTalks);
@@ -87,6 +77,7 @@ public class PlanningService extends AbstractService implements
                 gTalks.setDate(talk.getDateSession());
 
                 lastDate = talk.getDateSession();
+                
                 id++;
             }
             lTalks.add(talk);
