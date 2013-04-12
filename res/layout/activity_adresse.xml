@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Layout.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/map_container"
+    android:orientation="vertical"
     tools:context=".activities.AdresseActivity" >
-    
-	<fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
  
-</RelativeLayout> 
+    <TextView
+        style="@style/TextAppearance.Medium.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<TextView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="30dp"
+	    android:autoLink="web"
+	    android:inputType="textUri"
+	    android:padding="5dp"
+	    android:text="@string/mixit_url"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:autoLink="map"
+        android:padding="5dp"
+        android:text="@string/mixit_address"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+</LinearLayout> 
