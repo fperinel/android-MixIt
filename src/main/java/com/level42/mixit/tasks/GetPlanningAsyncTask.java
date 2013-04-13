@@ -8,7 +8,7 @@ import android.util.Log;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
-import com.level42.mixit.models.GroupedTalks;
+import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.IPlanningService;
 import com.level42.mixit.utils.Utils;
 
@@ -16,12 +16,12 @@ import com.level42.mixit.utils.Utils;
  * Tâche asynchrone pour la collecte des informations des sessions.
  */
 public class GetPlanningAsyncTask extends
-        AsyncTask<Object, Integer, List<GroupedTalks>> {
+        AsyncTask<Object, Integer, List<Talk>> {
 
     /**
      * Listener.
      */
-    private OnTaskPostExecuteListener<List<GroupedTalks>> onTaskPostExecuteListener = null;
+    private OnTaskPostExecuteListener<List<Talk>> onTaskPostExecuteListener = null;
 
     /**
      * Raison de l'interuption.
@@ -33,7 +33,7 @@ public class GetPlanningAsyncTask extends
      * @see android.os.AsyncTask#doInBackground(Params[])
      */
     @Override
-    protected List<GroupedTalks> doInBackground(Object... params) {
+    protected List<Talk> doInBackground(Object... params) {
         try {
             IPlanningService service = (IPlanningService) params[0];
             Integer delay = (Integer) params[1];
@@ -70,7 +70,7 @@ public class GetPlanningAsyncTask extends
      * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      */
     @Override
-    protected void onPostExecute(List<GroupedTalks> result) {
+    protected void onPostExecute(List<Talk> result) {
         super.onPostExecute(result);
 
         Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
@@ -86,7 +86,7 @@ public class GetPlanningAsyncTask extends
      *            Listener de la tâche
      */
     public void setPostExecuteListener(
-            OnTaskPostExecuteListener<List<GroupedTalks>> taskPostExecute) {
+            OnTaskPostExecuteListener<List<Talk>> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;
     }
 

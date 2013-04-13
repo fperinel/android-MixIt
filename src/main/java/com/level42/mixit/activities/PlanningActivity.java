@@ -29,7 +29,6 @@ import com.google.inject.Inject;
 import com.level42.mixit.R;
 import com.level42.mixit.adapters.PlanningAdapter;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
-import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.PlanningTalk;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.IPlanningService;
@@ -101,9 +100,8 @@ public class PlanningActivity extends RoboActivity implements Observer {
     /**
      * Listener pour la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<List<GroupedTalks>> listenerAsync = new OnTaskPostExecuteListener<List<GroupedTalks>>() {
-        public void onTaskPostExecuteListener(
-                List<GroupedTalks> result) {
+    private OnTaskPostExecuteListener<List<Talk>> listenerAsync = new OnTaskPostExecuteListener<List<Talk>>() {
+        public void onTaskPostExecuteListener(List<Talk> result) {
             if (result != null) {
                 planning.setGroupedTalks(result);
             }
@@ -157,7 +155,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         });
 
         @SuppressWarnings("unchecked")
-        List<GroupedTalks> savedTalks = (List<GroupedTalks>) getLastNonConfigurationInstance();
+        List<Talk> savedTalks = (List<Talk>) getLastNonConfigurationInstance();
         if (savedTalks == null) {
             this.setupProgressDialog();
             this.refreshTalks();
@@ -234,11 +232,11 @@ public class PlanningActivity extends RoboActivity implements Observer {
         List<String> listDate = new ArrayList<String>();
         String lastDate = null;
         String crtDate = null;
-        List<GroupedTalks> grouped = this.planning.getGroupedTalks();
-        for (GroupedTalks groupe : grouped) {  
+        List<Talk> grouped = this.planning.getGroupedTalks();
+        for (Talk groupe : grouped) {  
 
             SimpleDateFormat format = new SimpleDateFormat("d");
-            crtDate = format.format(groupe.getDate());
+            crtDate = format.format(groupe.getDateSession());
             
             if (lastDate == null || !lastDate.equals(crtDate)) {
                 if (lastDate == null) {
@@ -267,14 +265,14 @@ public class PlanningActivity extends RoboActivity implements Observer {
         List<String> listHeure = new ArrayList<String>();
         String lastHeure = null;
         String crtHeure = null;
-        List<GroupedTalks> grouped = this.planning.getGroupedTalks();               
+        List<Talk> talks = this.planning.getGroupedTalks();               
         SimpleDateFormat formatJour = new SimpleDateFormat("d");
-        for (GroupedTalks groupe : grouped) {
+        for (Talk talk : talks) {
             
-            if (selectedDate.equals(formatJour.format(groupe.getDate()))) {
+            if (selectedDate.equals(formatJour.format(talk.getDateSession()))) {
                 
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                crtHeure = format.format(groupe.getDate());
+                crtHeure = format.format(talk.getDateSession());
                 
                 if (lastHeure == null || !lastHeure.equals(crtHeure) ) {
                     if (lastHeure == null) {
@@ -317,21 +315,22 @@ public class PlanningActivity extends RoboActivity implements Observer {
      * @return Liste des talks
      */
     protected List<Talk> getTalksFromSelectedDateTime() {
+        List<Talk> selectedTalks = new ArrayList<Talk>();
         String sessionDate = null;
         String selected = selectedDate + " " + selectedHeure;
-        List<GroupedTalks> grouped = this.planning.getGroupedTalks();
-        for (GroupedTalks groupe : grouped) {
+        List<Talk> talks = this.planning.getGroupedTalks();
+        for (Talk talk : talks) {
             
             SimpleDateFormat format = new SimpleDateFormat("d HH:mm");
-            sessionDate = format.format(groupe.getDate());
+            sessionDate = format.format(talk.getDateSession());
             
             if (sessionDate.equals(selected) ) {
                 SimpleDateFormat formatDisplay = new SimpleDateFormat();
-                titreTalkFiltre.setText("Talks du " + formatDisplay.format(groupe.getDate()));
-                return groupe.getTalks();
+                titreTalkFiltre.setText("Talks du " + formatDisplay.format(talk.getDateSession()));
+                selectedTalks.add(talk);
             } 
         }
-        return null;
+        return selectedTalks;
     }
 
     /**

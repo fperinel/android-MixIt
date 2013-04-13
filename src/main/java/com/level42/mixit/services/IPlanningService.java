@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
-import com.level42.mixit.models.GroupedTalks;
+import com.level42.mixit.models.Talk;
 
 /**
  * Interface de manipulation des planning de MixIT.
@@ -20,6 +20,6 @@ public interface IPlanningService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    List<GroupedTalks> getTalksForPlanning(Integer delay)
+    List<Talk> getTalksForPlanning(Integer delay)
             throws FunctionnalException, TechnicalException;
 }

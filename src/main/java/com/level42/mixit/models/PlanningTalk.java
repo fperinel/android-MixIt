@@ -11,14 +11,14 @@ public class PlanningTalk extends Observable {
     /**
      * Liste des talks regroupés par date de session.
      */
-    private List<GroupedTalks> groupedTalks;
+    private List<Talk> talks;
 
     /**
      * Retourne la liste des talks regroupés par date de session.
      * @return the groupedTalks
      */
-    public List<GroupedTalks> getGroupedTalks() {
-        return groupedTalks;
+    public List<Talk> getGroupedTalks() {
+        return talks;
     }
 
     /**
@@ -26,8 +26,8 @@ public class PlanningTalk extends Observable {
      * @param groupedTalks
      *            the groupedTalks to set
      */
-    public void setGroupedTalks(List<GroupedTalks> groupedTalks) {
-        this.groupedTalks = groupedTalks;
+    public void setGroupedTalks(List<Talk> talks) {
+        this.talks = talks;
         setChanged();
         notifyObservers(this);
     }

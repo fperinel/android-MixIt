@@ -10,7 +10,6 @@ import java.util.Map;
 import com.google.inject.Inject;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
-import com.level42.mixit.models.GroupedTalks;
 import com.level42.mixit.models.Planning;
 import com.level42.mixit.models.Session;
 import com.level42.mixit.models.Talk;
@@ -38,7 +37,7 @@ public class PlanningService extends AbstractService implements
      * (non-Javadoc)
      * @see com.level42.mixit.services.IPlanningService#getTalksForPlanning(java.lang.Integer)
      */
-    public List<GroupedTalks> getTalksForPlanning(Integer delay)
+    public List<Talk> getTalksForPlanning(Integer delay)
             throws FunctionnalException, TechnicalException {
         // Récupère les sessions
         List<Talk> talks = talkService.getTalks();
@@ -56,34 +55,7 @@ public class PlanningService extends AbstractService implements
         // Tri
         Collections.sort(plannedTalks);
 
-        List<GroupedTalks> groupedTalks = new ArrayList<GroupedTalks>();
-
-        GroupedTalks gTalks = null;
-        Date lastDate = null;
-        Integer id = 0;
-        List<Talk> lTalks = new ArrayList<Talk>();
-        for (Talk talk : plannedTalks) {
-            if (lastDate == null 
-                    || talk.getDateSession().compareTo(lastDate) != 0 ) {
-
-                if (gTalks != null && lTalks != null) {
-                    gTalks.setTalks(lTalks);
-                    groupedTalks.add(gTalks);
-                    lTalks = new ArrayList<Talk>();
-                }
-
-                gTalks = new GroupedTalks();
-                gTalks.setId(id);
-                gTalks.setDate(talk.getDateSession());
-
-                lastDate = talk.getDateSession();
-                
-                id++;
-            }
-            lTalks.add(talk);
-        }
-
-        return groupedTalks;
+        return plannedTalks;
     }
 
     /**
