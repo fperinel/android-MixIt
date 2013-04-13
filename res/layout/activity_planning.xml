@@ -7,10 +7,59 @@
     style="@style/Layout.Container"
     tools:context=".activities.PlanningActivity" >
 
-    <ExpandableListView
-        android:id="@+id/expandableListPlanning"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ExpandableListView>
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+        <TextView 
+            style="@style/TextAppearance.Small.Niveau"
+            android:text="Date" 
+            android:layout_height="fill_parent" 
+            android:layout_width="50dp"/>
+        
+        <TextView 
+            style="@style/TextAppearance.Small.Niveau"
+            android:text="Heure" 
+            android:layout_height="fill_parent" 
+            android:layout_width="50dp" />
 
+        <TextView
+          	style="@style/TextAppearance.Small.Niveau"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="Talks" />
+        
+	</LinearLayout>
+   
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+	    <ListView
+	        android:id="@+id/listDateTalks"
+	        android:layout_width="50dp"
+	        style="@style/TextAppearance.Small.Niveau"
+	        android:layout_height="match_parent" >
+			
+	    </ListView>
+	    
+	    <ListView
+	        android:id="@+id/listHeureTalks"
+	        android:layout_width="50dp"
+	        style="@style/TextAppearance.Small.Niveau"
+	        android:layout_height="match_parent" >
+			
+	    </ListView>
+	        	
+	    <ListView
+	        android:id="@+id/listTalks"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" >
+			
+	    </ListView>
+	    
+    </LinearLayout>
+    
 </LinearLayout>

@@ -19,11 +19,11 @@ import android.widget.ListView;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
+import com.level42.mixit.adapters.TalksAdapter;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixit.models.Talk;
 import com.level42.mixit.models.TalkList;
 import com.level42.mixit.services.ITalkService;
-import com.level42.mixit.services.adapters.TalksAdapter;
 import com.level42.mixit.tasks.GetTalksAsyncTask;
 import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;

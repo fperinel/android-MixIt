@@ -19,11 +19,11 @@ import android.widget.ListView;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
+import com.level42.mixit.adapters.LightningTalksAdapter;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.LightningTalkList;
 import com.level42.mixit.services.ILightningTalkService;
-import com.level42.mixit.services.adapters.LightningTalksAdapter;
 import com.level42.mixit.tasks.GetLightningTalksAsyncTask;
 import com.level42.mixit.utils.MessageBox;
 import com.level42.mixit.utils.Utils;
