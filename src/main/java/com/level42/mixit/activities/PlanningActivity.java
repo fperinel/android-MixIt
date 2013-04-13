@@ -100,7 +100,8 @@ public class PlanningActivity extends RoboActivity implements Observer {
     /**
      * Listener pour la tâche asynchrone
      */
-    private OnTaskPostExecuteListener<List<Talk>> listenerAsync = new OnTaskPostExecuteListener<List<Talk>>() {
+    private OnTaskPostExecuteListener<List<Talk>> listenerAsync = 
+            new OnTaskPostExecuteListener<List<Talk>>() {
         public void onTaskPostExecuteListener(List<Talk> result) {
             if (result != null) {
                 planning.setGroupedTalks(result);
@@ -202,11 +203,13 @@ public class PlanningActivity extends RoboActivity implements Observer {
                 PlanningActivity.this.startActivity(ticketActivity);
                 break;
             case R.id.menu_ltalks:
-                Intent lTalkList = new Intent(PlanningActivity.this, LightningTalkListActivity.class);
+                Intent lTalkList = new Intent(PlanningActivity.this, 
+                        LightningTalkListActivity.class);
                 PlanningActivity.this.startActivity(lTalkList);
                 break;
             case R.id.menu_talks:
-                Intent talkList = new Intent(PlanningActivity.this, TalkListActivity.class);
+                Intent talkList = new Intent(PlanningActivity.this, 
+                        TalkListActivity.class);
                 PlanningActivity.this.startActivity(talkList);
                 break;
             default:

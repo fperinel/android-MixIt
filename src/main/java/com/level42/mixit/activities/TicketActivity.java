@@ -32,41 +32,85 @@ import com.level42.mixit.utils.Utils;
 @ContentView(R.layout.activity_ticket)
 public class TicketActivity extends RoboActivity {
     
+    /**
+     * Espace de nom des préférences
+     */
     public static final String PREF_NS = "mixit";
     
+    /**
+     * Clef de préférence code du ticket 1
+     */
     public static final String PREF_TICKET1 = "ticket1";
     
+    /**
+     * Clef de préférence format du ticket 1
+     */
     public static final String PREF_TICKET_FORMAT1 = "ticket_format1";   
-    
+
+    /**
+     * Clef de préférence type de correction QRCode du ticket 1
+     */
     public static final String PREF_TICKET_CORRECTION1 = "ticket_correction1";
     
+    /**
+     * Clef de préférence code du ticket 2
+     */
     public static final String PREF_TICKET2 = "ticket2";
-    
+
+    /**
+     * Clef de préférence format du ticket 2
+     */
     public static final String PREF_TICKET_FORMAT2 = "ticket_format2";   
-    
+
+    /**
+     * Clef de préférence type de correction QRCode du ticket 2
+     */
     public static final String PREF_TICKET_CORRECTION2 = "ticket_correction2";
-    
+
+    /**
+     * Hauteur du QRCode
+     */
     private static final int QRCODE_HEIGHT = 400;
-    
+
+    /**
+     * Largeur du QRCode
+     */
     private static final int QRCODE_WIDTH = 400;
-    
+
+    /**
+     * Service de gestion des préférences
+     */
     private SharedPreferences settings;
     
+    /**
+     * QRCode ticket 1
+     */
     private String ticket1 = null;
     
-    private String ticketFormat1 = null;
-    
+    /**
+     * QRCode correction ticket 1
+     */
     private String ticketErrorCorrection1 = null;
     
+    /**
+     * QRCode ticket 2
+     */
     private String ticket2 = null;
     
-    private String ticketFormat2 = null;
-    
+    /**
+     * QRCode correction ticket 2
+     */
     private String ticketErrorCorrection2 = null;
     
+    /**
+     * COntrôle : Image du ticket 1
+     */
     @InjectView(R.id.imageTicket1)
     private ImageView imageTicket1;
     
+    /**
+     * COntrôle : Image du ticket 2
+     */
     @InjectView(R.id.imageTicket2)
     private ImageView imageTicket2;
     
@@ -83,12 +127,10 @@ public class TicketActivity extends RoboActivity {
         // Affiche le ticket déjà enregistré
         if (settings.contains(TicketActivity.PREF_TICKET1)) {
             ticket1 = settings.getString(TicketActivity.PREF_TICKET1, null);
-            ticketFormat1 = settings.getString(TicketActivity.PREF_TICKET_FORMAT1, null);
             ticketErrorCorrection1 = settings.getString(TicketActivity.PREF_TICKET_CORRECTION1, null);
         }
         if (settings.contains(TicketActivity.PREF_TICKET2)) {
             ticket2 = settings.getString(TicketActivity.PREF_TICKET2, null);
-            ticketFormat2 = settings.getString(TicketActivity.PREF_TICKET_FORMAT2, null);
             ticketErrorCorrection2 = settings.getString(TicketActivity.PREF_TICKET_CORRECTION2, null);
         } 
         this.showTicket();
@@ -171,12 +213,10 @@ public class TicketActivity extends RoboActivity {
         if (requestCode == R.id.imageTicket1) {
             if (resultCode == RESULT_OK) {
                 ticket1 = intent.getStringExtra("SCAN_RESULT");
-                ticketFormat1 = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 ticketErrorCorrection1 = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
                 
                 SharedPreferences.Editor editor = this.settings.edit();
                 editor.putString(TicketActivity.PREF_TICKET1, ticket1);
-                editor.putString(TicketActivity.PREF_TICKET_FORMAT1, ticketFormat1);
                 editor.putString(TicketActivity.PREF_TICKET_CORRECTION1, ticketErrorCorrection1);
                 editor.commit();
                 
@@ -186,12 +226,10 @@ public class TicketActivity extends RoboActivity {
         if (requestCode == R.id.imageTicket2) {
             if (resultCode == RESULT_OK) {
                 ticket2 = intent.getStringExtra("SCAN_RESULT");
-                ticketFormat2 = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 ticketErrorCorrection2 = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
                 
                 SharedPreferences.Editor editor = this.settings.edit();
                 editor.putString(TicketActivity.PREF_TICKET2, ticket2);
-                editor.putString(TicketActivity.PREF_TICKET_FORMAT2, ticketFormat2);
                 editor.putString(TicketActivity.PREF_TICKET_CORRECTION2, ticketErrorCorrection2);
                 editor.commit();
                 
