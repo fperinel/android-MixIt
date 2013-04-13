@@ -99,12 +99,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("talks");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Talk> talkList = mapper.readValue(result,
-                    new TypeReference<List<Talk>>() {
-                    });
-
+                    new TypeReference<List<Talk>>() {});
             return talkList;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -123,14 +119,10 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("talks/" + id.toString());
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             Talk talk = mapper.readValue(result, Talk.class);
-
             if (talk == null) {
                 throw new NotFoundException("getTalk with id " + id.toString());
             }
-
             return talk;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -148,12 +140,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("lightningtalks");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<LightningTalk> talkList = mapper.readValue(result,
-                    new TypeReference<List<LightningTalk>>() {
-                    });
-
+                    new TypeReference<List<LightningTalk>>() {});
             return talkList;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -173,15 +161,11 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             HttpGet request = this.getRequestGET("lightningtalks/"
                     + id.toString());
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             LightningTalk talk = mapper.readValue(result, LightningTalk.class);
-
             if (talk == null) {
                 throw new NotFoundException("getLightningTalk with id "
                         + id.toString());
             }
-
             return talk;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -198,12 +182,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("members");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Member> list = mapper.readValue(result,
-                    new TypeReference<List<Member>>() {
-                    });
-
+                    new TypeReference<List<Member>>() {});
             return list;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -220,12 +200,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("members/staff");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Staff> list = mapper.readValue(result,
-                    new TypeReference<List<Staff>>() {
-                    });
-
+                    new TypeReference<List<Staff>>() {});
             return list;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -242,12 +218,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("members/speakers");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Speaker> list = mapper.readValue(result,
-                    new TypeReference<List<Speaker>>() {
-                    });
-
+                    new TypeReference<List<Speaker>>() {});
             return list;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -264,12 +236,8 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("members/sponsors");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Sponsor> list = mapper.readValue(result,
-                    new TypeReference<List<Sponsor>>() {
-                    });
-
+                    new TypeReference<List<Sponsor>>() {});
             return list;
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -287,8 +255,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("members/" + id.toString());
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             return mapper.readValue(result, entity.getClass());
         } catch (ClientProtocolException e) {
             throw new CommunicationException(e);
@@ -305,8 +271,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("interests");
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             List<Interest> list = mapper.readValue(result,
                     new TypeReference<List<Interest>>() {
                     });
@@ -328,8 +292,6 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
         try {
             HttpGet request = this.getRequestGET("interests/" + id.toString());
             String result = this.executeQuery(request, true);
-
-            Log.d(Utils.LOGTAG, result);
             Interest interest = mapper.readValue(result, Interest.class);
 
             return interest;
@@ -372,6 +334,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
             Log.d(Utils.LOGTAG, "Webservice cache hit for key : " + key);
         }
 
+        Log.d(Utils.LOGTAG, result);
         return result;
     }
 }

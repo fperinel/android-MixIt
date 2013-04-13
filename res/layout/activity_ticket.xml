@@ -1,58 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     style="@style/Layout.Container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.PlanningActivity" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_vostickets"
-        style="@style/TextAppearance.Large.Title"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_scan"
-        style="@style/TextAppearance.Small.Legend"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_date1"
-        style="@style/TextAppearance.Medium.Content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <ImageView
-        android:id="@+id/imageTicket1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:onClick="actionAddTicket"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_date2"
-        style="@style/TextAppearance.Medium.Content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <ImageView
-        android:id="@+id/imageTicket2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:onClick="actionAddTicket"
-        android:src="@drawable/ic_launcher" />
-    
-</LinearLayout>
+    android:fillViewport="true" >
+		
+	<LinearLayout
+	    style="@style/Layout.Container"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    tools:context=".activities.PlanningActivity" >
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/label_vostickets"
+	        style="@style/TextAppearance.Large.Title"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <TextView
+	        android:id="@+id/textView2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/label_scan"
+	        style="@style/TextAppearance.Small.Legend"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/label_date1"
+	        style="@style/TextAppearance.Medium.Content"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <ImageView
+	        android:id="@+id/imageTicket1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right"
+	        android:onClick="actionAddTicket"
+	        android:src="@drawable/ic_launcher" />
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/label_date2"
+	        style="@style/TextAppearance.Medium.Content"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <ImageView
+	        android:id="@+id/imageTicket2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right"
+	        android:onClick="actionAddTicket"
+	        android:src="@drawable/ic_launcher" />
+	    
+	</LinearLayout>
+</ScrollView>
