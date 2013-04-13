@@ -27,6 +27,7 @@
 		<supportv4.version>r7</supportv4.version>
 		<jackson.version>1.9.12</jackson.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
+		<zxing.version>2.1</zxing.version>
 
 		<key.alias>mixit</key.alias>
 		<key.storepass>mixit2013</key.storepass>
@@ -67,6 +68,12 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
 		</dependency>   
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>${zxing.version}</version>
+		</dependency>
+            
 	</dependencies>
 
 	<build>

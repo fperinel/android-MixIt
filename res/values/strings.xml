@@ -18,6 +18,11 @@
     <string name="label_talk_salle">Salle %1$s</string>
     <string name="label_talk_speaker">%1$s %2$s</string>
     <string name="label_talk_niveau">Niveau : %1$s</string>
+    <string name="label_vostickets">Vos billets</string>
+    <string name="label_date1">Billet du 25/04</string>
+    <string name="label_date2">Billet du 26/04</string>
+    <string name="label_scan">Cliquer sur l\'image "Mix-it" et scanner le QRcode de votre ticket Mix-It</string>
+    
     
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
@@ -26,7 +31,7 @@
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>
     <string name="exception_message_NotFoundException">L\'information demandée est introuvable.</string>
     
-    <string name="menu_billet">Mon billet</string>
+    <string name="menu_billet">Mes billets</string>
     <string name="menu_adresse">Aller au MixIt</string>
     
     <string name="label_dialog_error">Une erreur s\'est produite</string>
@@ -35,5 +40,9 @@
     <string name="btn_dialog_ok">OK</string>
     <string name="btn_dialog_validate">Continuer</string>
     <string name="btn_dialog_abort">Annuler</string>
+    <string name="btn_dialog_ticket">Scanner</string>
+    <string name="btn_dialog_voir">Afficher</string>
+    
+    
     
 </resources>

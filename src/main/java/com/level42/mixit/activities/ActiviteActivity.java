@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-import android.widget.Toast;
 
 import com.level42.mixit.R;
 
@@ -78,8 +77,9 @@ public class ActiviteActivity extends RoboTabActivity {
             ActiviteActivity.this.startActivity(adresseActivity);
             break;
         case R.id.menu_billet:
-            Toast.makeText(getApplicationContext(), "Menu mon billet",
-                    Toast.LENGTH_LONG).show();
+            Intent ticketActivity = new Intent(ActiviteActivity.this,
+                    TicketActivity.class);
+            ActiviteActivity.this.startActivity(ticketActivity);
             break;
         default:
             break;

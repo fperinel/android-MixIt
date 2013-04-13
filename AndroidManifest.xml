@@ -34,14 +34,11 @@
         <activity android:name="com.level42.mixit.activities.TalkActivity"/>               
         <activity android:name="com.level42.mixit.activities.ActiviteActivity"/>                
         <activity android:name="com.level42.mixit.activities.PlanningActivity"/>             
-        <activity android:name="com.level42.mixit.activities.AdresseActivity"/>       
-              
+        <activity android:name="com.level42.mixit.activities.AdresseActivity"/>
         <activity android:name="com.level42.mixit.activities.LightningTalkListActivity"/>
         <activity android:name="com.level42.mixit.activities.LightningTalkActivity"/>
-            
-        <meta-data android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAl7Dqjaf1SRyCYARjwVNzHZO89vqtMd54"/>
-    
+        <activity android:name="com.level42.mixit.activities.TicketActivity" android:screenOrientation="portrait" />
+
     </application>
     
 </manifest>

@@ -1,0 +1,203 @@
+package com.level42.mixit.activities;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.level42.mixit.R;
+import com.level42.mixit.utils.MessageBox;
+import com.level42.mixit.utils.Utils;
+
+/**
+ * Ecran d'affichage ou d'aquisition du QRCode du ticket
+ */
+@ContentView(R.layout.activity_ticket)
+public class TicketActivity extends RoboActivity {
+    
+    public static final String PREF_NS = "mixit";
+    
+    public static final String PREF_TICKET1 = "ticket1";
+    
+    public static final String PREF_TICKET_FORMAT1 = "ticket_format1";   
+    
+    public static final String PREF_TICKET_CORRECTION1 = "ticket_correction1";
+    
+    public static final String PREF_TICKET2 = "ticket2";
+    
+    public static final String PREF_TICKET_FORMAT2 = "ticket_format2";   
+    
+    public static final String PREF_TICKET_CORRECTION2 = "ticket_correction2";
+    
+    private static final int QRCODE_HEIGHT = 400;
+    
+    private static final int QRCODE_WIDTH = 400;
+    
+    private SharedPreferences settings;
+    
+    private String ticket1 = null;
+    
+    private String ticketFormat1 = null;
+    
+    private String ticketErrorCorrection1 = null;
+    
+    private String ticket2 = null;
+    
+    private String ticketFormat2 = null;
+    
+    private String ticketErrorCorrection2 = null;
+    
+    @InjectView(R.id.imageTicket1)
+    private ImageView imageTicket1;
+    
+    @InjectView(R.id.imageTicket2)
+    private ImageView imageTicket2;
+    
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboTabActivity#onCreate(android.os.Bundle)
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        this.settings = getSharedPreferences(TicketActivity.PREF_NS, MODE_PRIVATE);
+        
+        // Affiche le ticket déjà enregistré
+        if (settings.contains(TicketActivity.PREF_TICKET1)) {
+            ticket1 = settings.getString(TicketActivity.PREF_TICKET1, null);
+            ticketFormat1 = settings.getString(TicketActivity.PREF_TICKET_FORMAT1, null);
+            ticketErrorCorrection1 = settings.getString(TicketActivity.PREF_TICKET_CORRECTION1, null);
+        }
+        if (settings.contains(TicketActivity.PREF_TICKET2)) {
+            ticket2 = settings.getString(TicketActivity.PREF_TICKET2, null);
+            ticketFormat2 = settings.getString(TicketActivity.PREF_TICKET_FORMAT2, null);
+            ticketErrorCorrection2 = settings.getString(TicketActivity.PREF_TICKET_CORRECTION2, null);
+        } 
+        this.showTicket();
+    }
+
+    /**
+     * Affiche les tickets
+     */
+    protected void showTicket() {
+        if (ticket1 != null) {
+            imageTicket1.setImageBitmap(this.constructQRCode(ticket1, ticketErrorCorrection1));
+        }
+        if (ticket2 != null) {
+            imageTicket2.setImageBitmap(this.constructQRCode(ticket2, ticketErrorCorrection2));
+        }
+    }
+    
+    /**
+     * Construit un QR code
+     * @param ticketQR
+     * @param correctionQR
+     * @return Image du QRCode
+     */
+    protected Bitmap constructQRCode(String ticketQR, String correctionQR) {
+        ProgressDialog progress = null;
+        OnClickListener listener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,
+                    int which) {
+                finish();
+            }
+        };
+        try {
+            progress = MessageBox.getProgressDialog(TicketActivity.this);
+            QRCodeWriter qrWriter = new QRCodeWriter();
+
+            Map<EncodeHintType, Object> hints = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
+            
+            if (ErrorCorrectionLevel.H.toString().equals(correctionQR)) {
+                hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+            }
+            if (ErrorCorrectionLevel.L.toString().equals(correctionQR)) {
+                hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            }
+            if (ErrorCorrectionLevel.M.toString().equals(correctionQR)) {
+                hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
+            }
+            if (ErrorCorrectionLevel.Q.toString().equals(correctionQR)) {
+                hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q);
+            }
+            
+            BitMatrix result = qrWriter.encode(ticketQR, BarcodeFormat.QR_CODE, QRCODE_WIDTH, QRCODE_HEIGHT, hints);
+            return Utils.generateImageFromQRCode(result);
+        } catch (WriterException e) {
+            MessageBox.showError(getResources().getString(R.string.label_dialog_error), 
+                    getResources().getString(R.string.exception_message_CommunicationException), 
+                    listener, TicketActivity.this);
+            return null;
+        } finally {
+            if (progress != null && progress.isShowing()) {
+                progress.dismiss();
+            }
+        }
+    }
+    
+    /**
+     * Action d'ajout d'un ticket
+     * @param v
+     */
+    public void actionAddTicket(View v) {
+        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+        intent.setPackage("com.google.zxing.client.android");
+        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+        startActivityForResult(intent, v.getId());
+    }
+    
+    /**
+     * Resultat de l'activité
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == R.id.imageTicket1) {
+            if (resultCode == RESULT_OK) {
+                ticket1 = intent.getStringExtra("SCAN_RESULT");
+                ticketFormat1 = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                ticketErrorCorrection1 = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
+                
+                SharedPreferences.Editor editor = this.settings.edit();
+                editor.putString(TicketActivity.PREF_TICKET1, ticket1);
+                editor.putString(TicketActivity.PREF_TICKET_FORMAT1, ticketFormat1);
+                editor.putString(TicketActivity.PREF_TICKET_CORRECTION1, ticketErrorCorrection1);
+                editor.commit();
+                
+                this.showTicket();
+            }
+        }
+        if (requestCode == R.id.imageTicket2) {
+            if (resultCode == RESULT_OK) {
+                ticket2 = intent.getStringExtra("SCAN_RESULT");
+                ticketFormat2 = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                ticketErrorCorrection2 = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
+                
+                SharedPreferences.Editor editor = this.settings.edit();
+                editor.putString(TicketActivity.PREF_TICKET2, ticket2);
+                editor.putString(TicketActivity.PREF_TICKET_FORMAT2, ticketFormat2);
+                editor.putString(TicketActivity.PREF_TICKET_CORRECTION2, ticketErrorCorrection2);
+                editor.commit();
+                
+                this.showTicket();
+            }
+        }
+    }
+    
+}

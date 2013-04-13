@@ -9,10 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Looper;
 import android.util.Log;
 
+import com.google.zxing.common.BitMatrix;
 import com.level42.mixit.BuildConfig;
 import com.level42.mixit.exceptions.TechnicalException;
 
@@ -74,5 +77,27 @@ public final class Utils {
             Log.w(Utils.LOGTAG, "Date format exception");
             return null;
         }
+    }
+    
+    /**
+     * Génère une imlage à partir d'une matrice QRCode
+     * @param matrix Matrice du QRCode
+     * @return Image
+     */
+    public static Bitmap generateImageFromQRCode(BitMatrix matrix) 
+    {
+        int width = matrix.getWidth(); 
+        int height = matrix.getHeight(); 
+
+        Config conf = Bitmap.Config.RGB_565;
+        Bitmap bmp = Bitmap.createBitmap(width, height, conf);
+             
+        for (int x = 0; x < width; x++) 
+        {
+            for (int y = 0; y < height; y++) {
+                bmp.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            }
+        }
+        return bmp;
     }
 }
