@@ -6,10 +6,6 @@
     <string name="mixit_address">Les Jardins d\'Osaka,\n16 Rue Jean Desparmet,\n69008 LYON</string>
     
     <string name="loading_message">Chargement</string>
-        
-    <string name="tab_planning">Planning</string>
-    <string name="tab_talks">Talks</string>    
-    <string name="tab_ltalks">Lightning Talks</string>
     
     <string name="label_talk_titre">[%1$s] %2$s</string>
     <string name="label_talk_interets">%1$s tags</string>
@@ -23,6 +19,8 @@
     <string name="label_date2">Billet du 26/04</string>
     <string name="label_scan">Cliquer sur l\'image "Mix-it" et scanner le QRcode de votre ticket Mix-It</string>
     
+    <string name="label_planning_heure">Heure</string>
+    <string name="label_planning_date">Jour</string>
     
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
@@ -33,7 +31,9 @@
     
     <string name="menu_billet">Mes billets</string>
     <string name="menu_adresse">Aller au MixIt</string>
-    
+    <string name="menu_ltalks">Lightning Talks</string>
+    <string name="menu_talks">Talks</string>
+        
     <string name="label_dialog_error">Une erreur s\'est produite</string>
     <string name="label_dialog_aborted">Opération annulée</string>
     

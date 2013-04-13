@@ -14,18 +14,19 @@
 	    
         <TextView 
             style="@style/TextAppearance.Small.Niveau"
-            android:text="Date" 
+            android:text="@string/label_planning_date" 
             android:layout_height="fill_parent" 
             android:layout_width="50dp"/>
         
         <TextView 
             style="@style/TextAppearance.Small.Niveau"
-            android:text="Heure" 
+            android:text="@string/label_planning_heure" 
             android:layout_height="fill_parent" 
             android:layout_width="50dp" />
 
         <TextView
           	style="@style/TextAppearance.Small.Niveau"
+          	android:id="@+id/label_talk_filtre"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:text="Talks" />

@@ -21,7 +21,7 @@ public class SplashActivity extends RoboSplashActivity {
     @Override
     protected void startNextActivity() {
         Intent intent = new Intent(this.getApplicationContext(),
-                ActiviteActivity.class);
+                PlanningActivity.class);
         this.startActivity(intent);
     }
 

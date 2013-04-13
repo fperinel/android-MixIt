@@ -15,10 +15,14 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.inject.Inject;
@@ -56,6 +60,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     @InjectView(R.id.listHeureTalks)
     private ListView listHeureTalks;
+
+    /**
+     * Contrôle : Liste des heures.
+     */
+    @InjectView(R.id.label_talk_filtre)
+    private TextView titreTalkFiltre;
     
     /**
      * Interface vers le service de gestion du planning.
@@ -165,6 +175,48 @@ public class PlanningActivity extends RoboActivity implements Observer {
         return this.planning.getGroupedTalks();
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_adresse:
+                Intent adresseActivity = new Intent(PlanningActivity.this,
+                        AdresseActivity.class);
+                PlanningActivity.this.startActivity(adresseActivity);
+                break;
+            case R.id.menu_billet:
+                Intent ticketActivity = new Intent(PlanningActivity.this,
+                        TicketActivity.class);
+                PlanningActivity.this.startActivity(ticketActivity);
+                break;
+            case R.id.menu_ltalks:
+                Intent lTalkList = new Intent(PlanningActivity.this, LightningTalkListActivity.class);
+                PlanningActivity.this.startActivity(lTalkList);
+                break;
+            case R.id.menu_talks:
+                Intent talkList = new Intent(PlanningActivity.this, TalkListActivity.class);
+                PlanningActivity.this.startActivity(talkList);
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+    
     /**
      * Affiche la boite de chargement.
      */
@@ -197,16 +249,17 @@ public class PlanningActivity extends RoboActivity implements Observer {
             }
         }
         
-        listDateTalks.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listDate));
+        listDateTalks.setAdapter(new ArrayAdapter<String>(this, R.layout.planning_item, listDate));
         listDateTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedDate = (String) parent.getItemAtPosition(position);
+               displayHeure();
                Toast.makeText(PlanningActivity.this, selectedDate, Toast.LENGTH_LONG).show();
                adapter.updateTalks(getTalksFromSelectedDateTime());
             }
         });
     }
-
+    
     /**
      * Affiche la liste des heures
      */
@@ -214,22 +267,26 @@ public class PlanningActivity extends RoboActivity implements Observer {
         List<String> listHeure = new ArrayList<String>();
         String lastHeure = null;
         String crtHeure = null;
-        List<GroupedTalks> grouped = this.planning.getGroupedTalks();
+        List<GroupedTalks> grouped = this.planning.getGroupedTalks();               
+        SimpleDateFormat formatJour = new SimpleDateFormat("d");
         for (GroupedTalks groupe : grouped) {
             
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            crtHeure = format.format(groupe.getDate());
-            
-            if (lastHeure == null || !lastHeure.equals(crtHeure) ) {
-                if (lastHeure == null) {
-                    selectedHeure = crtHeure;
-                }
-                listHeure.add(crtHeure);
-                lastHeure = crtHeure;
-            } 
+            if (selectedDate.equals(formatJour.format(groupe.getDate()))) {
+                
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                crtHeure = format.format(groupe.getDate());
+                
+                if (lastHeure == null || !lastHeure.equals(crtHeure) ) {
+                    if (lastHeure == null) {
+                        selectedHeure = crtHeure;
+                    }
+                    listHeure.add(crtHeure);
+                    lastHeure = crtHeure;
+                } 
+            }
         }
         
-        listHeureTalks.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listHeure));
+        listHeureTalks.setAdapter(new ArrayAdapter<String>(this, R.layout.planning_item, listHeure));
         listHeureTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedHeure = (String) parent.getItemAtPosition(position);
@@ -269,7 +326,9 @@ public class PlanningActivity extends RoboActivity implements Observer {
             sessionDate = format.format(groupe.getDate());
             
             if (sessionDate.equals(selected) ) {
-               return groupe.getTalks();
+                SimpleDateFormat formatDisplay = new SimpleDateFormat();
+                titreTalkFiltre.setText("Talks du " + formatDisplay.format(groupe.getDate()));
+                return groupe.getTalks();
             } 
         }
         return null;
