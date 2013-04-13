@@ -33,5 +33,26 @@
         android:padding="5dp"
         android:text="@string/mixit_address"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+	    android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btn_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionGoToAddress"
+            android:text="Naviguer" />
+    
+	    <Button
+	        android:id="@+id/btn_map"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:onClick="actionShowAddress"
+	        android:text="Plan" />
+	    
+    </LinearLayout>
     
 </LinearLayout> 
