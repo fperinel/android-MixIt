@@ -1,67 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-    style="@style/Layout.Container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
     tools:context=".activities.PlanningActivity" >
-
-    <LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    style="@style/Layout.Informations"
-	    android:orientation="horizontal" >
-	    
-        <TextView 
-            style="@style/TextAppearance.Small.Niveau"
-            android:text="@string/label_planning_date" 
-            android:layout_height="fill_parent" 
-            android:layout_width="50dp"/>
-        
-        <TextView 
-            style="@style/TextAppearance.Small.Niveau"
-            android:text="@string/label_planning_heure" 
-            android:layout_height="fill_parent" 
-            android:layout_width="50dp" />
-
-        <TextView
-          	style="@style/TextAppearance.Small.Niveau"
-          	android:id="@+id/label_talk_filtre"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:text="@string/label_planning_talks" />
-        
-	</LinearLayout>
-   
-    <LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal" >
-	    
-	    <ListView
-	        android:id="@+id/listDateTalks"
-	        android:layout_width="50dp"
-	        style="@style/List.filter"
-	        android:layout_height="match_parent" >
-			
-	    </ListView>
-	    
-	    <ListView
-	        android:id="@+id/listHeureTalks"
-	        android:layout_width="50dp"
-	        style="@style/List.filter"
-	        android:layout_height="match_parent" >
-			
-	    </ListView>
-	        	
-	    <ListView
-	        android:id="@+id/listTalks"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent" >
-			
-	    </ListView>
-	    
-    </LinearLayout>
+  
+    <ListView
+        android:id="@+id/listDateTalks"
+        android:layout_width="50dp"
+        style="@style/List.filter"
+        android:layout_height="match_parent" >
+		
+    </ListView>
+    
+    <ListView
+        android:id="@+id/listHeureTalks"
+        android:layout_width="50dp"
+        android:layout_marginLeft="1dp"
+        style="@style/List.filter"
+        android:layout_height="match_parent" >
+		
+    </ListView>
+        	
+    <ListView
+        android:id="@+id/listTalks"
+        android:layout_marginLeft="1dp"
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+		
+    </ListView>
     
 </LinearLayout>

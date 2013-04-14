@@ -87,33 +87,52 @@ public class TalksAdapter extends BaseAdapter {
 
         TextView txtTalkTitre;
         TextView txtTalkShortDescription;
+        TextView txtTalkSalle;
+        TextView txtTalkSession;
         ImageView imgTalkFavoris;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.talk_row, null);
 
-            txtTalkTitre = (TextView) convertView
-                    .findViewById(R.id.txtTalkTitre);
-            txtTalkShortDescription = (TextView) convertView
-                    .findViewById(R.id.txtTalkShortDescription);
-            imgTalkFavoris = (ImageView) convertView
-                    .findViewById(R.id.imgTalkFavoris);
+            txtTalkTitre = (TextView) convertView.findViewById(R.id.txtTalkTitre);
+            txtTalkShortDescription = (TextView) convertView.findViewById(R.id.txtTalkShortDescription);
+            imgTalkFavoris = (ImageView) convertView.findViewById(R.id.imgTalkFavoris);
+            txtTalkSalle = (TextView) convertView.findViewById(R.id.txtTalkSalle);
+            txtTalkSession = (TextView) convertView.findViewById(R.id.txtTalkSession);
 
             convertView.setTag(R.id.txtTalkTitre, txtTalkTitre);
-            convertView.setTag(R.id.txtTalkShortDescription,
-                    txtTalkShortDescription);
-            convertView.setTag(R.id.imgTalkFavoris,
-                    imgTalkFavoris);
+            convertView.setTag(R.id.txtTalkShortDescription, txtTalkShortDescription);
+            convertView.setTag(R.id.imgTalkFavoris, imgTalkFavoris);
+            convertView.setTag(R.id.txtTalkSalle, txtTalkSalle);
+            convertView.setTag(R.id.txtTalkSession, txtTalkSession);
         } else {
             txtTalkTitre = (TextView) convertView.getTag(R.id.txtTalkTitre);
-            txtTalkShortDescription = (TextView) convertView
-                    .getTag(R.id.txtTalkShortDescription);
-            imgTalkFavoris = (ImageView) convertView
-                    .getTag(R.id.imgTalkFavoris);
+            txtTalkShortDescription = (TextView) convertView.getTag(R.id.txtTalkShortDescription);
+            imgTalkFavoris = (ImageView) convertView.getTag(R.id.imgTalkFavoris);
+            txtTalkSalle = (TextView) convertView.getTag(R.id.txtTalkSalle);
+            txtTalkSession = (TextView) convertView.getTag(R.id.txtTalkSession);
         }
 
         Talk talk = getItem(position);
         txtTalkTitre.setText(talk.getTitle());
         txtTalkShortDescription.setText(talk.getSummary());
+        txtTalkSalle.setText(talk.getRoom());
+        txtTalkSession.setText(Utils.getPeriodeSession(talk, context));
+        
+        if ("Gosling".equals(talk.getRoom())) {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomGosling));
+        }
+        if ("Dijkstra".equals(talk.getRoom())) {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomDijkstra));
+        }
+        if ("Eich".equals(talk.getRoom())) {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomEich));
+        }
+        if ("Nonaka".equals(talk.getRoom())) {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomNonaka));
+        }
+        if ("Turing".equals(talk.getRoom())) {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomTuring));
+        }
         
         if(!talk.isFavoris()) {
             imgTalkFavoris.setVisibility(View.INVISIBLE);

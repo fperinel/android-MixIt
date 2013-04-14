@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rowTalk"
     android:layout_width="fill_parent"
-    android:layout_height="75dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:gravity="right"
+    android:minHeight="75dp"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -13,7 +15,9 @@
 
         <TextView
             android:id="@+id/txtTalkTitre"
-            style="@style/TextAppearance.Medium.Title"
+            android:textColor="@color/mixitBlue"
+            android:textSize="16dip"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dip"
@@ -23,6 +27,7 @@
             android:id="@+id/imgTalkFavoris"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:src="@android:drawable/star_on" />
         
     </LinearLayout>
@@ -32,6 +37,37 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dip"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:paddingLeft="20dp"
+        android:textSize="14dip"
+        android:textColor="@color/white" />
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtTalkSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dip"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/txtTalkSalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dip"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp" />
+        
+    </LinearLayout>
+    
 </LinearLayout>

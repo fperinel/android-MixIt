@@ -22,12 +22,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
+import com.level42.mixit.adapters.FilterAdapter;
 import com.level42.mixit.adapters.TalksAdapter;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixit.models.PlanningTalk;
@@ -60,12 +59,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     @InjectView(R.id.listHeureTalks)
     private ListView listHeureTalks;
-
-    /**
-     * Contrôle : Liste des heures.
-     */
-    @InjectView(R.id.label_talk_filtre)
-    private TextView titreTalkFiltre;
     
     /**
      * Interface vers le service de gestion du planning.
@@ -87,6 +80,10 @@ public class PlanningActivity extends RoboActivity implements Observer {
      * Adapter de la liste des talks.
      */
     private TalksAdapter adapter;
+    
+    private FilterAdapter adapterDate;
+    
+    private FilterAdapter adapterHeure;
 
     /**
      * Date sélectionnée
@@ -255,11 +252,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
                 lastDate = crtDate;
             }
         }
-        
-        listDateTalks.setAdapter(new ArrayAdapter<String>(this, R.layout.planning_item, listDate));
+        adapterDate = new FilterAdapter(PlanningActivity.this, listDate, selectedDate, R.layout.planning_item_date);        
+        listDateTalks.setAdapter(adapterDate);
         listDateTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedDate = (String) parent.getItemAtPosition(position);
+               adapterDate.setSelected(selectedDate);
                displayHeure();
                adapter.updateTalks(getTalksFromSelectedDateTime());
             }
@@ -291,11 +289,13 @@ public class PlanningActivity extends RoboActivity implements Observer {
                 } 
             }
         }
-        
-        listHeureTalks.setAdapter(new ArrayAdapter<String>(this, R.layout.planning_item, listHeure));
+
+        adapterHeure = new FilterAdapter(PlanningActivity.this, listHeure, selectedHeure, R.layout.planning_item_heure); 
+        listHeureTalks.setAdapter(adapterHeure);
         listHeureTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedHeure = (String) parent.getItemAtPosition(position);
+               adapterHeure.setSelected(selectedHeure);
                adapter.updateTalks(getTalksFromSelectedDateTime());
             }
         });
@@ -312,12 +312,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
         getTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
-        Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay));
+        String defaultDelay = getString(R.string.planningDelay);
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        Integer delay = preferences.getInt(PreferencesActivity.PREF_SESSION_DELAY, defaultDelay);
+        String delay = preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, defaultDelay);
         
-        getTalksAsyncService.execute(planningService, delay);
+        getTalksAsyncService.execute(planningService, Integer.valueOf(delay));
     }
     
     /**
@@ -336,10 +336,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
             sessionDate = format.format(talk.getDateSession());
             
             if (sessionDate.equals(selected) ) {
-                SimpleDateFormat formatDisplay = new SimpleDateFormat();
-                titreTalkFiltre.setText(String.format(
-                        getResources().getString(R.string.label_planning_talks),
-                        formatDisplay.format(talk.getDateSession())));
                 selectedTalks.add(talk);
             } 
         }

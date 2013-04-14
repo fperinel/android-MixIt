@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-            
+    
+    <style name="MixItTheme" parent="@android:style/Theme.Black">
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+    </style>
+ 
+    <style name="WindowTitleBackground">     
+        <item name="android:background">@android:color/black</item>
+        <item name="android:height">50dp</item>
+    </style>
+      
     <style name="Layout">
 	</style>
 	
@@ -26,7 +35,7 @@
 	</style>
 	   
     <style name="List.filter">
-		<item name="android:background">@color/mixitDarkGrey</item>
+		<item name="android:background">@color/filterBlue</item>
 		<item name="android:layout_margin">0dip</item>
 	</style>
 	

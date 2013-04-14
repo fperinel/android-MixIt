@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tv"
-    style="@style/TextAppearance.Small.Legend"
     android:layout_width="fill_parent"
+    android:height="50dp"
     android:layout_height="50dp"
     android:layout_margin="4dip"
-    android:textSize="14sp" />
+    android:textColor="@android:color/white"
+    android:gravity="center_horizontal|center_vertical"
+    android:textSize="18sp" />

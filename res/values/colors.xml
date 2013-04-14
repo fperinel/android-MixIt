@@ -4,4 +4,12 @@
     <color name="mixitGrey">#7F7F7F</color>
     <color name="mixitDarkGrey">#2C2C2C</color>
     <color name="white">#FFFFFF</color>
+    <color name="filterBlue">#004A66</color>
+    
+    <color name="roomGosling">#0abc0e</color>
+    <color name="roomEich">#980abc</color>
+    <color name="roomNonaka">#bc0a88</color>
+    <color name="roomDijkstra">#bc0a0a</color>
+    <color name="roomTuring">#f97704</color>
+    
 </resources>

@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -17,7 +18,9 @@ import android.util.Log;
 
 import com.google.zxing.common.BitMatrix;
 import com.level42.mixit.BuildConfig;
+import com.level42.mixit.R;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.Talk;
 
 /**
  * Classe utilitaire.
@@ -99,5 +102,25 @@ public final class Utils {
             }
         }
         return bmp;
+    }
+    
+    /**
+     * 
+     * @param talk
+     * @return
+     */
+    public static String getPeriodeSession(final Talk talk, final Context context) {
+        
+        Date dateDebut = Utils.formatWsDate(talk.getStart());
+        Date dateFin = Utils.formatWsDate(talk.getEnd());
+        
+        SimpleDateFormat formatJour = new SimpleDateFormat("dd/MM");
+        SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
+        
+        return String.format(context.getResources().getString(R.string.label_duree_session),
+                    formatJour.format(dateDebut),
+                    formatHeure.format(dateDebut),
+                    formatHeure.format(dateFin)
+                );
     }
 }

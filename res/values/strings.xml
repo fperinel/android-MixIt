@@ -7,6 +7,8 @@
     
     <string name="loading_message">Chargement</string>
     
+    <string name="titre_programme">MixIT 2013, le programme</string>
+    
     <string name="label_talk_titre">[%1$s] %2$s</string>
     <string name="label_talk_interets">%1$s tags</string>
     <string name="label_talk_votes">%1$s votes</string>
@@ -22,6 +24,7 @@
     <string name="label_planning_heure">Heure</string>
     <string name="label_planning_date">Jour</string>
     <string name="label_planning_talks">Talks du %1$s</string>
+    <string name="label_duree_session">Le %1$s de %2$s à %3$s</string>
     
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
