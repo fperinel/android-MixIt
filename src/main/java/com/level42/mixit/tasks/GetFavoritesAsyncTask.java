@@ -8,7 +8,7 @@ import android.util.Log;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
-import com.level42.mixit.models.Talk;
+import com.level42.mixit.models.Favoris;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.utils.Utils;
 
@@ -16,12 +16,12 @@ import com.level42.mixit.utils.Utils;
  * Tâche asynchrone pour la collecte de la liste des talks.
  */
 public class GetFavoritesAsyncTask extends
-        AsyncTask<Object, Integer, List<Talk>> {
+        AsyncTask<Object, Integer, List<Favoris>> {
 
     /**
      * Listener.
      */
-    private OnTaskPostExecuteListener<List<Talk>> onTaskPostExecuteListener = null;
+    private OnTaskPostExecuteListener<List<Favoris>> onTaskPostExecuteListener = null;
 
     /**
      * Raison de l'interuption.
@@ -33,11 +33,11 @@ public class GetFavoritesAsyncTask extends
      * @see android.os.AsyncTask#doInBackground(Params[])
      */
     @Override
-    protected List<Talk> doInBackground(Object... params) {
+    protected List<Favoris> doInBackground(Object... params) {
         try {
             ITalkService service = (ITalkService) params[0];
             Integer id = (Integer) params[1];
-            return service.getFavorite(id);
+            return service.getFavoris(id);
         } catch (FunctionnalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
             Log.d(Utils.LOGTAG, e.getCause().getMessage());
@@ -72,10 +72,10 @@ public class GetFavoritesAsyncTask extends
      * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      */
     @Override
-    protected void onPostExecute(List<Talk> result) {
+    protected void onPostExecute(List<Favoris> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
+        Log.d(Utils.LOGTAG, "Nombre de favoris : " + result.size());
 
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
@@ -88,7 +88,7 @@ public class GetFavoritesAsyncTask extends
      *            Listener de la tâche
      */
     public void setPostExecuteListener(
-            OnTaskPostExecuteListener<List<Talk>> taskPostExecute) {
+            OnTaskPostExecuteListener<List<Favoris>> taskPostExecute) {
         onTaskPostExecuteListener = taskPostExecute;
     }
 

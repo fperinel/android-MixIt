@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.level42.mixit.R;
@@ -86,6 +87,7 @@ public class TalksAdapter extends BaseAdapter {
 
         TextView txtTalkTitre;
         TextView txtTalkShortDescription;
+        ImageView imgTalkFavoris;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.talk_row, null);
 
@@ -93,20 +95,32 @@ public class TalksAdapter extends BaseAdapter {
                     .findViewById(R.id.txtTalkTitre);
             txtTalkShortDescription = (TextView) convertView
                     .findViewById(R.id.txtTalkShortDescription);
+            imgTalkFavoris = (ImageView) convertView
+                    .findViewById(R.id.imgTalkFavoris);
 
             convertView.setTag(R.id.txtTalkTitre, txtTalkTitre);
             convertView.setTag(R.id.txtTalkShortDescription,
                     txtTalkShortDescription);
+            convertView.setTag(R.id.imgTalkFavoris,
+                    imgTalkFavoris);
         } else {
             txtTalkTitre = (TextView) convertView.getTag(R.id.txtTalkTitre);
             txtTalkShortDescription = (TextView) convertView
                     .getTag(R.id.txtTalkShortDescription);
+            imgTalkFavoris = (ImageView) convertView
+                    .getTag(R.id.imgTalkFavoris);
         }
 
         Talk talk = getItem(position);
         txtTalkTitre.setText(talk.getTitle());
         txtTalkShortDescription.setText(talk.getSummary());
-
+        
+        if(!talk.isFavoris()) {
+            imgTalkFavoris.setVisibility(View.INVISIBLE);
+        } else {
+            imgTalkFavoris.setVisibility(View.VISIBLE);            
+        }
+        
         return convertView;
     }
 

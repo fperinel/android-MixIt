@@ -27,6 +27,7 @@ import com.level42.mixit.R;
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.Favoris;
 import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.Member;
@@ -346,14 +347,14 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
     }
 
     @Override
-    public List<Talk> getFavorite(Integer id) throws CommunicationException,
+    public List<Favoris> getFavorite(Integer id) throws CommunicationException,
             NotFoundException, TechnicalException {
         try {
             HttpGet request = this.getRequestGET("members/" + id.toString() + "/favorites");
             String result = this.executeQuery(request, true);
-            List<Talk> talkList = mapper.readValue(result,
-                    new TypeReference<List<Talk>>() {});
-            return talkList;
+            List<Favoris> favorisList = mapper.readValue(result,
+                    new TypeReference<List<Favoris>>() {});
+            return favorisList;
         } catch (JsonMappingException e) {
             throw new TechnicalException(context.getText(R.string.exception_message_JsonMappingException).toString(), e);
         } catch (ClientProtocolException e) {

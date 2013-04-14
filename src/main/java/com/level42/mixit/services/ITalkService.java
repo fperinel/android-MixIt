@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.Favoris;
 import com.level42.mixit.models.Talk;
 
 /**
@@ -37,5 +38,5 @@ public interface ITalkService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    List<Talk> getFavorite(Integer id) throws FunctionnalException, TechnicalException;
+    List<Favoris> getFavoris(Integer id) throws FunctionnalException, TechnicalException;
 }

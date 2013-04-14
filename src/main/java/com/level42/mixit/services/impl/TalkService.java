@@ -16,6 +16,7 @@ import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.Favoris;
 import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.Speaker;
 import com.level42.mixit.models.Talk;
@@ -68,7 +69,7 @@ public class TalkService extends AbstractService implements ITalkService {
     /**
      * Liste des favoris indéxés par identifiant.
      */
-    private Map<Integer, Talk> idxFavoris;
+    private Map<Integer, Favoris> idxFavoris;
 
     /**
      * Retourne l'interface Webservice
@@ -122,7 +123,7 @@ public class TalkService extends AbstractService implements ITalkService {
      * Retourne la liste indexées des favoris
      * @return Favoris
      */
-    public Map<Integer, Talk> getIdxFavoris() {
+    public Map<Integer, Favoris> getIdxFavoris() {
         return idxFavoris;
     }
 
@@ -177,7 +178,7 @@ public class TalkService extends AbstractService implements ITalkService {
      * @see com.level42.mixit.services.ITalkService#getFavorite(java.lang.Integer)
      */
     @Override
-    public List<Talk> getFavorite(Integer id) throws FunctionnalException,
+    public List<Favoris> getFavoris(Integer id) throws FunctionnalException,
             TechnicalException {
         try {
             return ws.getFavorite(id);
@@ -245,7 +246,7 @@ public class TalkService extends AbstractService implements ITalkService {
      */
     protected void hydrateTalkFavoris(Talk talk) throws FunctionnalException,
             TechnicalException {
-        Talk favoris = this.getFavorisById(talk.getId());
+        Favoris favoris = this.getFavorisById(talk.getId());
         if (favoris != null) {
             talk.setFavoris(true);
         }
@@ -298,15 +299,15 @@ public class TalkService extends AbstractService implements ITalkService {
      * @throws FunctionnalException
      * @throws TechnicalException
      */
-    protected Talk getFavorisById(Integer id) throws FunctionnalException,
+    protected Favoris getFavorisById(Integer id) throws FunctionnalException,
             TechnicalException {
         if (idxFavoris == null) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
             Integer idMembre = preferences.getInt(PreferencesActivity.PREF_MEMBRE_ID, 0);
             if (idMembre > 0) {
-                List<Talk> favoris = this.getFavorite(idMembre);
-                idxFavoris = new HashMap<Integer, Talk>();
-                for (Talk favori : favoris) {
+                List<Favoris> favoris = this.getFavoris(idMembre);
+                idxFavoris = new HashMap<Integer, Favoris>();
+                for (Favoris favori : favoris) {
                     idxFavoris.put(favori.getId(), favori);
                 }
             } else {

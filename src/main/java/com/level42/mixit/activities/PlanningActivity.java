@@ -23,11 +23,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
-import com.level42.mixit.adapters.PlanningAdapter;
+import com.level42.mixit.adapters.TalksAdapter;
 import com.level42.mixit.listeners.OnTaskPostExecuteListener;
 import com.level42.mixit.models.PlanningTalk;
 import com.level42.mixit.models.Talk;
@@ -85,7 +84,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     /**
      * Adapter de la liste des talks.
      */
-    private PlanningAdapter adapter;
+    private TalksAdapter adapter;
 
     /**
      * Date sélectionnée
@@ -141,7 +140,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         planning.addObserver(this);
-        adapter = new PlanningAdapter(this.getBaseContext());
+        adapter = new TalksAdapter(this.getBaseContext());
         listTalks.setAdapter(adapter);
 
         listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {

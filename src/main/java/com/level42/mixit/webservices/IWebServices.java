@@ -5,6 +5,7 @@ import java.util.List;
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.NotFoundException;
 import com.level42.mixit.exceptions.TechnicalException;
+import com.level42.mixit.models.Favoris;
 import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.Member;
@@ -127,6 +128,6 @@ public interface IWebServices {
      * @throws CommunicationException
      * @throws NotFoundException
      */
-    List<Talk> getFavorite(Integer id) throws CommunicationException,
+    List<Favoris> getFavorite(Integer id) throws CommunicationException,
             NotFoundException, TechnicalException;
 }
