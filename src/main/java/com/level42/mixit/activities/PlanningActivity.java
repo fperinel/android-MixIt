@@ -312,12 +312,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
         getTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
-        String defaultDelay = getString(R.string.planningDelay);
+        Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay));
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        String delay = preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, defaultDelay);
+        Integer delay = Integer.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));
         
-        getTalksAsyncService.execute(planningService, Integer.valueOf(delay));
+        getTalksAsyncService.execute(planningService, delay);
     }
     
     /**

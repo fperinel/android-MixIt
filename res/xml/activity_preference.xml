@@ -22,6 +22,7 @@
 	<EditTextPreference 
 	    android:key="delaySession"
 		android:title="Délai pour masquer les sessions"
+    	android:numeric="integer"
 		android:summary="Si le début d'une session excède ce délai, la session est masqsuée">
 	</EditTextPreference>
 	
