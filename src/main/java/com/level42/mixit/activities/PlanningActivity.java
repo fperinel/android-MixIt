@@ -13,7 +13,9 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -310,7 +312,11 @@ public class PlanningActivity extends RoboActivity implements Observer {
         getTalksAsyncService.setPostExecuteListener(listenerAsync);
 
         // Execution du service
-        Integer delay = Integer.valueOf(getString(R.string.planningDelay));
+        Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay));
+        
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
+        Integer delay = preferences.getInt(PreferencesActivity.PREF_SESSION_DELAY, defaultDelay);
+        
         getTalksAsyncService.execute(planningService, delay);
     }
     
