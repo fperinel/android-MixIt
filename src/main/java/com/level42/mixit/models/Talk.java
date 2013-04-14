@@ -85,6 +85,12 @@ public class Talk implements Comparable<Talk> {
     private String room;
 
     /**
+     * Indique si le talk est favoris du membre
+     */
+    @JsonIgnore
+    private boolean favoris = false;
+    
+    /**
      * Retourne l'identifiant du talk.
      * @return the id
      */
@@ -325,5 +331,21 @@ public class Talk implements Comparable<Talk> {
             return -1;
         }
         return getDateSession().compareTo(another.getDateSession());
+    }
+
+    /**
+     * Indique si le talk est un favoris
+     * @return 
+     */
+    public boolean isFavoris() {
+        return this.favoris;
+    }
+
+    /**
+     * Rensiegne le talk comme favoris
+     * @param favoris
+     */
+    public void setFavoris(boolean favoris) {
+        this.favoris = favoris;
     }
 }

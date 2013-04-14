@@ -13,7 +13,7 @@ import com.level42.mixit.R;
  */
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboSplashActivity {
-    
+
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboSplashActivity#startNextActivity()

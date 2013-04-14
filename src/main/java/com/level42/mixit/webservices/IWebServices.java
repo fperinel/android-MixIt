@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.NotFoundException;
+import com.level42.mixit.exceptions.TechnicalException;
 import com.level42.mixit.models.Interest;
 import com.level42.mixit.models.LightningTalk;
 import com.level42.mixit.models.Member;
@@ -23,7 +24,7 @@ public interface IWebServices {
      * @return Liste des talks
      * @throws CommunicationException
      */
-    List<Talk> getTalks() throws CommunicationException;
+    List<Talk> getTalks() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne la liste des lightning talks.
@@ -31,7 +32,7 @@ public interface IWebServices {
      * @return Liste des lightning talks
      * @throws CommunicationException
      */
-    List<LightningTalk> getLightningTalks() throws CommunicationException;
+    List<LightningTalk> getLightningTalks() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne le détail d'un talk.
@@ -40,7 +41,7 @@ public interface IWebServices {
      * @throws CommunicationException
      * @throws NotFoundException
      */
-    Talk getTalk(Integer id) throws CommunicationException, NotFoundException;
+    Talk getTalk(Integer id) throws CommunicationException, NotFoundException, TechnicalException;
 
     /**
      * Retourne le détail d'un LightningTalk.
@@ -50,7 +51,7 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     LightningTalk getLightningTalk(Integer id) throws CommunicationException,
-            NotFoundException;
+            NotFoundException, TechnicalException;
 
     /**
      * Retourne la liste des membres.
@@ -58,7 +59,7 @@ public interface IWebServices {
      * @return Liste des membres
      * @throws CommunicationException
      */
-    List<Member> getMembers() throws CommunicationException;
+    List<Member> getMembers() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne la liste du staff.
@@ -66,7 +67,7 @@ public interface IWebServices {
      * @return Liste du staff
      * @throws CommunicationException
      */
-    List<Staff> getStaffs() throws CommunicationException;
+    List<Staff> getStaffs() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne la liste des speakers.
@@ -74,7 +75,7 @@ public interface IWebServices {
      * @return Liste des speakers
      * @throws CommunicationException
      */
-    List<Speaker> getSpeakers() throws CommunicationException;
+    List<Speaker> getSpeakers() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne la liste des sponsors.
@@ -82,7 +83,7 @@ public interface IWebServices {
      * @return Liste des sponsors
      * @throws CommunicationException
      */
-    List<Sponsor> getSponsors() throws CommunicationException;
+    List<Sponsor> getSponsors() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne le détail d'une entité (membre, staff etc...).
@@ -96,7 +97,7 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     <T> Object getEntity(Integer id, T type) throws CommunicationException,
-            NotFoundException;
+            NotFoundException, TechnicalException;
 
     /**
      * Retourne la liste des tags "intérêt".
@@ -104,7 +105,7 @@ public interface IWebServices {
      * @return Liste des tags "intérêt"
      * @throws CommunicationException
      */
-    List<Interest> getInterests() throws CommunicationException;
+    List<Interest> getInterests() throws CommunicationException, TechnicalException;
 
     /**
      * Retourne le détail d'un tags "intérêt".
@@ -116,5 +117,16 @@ public interface IWebServices {
      * @throws NotFoundException
      */
     Interest getInterest(Integer id) throws CommunicationException,
-            NotFoundException;
+            NotFoundException, TechnicalException;
+
+    /**
+     * Retourne la liste des favoris d'un membre
+     *
+     * @param id Identifiant du membre
+     * @return liste des favoris d'un membre
+     * @throws CommunicationException
+     * @throws NotFoundException
+     */
+    List<Talk> getFavorite(Integer id) throws CommunicationException,
+            NotFoundException, TechnicalException;
 }

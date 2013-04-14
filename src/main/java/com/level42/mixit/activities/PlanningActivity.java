@@ -212,6 +212,11 @@ public class PlanningActivity extends RoboActivity implements Observer {
                         TalkListActivity.class);
                 PlanningActivity.this.startActivity(talkList);
                 break;
+            case R.id.menu_preference:
+                Intent preferences = new Intent(PlanningActivity.this, 
+                        PreferencesActivity.class);
+                PlanningActivity.this.startActivity(preferences);
+                break;
             default:
                 break;
         }
@@ -255,7 +260,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedDate = (String) parent.getItemAtPosition(position);
                displayHeure();
-               Toast.makeText(PlanningActivity.this, selectedDate, Toast.LENGTH_LONG).show();
                adapter.updateTalks(getTalksFromSelectedDateTime());
             }
         });
@@ -291,7 +295,6 @@ public class PlanningActivity extends RoboActivity implements Observer {
         listHeureTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                selectedHeure = (String) parent.getItemAtPosition(position);
-               Toast.makeText(PlanningActivity.this, selectedHeure, Toast.LENGTH_LONG).show();
                adapter.updateTalks(getTalksFromSelectedDateTime());
             }
         });
@@ -329,7 +332,9 @@ public class PlanningActivity extends RoboActivity implements Observer {
             
             if (sessionDate.equals(selected) ) {
                 SimpleDateFormat formatDisplay = new SimpleDateFormat();
-                titreTalkFiltre.setText("Talks du " + formatDisplay.format(talk.getDateSession()));
+                titreTalkFiltre.setText(String.format(
+                        getResources().getString(R.string.label_planning_talks),
+                        formatDisplay.format(talk.getDateSession())));
                 selectedTalks.add(talk);
             } 
         }

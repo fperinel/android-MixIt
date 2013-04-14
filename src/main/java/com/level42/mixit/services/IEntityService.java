@@ -85,4 +85,13 @@ public interface IEntityService {
      */
     Sponsor getSponsor(Integer id) throws FunctionnalException,
             TechnicalException;
+
+    /**
+     * Méthode retournant un membre grace à son login
+     * 
+     * @param email
+     * @return Member
+     */
+    Member getMemberIdByLogin(String login) throws FunctionnalException,
+    TechnicalException;
 }

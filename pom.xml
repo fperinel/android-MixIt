@@ -24,10 +24,12 @@
 		
 		<roboguice.version>2.0</roboguice.version>
 		<guice.version>3.0</guice.version>
-		<supportv4.version>r7</supportv4.version>
+		<!-- <supportv4.version>r7</supportv4.version> -->
 		<jackson.version>1.9.12</jackson.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 		<zxing.version>2.1</zxing.version>
+		<!-- <actionbarsherlock.version>4.2.0</actionbarsherlock.version>
+		<roboguice-sherlock.version>1.4</roboguice-sherlock.version> -->
 
 		<key.alias>mixit</key.alias>
 		<key.storepass>mixit2013</key.storepass>
@@ -53,11 +55,11 @@
             <version>${guice.version}</version>
             <classifier>no_aop</classifier>
         </dependency>        
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.google.android</groupId>
-			<artifactId>support-v4</artifactId>
-			<version>${supportv4.version}</version>
-		</dependency>        
+			<artifactId>support-v7</artifactId>
+			<version>${supportv7.version}</version>
+		</dependency>   -->     
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
@@ -73,6 +75,17 @@
 			<artifactId>core</artifactId>
 			<version>${zxing.version}</version>
 		</dependency>
+	    <!-- <dependency>
+			<groupId>com.github.rtyley</groupId>
+			<artifactId>roboguice-sherlock</artifactId>
+			<version>${roboguice-sherlock.version}</version>
+	    </dependency>
+		<dependency>
+			<groupId>com.actionbarsherlock</groupId>
+			<artifactId>actionbarsherlock</artifactId>
+			<version>${actionbarsherlock.version}</version>
+			<type>apklib</type>
+		</dependency> -->
             
 	</dependencies>
 

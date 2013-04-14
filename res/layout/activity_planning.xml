@@ -10,6 +10,7 @@
     <LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
+	    style="@style/Layout.Informations"
 	    android:orientation="horizontal" >
 	    
         <TextView 
@@ -29,7 +30,7 @@
           	android:id="@+id/label_talk_filtre"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:text="Talks" />
+            android:text="@string/label_planning_talks" />
         
 	</LinearLayout>
    
@@ -41,7 +42,7 @@
 	    <ListView
 	        android:id="@+id/listDateTalks"
 	        android:layout_width="50dp"
-	        style="@style/TextAppearance.Small.Niveau"
+	        style="@style/List.filter"
 	        android:layout_height="match_parent" >
 			
 	    </ListView>
@@ -49,7 +50,7 @@
 	    <ListView
 	        android:id="@+id/listHeureTalks"
 	        android:layout_width="50dp"
-	        style="@style/TextAppearance.Small.Niveau"
+	        style="@style/List.filter"
 	        android:layout_height="match_parent" >
 			
 	    </ListView>

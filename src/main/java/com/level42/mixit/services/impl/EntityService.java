@@ -142,4 +142,16 @@ public class EntityService extends AbstractService implements IEntityService {
         }
     }
 
+    @Override
+    public Member getMemberIdByLogin(String login) throws FunctionnalException,
+            TechnicalException {
+        List<Member> members = this.getMembers();
+        for (Member member : members) {
+            if (member.getLogin().equals(login)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
 }

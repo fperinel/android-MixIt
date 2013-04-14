@@ -37,9 +37,11 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
             return service.getTalk(talkId);
         } catch (FunctionnalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
+            Log.d(Utils.LOGTAG, e.getCause().getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
+            Log.d(Utils.LOGTAG, e.getCause().getMessage());
             cancelReason = e;
         }
         this.cancel(true);

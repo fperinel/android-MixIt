@@ -29,4 +29,13 @@ public interface ITalkService {
      * @throws FunctionnalException
      */
     Talk getTalk(Integer id) throws FunctionnalException, TechnicalException;
+    
+    /**
+     * Méthode listant les talks favoris d'un membre
+     *
+     * @return Liste des talks favoris
+     * @throws TechnicalException
+     * @throws FunctionnalException
+     */
+    List<Talk> getFavorite(Integer id) throws FunctionnalException, TechnicalException;
 }

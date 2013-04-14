@@ -5,5 +5,6 @@
     <item android:id="@+id/menu_ltalks" android:title="@string/menu_ltalks" />
     <item android:id="@+id/menu_billet" android:title="@string/menu_billet" />
     <item android:id="@+id/menu_adresse" android:title="@string/menu_adresse" />
+    <item android:id="@+id/menu_preference" android:title="@string/menu_preference" />
     
 </menu>

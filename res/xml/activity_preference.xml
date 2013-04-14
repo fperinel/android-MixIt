@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+<PreferenceCategory android:title="Utilisateur">
+
+	<EditTextPreference 
+	    android:key="loginMembre"
+		android:title="Login"
+		android:summary="Entrez votre login MixIT (pour charger vos favoris)">
+	</EditTextPreference>
+
+</PreferenceCategory>
+    
+<PreferenceCategory android:title="Planning">
+
+	<CheckBoxPreference
+		android:key="hideSession"
+		android:title="Masquer les sessions passées"
+		android:summary="Masque les sessions qui ont débutées">
+	</CheckBoxPreference>
+	
+	<EditTextPreference 
+	    android:key="delaySession"
+		android:title="Délai pour masquer les sessions"
+		android:summary="Si le début d'une session excède ce délai, la session est masqsuée">
+	</EditTextPreference>
+	
+	<CheckBoxPreference
+		android:key="notificationFavoris"
+		android:title="Notifications"
+		android:summary="Vous indique quand une session favorite démarre">
+	</CheckBoxPreference>
+
+</PreferenceCategory>
+
+</PreferenceScreen>

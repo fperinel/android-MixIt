@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
 
 import com.google.inject.Inject;
 import com.level42.mixit.R;
+import com.level42.mixit.activities.PreferencesActivity;
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.NotFoundException;
@@ -58,9 +61,14 @@ public class TalkService extends AbstractService implements ITalkService {
     private Map<Integer, Speaker> idxSpeakers;
 
     /**
-     * Interface vers le service de gestion des centres d'intérêts.
+     * Liste des intérêts indéxés par identifiant.
      */
     private Map<Integer, Interest> idxInterests;
+
+    /**
+     * Liste des favoris indéxés par identifiant.
+     */
+    private Map<Integer, Talk> idxFavoris;
 
     /**
      * Retourne l'interface Webservice
@@ -110,14 +118,27 @@ public class TalkService extends AbstractService implements ITalkService {
         return idxInterests;
     }
 
+    /**
+     * Retourne la liste indexées des favoris
+     * @return Favoris
+     */
+    public Map<Integer, Talk> getIdxFavoris() {
+        return idxFavoris;
+    }
+
     /*
      * (non-Javadoc)
      * @see com.level42.mixit.services.ITalkService#getTalks()
      */
+    @Override
     public List<Talk> getTalks() throws FunctionnalException,
             TechnicalException {
         try {
-            return ws.getTalks();
+            List<Talk> talks = ws.getTalks();
+            for (Talk talk : talks) {
+                this.hydrateTalkFavoris(talk);
+            }
+            return talks;
         } catch (CommunicationException e) {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
@@ -129,6 +150,7 @@ public class TalkService extends AbstractService implements ITalkService {
      * (non-Javadoc)
      * @see com.level42.mixit.services.ITalkService#getTalk(java.lang.Integer)
      */
+    @Override
     public Talk getTalk(Integer id) throws FunctionnalException,
             TechnicalException {
         try {
@@ -137,6 +159,7 @@ public class TalkService extends AbstractService implements ITalkService {
             // Dans la nouvelle version des API, les objects sont retournés
             this.hydrateTalkInterests(talk);
             this.hydrateTalkSpeakers(talk);
+            this.hydrateTalkFavoris(talk);
 
             return talk;
         } catch (CommunicationException e) {
@@ -149,6 +172,26 @@ public class TalkService extends AbstractService implements ITalkService {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.level42.mixit.services.ITalkService#getFavorite(java.lang.Integer)
+     */
+    @Override
+    public List<Talk> getFavorite(Integer id) throws FunctionnalException,
+            TechnicalException {
+        try {
+            return ws.getFavorite(id);
+        } catch (CommunicationException e) {
+            throw new TechnicalException(
+                    getText(R.string.exception_message_CommunicationException),
+                    e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(
+                    getText(R.string.exception_message_NotFoundException),
+                    e);
+        }
+    }
+    
     /**
      * Hydrate les speakers d'un talk.
      * @param talk
@@ -192,6 +235,21 @@ public class TalkService extends AbstractService implements ITalkService {
             talk.setInterests(interests);
         }
     }
+    
+    /**
+     * Hydrate les status favoris d'un talk
+     * @param talk
+     *            Talk à hydrater
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
+    protected void hydrateTalkFavoris(Talk talk) throws FunctionnalException,
+            TechnicalException {
+        Talk favoris = this.getFavorisById(talk.getId());
+        if (favoris != null) {
+            talk.setFavoris(true);
+        }
+    }
 
     /**
      * Retourne un objet speaker par son identifiant.
@@ -233,4 +291,28 @@ public class TalkService extends AbstractService implements ITalkService {
         return idxInterests.get(id);
     }
 
+    /**
+     * Retourne un objet favoris par son identifiant.
+     * @param id Identifiant du favoris
+     * @return Favoris
+     * @throws FunctionnalException
+     * @throws TechnicalException
+     */
+    protected Talk getFavorisById(Integer id) throws FunctionnalException,
+            TechnicalException {
+        if (idxFavoris == null) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+            Integer idMembre = preferences.getInt(PreferencesActivity.PREF_MEMBRE_ID, 0);
+            if (idMembre > 0) {
+                List<Talk> favoris = this.getFavorite(idMembre);
+                idxFavoris = new HashMap<Integer, Talk>();
+                for (Talk favori : favoris) {
+                    idxFavoris.put(favori.getId(), favori);
+                }
+            } else {
+                return null;
+            }
+        }
+        return idxFavoris.get(id);
+    }
 }

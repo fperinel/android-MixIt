@@ -38,9 +38,11 @@ public class GetLightningTalkAsyncTask extends
             return service.getLightningTalk(talkId);
         } catch (FunctionnalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
+            Log.d(Utils.LOGTAG, e.getCause().getMessage());
             cancelReason = e;
         } catch (TechnicalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
+            Log.d(Utils.LOGTAG, e.getCause().getMessage());
             cancelReason = e;
         }
         this.cancel(true);

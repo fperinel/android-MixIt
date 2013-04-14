@@ -3,7 +3,10 @@
             
     <style name="Layout">
 	</style>
-	   
+	
+	<style name="List">
+	</style>
+	
     <style name="Layout.Container">
 		<item name="android:padding">2dip</item>
 		<item name="android:background">@color/blue_gradient</item>
@@ -20,6 +23,11 @@
     <style name="Layout.Interests">
         <item name="android:layout_marginTop">10dip</item>
 		<item name="android:textColor">@color/mixitBlue</item>
+	</style>
+	   
+    <style name="List.filter">
+		<item name="android:background">@color/mixitDarkGrey</item>
+		<item name="android:layout_margin">0dip</item>
 	</style>
 	
     <style name="TextAppearance.Large.Title" parent="@android:style/TextAppearance.Large">

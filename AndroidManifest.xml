@@ -21,7 +21,7 @@
         <activity 
             android:label="@string/app_name" 
             android:launchMode="singleTop" 
-            android:name=".activities.SplashActivity" 
+            android:name="com.level42.mixit.activities.SplashActivity" 
             android:screenOrientation="portrait" 
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="com.level42.mixit.activities.PreferencesActivity"/>  
         <activity android:name="com.level42.mixit.activities.TalkListActivity"/>                
         <activity android:name="com.level42.mixit.activities.TalkActivity"/>               
         <activity android:name="com.level42.mixit.activities.ActiviteActivity"/>                

@@ -21,6 +21,7 @@
     
     <string name="label_planning_heure">Heure</string>
     <string name="label_planning_date">Jour</string>
+    <string name="label_planning_talks">Talks du %1$s</string>
     
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
@@ -28,11 +29,13 @@
     <string name="exception_message_DataAccessException">Impossible d\'accèder aux données</string>
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>
     <string name="exception_message_NotFoundException">L\'information demandée est introuvable.</string>
+    <string name="exception_message_JsonMappingException">Erreur technique.\nLe service n\'est pas compatible avec l\'objet attendu.</string>
     
     <string name="menu_billet">Mes billets</string>
     <string name="menu_adresse">Aller au MixIt</string>
     <string name="menu_ltalks">Lightning Talks</string>
     <string name="menu_talks">Talks</string>
+    <string name="menu_preference">Préférences</string>
         
     <string name="label_dialog_error">Une erreur s\'est produite</string>
     <string name="label_dialog_aborted">Opération annulée</string>

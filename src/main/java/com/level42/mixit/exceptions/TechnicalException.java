@@ -12,6 +12,14 @@ public class TechnicalException extends Exception {
 
     /**
      * Constructeur.
+     * @param e Exception parente
+     */
+    public TechnicalException(final Exception e) {
+        super(e);
+    }
+    
+    /**
+     * Constructeur.
      * @param message Message d'erreur technique
      * @param e Exception parente
      */
