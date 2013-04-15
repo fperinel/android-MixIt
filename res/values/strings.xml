@@ -3,7 +3,7 @@
     <string name="app_name">Mix-It 2013</string>
     
     <string name="mixit_url"><a href="http://www.mix-it.fr">http://www.mix-it.fr</a></string>
-    <string name="mixit_address">Les Jardins d\'Osaka,\n16 Rue Jean Desparmet,\n69008 LYON</string>
+    <string name="mixit_address">Les Jardins d\'Osaka,\n16 Rue Jean Desparmet,\n\n69008 LYON</string>
     
     <string name="loading_message">Chargement</string>
     
