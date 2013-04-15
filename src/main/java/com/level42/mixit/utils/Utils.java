@@ -97,11 +97,11 @@ public final class Utils {
 
         Config conf = Bitmap.Config.RGB_565;
         Bitmap bmp = Bitmap.createBitmap(width, height, conf);
-             
+
         for (int x = 0; x < width; x++) 
         {
             for (int y = 0; y < height; y++) {
-                bmp.setPixel(x, y, matrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                bmp.setPixel(x, y, matrix.get(x, y) ? Color.parseColor("#00ADEE") : Color.WHITE);
             }
         }
         return bmp;
