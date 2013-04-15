@@ -23,7 +23,6 @@
 	            android:textSize="16dip"
 	            android:textStyle="bold"
 	            android:layout_width="fill_parent"
-	            android:text="TITRE TALK"
 	            android:layout_height="wrap_content"
 	            android:layout_margin="4dip"
 	            android:layout_weight="0.96" />
@@ -42,7 +41,6 @@
 	        android:textColor="@color/mixitGrey"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-        	android:text="Centre interet Centre interet Centre interet Centre interet Centre interet Centre interet"
         	android:padding="5dp"
             android:textSize="12dip" />
 		
@@ -50,7 +48,6 @@
 	        android:id="@+id/talk_textContenu"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-        	android:text="Contenu du talk"
         	android:padding="10dp"
             android:textSize="14dip" />
 				    
@@ -75,7 +72,6 @@
 		        android:id="@+id/talk_textNiveau"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	        	android:text="Débutant"
 	            android:paddingRight="20dp"
 	            android:textSize="12dip" />
 		    
@@ -83,7 +79,6 @@
 	            android:id="@+id/talk_textSession"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Le 25/04 de 10:00 à 12:00"
 	            android:textSize="12dip"
 	            android:textStyle="italic" />
 

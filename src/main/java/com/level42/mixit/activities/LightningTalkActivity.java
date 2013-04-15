@@ -13,6 +13,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,6 +70,12 @@ public class LightningTalkActivity extends RoboActivity {
     @InjectView(R.id.ltalk_textVote)
     private TextView votesTalk;
 
+    /**
+     * Contrôle : Liste des speakers du talk.
+     */
+    @InjectView(R.id.ltalk_speakers)
+    private LinearLayout speakersLayoutTalk;
+    
     /**
      * Contrôle : Liste des speakers du talk.
      */
@@ -176,27 +184,30 @@ public class LightningTalkActivity extends RoboActivity {
      */
     protected void displayTalk(LightningTalk talk) {
         Resources res = getResources();
-        
-        lightningTalk = talk;
 
         titreTalk.setText(talk.getTitle());
         contenuTalk.setText(talk.getDescription());
 
         // Ajout des speakers
         for (Speaker speaker : talk.getSpeakers()) {
-            ImageView speakerAvatarView = new ImageView(
-                    LightningTalkActivity.this);
+            LinearLayout layout = new LinearLayout(LightningTalkActivity.this);
+            layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+            layout.setOrientation(LinearLayout.HORIZONTAL);
+            layout.setPadding(10, 10, 10, 10);
+            layout.setGravity(Gravity.CENTER_VERTICAL);
+            
+            ImageView speakerAvatarView = new ImageView(LightningTalkActivity.this);
             speakerAvatarView.setImageBitmap(speaker.getImage());
-            speakersTalk.addView(speakerAvatarView);
+            
+            layout.addView(speakerAvatarView);
 
             TextView speakerNameView = new TextView(LightningTalkActivity.this);
-            speakerNameView.setPadding(5, 10, 5, 10);
-            speakerNameView.setMaxLines(2);
-            speakerNameView.setMaxWidth(300);
-            speakerNameView.setText(String.format(
-                    res.getString(R.string.label_talk_speaker),
-                    speaker.getFirstname(), speaker.getLastname()));
-            speakersTalk.addView(speakerNameView);
+            speakerNameView.setPadding(10, 0, 0, 0);
+            speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));
+            
+            layout.addView(speakerNameView);
+            
+            speakersLayoutTalk.addView(layout);
         }
 
         if (talk.getInterests() != null) {
@@ -208,9 +219,7 @@ public class LightningTalkActivity extends RoboActivity {
         }
 
         if (talk.getNbVotes() != null) {
-            votesTalk.setText(String.format(
-                    res.getString(R.string.label_talk_votes),
-                    String.valueOf(talk.getNbVotes())));
+            votesTalk.setText(String.format(res.getString(R.string.label_talk_votes), String.valueOf(talk.getNbVotes())));
         }
     }
 }
