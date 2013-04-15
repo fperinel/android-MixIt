@@ -88,34 +88,30 @@ public class LightningTalksAdapter extends BaseAdapter {
 
         TextView txtTalkTitre;
         TextView txtTalkShortDescription;
-        ImageView imgTalkFavoris;
+        TextView txtTalkVote;
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.talk_row, null);
+            convertView = View.inflate(context, R.layout.lightningtalk_row, null);
 
             txtTalkTitre = (TextView) convertView
-                    .findViewById(R.id.txtTalkTitre);
+                    .findViewById(R.id.txtLTalkTitre);
             txtTalkShortDescription = (TextView) convertView
-                    .findViewById(R.id.txtTalkShortDescription);
-            imgTalkFavoris = (ImageView) convertView
-                    .findViewById(R.id.imgTalkFavoris);
-
-            convertView.setTag(R.id.txtTalkTitre, txtTalkTitre);
-            convertView.setTag(R.id.txtTalkShortDescription,
-                    txtTalkShortDescription);
-            convertView.setTag(R.id.imgTalkFavoris,
-                    imgTalkFavoris);
+                    .findViewById(R.id.txtLTalkShortDescription);
+            txtTalkVote = (TextView) convertView
+                    .findViewById(R.id.txtLTalkVotes);
+            
+            convertView.setTag(R.id.txtLTalkTitre, txtTalkTitre);
+            convertView.setTag(R.id.txtLTalkShortDescription, txtTalkShortDescription);
+            convertView.setTag(R.id.txtLTalkVotes, txtTalkVote);
         } else {
-            txtTalkTitre = (TextView) convertView.getTag(R.id.txtTalkTitre);
-            txtTalkShortDescription = (TextView) convertView
-                    .getTag(R.id.txtTalkShortDescription);
-            imgTalkFavoris = (ImageView) convertView
-                    .getTag(R.id.imgTalkFavoris);
+            txtTalkTitre = (TextView) convertView.getTag(R.id.txtLTalkTitre);
+            txtTalkShortDescription = (TextView) convertView.getTag(R.id.txtLTalkShortDescription);
+            txtTalkVote = (TextView) convertView.getTag(R.id.txtLTalkVotes);
         }
 
-        Talk talk = getItem(position);
+        LightningTalk talk = getItem(position);
         txtTalkTitre.setText(talk.getTitle());
         txtTalkShortDescription.setText(talk.getSummary());
-        imgTalkFavoris.setVisibility(View.INVISIBLE);
+        txtTalkVote.setText(String.format(context.getResources().getString(R.string.label_talk_votes), talk.getNbVotes().toString()));
         return convertView;
     }
 

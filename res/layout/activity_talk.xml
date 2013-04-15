@@ -20,7 +20,7 @@
 		    <TextView
 	            android:id="@+id/talk_textTitre"
 	            android:textColor="@color/mixitBlue"
-	            android:textSize="16dip"
+	            android:textSize="16sp"
 	            android:textStyle="bold"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
@@ -42,14 +42,14 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
         	android:padding="5dp"
-            android:textSize="12dip" />
+            android:textSize="12sp" />
 		
 		<TextView
 	        android:id="@+id/talk_textContenu"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
         	android:padding="10dp"
-            android:textSize="14dip" />
+            android:textSize="14sp" />
 				    
 	    <LinearLayout
 	        android:id="@+id/talk_speakers"
@@ -73,25 +73,24 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:paddingRight="20dp"
-	            android:textSize="12dip" />
+	            android:textSize="12sp" />
 		    
 	        <TextView
 	            android:id="@+id/talk_textSession"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textSize="12dip"
+	            android:textSize="12sp"
 	            android:textStyle="italic" />
 
 	        <TextView
 	            android:id="@+id/talk_textSalle"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textSize="12dip"
+	            android:textSize="12sp"
 	            android:textColor="@color/white"
 	            android:textStyle="italic"
 	            android:layout_marginLeft="10dp"
 	            android:layout_marginRight="5dp"
-	            android:text="Gosling"
 	            android:paddingBottom="3dp"
 	            android:paddingTop="3dp"
 	            android:paddingRight="10dp"

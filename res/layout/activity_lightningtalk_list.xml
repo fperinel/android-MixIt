@@ -4,13 +4,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    style="@style/Layout.Container"
     tools:context=".activities.MixItActivity" >
 
     <ListView
         android:id="@+id/listLightningTalks"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
+        
     </ListView>
 
 </LinearLayout>

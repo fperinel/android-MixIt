@@ -9,49 +9,39 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
-	    
-		<LinearLayout
-		    android:id="@+id/talk_layout_informations"
+
+		<TextView
+		    android:id="@+id/ltalk_textTitre"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="top"
-		    android:gravity="right"
-		    android:orientation="horizontal" >
-	        
-		    <TextView
-	            android:id="@+id/ltalk_textTitre"
-	            android:textColor="@color/mixitBlue"
-	            android:textSize="16dip"
-	            android:textStyle="bold"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent"
-	            android:layout_margin="4dip"
-	            android:layout_weight="0.96" />
-		
-			<TextView
-		        android:id="@+id/ltalk_textVote"
-		        android:textColor="@color/mixitGrey"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-	        	android:padding="5dp"
-	            android:textSize="22dip" />
-		
-		</LinearLayout>
-				
+		    android:layout_margin="4dip"
+		    android:textColor="@color/mixitBlue"
+		    android:textSize="16sp"
+		    android:textStyle="bold" />
+	
 		<TextView
-	        android:id="@+id/ltalk_textInteret"
-	        android:textColor="@color/mixitBlue"
+	        android:id="@+id/ltalk_textVote"
+	        android:textColor="@color/mixitGrey"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
         	android:padding="5dp"
-            android:textSize="12dip" />
+            android:textSize="14sp" />
+				
+		<TextView
+		    android:id="@+id/ltalk_textInteret"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="5dp"
+		    android:textColor="@color/mixitBlue"
+		    android:textSize="12sp" />
 		
 		<TextView
-	        android:id="@+id/ltalk_textContenu"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-        	android:padding="10dp"
-            android:textSize="14dip" />
+		    android:id="@+id/ltalk_textContenu"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="10dp"
+		    android:textSize="14sp" />
 				    
 	    <LinearLayout
 	        android:id="@+id/ltalk_speakers"
