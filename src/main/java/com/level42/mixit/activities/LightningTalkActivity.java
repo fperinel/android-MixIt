@@ -30,7 +30,7 @@ import com.level42.mixit.utils.MessageBox;
 /**
  * Ecran de détail d'un lightning talk.
  */
-@ContentView(R.layout.activity_talk)
+@ContentView(R.layout.activity_lightningtalk)
 public class LightningTalkActivity extends RoboActivity {
 
     /**
@@ -47,31 +47,31 @@ public class LightningTalkActivity extends RoboActivity {
     /**
      * Contrôle : Titre du talk.
      */
-    @InjectView(R.id.talk_textTitre)
+    @InjectView(R.id.ltalk_textTitre)
     private TextView titreTalk;
 
     /**
      * Contrôle : Contenu du talk.
      */
-    @InjectView(R.id.talk_textContenu)
+    @InjectView(R.id.ltalk_textContenu)
     private TextView contenuTalk;
 
     /**
      * Contrôle : Centre d'intérêts du talk.
      */
-    @InjectView(R.id.talk_textInterests)
+    @InjectView(R.id.ltalk_textInteret)
     private TextView interestsTalk;
 
     /**
      * Contrôle : Nombre de vote du talk.
      */
-    @InjectView(R.id.talk_textVotes)
+    @InjectView(R.id.ltalk_textVote)
     private TextView votesTalk;
 
     /**
      * Contrôle : Liste des speakers du talk.
      */
-    @InjectView(R.id.talk_speakers)
+    @InjectView(R.id.ltalk_speakers)
     private LinearLayout speakersTalk;
 
     /**

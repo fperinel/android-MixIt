@@ -118,24 +118,12 @@ public class TalksAdapter extends BaseAdapter {
         txtTalkSalle.setText(talk.getRoom());
         txtTalkSession.setText(Utils.getPeriodeSession(talk, context));
         
-        if ("Gosling".equals(talk.getRoom())) {
-            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomGosling));
-        }
-        if ("Dijkstra".equals(talk.getRoom())) {
-            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomDijkstra));
-        }
-        if ("Eich".equals(talk.getRoom())) {
-            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomEich));
-        }
-        if ("Nonaka".equals(talk.getRoom())) {
-            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomNonaka));
-        }
-        if ("Turing".equals(talk.getRoom())) {
-            txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomTuring));
-        }
-        if(talk.getRoom() == null) {
+        int salleColor = context.getResources().getIdentifier("room" + talk.getRoom(), "color", "com.level42.mixit");
+        
+        if(salleColor == 0) {
             txtTalkSalle.setVisibility(View.INVISIBLE);
         } else {
+            txtTalkSalle.setBackgroundColor(context.getResources().getColor(salleColor));
             txtTalkSalle.setVisibility(View.VISIBLE);
         }
         

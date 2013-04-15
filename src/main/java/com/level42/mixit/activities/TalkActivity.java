@@ -15,6 +15,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ import com.level42.mixit.models.Talk;
 import com.level42.mixit.services.ITalkService;
 import com.level42.mixit.tasks.GetTalkAsyncTask;
 import com.level42.mixit.utils.MessageBox;
+import com.level42.mixit.utils.Utils;
 
 /**
  * Ecran de détail d'un talk.
@@ -51,6 +55,12 @@ public class TalkActivity extends RoboActivity {
      */
     @InjectView(R.id.talk_textTitre)
     private TextView titreTalk;
+    
+    /**
+     * Contrôle : Picto favoris du talk.
+     */
+    @InjectView(R.id.talk_imgFavoris)
+    private ImageView imgFavoris;
 
     /**
      * Contrôle : Contenu du talk.
@@ -61,14 +71,14 @@ public class TalkActivity extends RoboActivity {
     /**
      * Contrôle : Centre d'intérêts du talk.
      */
-    @InjectView(R.id.talk_textInterests)
+    @InjectView(R.id.talk_textInteret)
     private TextView interestsTalk;
 
     /**
      * Contrôle : Date du talk.
      */
-    @InjectView(R.id.talk_textDate)
-    private TextView dateTalk;
+    @InjectView(R.id.talk_textSession)
+    private TextView sessionTalk;
 
     /**
      * Contrôle : Salle du talk.
@@ -195,25 +205,34 @@ public class TalkActivity extends RoboActivity {
 
         Resources res = getResources();
 
-        titreTalk.setText(String.format(
-                res.getString(R.string.label_talk_titre), talk.getFormat(),
-                talk.getTitle()));
+        titreTalk.setText(String.format(res.getString(R.string.label_talk_titre), talk.getFormat(), talk.getTitle()));        
         contenuTalk.setText(talk.getDescription());
 
+        if (!talk.isFavoris()) {
+            imgFavoris.setVisibility(View.INVISIBLE);
+        }
+        
         // Ajout des speakers
         for (Speaker speaker : talk.getSpeakers()) {
+            
+            LinearLayout layout = new LinearLayout(TalkActivity.this);
+            layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+            layout.setOrientation(LinearLayout.HORIZONTAL);
+            layout.setPadding(10, 10, 10, 10);
+            layout.setGravity(Gravity.CENTER_VERTICAL);
+            
             ImageView speakerAvatarView = new ImageView(TalkActivity.this);
             speakerAvatarView.setImageBitmap(speaker.getImage());
-            speakersLayoutTalk.addView(speakerAvatarView);
+            
+            layout.addView(speakerAvatarView);
 
             TextView speakerNameView = new TextView(TalkActivity.this);
-            speakerNameView.setPadding(5, 10, 5, 10);
-            speakerNameView.setMaxLines(2);
-            speakerNameView.setMaxWidth(300);
-            speakerNameView.setText(String.format(
-                    res.getString(R.string.label_talk_speaker),
-                    speaker.getFirstname(), speaker.getLastname()));
-            speakersLayoutTalk.addView(speakerNameView);
+            speakerNameView.setPadding(10, 0, 0, 0);
+            speakerNameView.setText(String.format(res.getString(R.string.label_talk_speaker), speaker.getFirstname(), speaker.getLastname()));
+            
+            layout.addView(speakerNameView);
+            
+            speakersLayoutTalk.addView(layout);
         }
 
         if (talk.getInterests() != null) {
@@ -225,26 +244,22 @@ public class TalkActivity extends RoboActivity {
         }
 
         if (talk.getLevel() != null) {
-            String niveau = (String) getResources().getText(
-                    getResources().getIdentifier(
-                            "label_talk_" + talk.getLevel(), "string",
-                            "com.level42.mixit"));
-            niveauTalk.setText(String.format(
-                    res.getString(R.string.label_talk_niveau), niveau));
+            String niveau = (String) res.getText(res.getIdentifier("label_talk_" + talk.getLevel(), "string", "com.level42.mixit"));
+            niveauTalk.setText(String.format(res.getString(R.string.label_talk_niveau), niveau));
         }
 
         if (talk.getSalleSession() != null) {
-            salleTalk.setText(String.format(
-                    res.getString(R.string.label_talk_salle),
-                    talk.getSalleSession()));
+            int salleColor = res.getIdentifier("room" + talk.getRoom(), "color", "com.level42.mixit");
+            if(salleColor == 0) {
+                salleTalk.setVisibility(View.INVISIBLE);
+            } else {
+                salleTalk.setBackgroundColor(res.getColor(salleColor));
+                salleTalk.setVisibility(View.VISIBLE);
+            }
         }
 
         if (talk.getDateSession() != null) {
-            DateFormat format = SimpleDateFormat.getDateTimeInstance(
-                    SimpleDateFormat.MEDIUM, SimpleDateFormat.SHORT);
-            dateTalk.setText(String.format(
-                    res.getString(R.string.label_talk_date),
-                    format.format(talk.getDateSession())));
+            sessionTalk.setText(Utils.getPeriodeSession(talk, TalkActivity.this));
         }
     }
 }
