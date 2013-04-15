@@ -133,6 +133,11 @@ public class TalksAdapter extends BaseAdapter {
         if ("Turing".equals(talk.getRoom())) {
             txtTalkSalle.setBackgroundColor(context.getResources().getColor(R.color.roomTuring));
         }
+        if(talk.getRoom() == null) {
+            txtTalkSalle.setVisibility(View.INVISIBLE);
+        } else {
+            txtTalkSalle.setVisibility(View.VISIBLE);
+        }
         
         if(!talk.isFavoris()) {
             imgTalkFavoris.setVisibility(View.INVISIBLE);

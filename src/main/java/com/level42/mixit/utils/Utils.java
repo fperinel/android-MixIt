@@ -72,6 +72,9 @@ public final class Utils {
      */
     public static Date formatWsDate(final String dateStr) {
         try {
+            if (dateStr == null) {
+                return null;
+            }
             //2013-04-25T09:30:00.000+02:00
             SimpleDateFormat formatOrigin = new SimpleDateFormat(
                     "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -114,13 +117,17 @@ public final class Utils {
         Date dateDebut = Utils.formatWsDate(talk.getStart());
         Date dateFin = Utils.formatWsDate(talk.getEnd());
         
-        SimpleDateFormat formatJour = new SimpleDateFormat("dd/MM");
-        SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
-        
-        return String.format(context.getResources().getString(R.string.label_duree_session),
-                    formatJour.format(dateDebut),
-                    formatHeure.format(dateDebut),
-                    formatHeure.format(dateFin)
-                );
+        if (dateDebut == null || dateFin == null) {
+            return null;
+        } else {
+            SimpleDateFormat formatJour = new SimpleDateFormat("dd/MM");
+            SimpleDateFormat formatHeure = new SimpleDateFormat("HH:mm");
+            
+            return String.format(context.getResources().getString(R.string.label_duree_session),
+                        formatJour.format(dateDebut),
+                        formatHeure.format(dateDebut),
+                        formatHeure.format(dateFin)
+                    );
+        }
     }
 }
