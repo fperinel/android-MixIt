@@ -58,7 +58,15 @@ public final class MessageBox {
      * @param context Contexte parent du dialog
      */
     public static ProgressDialog getProgressDialog(final Context context) {
-        return ProgressDialog.show(context, null,
-                context.getString(R.string.loading_message), false, true);
+        return MessageBox.getProgressDialog(context, true);
+    }
+
+    /**
+     * Construit et affiche une boite de dialog de type "Information".
+     *
+     * @param context Contexte parent du dialog
+     */
+    public static ProgressDialog getProgressDialog(final Context context, final boolean cancelable) {
+        return ProgressDialog.show(context, null, context.getString(R.string.loading_message), false, cancelable);
     }
 }

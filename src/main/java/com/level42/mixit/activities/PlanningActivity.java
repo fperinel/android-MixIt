@@ -226,8 +226,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     protected void setupProgressDialog() {
         if (progressDialog == null) {
-            progressDialog = MessageBox
-                    .getProgressDialog(PlanningActivity.this);
+            progressDialog = MessageBox.getProgressDialog(PlanningActivity.this, false);
         }
     }
 

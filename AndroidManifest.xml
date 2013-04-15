@@ -36,25 +36,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.level42.mixit.activities.PreferencesActivity" />
+            android:name="com.level42.mixit.activities.PreferencesActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.TalkListActivity"/>
+            android:name="com.level42.mixit.activities.TalkListActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.TalkActivity"/>
+            android:name="com.level42.mixit.activities.TalkActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.ActiviteActivity"/>
+            android:name="com.level42.mixit.activities.ActiviteActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.PlanningActivity"
-            android:label="@string/titre_programme" />
+            android:name="com.level42.mixit.activities.PlanningActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.AdresseActivity"
+            android:name="com.level42.mixit.activities.AdresseActivity" android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.level42.mixit.activities.LightningTalkListActivity"/>
+            android:name="com.level42.mixit.activities.LightningTalkListActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.LightningTalkActivity" />
+            android:name="com.level42.mixit.activities.LightningTalkActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="com.level42.mixit.activities.TicketActivity"
+            android:name="com.level42.mixit.activities.TicketActivity" android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"/>
     </application>
 
