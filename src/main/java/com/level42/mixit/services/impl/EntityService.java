@@ -131,7 +131,7 @@ public class EntityService extends AbstractService implements IEntityService {
     protected <T> Object getEntity(Integer id, T type)
             throws FunctionnalException, TechnicalException {
         try {
-            return (T) ws.getEntity(id, type);
+            return ws.getEntity(id, type);
         } catch (CommunicationException e) {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
