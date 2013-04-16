@@ -253,6 +253,7 @@ public class TalkActivity extends RoboActivity {
             } else {
                 salleTalk.setBackgroundColor(res.getColor(salleColor));
                 salleTalk.setVisibility(View.VISIBLE);
+                salleTalk.setText(talk.getSalleSession());
             }
         }
 
