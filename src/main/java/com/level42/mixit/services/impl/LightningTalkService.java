@@ -1,8 +1,10 @@
 package com.level42.mixit.services.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.level42.mixit.R;
+import com.level42.mixit.comparator.LightningTalkComparator;
 import com.level42.mixit.exceptions.CommunicationException;
 import com.level42.mixit.exceptions.FunctionnalException;
 import com.level42.mixit.exceptions.NotFoundException;
@@ -23,7 +25,9 @@ public class LightningTalkService extends TalkService implements
     public List<LightningTalk> getLightningTalks() throws FunctionnalException,
             TechnicalException {
         try {
-            return getWs().getLightningTalks();
+            List<LightningTalk> lightningTalks = getWs().getLightningTalks();
+            Collections.sort(lightningTalks, new LightningTalkComparator());
+            return lightningTalks;
         } catch (CommunicationException e) {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
