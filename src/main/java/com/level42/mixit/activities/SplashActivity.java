@@ -4,6 +4,7 @@ import roboguice.activity.RoboSplashActivity;
 import roboguice.inject.ContentView;
 import android.app.Application;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Looper;
 
 import com.level42.mixit.R;
@@ -14,6 +15,16 @@ import com.level42.mixit.R;
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboSplashActivity {
 
+    /*
+     * (non-Javadoc)
+     * @see roboguice.activity.RoboSplashActivity#onCreate(android.os.Bundle)
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+    }
+    
     /*
      * (non-Javadoc)
      * @see roboguice.activity.RoboSplashActivity#startNextActivity()
