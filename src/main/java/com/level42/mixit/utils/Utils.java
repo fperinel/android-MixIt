@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -128,6 +130,21 @@ public final class Utils {
                         formatHeure.format(dateDebut),
                         formatHeure.format(dateFin)
                     );
+        }
+    }
+    
+    /**
+     * Controle si un package est disponible
+     * @param ctx
+     * @param PACKAGE_NAME
+     * @return
+     */
+    public static boolean checkpackage(Context ctx, String PACKAGE_NAME) {
+        try {
+            PackageInfo info = ctx.getPackageManager().getPackageInfo(PACKAGE_NAME, 0);
+            return info != null;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 }

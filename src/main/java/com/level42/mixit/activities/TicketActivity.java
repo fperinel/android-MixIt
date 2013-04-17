@@ -6,15 +6,18 @@ import java.util.Map;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -76,6 +79,8 @@ public class TicketActivity extends RoboActivity {
      * Largeur du QRCode
      */
     private static final int QRCODE_WIDTH = 400;
+
+    private static final String  BARCODE_PACKAGE = "com.google.zxing.client.android";
 
     /**
      * Service de gestion des préférences
@@ -200,10 +205,16 @@ public class TicketActivity extends RoboActivity {
      * @param v
      */
     public void actionAddTicket(View v) {
-        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-        intent.setPackage("com.google.zxing.client.android");
-        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-        startActivityForResult(intent, v.getId());
+        if (Utils.checkpackage(TicketActivity.this, BARCODE_PACKAGE)) {
+            Intent intent = new Intent(BARCODE_PACKAGE + ".SCAN");
+            intent.setPackage(BARCODE_PACKAGE);
+            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            startActivityForResult(intent, v.getId());
+        } else {
+            Uri marketUri = Uri.parse("market://details?id=" + BARCODE_PACKAGE);
+            Intent marketIntent = new Intent(Intent.ACTION_VIEW).setData(marketUri);
+            startActivity(marketIntent);
+        }
     }
     
     /**
