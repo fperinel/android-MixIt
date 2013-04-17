@@ -48,8 +48,12 @@ public class PreferencesActivity extends RoboPreferenceActivity {
                 editor.putInt(PreferencesActivity.PREF_MEMBRE_ID, result.getId());
                 editor.commit();
                 
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                } catch (IllegalArgumentException ex) {
+                    // nop
                 }
 
                 searchId = false;

@@ -72,8 +72,12 @@ public class GetTalkAsyncTask extends AsyncTask<Object, Integer, Talk> {
     protected void onPostExecute(Talk result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Talk : " + result.getId().toString() + " chargé");
-
+        if (result != null) {
+            Log.d(Utils.LOGTAG, "Talk : " + result.getId().toString() + " chargé");
+        } else {
+            Log.d(Utils.LOGTAG, "Aucun talks");
+        }
+        
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
         }

@@ -104,8 +104,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
             if (result != null) {
                 planning.setGroupedTalks(result);
             }
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
+            try {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            } catch (IllegalArgumentException ex) {
+                // nop
             }
         }
 

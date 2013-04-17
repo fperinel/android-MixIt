@@ -107,8 +107,12 @@ public class LightningTalkActivity extends RoboActivity {
     private OnTaskPostExecuteListener<LightningTalk> listenerAsync = new OnTaskPostExecuteListener<LightningTalk>() {
         public void onTaskPostExecuteListener(LightningTalk result) {
             if (result != null) {
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                } catch (IllegalArgumentException ex) {
+                    // nop
                 }
                 displayTalk(result);
             }

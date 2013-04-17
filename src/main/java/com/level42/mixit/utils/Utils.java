@@ -136,12 +136,12 @@ public final class Utils {
     /**
      * Controle si un package est disponible
      * @param ctx
-     * @param PACKAGE_NAME
+     * @param packageName
      * @return
      */
-    public static boolean checkpackage(Context ctx, String PACKAGE_NAME) {
+    public static boolean checkpackage(Context ctx, String packageName) {
         try {
-            PackageInfo info = ctx.getPackageManager().getPackageInfo(PACKAGE_NAME, 0);
+            PackageInfo info = ctx.getPackageManager().getPackageInfo(packageName, 0);
             return info != null;
         } catch (PackageManager.NameNotFoundException e) {
             return false;

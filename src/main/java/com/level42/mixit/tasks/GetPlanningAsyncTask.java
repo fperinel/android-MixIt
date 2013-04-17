@@ -75,8 +75,12 @@ public class GetPlanningAsyncTask extends
     protected void onPostExecute(List<Talk> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
-
+        if (result != null) {
+            Log.d(Utils.LOGTAG, "Nombre de talks : " + result.size());
+        } else {
+            Log.d(Utils.LOGTAG, "Aucun talks");
+        }
+        
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
         }

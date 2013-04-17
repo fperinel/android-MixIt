@@ -77,8 +77,12 @@ public class LightningTalkListActivity extends RoboActivity implements Observer 
         public void onTaskPostExecuteListener(List<LightningTalk> result) {
             if (result != null) {
                 lightningTalks.setTalks(result);
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                } catch (IllegalArgumentException ex) {
+                    // nop
                 }
             }
         }

@@ -113,8 +113,12 @@ public class TalkActivity extends RoboActivity {
         public void onTaskPostExecuteListener(Talk result) {
             if (result != null) {
                 talk = result;
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                } catch (IllegalArgumentException ex) {
+                    // nop
                 }
                 displayTalk(talk);
             }

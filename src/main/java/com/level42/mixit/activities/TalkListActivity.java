@@ -68,8 +68,12 @@ public class TalkListActivity extends RoboActivity implements Observer {
         public void onTaskPostExecuteListener(List<Talk> result) {
             if (result != null) {
                 talks.setTalks(result);
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                } catch (IllegalArgumentException ex) {
+                    // nop
                 }
             }
         }

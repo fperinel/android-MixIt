@@ -74,8 +74,12 @@ public class GetLightningTalksAsyncTask extends
     protected void onPostExecute(List<LightningTalk> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Nombre de lightning talks : " + result.size());
-
+        if (result != null) {
+            Log.d(Utils.LOGTAG, "Nombre de lightning talks : " + result.size());
+        } else {
+            Log.d(Utils.LOGTAG, "Aucun lightning talks");
+        }
+        
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
         }

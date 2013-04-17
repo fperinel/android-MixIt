@@ -75,8 +75,12 @@ public class GetFavoritesAsyncTask extends
     protected void onPostExecute(List<Favoris> result) {
         super.onPostExecute(result);
 
-        Log.d(Utils.LOGTAG, "Nombre de favoris : " + result.size());
-
+        if (result != null) {
+            Log.d(Utils.LOGTAG, "Nombre de favoris : " + result.size());
+        } else {
+            Log.d(Utils.LOGTAG, "Aucun de favoris");
+        }
+        
         if (onTaskPostExecuteListener != null) {
             onTaskPostExecuteListener.onTaskPostExecuteListener(result);
         }
