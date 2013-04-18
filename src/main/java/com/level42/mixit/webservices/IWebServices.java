@@ -123,11 +123,11 @@ public interface IWebServices {
     /**
      * Retourne la liste des favoris d'un membre
      *
-     * @param id Identifiant du membre
+     * @param login Login du membre
      * @return liste des favoris d'un membre
      * @throws CommunicationException
      * @throws NotFoundException
      */
-    List<Favoris> getFavorite(Integer id) throws CommunicationException,
+    List<Favoris> getFavorite(String login) throws CommunicationException,
             NotFoundException, TechnicalException;
 }

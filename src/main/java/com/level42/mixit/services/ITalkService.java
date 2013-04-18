@@ -33,10 +33,12 @@ public interface ITalkService {
     
     /**
      * Méthode listant les talks favoris d'un membre
-     *
+     * 
+     * @param login Login du membre
+     * 
      * @return Liste des talks favoris
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    List<Favoris> getFavoris(Integer id) throws FunctionnalException, TechnicalException;
+    List<Favoris> getFavoris(String login) throws FunctionnalException, TechnicalException;
 }

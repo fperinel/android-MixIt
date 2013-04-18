@@ -178,10 +178,10 @@ public class TalkService extends AbstractService implements ITalkService {
      * @see com.level42.mixit.services.ITalkService#getFavorite(java.lang.Integer)
      */
     @Override
-    public List<Favoris> getFavoris(Integer id) throws FunctionnalException,
+    public List<Favoris> getFavoris(String login) throws FunctionnalException,
             TechnicalException {
         try {
-            return ws.getFavorite(id);
+            return ws.getFavorite(login);
         } catch (CommunicationException e) {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
@@ -303,9 +303,9 @@ public class TalkService extends AbstractService implements ITalkService {
             TechnicalException {
         if (idxFavoris == null) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-            Integer idMembre = preferences.getInt(PreferencesActivity.PREF_MEMBRE_ID, 0);
-            if (idMembre > 0) {
-                List<Favoris> favoris = this.getFavoris(idMembre);
+            String login = preferences.getString(PreferencesActivity.PREF_MEMBRE_LOGIN, null);
+            if (login != null) {
+                List<Favoris> favoris = this.getFavoris(login);
                 idxFavoris = new HashMap<Integer, Favoris>();
                 for (Favoris favori : favoris) {
                     idxFavoris.put(favori.getId(), favori);

@@ -347,10 +347,10 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
     }
 
     @Override
-    public List<Favoris> getFavorite(Integer id) throws CommunicationException,
+    public List<Favoris> getFavorite(String login) throws CommunicationException,
             NotFoundException, TechnicalException {
         try {
-            HttpGet request = this.getRequestGET("members/" + id.toString() + "/favorites");
+            HttpGet request = this.getRequestGET("members/" + login + "/favorites");
             String result = this.executeQuery(request, true);
             List<Favoris> favorisList = mapper.readValue(result,
                     new TypeReference<List<Favoris>>() {});
