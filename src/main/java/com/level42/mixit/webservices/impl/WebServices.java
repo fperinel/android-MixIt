@@ -42,7 +42,7 @@ import com.level42.mixit.webservices.IWebServices;
  * Service de connexion avec les Webservices MixIt.
  */
 public class WebServices extends DefaultHttpClient implements IWebServices {
-
+    
     /**
      * URL du serveur des Webservices.
      */
@@ -398,5 +398,15 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
 
         Log.d(Utils.LOGTAG, result);
         return result;
+    }
+
+    @Override
+    public void cleanCache() {
+        this.cache.clear();
+    }
+
+    @Override
+    public void cleanCache(String key) {
+        this.cache.remove(this.getRequestGET(key));
     }
 }

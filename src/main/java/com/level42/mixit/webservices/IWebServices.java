@@ -130,4 +130,15 @@ public interface IWebServices {
      */
     List<Favoris> getFavorite(String login) throws CommunicationException,
             NotFoundException, TechnicalException;
+    
+    /**
+     * Vide le cache
+     */
+    void cleanCache();
+    
+    /**
+     * Vide une clef du cache
+     * @param key Clef du cache
+     */
+    void cleanCache(String key);
 }

@@ -217,12 +217,22 @@ public class PlanningActivity extends RoboActivity implements Observer {
             case R.id.menu_preference:
                 Intent preferences = new Intent(PlanningActivity.this, 
                         PreferencesActivity.class);
-                PlanningActivity.this.startActivity(preferences);
+                PlanningActivity.this.startActivityForResult(preferences, PreferencesActivity.REQUEST_CODE);
                 break;
             default:
                 break;
         }
         return true;
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PreferencesActivity.REQUEST_CODE && resultCode == RESULT_OK) {
+            Intent refresh = new Intent(this, PlanningActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
     }
     
     /**
