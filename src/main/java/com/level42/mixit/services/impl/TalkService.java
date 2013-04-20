@@ -144,6 +144,8 @@ public class TalkService extends AbstractService implements ITalkService {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 
@@ -183,13 +185,9 @@ public class TalkService extends AbstractService implements ITalkService {
         try {
             return ws.getFavorite(login);
         } catch (CommunicationException e) {
-            throw new TechnicalException(
-                    getText(R.string.exception_message_CommunicationException),
-                    e);
+            return null; // Dans le cas des favoris, pas d'impact sur le fonctionnement
         } catch (NotFoundException e) {
-            throw new FunctionnalException(
-                    getText(R.string.exception_message_NotFoundException),
-                    e);
+            return null; // Dans le cas des favoris, pas d'impact sur le fonctionnement
         }
     }
     
@@ -307,8 +305,10 @@ public class TalkService extends AbstractService implements ITalkService {
             if (login != null) {
                 List<Favoris> favoris = this.getFavoris(login);
                 idxFavoris = new HashMap<Integer, Favoris>();
-                for (Favoris favori : favoris) {
-                    idxFavoris.put(favori.getId(), favori);
+                if (favoris != null) {
+                    for (Favoris favori : favoris) {
+                        idxFavoris.put(favori.getId(), favori);
+                    }
                 }
             } else {
                 return null;

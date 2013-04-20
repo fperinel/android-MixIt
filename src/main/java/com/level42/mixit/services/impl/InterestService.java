@@ -44,6 +44,8 @@ public class InterestService extends AbstractService implements
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 

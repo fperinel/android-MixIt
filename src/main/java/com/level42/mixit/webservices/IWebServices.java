@@ -25,7 +25,7 @@ public interface IWebServices {
      * @return Liste des talks
      * @throws CommunicationException
      */
-    List<Talk> getTalks() throws CommunicationException, TechnicalException;
+    List<Talk> getTalks() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne la liste des lightning talks.
@@ -33,7 +33,7 @@ public interface IWebServices {
      * @return Liste des lightning talks
      * @throws CommunicationException
      */
-    List<LightningTalk> getLightningTalks() throws CommunicationException, TechnicalException;
+    List<LightningTalk> getLightningTalks() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne le détail d'un talk.
@@ -60,7 +60,7 @@ public interface IWebServices {
      * @return Liste des membres
      * @throws CommunicationException
      */
-    List<Member> getMembers() throws CommunicationException, TechnicalException;
+    List<Member> getMembers() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne la liste du staff.
@@ -68,7 +68,7 @@ public interface IWebServices {
      * @return Liste du staff
      * @throws CommunicationException
      */
-    List<Staff> getStaffs() throws CommunicationException, TechnicalException;
+    List<Staff> getStaffs() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne la liste des speakers.
@@ -76,7 +76,7 @@ public interface IWebServices {
      * @return Liste des speakers
      * @throws CommunicationException
      */
-    List<Speaker> getSpeakers() throws CommunicationException, TechnicalException;
+    List<Speaker> getSpeakers() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne la liste des sponsors.
@@ -84,7 +84,7 @@ public interface IWebServices {
      * @return Liste des sponsors
      * @throws CommunicationException
      */
-    List<Sponsor> getSponsors() throws CommunicationException, TechnicalException;
+    List<Sponsor> getSponsors() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne le détail d'une entité (membre, staff etc...).
@@ -106,7 +106,7 @@ public interface IWebServices {
      * @return Liste des tags "intérêt"
      * @throws CommunicationException
      */
-    List<Interest> getInterests() throws CommunicationException, TechnicalException;
+    List<Interest> getInterests() throws CommunicationException, TechnicalException, NotFoundException;
 
     /**
      * Retourne le détail d'un tags "intérêt".

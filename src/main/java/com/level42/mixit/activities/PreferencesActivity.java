@@ -1,5 +1,8 @@
 package com.level42.mixit.activities;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import roboguice.activity.RoboPreferenceActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,10 +43,15 @@ public class PreferencesActivity extends RoboPreferenceActivity {
         String newLogin = getPreferenceManager().getSharedPreferences().getString(PREF_MEMBRE_LOGIN, null);
         
         if(newLogin != null && !newLogin.equals(login)) {
-            ws.cleanCache("talks");
-            Intent intent = new Intent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            setResult(RESULT_OK, intent);
+            try {
+                ws.cleanCache("talks");
+                ws.cleanCache("members/" + URLEncoder.encode(login, "UTF-8") + "/favorites");
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                setResult(RESULT_OK, intent);
+            } catch (UnsupportedEncodingException e) {
+                //
+            }
         }
         
         super.finish();

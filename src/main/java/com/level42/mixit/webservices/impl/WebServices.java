@@ -1,6 +1,7 @@
 package com.level42.mixit.webservices.impl;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,7 +108,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getTalks()
      */
     @Override
-    public List<Talk> getTalks() throws CommunicationException, TechnicalException {
+    public List<Talk> getTalks() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("talks");
             String result = this.executeQuery(request, true);
@@ -154,7 +155,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      */
     @Override
     public List<LightningTalk> getLightningTalks()
-            throws CommunicationException, TechnicalException {
+            throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("lightningtalks");
             String result = this.executeQuery(request, true);
@@ -202,7 +203,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getMembers()
      */
     @Override
-    public List<Member> getMembers() throws CommunicationException, TechnicalException {
+    public List<Member> getMembers() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("members");
             String result = this.executeQuery(request, true);
@@ -223,7 +224,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getStaffs()
      */
     @Override
-    public List<Staff> getStaffs() throws CommunicationException, TechnicalException {
+    public List<Staff> getStaffs() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("members/staff");
             String result = this.executeQuery(request, true);
@@ -244,7 +245,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getSpeakers()
      */
     @Override
-    public List<Speaker> getSpeakers() throws CommunicationException, TechnicalException {
+    public List<Speaker> getSpeakers() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("members/speakers");
             String result = this.executeQuery(request, true);
@@ -265,7 +266,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getSponsors()
      */
     @Override
-    public List<Sponsor> getSponsors() throws CommunicationException, TechnicalException {
+    public List<Sponsor> getSponsors() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("members/sponsors");
             String result = this.executeQuery(request, true);
@@ -306,7 +307,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * @see com.level42.mixit.webservices.IWebServices#getInterests()
      */
     @Override
-    public List<Interest> getInterests() throws CommunicationException, TechnicalException {
+    public List<Interest> getInterests() throws CommunicationException, TechnicalException, NotFoundException {
         try {
             HttpGet request = this.getRequestGET("interests");
             String result = this.executeQuery(request, true);
@@ -350,7 +351,7 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
     public List<Favoris> getFavorite(String login) throws CommunicationException,
             NotFoundException, TechnicalException {
         try {
-            HttpGet request = this.getRequestGET("members/" + login + "/favorites");
+            HttpGet request = this.getRequestGET("members/" + URLEncoder.encode(login, "UTF-8") + "/favorites");
             String result = this.executeQuery(request, true);
             List<Favoris> favorisList = mapper.readValue(result,
                     new TypeReference<List<Favoris>>() {});
@@ -378,35 +379,58 @@ public class WebServices extends DefaultHttpClient implements IWebServices {
      * Execute la requête d'appel au Webservice après vérification du cache.
      * @param request
      * @return Résultat (format jSon)
+     * @throws NotFoundException 
      * @throws ClientProtocolException
      * @throws IOException
      */
-    protected String executeQuery(HttpUriRequest request, boolean useCache)
-            throws IOException {
-        String key = request.getURI().toString();
-        String result = null;
-        Log.i(Utils.LOGTAG, "Webservice request : "
-                + request.getURI().toString());
-        if (!cache.containsKey(key) || !useCache) {
-            result = this.execute(request, handler);
-            cache.put(key, result);
-            Log.d(Utils.LOGTAG, "Webservice cache set for key : " + key);
+    protected String executeQuery(HttpUriRequest request, boolean useCache) throws NotFoundException {
+        if (request != null) {
+            String key = request.getURI().toString();
+            String result = null;
+            Log.i(Utils.LOGTAG, "Webservice request : " + request.getURI().toString());
+            if (!cache.containsKey(key) || !useCache) {
+                try {
+                    result = this.execute(request, handler);
+                    Log.d(Utils.LOGTAG, "Webservice cache set for key : " + key);
+                    cache.put(key, result);
+                } catch (ClientProtocolException e) {
+                    Log.e(Utils.LOGTAG, "Webservice request error : " + e.getMessage());
+                    throw new NotFoundException(context.getText(R.string.exception_message_NotFoundException).toString());
+                } catch (IOException e) {
+                    Log.e(Utils.LOGTAG, "Webservice request error : " + e.getMessage());
+                    throw new NotFoundException(context.getText(R.string.exception_message_NotFoundException).toString());
+                }
+            } else {
+                Log.d(Utils.LOGTAG, "Webservice cache hit for key : " + key);
+                result = cache.get(key);
+            }
+    
+            Log.d(Utils.LOGTAG, result);
+            
+            if (result == null) {
+                throw new NotFoundException(context.getText(R.string.exception_message_NotFoundException).toString());
+            }
+            
+            return result;
         } else {
-            result = cache.get(key);
-            Log.d(Utils.LOGTAG, "Webservice cache hit for key : " + key);
+            return null;
         }
-
-        Log.d(Utils.LOGTAG, result);
-        return result;
     }
 
     @Override
     public void cleanCache() {
         this.cache.clear();
+        Log.d(Utils.LOGTAG, "Webservice cache cleared");
     }
 
     @Override
     public void cleanCache(String key) {
-        this.cache.remove(this.getRequestGET(key));
+        String cacheKey = this.getRequestGET(key).getURI().toString();
+        String result = this.cache.remove(cacheKey);
+        if (result != null) {
+            Log.d(Utils.LOGTAG, "Webservice cache clear for key : " + cacheKey);
+        } else {
+            Log.d(Utils.LOGTAG, "Webservice cache not clear for key : " + cacheKey + ", the key is unknown");
+        }
     }
 }

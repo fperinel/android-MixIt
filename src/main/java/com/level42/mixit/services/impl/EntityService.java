@@ -38,6 +38,8 @@ public class EntityService extends AbstractService implements IEntityService {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 
@@ -53,6 +55,8 @@ public class EntityService extends AbstractService implements IEntityService {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 
@@ -68,6 +72,8 @@ public class EntityService extends AbstractService implements IEntityService {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 
@@ -83,6 +89,8 @@ public class EntityService extends AbstractService implements IEntityService {
             throw new TechnicalException(
                     getText(R.string.exception_message_CommunicationException),
                     e);
+        } catch (NotFoundException e) {
+            throw new FunctionnalException(e.getMessage(), e);
         }
     }
 
