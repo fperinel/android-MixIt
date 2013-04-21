@@ -204,7 +204,7 @@ public class TalkActivity extends RoboActivity {
      * @param talk Talk a afficher
      */
     protected void displayTalk(Talk talk) {
-
+        
         Resources res = getResources();
 
         titreTalk.setText(String.format(res.getString(R.string.label_talk_titre), talk.getFormat(), talk.getTitle()));        

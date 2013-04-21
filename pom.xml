@@ -20,11 +20,11 @@
 		
 		<java.version>1.6</java.version>
 		<platform.version>2.2.1</platform.version>
-		<platform.sdk>8</platform.sdk>
+		<platform.sdk>7</platform.sdk>
 		
 		<roboguice.version>2.0</roboguice.version>
 		<guice.version>3.0</guice.version>
-		<!-- <supportv4.version>r7</supportv4.version> -->
+		<supportv4.version>r7</supportv4.version>
 		<jackson.version>1.9.12</jackson.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 		<zxing.version>2.1</zxing.version>
@@ -55,11 +55,11 @@
             <version>${guice.version}</version>
             <classifier>no_aop</classifier>
         </dependency>        
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.google.android</groupId>
-			<artifactId>support-v7</artifactId>
-			<version>${supportv7.version}</version>
-		</dependency>   -->     
+			<artifactId>support-v4</artifactId>
+			<version>${supportv4.version}</version>
+		</dependency>     
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>

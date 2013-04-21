@@ -7,12 +7,12 @@
     android:fillViewport="true" >
 	
 	<LinearLayout
-	    android:layout_width="match_parent"
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 	    
 		<LinearLayout
-	        android:layout_width="match_parent"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:gravity="right"
 		    android:id="@+id/talk_layout_informations"
@@ -63,7 +63,7 @@
 	    </LinearLayout>
 	    
 		<LinearLayout
-	        android:layout_width="match_parent"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:gravity="right"
 		    android:id="@+id/talk_layout_interests"

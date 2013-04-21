@@ -11,7 +11,7 @@
         android:id="@+id/listDateTalks"
         android:layout_width="50dp"
         style="@style/List.filter"
-        android:layout_height="match_parent" >
+        android:layout_height="fill_parent" >
 		
     </ListView>
     
@@ -20,7 +20,7 @@
         android:layout_width="50dp"
         android:layout_marginLeft="1dp"
         style="@style/List.filter"
-        android:layout_height="match_parent" >
+        android:layout_height="fill_parent" >
 		
     </ListView>
         	
@@ -28,8 +28,8 @@
         android:id="@+id/listTalks"
         android:layout_marginLeft="1dp"
         android:background="@android:color/black"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 		
     </ListView>
     

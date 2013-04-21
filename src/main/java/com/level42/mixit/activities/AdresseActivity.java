@@ -3,7 +3,6 @@ package com.level42.mixit.activities;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectResource;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
