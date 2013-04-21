@@ -12,3 +12,4 @@ Petite application Android non officielle pour le Mix-It
 - Ecran d'adresse et URL du site.
 - Marqueur sur les talks favoris
 - Préférences utilisateurs
+- Notification des talks favoris à venir
