@@ -10,11 +10,13 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -85,6 +87,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
     
     private FilterAdapter adapterHeure;
 
+    private Vibrator vibrator;
     /**
      * Date sélectionnée
      */
@@ -146,7 +149,8 @@ public class PlanningActivity extends RoboActivity implements Observer {
         planning.addObserver(this);
         adapter = new TalksAdapter(this.getBaseContext());
         listTalks.setAdapter(adapter);
-
+        vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        
         listTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                     int position, long id) {
@@ -270,6 +274,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         listDateTalks.setAdapter(adapterDate);
         listDateTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               vibrator.vibrate(50);
                selectedDate = (String) parent.getItemAtPosition(position);
                adapterDate.setSelected(selectedDate);
                displayHeure();
@@ -308,6 +313,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         listHeureTalks.setAdapter(adapterHeure);
         listHeureTalks.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               vibrator.vibrate(50);
                selectedHeure = (String) parent.getItemAtPosition(position);
                adapterHeure.setSelected(selectedHeure);
                adapter.updateTalks(getTalksFromSelectedDateTime());
