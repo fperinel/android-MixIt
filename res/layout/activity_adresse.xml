@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:onClick="actionGoToAddress"
-                android:src="@android:drawable/ic_menu_send" />
+                android:src="@android:drawable/ic_menu_compass" />
 
             <ImageButton
                 android:id="@+id/btn_map"
