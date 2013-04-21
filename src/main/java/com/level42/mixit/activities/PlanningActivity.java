@@ -103,6 +103,7 @@ public class PlanningActivity extends RoboActivity implements Observer {
         public void onTaskPostExecuteListener(List<Talk> result) {
             if (result != null) {
                 planning.setGroupedTalks(result);
+                addFavorisNotification(result);
             }
             try {
                 if (progressDialog.isShowing()) {
@@ -353,6 +354,24 @@ public class PlanningActivity extends RoboActivity implements Observer {
             } 
         }
         return selectedTalks;
+    }
+    
+    /**
+     * Si la notification est activée, on enregistre les alarmes sur les favoris
+     * @param talks Liste des talks
+     */
+    protected void addFavorisNotification(List<Talk> talks) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);        
+        boolean enabled = Boolean.valueOf(pref.getBoolean(PreferencesActivity.PREF_SESSION_NOTIFICATION, false));
+        
+        if (enabled) {
+            Integer delay = Integer.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_DELAY, "0"));            
+            for (Talk talk : talks) {
+                if (talk.isFavoris()) {
+                    TalkNotification.addTalkAlarmForNotification(PlanningActivity.this, this, talk, delay);
+                }
+            }
+        }
     }
 
     /**

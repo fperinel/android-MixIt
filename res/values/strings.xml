@@ -29,6 +29,8 @@
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
     
+    <string name="label_notification_date_talk">Salle %1$s à %2$s</string>
+    
     <string name="exception_message_DataAccessException">Impossible d\'accèder aux données</string>
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>
     <string name="exception_message_NotFoundException">L\'information demandée est introuvable.</string>

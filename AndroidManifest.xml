@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -52,6 +54,13 @@
         <activity
             android:name="com.level42.mixit.activities.TicketActivity" android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait"/>
+        
+        <receiver class="com.level42.mixit.activities.TalkNotification" android:name="com.level42.mixit.activities.TalkNotification">
+			<intent-filter android:priority="100">
+				<action android:name="com.level42.mixit.activities.TalkNotification" />
+			</intent-filter>
+		</receiver>
+		
     </application>
 
 </manifest>
