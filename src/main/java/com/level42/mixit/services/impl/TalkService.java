@@ -139,6 +139,10 @@ public class TalkService extends AbstractService implements ITalkService {
             for (Talk talk : talks) {
                 this.hydrateTalkFavoris(talk);
             }
+            
+            // On force le rechargement systématique
+            idxFavoris = null;
+            
             return talks;
         } catch (CommunicationException e) {
             throw new TechnicalException(
