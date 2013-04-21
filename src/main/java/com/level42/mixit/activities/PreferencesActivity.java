@@ -45,7 +45,9 @@ public class PreferencesActivity extends RoboPreferenceActivity {
         if(newLogin != null && !newLogin.equals(login)) {
             try {
                 ws.cleanCache("talks");
-                ws.cleanCache("members/" + URLEncoder.encode(login, "UTF-8") + "/favorites");
+                if (login != null) {
+                    ws.cleanCache("members/" + URLEncoder.encode(login, "UTF-8") + "/favorites");
+                }
                 Intent intent = new Intent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 setResult(RESULT_OK, intent);
