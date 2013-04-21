@@ -212,6 +212,8 @@ public class TalkActivity extends RoboActivity {
 
         if (!talk.isFavoris()) {
             imgFavoris.setVisibility(View.INVISIBLE);
+        } else {
+            imgFavoris.setVisibility(View.VISIBLE);
         }
         
         // Ajout des speakers
