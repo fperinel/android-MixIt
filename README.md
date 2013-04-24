@@ -13,3 +13,4 @@ Petite application Android non officielle pour le Mix-It
 - Marqueur sur les talks favoris
 - Préférences utilisateurs
 - Notification des talks favoris à venir
+- Lien vers Twitter
