@@ -6,5 +6,6 @@
     <item android:id="@+id/menu_billet" android:title="@string/menu_billet" android:icon="@drawable/ic_menu_attachment" />
     <item android:id="@+id/menu_adresse" android:title="@string/menu_adresse" android:icon="@android:drawable/ic_menu_mylocation" />
     <item android:id="@+id/menu_preference" android:title="@string/menu_preference" android:icon="@android:drawable/ic_menu_preferences" />
+    <item android:id="@+id/menu_twitter" android:title="@string/menu_twitter" android:icon="@drawable/ic_menu_twitter" />
     
 </menu>

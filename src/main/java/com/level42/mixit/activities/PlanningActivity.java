@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
@@ -44,6 +45,11 @@ import com.level42.mixit.utils.Utils;
 @ContentView(R.layout.activity_planning)
 public class PlanningActivity extends RoboActivity implements Observer {
 
+    /**
+     * Package de l'application Twitter
+     */
+    private static final String TWITTER_PACKAGE = "com.twitter.android";
+    
     /**
      * Contrôle : Liste des sessions.
      */
@@ -223,6 +229,15 @@ public class PlanningActivity extends RoboActivity implements Observer {
                 Intent preferences = new Intent(PlanningActivity.this, 
                         PreferencesActivity.class);
                 PlanningActivity.this.startActivityForResult(preferences, PreferencesActivity.REQUEST_CODE);
+                break;
+            case R.id.menu_twitter:
+                if (Utils.checkpackage(PlanningActivity.this, TWITTER_PACKAGE)) {
+                    Uri uri = Uri.parse("https://twitter.com/intent/tweet?text="+getText(R.string.mixit_twitter)+ " ");
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                } else {
+                    Uri marketUri = Uri.parse("market://details?id=" + TWITTER_PACKAGE);
+                    startActivity(new Intent(Intent.ACTION_VIEW).setData(marketUri));
+                }
                 break;
             default:
                 break;

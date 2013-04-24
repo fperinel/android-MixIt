@@ -4,6 +4,7 @@
     
     <string name="mixit_url"><a href="http://www.mix-it.fr">http://www.mix-it.fr</a></string>
     <string name="mixit_address">Les Jardins d\'Osaka,\n16 Rue Jean Desparmet,\n\n69008 LYON</string>
+    <string name="mixit_twitter">\@mixIT_lyon</string>
     
     <string name="loading_message">Chargement</string>
     
@@ -41,6 +42,7 @@
     <string name="menu_ltalks">Lightning Talks</string>
     <string name="menu_talks">Talks</string>
     <string name="menu_preference">Préférences</string>
+    <string name="menu_twitter">Twitter</string>
         
     <string name="label_dialog_error">Une erreur s\'est produite</string>
     <string name="label_dialog_aborted">Opération annulée</string>
