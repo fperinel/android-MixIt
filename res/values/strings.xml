@@ -51,6 +51,16 @@
     <string name="btn_dialog_ticket">Scanner</string>
     <string name="btn_dialog_voir">Afficher</string>
     
-    
+    <string name="label_preference_category_utilisateur">Utilisateur</string>
+    <string name="label_preference_login">Login</string>
+    <string name="label_preference_login_summary">Entrez votre login MixIT (pour charger vos favoris)</string>
+       
+    <string name="label_preference_category_planning">Planning</string>
+    <string name="label_preference_hidesession">Masquer les sessions passées</string>
+    <string name="label_preference_hidesession_summary">Masque les sessions qui ont débutées</string>
+    <string name="label_preference_delaysession">Délai pour masquer les sessions</string>
+    <string name="label_preference_delaysession_summary">Si le début d\'une session excède ce délai, la session est masquée (en minutes)</string>
+    <string name="label_preference_notification">Notifications</string>
+    <string name="label_preference_notification_summary">Vous indique quand une session favorite démarre</string>
     
 </resources>

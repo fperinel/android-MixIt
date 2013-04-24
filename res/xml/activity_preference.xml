@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     
-<PreferenceCategory android:title="Utilisateur">
+<PreferenceCategory android:title="@string/label_preference_category_utilisateur">
 
 	<EditTextPreference 
 	    android:key="loginMembre"
-		android:title="Login"
-		android:summary="Entrez votre login MixIT (pour charger vos favoris)">
+		android:title="@string/label_preference_login"
+		android:summary="@string/label_preference_login_summary">
 	</EditTextPreference>
 
 </PreferenceCategory>
     
-<PreferenceCategory android:title="Planning">
+<PreferenceCategory android:title="@string/label_preference_category_planning">
 
 	<CheckBoxPreference
 		android:key="hideSession"
-		android:title="Masquer les sessions passées"
-		android:summary="Masque les sessions qui ont débutées">
+		android:title="@string/label_preference_hidesession"
+		android:summary="@string/label_preference_hidesession_summary">
 	</CheckBoxPreference>
 	
 	<EditTextPreference 
 	    android:key="delaySession"
-		android:title="Délai pour masquer les sessions"
+		android:title="@string/label_preference_delaysession"
     	android:numeric="integer"
-		android:summary="Si le début d'une session excède ce délai, la session est masqsuée">
+		android:summary="@string/label_preference_delaysession_summary">
 	</EditTextPreference>
 	
 	<CheckBoxPreference
 		android:key="notificationFavoris"
-		android:title="Notifications"
-		android:summary="Vous indique quand une session favorite démarre">
+		android:title="@string/label_preference_notification"
+		android:summary="@string/label_preference_notification_summary">
 	</CheckBoxPreference>
 
 </PreferenceCategory>
