@@ -350,8 +350,8 @@ public class PlanningActivity extends RoboActivity implements Observer {
         Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay));
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        Integer delay = Integer.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));        
-        Boolean hide= Boolean.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_HIDE, "false"));
+        Integer delay = Integer.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));
+        Boolean hide= preferences.getBoolean(PreferencesActivity.PREF_SESSION_HIDE, false);
         
         getTalksAsyncService.execute(planningService, delay, hide);
     }
@@ -384,10 +384,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
      */
     protected void addFavorisNotification(List<Talk> talks) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        boolean enabled = Boolean.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_NOTIFICATION, "false"));
+        Boolean enabled = pref.getBoolean(PreferencesActivity.PREF_SESSION_NOTIFICATION, false);
         
         if (enabled) {
-            Integer delay = Integer.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_DELAY, "0"));            
+            // Execution du service
+            Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay)); 
+            Integer delay = Integer.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));
             for (Talk talk : talks) {
                 if (talk.isFavoris()) {
                     TalkNotification.addTalkAlarmForNotification(PlanningActivity.this, this, talk, delay);
@@ -405,10 +407,12 @@ public class PlanningActivity extends RoboActivity implements Observer {
         if (observable instanceof PlanningTalk) {
             Log.d(Utils.LOGTAG, "Changement sur le planning");
             PlanningTalk planning = (PlanningTalk) observable;
-            if (planning != null) {
+            if (planning != null && planning.getGroupedTalks().size() > 0) {
                 this.displayDate();
                 this.displayHeure();
                 adapter.updateTalks(getTalksFromSelectedDateTime());
+            } else {
+                MessageBox.showInformation(getText(R.string.label_mixit_termine).toString(), PlanningActivity.this);
             }
         }
     }

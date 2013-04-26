@@ -21,16 +21,14 @@
     <string name="label_date1">Billet du 25/04</string>
     <string name="label_date2">Billet du 26/04</string>
     <string name="label_scan">Cliquer sur l\'image "Mix-it" et scanner le QRcode de votre ticket Mix-It</string>
-    
     <string name="label_planning_heure">Heure</string>
     <string name="label_planning_date">Jour</string>
     <string name="label_planning_talks">Talks du %1$s</string>
     <string name="label_duree_session">Le %1$s de %2$s à %3$s</string>
-    
     <string name="label_talk_Beginner">Débutant</string>
     <string name="label_talk_Experienced">Expérimenté</string>
-    
     <string name="label_notification_date_talk">Salle %1$s à %2$s</string>
+    <string name="label_mixit_termine">Le Mix-IT c\'est fini. Merci à tous le staff et l\'année prochaine :)</string>
     
     <string name="exception_message_DataAccessException">Impossible d\'accèder aux données</string>
     <string name="exception_message_CommunicationException">Echec lors de la communication. Vérifiez votre réseau \"data\"</string>
