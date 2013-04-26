@@ -37,7 +37,8 @@ public class GetPlanningAsyncTask extends
         try {
             IPlanningService service = (IPlanningService) params[0];
             Integer delay = (Integer) params[1];
-            return service.getTalksForPlanning(delay);
+            Boolean hide = (Boolean) params[2];
+            return service.getTalksForPlanning(delay, hide);
         } catch (FunctionnalException e) {
             Log.e(Utils.LOGTAG, e.getMessage());
             Log.d(Utils.LOGTAG, e.getCause().getMessage());

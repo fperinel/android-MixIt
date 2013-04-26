@@ -37,7 +37,7 @@ public class PlanningService extends AbstractService implements
      * (non-Javadoc)
      * @see com.level42.mixit.services.IPlanningService#getTalksForPlanning(java.lang.Integer)
      */
-    public List<Talk> getTalksForPlanning(Integer delay)
+    public List<Talk> getTalksForPlanning(Integer delay, boolean hide)
             throws FunctionnalException, TechnicalException {
         // Récupère les sessions
         List<Talk> talks = talkService.getTalks();

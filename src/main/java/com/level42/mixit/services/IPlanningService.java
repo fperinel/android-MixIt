@@ -20,6 +20,6 @@ public interface IPlanningService {
      * @throws TechnicalException
      * @throws FunctionnalException
      */
-    List<Talk> getTalksForPlanning(Integer delay)
+    List<Talk> getTalksForPlanning(Integer delay, boolean hide)
             throws FunctionnalException, TechnicalException;
 }

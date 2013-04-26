@@ -350,9 +350,10 @@ public class PlanningActivity extends RoboActivity implements Observer {
         Integer defaultDelay = Integer.valueOf(getString(R.string.planningDelay));
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
-        Integer delay = Integer.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));
+        Integer delay = Integer.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_DELAY, String.valueOf(defaultDelay)));        
+        Boolean hide= Boolean.valueOf(preferences.getString(PreferencesActivity.PREF_SESSION_HIDE, "false"));
         
-        getTalksAsyncService.execute(planningService, delay);
+        getTalksAsyncService.execute(planningService, delay, hide);
     }
     
     /**
