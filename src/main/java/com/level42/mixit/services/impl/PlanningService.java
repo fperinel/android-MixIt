@@ -46,8 +46,8 @@ public class PlanningService extends AbstractService implements
         // Ajout des sessions
         List<Talk> plannedTalks = new ArrayList<Talk>();
         for (Talk talk : talks) {
-            if (talk.getDateSession() != null 
-                    && talk.getDateSession().after(new Date(limiteDate))) {
+            if (!hide || (talk.getDateSession() != null 
+                    && talk.getDateSession().after(new Date(limiteDate)))) {
                 plannedTalks.add(talk);
             }
         }
