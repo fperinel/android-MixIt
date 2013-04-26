@@ -383,8 +383,8 @@ public class PlanningActivity extends RoboActivity implements Observer {
      * @param talks Liste des talks
      */
     protected void addFavorisNotification(List<Talk> talks) {
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);        
-        boolean enabled = Boolean.valueOf(pref.getBoolean(PreferencesActivity.PREF_SESSION_NOTIFICATION, false));
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(PlanningActivity.this);
+        boolean enabled = Boolean.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_NOTIFICATION, "false"));
         
         if (enabled) {
             Integer delay = Integer.valueOf(pref.getString(PreferencesActivity.PREF_SESSION_DELAY, "0"));            
